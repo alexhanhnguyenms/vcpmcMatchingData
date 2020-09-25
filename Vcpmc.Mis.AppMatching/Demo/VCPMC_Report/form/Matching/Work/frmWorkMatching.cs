@@ -79,6 +79,16 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
         /// doi sang code moi va matching
         /// </summary>
         bool isChangeWorkcode = false;
+        /// <summary>
+        /// Title->Wr->Art->COM->Mem->Non-mem
+        /// Title->Wr->Art->Mem->COM->Non-mem
+        /// Title->Wr->Art->Mem->Non-mem->COM
+        /// </summary>
+        int priorityValue = 1;
+        /// <summary>
+        /// uu tien VCPMC
+        /// </summary>
+        bool isPrioriryForVcpmc = false;
         #endregion
 
         #region Innit
@@ -97,6 +107,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
 
         private void frmWorkMatching_Load(object sender, EventArgs e)
         {
+            cboPriority.SelectedIndex = 0;
             cboType.SelectedIndex = 0;
             cboMonopolyType.SelectedIndex = 0;
             cboNumsItem.SelectedIndex = 6;
@@ -106,6 +117,8 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
             cboRateArtist.SelectedIndex = 2;
             cboUnique.SelectedIndex = 0;
             cboReplateTextType.SelectedIndex = 3;
+
+            isPrioriryForVcpmc = cboPrioriryForVcpmc.Checked;
         }
         private bool closePending;
         private void frmWorkMatching_FormClosing(object sender, FormClosingEventArgs e)
@@ -286,7 +299,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                     }));
                     toolMain.Invoke(new MethodInvoker(delegate
                     {
-                        btnExport.Enabled = true;
+                        btnExportS.Enabled = true;
                     }));
                 }
                 else
@@ -309,7 +322,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                     }));
                     toolMain.Invoke(new MethodInvoker(delegate
                     {
-                        btnExport.Enabled = false;
+                        btnExportS.Enabled = false;
                     }));
                     statusMain.Invoke(new MethodInvoker(delegate
                     {
@@ -566,10 +579,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                                     workByWriterList = workByCodeList
                                         .Where(P => P.InterestedParties
                                             .Where(x => blockRequest[i].ListWriter2.Contains(x.IP_NAME)).Any())
-                                        .ToList();
-                                    //.OrderByDescending(p=>p.StarRating)
-                                    //.OrderBy(p=>p.WK_STATUS == "COMPLETE")
-                                    //.ToList();
+                                        .ToList();                                    
                                     //tinh ty le tac gia chinh xac
                                     int totalWriter = blockRequest[i].ListWriter2.Count;
                                     int totalWriterMatching = 0;
@@ -582,6 +592,20 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                                             if (fx != null)
                                             {
                                                 totalWriterMatching++;
+                                                
+                                                if (fx.Society == "NS")
+                                                {
+                                                    workRes.TotalNonMember++;
+                                                }
+                                                else
+                                                {
+                                                    workRes.TotalMember++;
+                                                    if(fx.Society == "VCPMC")
+                                                    {
+                                                        workRes.TotalMemberVcpmc++;
+                                                    }
+                                                    
+                                                }
                                             }
                                         }
                                         workRes.TotalWriterRequest = totalWriter;
@@ -617,9 +641,19 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                             {
                                 workByWriterList = workByCodeList;
                             }
-                            
+                            //xác định tác phẩm trên có compate không
+                            foreach (var item in workByWriterList)
+                            {
+                                if (item.InterestedParties.Where(p => p.WK_STATUS == "INCOMPLETE").Any())
+                                {
+                                    item.WK_STATUS = "INCOMPLETE";
+                                }
+                                else
+                                {
+                                    item.WK_STATUS = "COMPLETE";
+                                }
+                            }
                             #endregion
-
 
                             #region Artist
                             //List<WorkViewModel> workByArtist = new List<WorkViewModel>();
@@ -676,40 +710,253 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                             }
                             #endregion
 
+                            if (_matching.MatchingGetCount == MatchingGetCountType.First)
+                            {
+                                #region sort lay theo do uu tien
+                                if (workByArist != null && workByArist.Count > 0)
+                                {
+                                    switch (priorityValue)
+                                    {
+                                        case 0:
+                                            #region  1.Tit > Wr > Art > Mem > COM > Rating > Non - mem
+                                            if (isPrioriryForVcpmc)
+                                            {
+                                                workByArist = workByArist
+                                                .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                                .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                                .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                                .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất
+                                                .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                                       
+                                                .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                                .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                                //Add more
+                                                .OrderByDescending(p => p.TotalMemberVcpmc)//uu tien VCPMC
+                                                .ToList();
+                                            }
+                                            else
+                                            {
+                                                workByArist = workByArist
+                                                .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                                .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                                .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                                .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất
+                                                .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                                       
+                                                .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                                .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                                .ToList();
+                                            }
+                                            
+                                            break;
+                                        #endregion
+                                        case 1:
+                                            #region  2.Tit > Wr > Art > Mem > Rating > COM > Non - mem
+                                            if (isPrioriryForVcpmc)
+                                            {
+                                                workByArist = workByArist
+                                                .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                                .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                                .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                                .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất
+                                                .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                                .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                                                                               
+                                                .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                                //Add more
+                                                .OrderByDescending(p => p.TotalMemberVcpmc)//uu tien VCPMC
+                                                .ToList();
+                                            }
+                                            else
+                                            {
+                                                workByArist = workByArist
+                                                .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                                .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                                .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                                .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất
+                                                .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                                .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                                                                               
+                                                .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                                .ToList();
+                                            }
+                                            
+                                            break;
+                                        #endregion
+                                        case 2:
+                                            #region  3.Tit > Wr > Art > Rating > Mem > COM > Non - mem
+                                            if (isPrioriryForVcpmc)
+                                            {
+                                                workByArist = workByArist
+                                               .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                               .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                               .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                               .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                               .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất
+                                               .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM 
+                                               .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                               //Add more
+                                               .OrderByDescending(p => p.TotalMemberVcpmc)//uu tien VCPMC
+                                               .ToList();
+                                            }
+                                            else
+                                            {
+                                                workByArist = workByArist
+                                               .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                               .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                               .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                               .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                               .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất
+                                               .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM 
+                                               .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                               .ToList();
+                                            }
+                                           
+                                            break;
+                                        #endregion
+                                        case 3:
+                                            #region  4.Tit > Wr > Art > COM > Mem > Rating > Non - mem
+                                            if (isPrioriryForVcpmc)
+                                            {
+                                                workByArist = workByArist
+                                                .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                                .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                                .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                                .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                 
+                                                .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất                                                              
+                                                .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                                .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                                //Add more
+                                                .OrderByDescending(p => p.TotalMemberVcpmc)//uu tien VCPMC
+                                                .ToList();
+                                            }
+                                            else
+                                            {
+                                                workByArist = workByArist
+                                                .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                                .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                                .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                                .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                 
+                                                .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất                                                              
+                                                .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                                .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                                .ToList();
+                                            }
+                                            
+                                            break;
+                                        #endregion
+                                        case 4:
+                                            #region  5.Tit > Wr > Art > COM > Rating > Mem > Non - mem
+                                            if (isPrioriryForVcpmc)
+                                            {
+                                                workByArist = workByArist
+                                               .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                               .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                               .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                               .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM       
+                                               .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                               .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất   
+                                               .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                               //Add more
+                                               .OrderByDescending(p => p.TotalMemberVcpmc)//uu tien VCPMC
+                                               .ToList();
+                                            }
+                                            else
+                                            {
+                                                workByArist = workByArist
+                                               .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                               .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                               .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                               .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM       
+                                               .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                               .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất   
+                                               .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                               .ToList();
+                                            }
+                                           
+                                            break;
+                                        #endregion
+                                        case 5:
+                                            #region  6.Tit > Wr > Art > Rating > COM > Mem > Non - mem
+                                            if (isPrioriryForVcpmc)
+                                            {
+                                                workByArist = workByArist
+                                               .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                               .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                               .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                               .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                               .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                 
+                                               .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất  
+                                               .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                               //Add more
+                                               .OrderByDescending(p => p.TotalMemberVcpmc)//uu tien VCPMC
+                                               .ToList();
+                                            }
+                                            else
+                                            {
+                                                workByArist = workByArist
+                                               .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                               .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                               .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                               .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                               .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                 
+                                               .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất  
+                                               .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                               .ToList();
+                                            }
+                                           
+                                            break;
+                                        #endregion
+                                        default:
+                                            #region  1.Tit > Wr > Art > Mem > COM > Rating > Non - mem
+                                            if (isPrioriryForVcpmc)
+                                            {
+                                                workByArist = workByArist
+                                                .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                                .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                                .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                                .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất
+                                                .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                                       
+                                                .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                                .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng
+                                                //Add more
+                                                .OrderByDescending(p => p.TotalMemberVcpmc)//uu tien VCPMC
+                                                .ToList();
+                                            }
+                                            else
+                                            {
+                                                workByArist = workByArist
+                                                .OrderByDescending(p => p.TotalWriterMatching)//lấy số tác giả matching nhiều nhất
+                                                .OrderBy(p => (p.InterestedParties.Count - p.TotalWriterRequest))//số tác giả lệch so với kho it nhất
+                                                .OrderBy(p => p.IsCheckMatchingArtist)//nếu có matching theo nghệ sỹ biểu diễn
+                                                .OrderByDescending(p => p.TotalMember)//ưu tiên có số tác giả matching đúng là member nhiều nhất
+                                                .OrderBy(p => p.WK_STATUS == "COMPLETE")//ưu tiên COM                                       
+                                                .OrderByDescending(p => p.StarRating)//ưu tiên rating
+                                                .OrderByDescending(p => p.TotalNonMember)//ưu tiên số lượng tác giả Non-member cuối cùng                                                
+                                                .ToList();
+                                            }
+                                            
+                                            break;
+                                            #endregion
+                                    }                                    
+                                }
+                                #endregion
+                            }
                             if (workByArist != null && workByArist.Count > 0)
                             {
-                                workByArist = workByArist
-                                    //0.ưu tiên tác giả vào đúng nhất tác giả mathcing:
-                                    //vi du dua vao 2 tac gia, tim thay 2 tac pham cos 3 vaf 4 tac gia, uu tien lay 3
-                                    .OrderBy(p=>(p.InterestedParties.Count - p.TotalWriterRequest))                                    
-                                    //1.ưu tiên complete
-                                    .OrderBy(p => p.WK_STATUS == "COMPLETE")
-                                    //2.ưu tiên rating
-                                    .OrderByDescending(p => p.StarRating)
-                                    //3.ưu tiên có nghệ sỹ
-                                    .OrderBy(p=>p.IsCheckMatchingArtist)
-                                    //4.uu tien lay theo to chuc
-                                    //.OrderBy(p => p.InterestedParties.Where(x=>x.soc)))
-                                    .ToList();
-                                //TODO: bo
-                                //foreach (var socMax in workByArist)
-                                //{
-                                //    var xy = socMax.InterestedParties.Where(p => p.Society == "VCPMC").ToList();
-                                //}
+                                #region set matching
                                 blockRequest[i].WorkCodeMatching = workByArist[0].WK_INT_NO;
                                 blockRequest[i].TitleMatching = workByArist[0].TTL_ENG;
                                 blockRequest[i].WriterMatching = workByArist[0].WRITER;
                                 blockRequest[i].InterestedPartiesMatching = workByArist[0].InterestedParties;
 
-                                if(_matching.MatchingGetCount == MatchingGetCountType.First)
+                                if (_matching.MatchingGetCount == MatchingGetCountType.First)
                                 {
+                                    #region first
                                     blockRequest[i].IsSuccess = true;
                                     blockRequest[i].Messsage = $"Tỷ lệ tác giả {workByArist[0].TotalWriterMatching}/{workByArist[0].TotalWriterRequest}" +
                                         $"({workByArist[0].RateWriterMatch.ToString("##,##")}%) ;Số lượng tìm thấy {workByArist.Count}";
+                                    #endregion
                                 }
                                 else
-                                { 
-                                    //Unique
+                                {
+                                    #region Unique
                                     if (workByArist.Count == 1)
                                     {
                                         blockRequest[i].IsSuccess = true;
@@ -725,31 +972,33 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                                         blockRequest[i].Messsage += $"Số lượng tìm thấy {workByArist.Count} > 1";
                                         blockRequest[i].IsSuccess = false;
                                     }
+                                    #endregion
                                 }
-                               
+                                #endregion
+
                                 #region thông tin tac gia
                                 foreach (var item in workByArist[0].InterestedParties)
                                 {
                                     blockRequest[i].WriterCodeMatching += $"{item.IP_INT_NO},";
                                     blockRequest[i].WriterIPNumberMatching += $"{item.IP_NUMBER},";
                                     blockRequest[i].SocietyMatching += $"{item.Society},";
-                                    if(item.Society!=string.Empty)
+                                    if (item.Society != string.Empty)
                                     {
                                         blockRequest[i].WriterMatchingWithSoceity += $"{item.IP_NAME}({item.Society}),";
                                     }
                                 }
                                 blockRequest[i].ArtistMatching = workByArist[0].ARTIST;
 
-                                if (blockRequest[i].WriterCodeMatching.Length > 0) 
+                                if (blockRequest[i].WriterCodeMatching.Length > 0)
                                     blockRequest[i].WriterCodeMatching = blockRequest[i].WriterCodeMatching.Substring(0, blockRequest[i].WriterCodeMatching.Length - 1);
 
-                                if (blockRequest[i].WriterIPNumberMatching.Length > 0) 
+                                if (blockRequest[i].WriterIPNumberMatching.Length > 0)
                                     blockRequest[i].WriterIPNumberMatching = blockRequest[i].WriterIPNumberMatching.Substring(0, blockRequest[i].WriterIPNumberMatching.Length - 1);
 
-                                if (blockRequest[i].SocietyMatching.Length > 0) 
+                                if (blockRequest[i].SocietyMatching.Length > 0)
                                     blockRequest[i].SocietyMatching = blockRequest[i].SocietyMatching.Substring(0, blockRequest[i].SocietyMatching.Length - 1);
 
-                                if (blockRequest[i].WriterMatchingWithSoceity.Length > 0) 
+                                if (blockRequest[i].WriterMatchingWithSoceity.Length > 0)
                                     blockRequest[i].WriterMatchingWithSoceity = blockRequest[i].WriterMatchingWithSoceity.Substring(0, blockRequest[i].WriterMatchingWithSoceity.Length - 1);
                                 #endregion
                             }
@@ -851,6 +1100,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
             }
             catch (Exception)
             {
+                #region ex
                 isStop = false;
                 if (btnStop != null && !btnStop.IsDisposed)
                 {
@@ -879,7 +1129,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                     {
                         btnCalcMono.Enabled = true;
                     }));
-                }                
+                }
                 if (lbInfo != null && !lbInfo.IsDisposed)
                 {
                     this.Invoke(new MethodInvoker(delegate
@@ -887,6 +1137,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                         lbInfo.Text = $"Matching is failure";
                     }));
                 }
+                #endregion
             }
         }
 
@@ -1661,7 +1912,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
             }));
             toolMain.Invoke(new MethodInvoker(delegate
             {
-                btnExport.Enabled = true;
+                btnExportS.Enabled = true;
             }));
 
             statusMain.Invoke(new MethodInvoker(delegate
@@ -1672,6 +1923,31 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
         }
         #endregion
 
+        #region CBO
+        private void cboUnique_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboUnique.SelectedIndex == 0)
+            {
+                cboPriority.Visible = false;
+                lbPriority.Visible = false;
+                cboPrioriryForVcpmc.Visible = false;
+            }   
+            else
+            {
+                cboPriority.Visible = true;
+                lbPriority.Visible = true;
+                cboPrioriryForVcpmc.Visible = true;
+            }
+        }
+        private void cboPriority_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            priorityValue = cboPriority.SelectedIndex;
+        }
+        private void cboPrioriryForVcpmc_CheckedChanged(object sender, EventArgs e)
+        {
+            isPrioriryForVcpmc = cboPrioriryForVcpmc.Checked;
+        }
+        #endregion
         #region Btn
         private void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -1886,7 +2162,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                 }
                 toolMain.Invoke(new MethodInvoker(delegate
                 {
-                    btnExport.Enabled = false;
+                    btnExportS.Enabled = false;
                 }));
                 #region set backgroundWorker
                 Operation = OperationType.ExportToExcel;
@@ -1930,7 +2206,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                 }
                 toolMain.Invoke(new MethodInvoker(delegate
                 {
-                    btnExport.Enabled = false;
+                    btnExportS.Enabled = false;
                 }));
                 #region set backgroundWorker
                 Operation = OperationType.ExportToExcel;
@@ -1972,7 +2248,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                 }
                 toolMain.Invoke(new MethodInvoker(delegate
                 {
-                    btnExport.Enabled = false;
+                    btnExportS.Enabled = false;
                 }));
                 #region set backgroundWorker
                 Operation = OperationType.ExportToExcel;
@@ -2609,6 +2885,7 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                 }
             }
         }
-        #endregion       
+
+        #endregion        
     }
 }

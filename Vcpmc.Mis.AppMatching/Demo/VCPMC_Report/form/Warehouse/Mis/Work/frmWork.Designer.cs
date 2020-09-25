@@ -105,6 +105,9 @@
             this.RateWriterMatch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsCheckMatchingArtist = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TotalMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalNonMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalMemberVcpmc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtPageCurrent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.plInfo.SuspendLayout();
@@ -242,7 +245,10 @@
             this.TotalWriterMatching,
             this.RateWriterMatch,
             this.ListArtist,
-            this.IsCheckMatchingArtist});
+            this.IsCheckMatchingArtist,
+            this.TotalMember,
+            this.TotalNonMember,
+            this.TotalMemberVcpmc});
             this.dgvMain.Location = new System.Drawing.Point(3, 4);
             this.dgvMain.Name = "dgvMain";
             this.dgvMain.ReadOnly = true;
@@ -539,7 +545,6 @@
             // 
             // txtFind
             // 
-            this.txtFind.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(250, 25);
             this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFind_KeyDown);
@@ -873,6 +878,30 @@
             this.IsCheckMatchingArtist.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.IsCheckMatchingArtist.Visible = false;
             // 
+            // TotalMember
+            // 
+            this.TotalMember.DataPropertyName = "TotalMember";
+            this.TotalMember.HeaderText = "TotalMember";
+            this.TotalMember.Name = "TotalMember";
+            this.TotalMember.ReadOnly = true;
+            this.TotalMember.Visible = false;
+            // 
+            // TotalNonMember
+            // 
+            this.TotalNonMember.DataPropertyName = "TotalNonMember";
+            this.TotalNonMember.HeaderText = "TotalNonMember";
+            this.TotalNonMember.Name = "TotalNonMember";
+            this.TotalNonMember.ReadOnly = true;
+            this.TotalNonMember.Visible = false;
+            // 
+            // TotalMemberVcpmc
+            // 
+            this.TotalMemberVcpmc.DataPropertyName = "TotalMemberVcpmc";
+            this.TotalMemberVcpmc.HeaderText = "TotalMemberVcpmc";
+            this.TotalMemberVcpmc.Name = "TotalMemberVcpmc";
+            this.TotalMemberVcpmc.ReadOnly = true;
+            this.TotalMemberVcpmc.Visible = false;
+            // 
             // frmWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -984,5 +1013,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RateWriterMatch;
         private System.Windows.Forms.DataGridViewTextBoxColumn ListArtist;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsCheckMatchingArtist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalNonMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalMemberVcpmc;
     }
 }

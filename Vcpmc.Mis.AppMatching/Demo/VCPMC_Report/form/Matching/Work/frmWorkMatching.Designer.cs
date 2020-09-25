@@ -93,7 +93,6 @@
             this.plInfo = new System.Windows.Forms.Panel();
             this.richinfo = new System.Windows.Forms.RichTextBox();
             this.btnMatching = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.statusMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -119,6 +118,9 @@
             this.btnExportS = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnExportFileUpMis = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExportDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.cboPriority = new System.Windows.Forms.ComboBox();
+            this.lbPriority = new System.Windows.Forms.Label();
+            this.cboPrioriryForVcpmc = new System.Windows.Forms.CheckBox();
             this.pRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcloader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPageCurrent)).BeginInit();
@@ -139,9 +141,9 @@
             this.btnResetMatching.Enabled = false;
             this.btnResetMatching.Image = ((System.Drawing.Image)(resources.GetObject("btnResetMatching.Image")));
             this.btnResetMatching.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResetMatching.Location = new System.Drawing.Point(95, 272);
+            this.btnResetMatching.Location = new System.Drawing.Point(95, 339);
             this.btnResetMatching.Name = "btnResetMatching";
-            this.btnResetMatching.Size = new System.Drawing.Size(107, 24);
+            this.btnResetMatching.Size = new System.Drawing.Size(125, 24);
             this.btnResetMatching.TabIndex = 19;
             this.btnResetMatching.Text = "Reset matching";
             this.btnResetMatching.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -153,9 +155,9 @@
             this.btnStop.Enabled = false;
             this.btnStop.Image = ((System.Drawing.Image)(resources.GetObject("btnStop.Image")));
             this.btnStop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStop.Location = new System.Drawing.Point(95, 297);
+            this.btnStop.Location = new System.Drawing.Point(95, 364);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(107, 24);
+            this.btnStop.Size = new System.Drawing.Size(125, 24);
             this.btnStop.TabIndex = 18;
             this.btnStop.Text = "Stop";
             this.btnStop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -209,9 +211,9 @@
             this.pRight.Controls.Add(this.btnNxtPage);
             this.pRight.Controls.Add(this.btnFirstPAge);
             this.pRight.Controls.Add(this.dgvMain);
-            this.pRight.Location = new System.Drawing.Point(220, 22);
+            this.pRight.Location = new System.Drawing.Point(238, 22);
             this.pRight.Name = "pRight";
-            this.pRight.Size = new System.Drawing.Size(1009, 498);
+            this.pRight.Size = new System.Drawing.Size(991, 498);
             this.pRight.TabIndex = 11;
             // 
             // cheChangeWorkcode
@@ -280,7 +282,7 @@
             this.lbLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLoad.Location = new System.Drawing.Point(377, 6);
             this.lbLoad.Name = "lbLoad";
-            this.lbLoad.Size = new System.Drawing.Size(620, 21);
+            this.lbLoad.Size = new System.Drawing.Size(602, 21);
             this.lbLoad.TabIndex = 45;
             // 
             // cboMonopolyType
@@ -468,7 +470,7 @@
             this.dgvMain.Location = new System.Drawing.Point(1, 47);
             this.dgvMain.Name = "dgvMain";
             this.dgvMain.ReadOnly = true;
-            this.dgvMain.Size = new System.Drawing.Size(996, 393);
+            this.dgvMain.Size = new System.Drawing.Size(978, 393);
             this.dgvMain.TabIndex = 46;
             // 
             // SerialNo
@@ -703,16 +705,19 @@
             this.pLeft.Controls.Add(this.btnMatching);
             this.pLeft.Location = new System.Drawing.Point(3, 22);
             this.pLeft.Name = "pLeft";
-            this.pLeft.Size = new System.Drawing.Size(211, 498);
+            this.pLeft.Size = new System.Drawing.Size(229, 498);
             this.pLeft.TabIndex = 10;
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.cboPrioriryForVcpmc);
+            this.groupBox5.Controls.Add(this.lbPriority);
+            this.groupBox5.Controls.Add(this.cboPriority);
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.cboUnique);
             this.groupBox5.Location = new System.Drawing.Point(3, 225);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(201, 44);
+            this.groupBox5.Size = new System.Drawing.Size(219, 111);
             this.groupBox5.TabIndex = 27;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "get";
@@ -735,8 +740,9 @@
             "First"});
             this.cboUnique.Location = new System.Drawing.Point(51, 17);
             this.cboUnique.Name = "cboUnique";
-            this.cboUnique.Size = new System.Drawing.Size(147, 20);
+            this.cboUnique.Size = new System.Drawing.Size(166, 20);
             this.cboUnique.TabIndex = 19;
+            this.cboUnique.SelectedIndexChanged += new System.EventHandler(this.cboUnique_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -745,7 +751,7 @@
             this.groupBox4.Controls.Add(this.cheArtist);
             this.groupBox4.Location = new System.Drawing.Point(3, 114);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(201, 61);
+            this.groupBox4.Size = new System.Drawing.Size(219, 61);
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Artist";
@@ -769,7 +775,7 @@
             "Not"});
             this.cboRateArtist.Location = new System.Drawing.Point(51, 36);
             this.cboRateArtist.Name = "cboRateArtist";
-            this.cboRateArtist.Size = new System.Drawing.Size(147, 20);
+            this.cboRateArtist.Size = new System.Drawing.Size(166, 20);
             this.cboRateArtist.TabIndex = 17;
             // 
             // cheArtist
@@ -789,7 +795,7 @@
             this.groupBox3.Controls.Add(this.cheWorkCode);
             this.groupBox3.Location = new System.Drawing.Point(3, 181);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(201, 38);
+            this.groupBox3.Size = new System.Drawing.Size(219, 38);
             this.groupBox3.TabIndex = 26;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Workcode";
@@ -811,7 +817,7 @@
             this.groupBox2.Controls.Add(this.cheWriter);
             this.groupBox2.Location = new System.Drawing.Point(3, 47);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(201, 61);
+            this.groupBox2.Size = new System.Drawing.Size(219, 61);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Writer";
@@ -837,7 +843,7 @@
             "0%"});
             this.cboRateWriter.Location = new System.Drawing.Point(51, 36);
             this.cboRateWriter.Name = "cboRateWriter";
-            this.cboRateWriter.Size = new System.Drawing.Size(147, 20);
+            this.cboRateWriter.Size = new System.Drawing.Size(166, 20);
             this.cboRateWriter.TabIndex = 17;
             // 
             // groupBox1
@@ -845,7 +851,7 @@
             this.groupBox1.Controls.Add(this.cheTitle);
             this.groupBox1.Location = new System.Drawing.Point(3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(201, 39);
+            this.groupBox1.Size = new System.Drawing.Size(219, 39);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Title";
@@ -856,9 +862,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.plInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.plInfo.Controls.Add(this.richinfo);
-            this.plInfo.Location = new System.Drawing.Point(3, 327);
+            this.plInfo.Location = new System.Drawing.Point(3, 394);
             this.plInfo.Name = "plInfo";
-            this.plInfo.Size = new System.Drawing.Size(199, 165);
+            this.plInfo.Size = new System.Drawing.Size(217, 98);
             this.plInfo.TabIndex = 15;
             // 
             // richinfo
@@ -870,7 +876,7 @@
             this.richinfo.Location = new System.Drawing.Point(1, 4);
             this.richinfo.Name = "richinfo";
             this.richinfo.ReadOnly = true;
-            this.richinfo.Size = new System.Drawing.Size(191, 157);
+            this.richinfo.Size = new System.Drawing.Size(209, 90);
             this.richinfo.TabIndex = 0;
             this.richinfo.Text = "";
             // 
@@ -879,7 +885,7 @@
             this.btnMatching.Enabled = false;
             this.btnMatching.Image = ((System.Drawing.Image)(resources.GetObject("btnMatching.Image")));
             this.btnMatching.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMatching.Location = new System.Drawing.Point(3, 297);
+            this.btnMatching.Location = new System.Drawing.Point(3, 364);
             this.btnMatching.Name = "btnMatching";
             this.btnMatching.Size = new System.Drawing.Size(86, 24);
             this.btnMatching.TabIndex = 8;
@@ -887,16 +893,6 @@
             this.btnMatching.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMatching.UseVisualStyleBackColor = true;
             this.btnMatching.Click += new System.EventHandler(this.btnMatching_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Enabled = false;
-            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
-            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(61, 22);
-            this.btnExport.Text = "Export";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // backgroundWorker1
             // 
@@ -987,7 +983,6 @@
             this.btnFind,
             this.btnClearFilter,
             this.toolStripSeparator2,
-            this.btnExport,
             this.toolStripLabel1,
             this.cboNumsItem,
             this.toolStripLabel2,
@@ -1124,6 +1119,46 @@
             this.btnExportDetail.Text = "Detail";
             this.btnExportDetail.Click += new System.EventHandler(this.btnExportDetail_Click);
             // 
+            // cboPriority
+            // 
+            this.cboPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPriority.FormattingEnabled = true;
+            this.cboPriority.Items.AddRange(new object[] {
+            "1.Tit>Wr>Art>Mem>COM>Rating>Non-mem",
+            "2.Tit>Wr>Art>Mem>Rating>COM>Non-mem",
+            "3.Tit>Wr>Art>Rating>Mem>COM>Non-mem",
+            "4.Tit>Wr>Art>COM>Mem>Rating>Non-mem",
+            "5.Tit>Wr>Art>COM>Rating>Mem>Non-mem",
+            "6.Tit>Wr>Art>Rating>COM>Mem>Non-mem"});
+            this.cboPriority.Location = new System.Drawing.Point(4, 64);
+            this.cboPriority.Name = "cboPriority";
+            this.cboPriority.Size = new System.Drawing.Size(213, 20);
+            this.cboPriority.TabIndex = 21;
+            this.cboPriority.SelectedIndexChanged += new System.EventHandler(this.cboPriority_SelectedIndexChanged);
+            // 
+            // lbPriority
+            // 
+            this.lbPriority.AutoSize = true;
+            this.lbPriority.Location = new System.Drawing.Point(6, 48);
+            this.lbPriority.Name = "lbPriority";
+            this.lbPriority.Size = new System.Drawing.Size(38, 13);
+            this.lbPriority.TabIndex = 22;
+            this.lbPriority.Text = "Priority";
+            // 
+            // cboPrioriryForVcpmc
+            // 
+            this.cboPrioriryForVcpmc.AutoSize = true;
+            this.cboPrioriryForVcpmc.Checked = true;
+            this.cboPrioriryForVcpmc.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cboPrioriryForVcpmc.Location = new System.Drawing.Point(4, 90);
+            this.cboPrioriryForVcpmc.Name = "cboPrioriryForVcpmc";
+            this.cboPrioriryForVcpmc.Size = new System.Drawing.Size(111, 17);
+            this.cboPrioriryForVcpmc.TabIndex = 21;
+            this.cboPrioriryForVcpmc.Text = "priority for VCPMC";
+            this.cboPrioriryForVcpmc.UseVisualStyleBackColor = true;
+            this.cboPrioriryForVcpmc.CheckedChanged += new System.EventHandler(this.cboPrioriryForVcpmc_CheckedChanged);
+            // 
             // frmWorkMatching
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1188,7 +1223,6 @@
         private System.Windows.Forms.Panel plInfo;
         private System.Windows.Forms.RichTextBox richinfo;
         private System.Windows.Forms.Button btnMatching;
-        private System.Windows.Forms.ToolStripButton btnExport;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.StatusStrip statusMain;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -1258,5 +1292,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Messsage;
         private System.Windows.Forms.DataGridViewTextBoxColumn NonMember;
         private System.Windows.Forms.CheckBox cheChangeWorkcode;
+        private System.Windows.Forms.Label lbPriority;
+        private System.Windows.Forms.ComboBox cboPriority;
+        private System.Windows.Forms.CheckBox cboPrioriryForVcpmc;
     }
 }

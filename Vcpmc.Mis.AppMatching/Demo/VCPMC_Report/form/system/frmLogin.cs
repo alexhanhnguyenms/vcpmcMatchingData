@@ -97,5 +97,17 @@ namespace Vcpmc.Mis.AppMatching.form.system
                 throw;
             }
         }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(null, null);
+            }
+            else if (e.KeyCode == Keys.Delete)
+            {
+                e.Handled = false;
+            }            
+        }
     }
 }

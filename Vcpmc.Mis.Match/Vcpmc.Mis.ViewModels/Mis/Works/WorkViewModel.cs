@@ -80,5 +80,17 @@ namespace Vcpmc.Mis.ViewModels.Mis.Works
         /// neu true thi đúng điều kiện matching nghệ sy biểu diễn
         /// </summary>
         public bool IsCheckMatchingArtist { get; set; } = false;
+        /// <summary>
+        /// Tổng số tác giả thành viên
+        /// </summary>
+        public int TotalMember { get; set; } = 0;
+        /// <summary>
+        /// Tổng số tác giả không thành viên
+        /// </summary>
+        public int TotalNonMember { get; set; } = 0;
+        /// <summary>
+        /// Tổng số thành viên VCPMC
+        /// </summary>
+        public int TotalMemberVcpmc { get; set; } = 0;
     }
 }

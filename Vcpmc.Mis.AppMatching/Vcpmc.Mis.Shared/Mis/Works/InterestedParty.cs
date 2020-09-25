@@ -59,7 +59,7 @@ namespace Vcpmc.Mis.Shared.Mis.Works
         /// </summary>
         //public string SOCIETY_MR { get; set; } = string.Empty;
         /// <summary>
-        /// Trạng thái: COMPLETE
+        /// Trạng thái: COMPLETE, INCOMPLETE
         /// </summary>
         public string WK_STATUS { get; set; } = "INCOMPLETE";// string.Empty;
         /// <summary>
