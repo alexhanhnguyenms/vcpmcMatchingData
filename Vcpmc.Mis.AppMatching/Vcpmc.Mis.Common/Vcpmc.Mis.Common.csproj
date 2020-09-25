@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.11.0" />
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="LanguageDetection" Version="1.2.0" />
+    <PackageReference Include="LumenWorks.Framework.IO" Version="3.8.0" />
+    <PackageReference Include="Microsoft.Report.Viewer" Version="11.0.0" />
+    <PackageReference Include="NPOI" Version="2.5.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+    <PackageReference Include="Z.Expressions.Eval" Version="4.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Vcpmc.Mis.Match\Vcpmc.Mis.ViewModels\Vcpmc.Mis.ViewModels.csproj" />
+    <ProjectReference Include="..\Vcpmc.Mis.ApplicationCore\Vcpmc.Mis.ApplicationCore.csproj" />
+    <ProjectReference Include="..\Vcpmc.Mis.Shared\Vcpmc.Mis.Shared.csproj" />
+    <ProjectReference Include="..\Vcpmc.Mis.UnicodeConvertor\Vcpmc.Mis.UnicodeConverter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DetectLanguage">
+      <HintPath>..\Demo\VCPMC_Report\bin\Debug\DetectLanguage.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

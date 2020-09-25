@@ -1,0 +1,19 @@
+﻿1. truoc thang 5/6/2020
+	Orginal File
+	File1
+	File2
+	File3
+	File4-none-vi
+	File4-vi
+	File4-again-none-vi
+	File5-none-vi
+	File5-vi
+	File5-again-none-vi
+2. sau thang 5/2020
+	Orginal File
+	File1
+	File2
+	File3
+	File3-none-vi	
+	File3-vi
+	File4-again-none-vi

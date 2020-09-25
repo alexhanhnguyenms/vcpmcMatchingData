@@ -1,0 +1,29 @@
+Add-Migration MyFirstMigration -Context CatalogContext -OutputDir "Data/eShop/Migrations"
+Update-Database -Context CatalogContext
+
+Add-Migration MyFirstUser -Context AppIdentityDbContext -OutputDir "Identity/Migrations"
+Update-Database -Context AppIdentityDbContext
+
+ /*
+* 1-
+Enable-Migrations
+2-
+//AutomaticMigrationsEnabled = false;
+AutomaticMigrationsEnabled = true;//doi de cap nhat db
+3-
+Add-Migration init
+4-
+Update-Database
+-- tao script
+Update-Database -script
+5-
+Update-Database –TargetMigration: AddBlogUrl
+6.
+
+Open up your Package Manager Console
+Type: update-database -verbose -force
+7.
+
+*/
+home: DESKTOP-3Q2H2VI\SQLEXPRESS
+copany: DESKTOP-T0K91DM\SQLEXPRESS

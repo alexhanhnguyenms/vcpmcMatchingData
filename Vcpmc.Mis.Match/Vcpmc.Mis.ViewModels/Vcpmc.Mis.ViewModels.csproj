@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.2" />
+    <PackageReference Include="MongoDB.Bson" Version="2.10.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Vcpmc.Mis.AppMatching\Vcpmc.Mis.Shared\Vcpmc.Mis.Shared.csproj" />
+    <ProjectReference Include="..\Vcpmc.Mis.Utilities\Vcpmc.Mis.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mis\Members\Tracking\" />
+  </ItemGroup>
+</Project>

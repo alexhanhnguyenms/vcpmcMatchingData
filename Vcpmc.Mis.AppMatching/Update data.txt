@@ -1,0 +1,29 @@
+﻿- Thêm côt
+
+ALTER TABLE [youtube202005] ADD youtubeId int;
+
+- Thêm master
+
+insert into YoutubeTemps ([Name],[TimeCreate],[User]) values('Import data from csv of Masterlist-month 5', GETDATE(),'Admin');
+
+- Lấy mã thêm vào bảng master
+ update youtube202005 set youtubeId = 1
+-	Chuyển dữ liệu sang bảng tạm
+INSERT INTO 
+	YoutubeDataTemps([YoutubeTempId], [ID], [TITLE], [ARTIST], [ALBUM], [LABEL], [ISRC], [COMP_ID], [COMP_TITLE], [COMP_ISWC], [COMP_WRITERS], [COMP_CUSTOM_ID], [QUANTILE])
+SELECT    
+	[youtubeId], [ID], [TITLE], [ARTIST], [ALBUM], [LABEL], [ISRC], [COMP_ID], [COMP_TITLE], [COMP_ISWC], [COMP_WRITERS], [COMP_CUSTOM_ID], [QUANTILE]	
+FROM    
+    youtube202005 where youtubeId = 1
+-- bo tieng viet
+ update YoutubeDataTemps set 
+	[TITLE2] = UPPER(dbo.non_unicode_convert([TITLE])),
+	[ARTIST2] = UPPER(dbo.non_unicode_convert([ARTIST])),
+	[ALBUM2] = UPPER(dbo.non_unicode_convert([ALBUM])),
+	[LABEL2] = UPPER(dbo.non_unicode_convert([LABEL]))
+
+mongo:
+1--
+db.work.updateMany(
+{"WRITER" : null},
+{$set: { "WRITER" : ""}});

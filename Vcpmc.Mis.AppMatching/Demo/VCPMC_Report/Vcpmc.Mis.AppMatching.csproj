@@ -1,0 +1,946 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D84F99C-7F0C-4745-B016-06025DD723B8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Vcpmc.Mis.AppMatching</RootNamespace>
+    <AssemblyName>Vcpmc.Mis.AppMatching</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>hnet.com-image.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.6\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="DetectLanguage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DetectLanguage.1.0.0\lib\netstandard2.0\DetectLanguage.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.11.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DocumentFormat.OpenXml.2.11.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FileHelpers, Version=3.4.1.0, Culture=neutral, PublicKeyToken=3e0c08d59cc3d657, processorArchitecture=MSIL">
+      <HintPath>..\packages\FileHelpers.3.4.1\lib\net45\FileHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="FileHelpers.ExcelNPOIStorage, Version=3.4.1.0, Culture=neutral, PublicKeyToken=3e0c08d59cc3d657, processorArchitecture=MSIL">
+      <HintPath>..\packages\FileHelpers.ExcelNPOIStorage.3.4.1\lib\net45\FileHelpers.ExcelNPOIStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="FileHelpers.ExcelStorage, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e0c08d59cc3d657, processorArchitecture=MSIL">
+      <HintPath>..\packages\FileHelpers.ExcelStorage.3.3.0\lib\net45\FileHelpers.ExcelStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LoadingIndicator.WinForms, Version=1.0.3.0, Culture=neutral, PublicKeyToken=1b7ed145d0f47614, processorArchitecture=MSIL">
+      <HintPath>..\packages\LoadingIndicator.WinForms.1.0.3\lib\net45\LoadingIndicator.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5ad3ea2f85776344, processorArchitecture=MSIL">
+      <HintPath>..\packages\LumenWorksCsvReader.4.0.0\lib\net461\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PersianMaterialSkin.2.0.3\lib\net45\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.IdentityModel.JsonWebTokens.6.7.1\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.IdentityModel.Logging.6.7.1\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.IdentityModel.Tokens.6.7.1\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Office.Interop.PowerPoint.15.0.4420.1017\lib\net20\Microsoft.Office.Interop.PowerPoint.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.10.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MongoDB.Bson.2.10.4\lib\net452\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MicrosoftOfficeCore.15.0.0\lib\net35\Office.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Data.SqlClient.4.8.1\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.6.7.1\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.IO.Packaging.4.7.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Z.Expressions.Eval, Version=4.0.11.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Z.Expressions.Eval.4.0.11\lib\net45\Z.Expressions.Eval.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\Admin\RoleController.cs" />
+    <Compile Include="Controllers\Admin\UserController.cs" />
+    <Compile Include="Controllers\MasterList\MasterListController.cs" />
+    <Compile Include="Controllers\System\FixParameterController.cs" />
+    <Compile Include="Controllers\Warehouse\Mis\MemberController.cs" />
+    <Compile Include="Controllers\Warehouse\Mis\MonopolyController.cs" />
+    <Compile Include="Controllers\Warehouse\Mis\WorkController.cs" />
+    <Compile Include="Controllers\Warehouse\Mis\WorkTrackingController.cs" />
+    <Compile Include="Controllers\Warehouse\Youtube\PreclaimController.cs" />
+    <Compile Include="form\Admin\frmAssignRight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Admin\frmAssignRight.Designer.cs">
+      <DependentUpon>frmAssignRight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Admin\frmRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Admin\frmRole.Designer.cs">
+      <DependentUpon>frmRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Admin\Update\frmUpdatePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Admin\Update\frmUpdatePassword.Designer.cs">
+      <DependentUpon>frmUpdatePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Admin\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Admin\frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Admin\Update\frmRoleUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Admin\Update\frmRoleUpdate.Designer.cs">
+      <DependentUpon>frmRoleUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Admin\Update\frmUserUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Admin\Update\frmUserUpdate.Designer.cs">
+      <DependentUpon>frmUserUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\config\frmFixParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\config\frmFixParameter.Designer.cs">
+      <DependentUpon>frmFixParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\config\Update\frmFixParameterUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\config\Update\frmFixParameterUpdate.Designer.cs">
+      <DependentUpon>frmFixParameterUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\contract\frmContractList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\contract\frmContractList.Designer.cs">
+      <DependentUpon>frmContractList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\contract\report\frmContractPrinter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\contract\report\frmContractPrinter.Designer.cs">
+      <DependentUpon>frmContractPrinter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\contract\update\frmUpdateContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\contract\update\frmUpdateContract.Designer.cs">
+      <DependentUpon>frmUpdateContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\convert\frmConvertFont.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\convert\frmConvertFont.Designer.cs">
+      <DependentUpon>frmConvertFont.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\convert\StatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\convert\StatusForm.Designer.cs">
+      <DependentUpon>StatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\Quarter\frmDistributionQuarter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\Quarter\frmDistributionQuarter.Designer.cs">
+      <DependentUpon>frmDistributionQuarter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\Quarter\Report\frmDistrisbutionQuarterReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\Quarter\Report\frmDistrisbutionQuarterReport.Designer.cs">
+      <DependentUpon>frmDistrisbutionQuarterReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\main\MenuList.cs" />
+    <Compile Include="form\masterlist\frmMasterImportChoise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\masterlist\frmMasterImportChoise.Designer.cs">
+      <DependentUpon>frmMasterImportChoise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\masterlist\frmMasterList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\masterlist\frmMasterList.Designer.cs">
+      <DependentUpon>frmMasterList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Matching\Preclaim\frmPreclaimMatching.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Matching\Preclaim\frmPreclaimMatching.Designer.cs">
+      <DependentUpon>frmPreclaimMatching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Matching\Work\frmWorkMatching.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Matching\Work\frmWorkMatching.Designer.cs">
+      <DependentUpon>frmWorkMatching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Tool\control\frmConvertToUnsign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Tool\control\frmConvertToUnsign.Designer.cs">
+      <DependentUpon>frmConvertToUnsign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Tool\control\frmEdiFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Tool\control\frmEdiFiles.Designer.cs">
+      <DependentUpon>frmEdiFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmDistribution2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmDistribution2.Designer.cs">
+      <DependentUpon>frmDistribution2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmExceptionWorkChoisPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmExceptionWorkChoisPO.Designer.cs">
+      <DependentUpon>frmExceptionWorkChoisPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmExceptionWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmExceptionWork.Designer.cs">
+      <DependentUpon>frmExceptionWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmImportWorkMemberChoisePO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmImportWorkMemberChoisePO.Designer.cs">
+      <DependentUpon>frmImportWorkMemberChoisePO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmImportWorkMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmImportWorkMember.Designer.cs">
+      <DependentUpon>frmImportWorkMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmMember.Designer.cs">
+      <DependentUpon>frmMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmMemberChoisePO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmMemberChoisePO.Designer.cs">
+      <DependentUpon>frmMemberChoisePO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\report\frmBhDistributionReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\report\frmBhDistributionReport.Designer.cs">
+      <DependentUpon>frmBhDistributionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\report\frmBhDistributionReportTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\report\frmBhDistributionReportTotal.Designer.cs">
+      <DependentUpon>frmBhDistributionReportTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\report\ReportWithChart.cs" />
+    <Compile Include="form\mic\membership\frmMemberShipRetrieval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\mic\membership\frmMemberShipRetrieval.Designer.cs">
+      <DependentUpon>frmMemberShipRetrieval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\config\frmAddReplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\config\frmAddReplace.Designer.cs">
+      <DependentUpon>frmAddReplace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\main\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\main\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmDistribution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmDistribution.Designer.cs">
+      <DependentUpon>frmDistribution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmDistributionChoisePO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\frmDistributionChoisePO.Designer.cs">
+      <DependentUpon>frmDistributionChoisePO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Distribution\BH\report\frmViewBhDistributionReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Distribution\BH\report\frmViewBhDistributionReport.Designer.cs">
+      <DependentUpon>frmViewBhDistributionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Search\frmInfoWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Search\frmInfoWork.Designer.cs">
+      <DependentUpon>frmInfoWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Tool\control\frmGetNewWorkcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Tool\control\frmGetNewWorkcode.Designer.cs">
+      <DependentUpon>frmGetNewWorkcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Monopoly\frmMonopoly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Monopoly\frmMonopoly.Designer.cs">
+      <DependentUpon>frmMonopoly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\monopoly\frmMakeMonopoly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\monopoly\frmMakeMonopoly.Designer.cs">
+      <DependentUpon>frmMakeMonopoly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Monopoly\Update\frmMonopolyImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Monopoly\Update\frmMonopolyImport.Designer.cs">
+      <DependentUpon>frmMonopolyImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Monopoly\Update\frmMonopolyUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Monopoly\Update\frmMonopolyUpdate.Designer.cs">
+      <DependentUpon>frmMonopolyUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\system\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\system\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\config\frmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\config\frmConfig.Designer.cs">
+      <DependentUpon>frmConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\system\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\system\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Member\frmMemberList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Member\frmMemberList.Designer.cs">
+      <DependentUpon>frmMemberList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\frmTrackingWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\frmTrackingWork.Designer.cs">
+      <DependentUpon>frmTrackingWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\frmWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\frmWork.Designer.cs">
+      <DependentUpon>frmWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmInterestedParitesUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmInterestedParitesUpdate.Designer.cs">
+      <DependentUpon>frmInterestedParitesUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmOtherTitleUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmOtherTitleUpdate.Designer.cs">
+      <DependentUpon>frmOtherTitleUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmWorkImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmWorkImport.Designer.cs">
+      <DependentUpon>frmWorkImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmTrackingWorkImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmTrackingWorkImport.Designer.cs">
+      <DependentUpon>frmTrackingWorkImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmWorkTrackingUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmWorkTrackingUpdate.Designer.cs">
+      <DependentUpon>frmWorkTrackingUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmWorkUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Mis\Work\Update\frmWorkUpdate.Designer.cs">
+      <DependentUpon>frmWorkUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Youtube\frmPreclaim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Youtube\frmPreclaim.Designer.cs">
+      <DependentUpon>frmPreclaim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Youtube\Update\frmPreclaimImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Youtube\Update\frmPreclaimImport.Designer.cs">
+      <DependentUpon>frmPreclaimImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Warehouse\Youtube\Update\frmPreclaimUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Warehouse\Youtube\Update\frmPreclaimUpdate.Designer.cs">
+      <DependentUpon>frmPreclaimUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\JsonHelper.cs" />
+    <Compile Include="Models\ErrorViewModel.cs" />
+    <Compile Include="Models\PreclaimJson.cs" />
+    <Compile Include="printer\PrinterHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="form\youtube\frmGetDataFromYoutube.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\youtube\frmGetDataFromYoutube.Designer.cs">
+      <DependentUpon>frmGetDataFromYoutube.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\MasterList\MasterListApiClient.cs" />
+    <Compile Include="Services\Admin\RoleApiClient.cs" />
+    <Compile Include="Services\Admin\UserApiClient.cs" />
+    <Compile Include="Services\System\FixParameterApiClient.cs" />
+    <Compile Include="Services\Warehouse\Mis\MemberApiClient.cs" />
+    <Compile Include="Services\Warehouse\Mis\MonopolyApiClient.cs" />
+    <Compile Include="Services\Warehouse\Mis\WorkApiClient.cs" />
+    <Compile Include="Services\Warehouse\Mis\WorkTrackingApiClient.cs" />
+    <Compile Include="Services\Warehouse\Youtube\PreclaimApiClient.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="vcpmcDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vcpmcDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="vcpmcDemo2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vcpmcDemo2DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="vcpmcDemoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vcpmcDemoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="vcpmcDemoDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vcpmcDemoDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="vcpmcDemoDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vcpmcDemoDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="vcpmcDemoDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vcpmcDemoDataSet3.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="bin\Debug\report\template\ContractReport.rdlc" />
+    <EmbeddedResource Include="bin\Debug\report\template\DistributionQuarterReportP.rdlc" />
+    <EmbeddedResource Include="bin\Debug\report\template\DistributionQuarterReportE.rdlc" />
+    <EmbeddedResource Include="bin\Debug\report\template\DistributionReport.rdlc" />
+    <EmbeddedResource Include="bin\Debug\report\template\DistributionReport3.rdlc" />
+    <EmbeddedResource Include="form\Admin\frmAssignRight.resx">
+      <DependentUpon>frmAssignRight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Admin\frmRole.resx">
+      <DependentUpon>frmRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Admin\Update\frmUpdatePassword.resx">
+      <DependentUpon>frmUpdatePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Admin\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Admin\Update\frmRoleUpdate.resx">
+      <DependentUpon>frmRoleUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Admin\Update\frmUserUpdate.resx">
+      <DependentUpon>frmUserUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\config\frmAddReplace.resx">
+      <DependentUpon>frmAddReplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\config\frmFixParameter.resx">
+      <DependentUpon>frmFixParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\config\Update\frmFixParameterUpdate.resx">
+      <DependentUpon>frmFixParameterUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\contract\frmContractList.resx">
+      <DependentUpon>frmContractList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\contract\report\frmContractPrinter.resx">
+      <DependentUpon>frmContractPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\contract\update\frmUpdateContract.resx">
+      <DependentUpon>frmUpdateContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\convert\frmConvertFont.resx">
+      <DependentUpon>frmConvertFont.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\convert\StatusForm.resx">
+      <DependentUpon>StatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\Quarter\frmDistributionQuarter.resx">
+      <DependentUpon>frmDistributionQuarter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\Quarter\Report\frmDistrisbutionQuarterReport.resx">
+      <DependentUpon>frmDistrisbutionQuarterReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\main\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\masterlist\frmMasterImportChoise.resx">
+      <DependentUpon>frmMasterImportChoise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\masterlist\frmMasterList.resx">
+      <DependentUpon>frmMasterList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Matching\Preclaim\frmPreclaimMatching.resx">
+      <DependentUpon>frmPreclaimMatching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Matching\Work\frmWorkMatching.resx">
+      <DependentUpon>frmWorkMatching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Tool\control\frmConvertToUnsign.resx">
+      <DependentUpon>frmConvertToUnsign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Tool\control\frmEdiFiles.resx">
+      <DependentUpon>frmEdiFiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\frmDistribution2.resx">
+      <DependentUpon>frmDistribution2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\frmExceptionWorkChoisPO.resx">
+      <DependentUpon>frmExceptionWorkChoisPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\frmExceptionWork.resx">
+      <DependentUpon>frmExceptionWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\frmImportWorkMemberChoisePO.resx">
+      <DependentUpon>frmImportWorkMemberChoisePO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\frmImportWorkMember.resx">
+      <DependentUpon>frmImportWorkMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\frmMember.resx">
+      <DependentUpon>frmMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\frmMemberChoisePO.resx">
+      <DependentUpon>frmMemberChoisePO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\report\frmBhDistributionReport.resx">
+      <DependentUpon>frmBhDistributionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\report\frmBhDistributionReportTotal.resx">
+      <DependentUpon>frmBhDistributionReportTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\mic\membership\frmMemberShipRetrieval.resx">
+      <DependentUpon>frmMemberShipRetrieval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\frmDistribution.resx">
+      <DependentUpon>frmDistribution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\frmDistributionChoisePO.resx">
+      <DependentUpon>frmDistributionChoisePO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Distribution\BH\report\frmViewBhDistributionReport.resx">
+      <DependentUpon>frmViewBhDistributionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Search\frmInfoWork.resx">
+      <DependentUpon>frmInfoWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Tool\control\frmGetNewWorkcode.resx">
+      <DependentUpon>frmGetNewWorkcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Member\frmMemberList.resx">
+      <DependentUpon>frmMemberList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Monopoly\frmMonopoly.resx">
+      <DependentUpon>frmMonopoly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\monopoly\frmMakeMonopoly.resx">
+      <DependentUpon>frmMakeMonopoly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Monopoly\Update\frmMonopolyImport.resx">
+      <DependentUpon>frmMonopolyImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Monopoly\Update\frmMonopolyUpdate.resx">
+      <DependentUpon>frmMonopolyUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\report\template\DistributionReport.rdlc" />
+    <EmbeddedResource Include="form\report\template\DistributionReport3.rdlc" />
+    <EmbeddedResource Include="form\system\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\config\frmConfig.resx">
+      <DependentUpon>frmConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\system\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Work\frmTrackingWork.resx">
+      <DependentUpon>frmTrackingWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Work\frmWork.resx">
+      <DependentUpon>frmWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Work\Update\frmInterestedParitesUpdate.resx">
+      <DependentUpon>frmInterestedParitesUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Work\Update\frmOtherTitleUpdate.resx">
+      <DependentUpon>frmOtherTitleUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Work\Update\frmWorkImport.resx">
+      <DependentUpon>frmWorkImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Work\Update\frmTrackingWorkImport.resx">
+      <DependentUpon>frmTrackingWorkImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Work\Update\frmWorkTrackingUpdate.resx">
+      <DependentUpon>frmWorkTrackingUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Mis\Work\Update\frmWorkUpdate.resx">
+      <DependentUpon>frmWorkUpdate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Youtube\frmPreclaim.resx">
+      <DependentUpon>frmPreclaim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Youtube\Update\frmPreclaimImport.resx">
+      <DependentUpon>frmPreclaimImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Warehouse\Youtube\Update\frmPreclaimUpdate.resx">
+      <DependentUpon>frmPreclaimUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="form\youtube\frmGetDataFromYoutube.resx">
+      <DependentUpon>frmGetDataFromYoutube.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="vcpmcDataSet.xsc">
+      <DependentUpon>vcpmcDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vcpmcDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="vcpmcDataSet.xss">
+      <DependentUpon>vcpmcDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemo2DataSet.xsc">
+      <DependentUpon>vcpmcDemo2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemo2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vcpmcDemo2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="vcpmcDemo2DataSet.xss">
+      <DependentUpon>vcpmcDemo2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemoDataSet.xsc">
+      <DependentUpon>vcpmcDemoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vcpmcDemoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="vcpmcDemoDataSet.xss">
+      <DependentUpon>vcpmcDemoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemoDataSet1.xsc">
+      <DependentUpon>vcpmcDemoDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemoDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vcpmcDemoDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="vcpmcDemoDataSet1.xss">
+      <DependentUpon>vcpmcDemoDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemoDataSet2.xsc">
+      <DependentUpon>vcpmcDemoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemoDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vcpmcDemoDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="vcpmcDemoDataSet2.xss">
+      <DependentUpon>vcpmcDemoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemoDataSet3.xsc">
+      <DependentUpon>vcpmcDemoDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="vcpmcDemoDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vcpmcDemoDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="vcpmcDemoDataSet3.xss">
+      <DependentUpon>vcpmcDemoDataSet3.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\Matching\" />
+    <Folder Include="form\report\dataset\" />
+    <Folder Include="Services\Matching\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="form\masterlist\note.txt" />
+    <Content Include="hnet.com-image.ico" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Vcpmc.Mis.Match\Vcpmc.Mis.Utilities\Vcpmc.Mis.Utilities.csproj">
+      <Project>{11351AD6-1C9B-4FE7-85D7-3C1A6A54FDB7}</Project>
+      <Name>Vcpmc.Mis.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Vcpmc.Mis.Match\Vcpmc.Mis.ViewModels\Vcpmc.Mis.ViewModels.csproj">
+      <Project>{ad01b2e0-34cb-4614-9c1e-7a14271d38e0}</Project>
+      <Name>Vcpmc.Mis.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vcpmc.Mis.ApplicationCore\Vcpmc.Mis.ApplicationCore.csproj">
+      <Project>{d52b1f5a-b0de-489e-843a-ce1db1b613da}</Project>
+      <Name>Vcpmc.Mis.ApplicationCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vcpmc.Mis.Common\Vcpmc.Mis.Common.csproj">
+      <Project>{8602B6A3-80B0-4AF8-B02B-5517A6DCC899}</Project>
+      <Name>Vcpmc.Mis.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vcpmc.Mis.Infrastructure\Vcpmc.Mis.Infrastructure.csproj">
+      <Project>{0AA5AABE-6E10-4960-B481-5CE86AC19698}</Project>
+      <Name>Vcpmc.Mis.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vcpmc.Mis.Legacy\Vcpmc.Mis.Legacy.csproj">
+      <Project>{d84c6f09-a20a-48a6-88f8-f5cfeb150ecd}</Project>
+      <Name>Vcpmc.Mis.Legacy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vcpmc.Mis.Shared\Vcpmc.Mis.Shared.csproj">
+      <Project>{2622b2d9-fa7b-42e6-bf65-b4085f880339}</Project>
+      <Name>Vcpmc.Mis.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Vcpmc.Mis.UnicodeConvertor\Vcpmc.Mis.UnicodeConverter.csproj">
+      <Project>{F7761B42-C106-4736-8063-1636DE3F0068}</Project>
+      <Name>Vcpmc.Mis.UnicodeConverter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

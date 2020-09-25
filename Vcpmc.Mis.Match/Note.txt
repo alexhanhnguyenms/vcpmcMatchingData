@@ -1,0 +1,49 @@
+--
+{
+  "firstName": "trung",
+  "lastName": "nguyen",
+  "dob": "2020-07-21",
+  "email": "alexnguyenhanhms@gmail.com",
+  "phoneNumber": "string",
+  "userName": "admin",
+  "password": "Admin@123",
+  "confirmPassword": "Admin@123"
+}
+-- totken
+bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhbGV4bmd1eWVuaGFuaG1zQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6InRydW5nIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImFkbWluIiwiZXhwIjoxNTk1MzI2Mzk5LCJpc3MiOiJodHRwczovL3dlYmFwaS50ZWR1LmNvbS52biIsImF1ZCI6Imh0dHBzOi8vd2ViYXBpLnRlZHUuY29tLnZuIn0.V9v3Fak-GnPOu7gmG2RHBS3DIrG8TcliO4olC8UHLQU
+-- id user
+42F8158B-DFCC-4617-6F7E-08D82D30E2FB
+--name:
+Keyword: Admin
+
+--
+Add-Migration MyFirstMigration -Context CatalogContext -OutputDir "Data/eShop/Migrations"
+Update-Database -Context CatalogContext
+
+Add-Migration MyFirstUser -Context AppIdentityDbContext -OutputDir "Identity/Migrations"
+Update-Database -Context AppIdentityDbContext
+
+ /*
+* 1-
+Enable-Migrations
+2-
+//AutomaticMigrationsEnabled = false;
+AutomaticMigrationsEnabled = true;//doi de cap nhat db
+3-
+Add-Migration init
+4-
+Update-Database
+-- tao script
+Update-Database -script
+5-
+Update-Database –TargetMigration: AddBlogUrl
+6.
+
+Open up your Package Manager Console
+Type: update-database -verbose -force
+7.
+
+*/
+home: DESKTOP-3Q2H2VI\SQLEXPRESS
+copany: DESKTOP-T0K91DM\SQLEXPRESS
+

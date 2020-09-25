@@ -1,0 +1,55 @@
+
+1.them cot year cho preclaim
+db.preclaim.update(
+    { },
+    { $set: { Year:  NumberInt(2020) } },
+    { multi: true }
+)
+2.xoa cot year
+db.preclaim.update(
+    { },
+    { $unset: { Year: 0 } },
+    { multi: true }
+)
+3.work
+{ 
+    "_id" : ObjectId("5f2146974d083a74441b7892"),    
+    "WK_INT_NO" : "1100", 
+    "TTL_ENG" : "AMERICA EXULTANT", 
+    "ISWC_NO" : "T0700010996", 
+    "ISRC" : null, 
+    "WRITER" : "FILLMORE HENRY", 
+    "ARTIST" : null, 
+    "SOC_NAME" : "INTER"
+}
+--
+db.work.update(
+    { },
+    { $set: { StarRating:  NumberInt(0) } },
+    { multi: true }
+)
+
+db.work.update(
+    { },
+    { $set: { WK_STATUS:  "COMPLETE" } },
+    { multi: true }
+)
+4.worktracking
+{ 
+    "_id" : ObjectId("5f2146974d083a74441b7892"), 
+    "MONTH" : NumberInt(2), 
+    "Year" : NumberInt(2020), 
+    "WK_INT_NO" : "1100", 
+    "TTL_ENG" : "AMERICA EXULTANT", 
+    "ISWC_NO" : "T0700010996", 
+    "ISRC" : null, 
+    "WRITER" : "FILLMORE HENRY", 
+    "ARTIST" : null, 
+    "SOC_NAME" : "INTER"
+}
+
+db.worktracking.update(
+    { },
+    { $set: { Type:  NumberInt(0) } },
+    { multi: true }
+)

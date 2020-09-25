@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vcpmc.Mis.Data\Vcpmc.Mis.Data.csproj" />
+    <ProjectReference Include="..\Vcpmc.Mis.Utilities\Vcpmc.Mis.Utilities.csproj" />
+    <ProjectReference Include="..\Vcpmc.Mis.ViewModels\Vcpmc.Mis.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

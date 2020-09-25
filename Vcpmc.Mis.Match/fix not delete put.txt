@@ -1,0 +1,6 @@
+https://help.catchsoftware.com/pages/viewpage.action?pageId=2031718&preview=/2031718/1999475/Modules.PNG
+Remove the WebDAV Publishing feature (via add/remove programs and features -easiest option)
+Or, go to Internet Information Services (IIS) Manager, click on the Website where ET exists, 
+click "Modules", then select the "WebDAV Publishing" module, and on the right-hand side click the
+"Remove" action, to remove the module (this is the better option
+if the server is "shared" and being used to host more then just Enterprise Tester).
