@@ -2510,14 +2510,18 @@ namespace Vcpmc.Mis.Common.common.excel
                         //1
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue("PER") });
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue("ABC") });
-                        newRow.AppendChild(new Cell()
-                        {
-                            DataType = CellValues.InlineString,
-                            InlineString = new DocumentFormat.OpenXml.Spreadsheet.InlineString
-                            {
-                                Text = new DocumentFormat.OpenXml.Spreadsheet.Text(DateTime.Now.ToString("d/M/yyyy"))
-                            }
-                        });
+                        //TODO
+                        //newRow.AppendChild(new Cell()
+                        //{
+                        //    DataType = CellValues.InlineString,
+                        //    InlineString = new DocumentFormat.OpenXml.Spreadsheet.InlineString
+                        //    {
+                        //        Text = new DocumentFormat.OpenXml.Spreadsheet.Text(DateTime.Now.ToString("d/M/yyyy"))
+                        //    }
+                        //});
+                        //newRow.AppendChild(DateCell(DateTime.Now));
+                        newRow.AppendChild(DateCell2(DateTime.Now));
+
                         ////TITLE (ENG),TITLE (LOCAL),
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.Title2) });
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue("") });
@@ -5360,7 +5364,54 @@ namespace Vcpmc.Mis.Common.common.excel
                 StyleIndex = 4u,
                 CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(data.ToString())
             };
-       
+        private Cell DateCell(DateTime date) =>
+            new Cell
+            {
+                DataType = new EnumValue<CellValues>(CellValues.Date),
+                CellFormula = new CellFormula($"DATE({date.Year}, {date.Month}, {date.Day})"),               
+                StyleIndex = 14,
+                //CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(data.ToString())
+            };
+        private Cell DateCell2(DateTime date)
+        {
+            //string strValue = date.ToOADate().ToString(CultureInfo.InvariantCulture);           
+            string strValue = date.ToShortDateString();           
+            return new Cell
+            {
+                /*ID  FORMAT CODE
+0   General
+1   0
+2   0.00
+3   #,##0
+4   #,##0.00
+9   0%
+10  0.00%
+11  0.00E+00
+12  # ?/?
+13  # ??/??
+14  d/m/yyyy
+15  d-mmm-yy
+16  d-mmm
+17  mmm-yy
+18  h:mm tt
+19  h:mm:ss tt
+20  H:mm
+21  H:mm:ss
+22  m/d/yyyy H:mm
+37  #,##0 ;(#,##0)
+38  #,##0 ;[Red](#,##0)
+39  #,##0.00;(#,##0.00)
+40  #,##0.00;[Red](#,##0.00)
+45  mm:ss
+46  [h]:mm:ss
+47  mmss.0
+48  ##0.0E+0
+49  @*/
+                DataType = new EnumValue<CellValues>(CellValues.Date),
+                CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(strValue),
+                StyleIndex = 14
+            };
+        }            
         #endregion
 
     }
