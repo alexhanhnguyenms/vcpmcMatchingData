@@ -25,6 +25,7 @@ using Vcpmc.Mis.UnicodeConverter;
 using Vcpmc.Mis.ViewModels.Mis.Members;
 using Vcpmc.Mis.Shared.Tool;
 using System.Globalization;
+using Vcpmc.Mis.Shared.Mis.Members;
 
 namespace Vcpmc.Mis.Common.common.excel
 {
@@ -258,6 +259,10 @@ namespace Vcpmc.Mis.Common.common.excel
                         countgood++;
                         countgood2++;
                         cIndex = 1;
+                        if(generateType == 0)
+                        {
+                            cIndex = 0;
+                        }
                         IRow curRow = sheet.GetRow(i);
                         // Works for consecutive data. Use continue otherwise 
                         if (curRow == null)
@@ -796,7 +801,259 @@ namespace Vcpmc.Mis.Common.common.excel
             return spreadsheetDocument;
         }
         #endregion
+        #region 2.1.Control.MemberWorkList
+        /// <summary>
+        /// Read file Export from mis
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="generateType">0: generrateReport, generate local report, new match report</param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public List<MemberWorkList> ReadExcelMemberEorkList(string fileName)
+        {           
+            List<MemberWorkList> distributionDataItems = new List<MemberWorkList>();
+            try
+            {
+                NPOI.SS.UserModel.IWorkbook workbook = null;
+                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                if (fileName.IndexOf(".xlsx") > 0)
+                {
+                    workbook = new XSSFWorkbook(fs);
+                }
+                else if (fileName.IndexOf(".xls") > 0)
+                {
+                    workbook = new NPOI.HSSF.UserModel.HSSFWorkbook(fs);
+                }
+                //First sheet
+                ISheet sheet = workbook.GetSheetAt(0);
+                if (sheet != null)
+                {
+                    int rowCount = sheet.LastRowNum; // This may not be valid row count.                    
+                    // If first row is table head, i starts from 1                  
+                    int cIndex = 0;
+                    int countRow = 1;
+                    for (int i = 15; i <= rowCount; i++)
+                    {                        
+                        cIndex = 0;                        
+                        IRow curRow = sheet.GetRow(i);                       
+                        if (curRow == null)
+                        {
+                            // Valid row count
+                            rowCount = i - 1;
+                            continue;
+                        }
+                        MemberWorkList item = new MemberWorkList();                       
+                        item.SerialNo = countRow;
+                        countRow++;
+                       
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            string a = curRow.GetCell(cIndex).ToString().Trim();
+                            item.INTERNAL_NO = curRow.GetCell(cIndex).ToString().Trim();
+                        }                        
+                        cIndex++;
+                        cIndex++;//WID NO.
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            string a = curRow.GetCell(cIndex).ToString().Trim();
+                            item.ISWC_NO = curRow.GetCell(cIndex).ToString().Trim();
+                        }
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.TITLE = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());                           
+                        }                       
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.DURATION = curRow.GetCell(cIndex).ToString().Trim();
+                        }                        
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.LANGUAGE = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());
+                        }                       
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.CATEGORY = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());
+                        }                       
+                        cIndex++;                        
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.STATUS = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());
+                        }                       
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.ARTISTE = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());
+                        }                        
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.SET_NO = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());
+                        }
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.NAME_TYPE = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());
+                        }
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.ROLE = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());
+                        }
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.NAME = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());
+                        }
+                        cIndex++;
+                        if (curRow.GetCell(cIndex) != null && !string.IsNullOrEmpty(curRow.GetCell(cIndex).ToString()))
+                        {
+                            item.SOCIETY = ConvertAllToUnicode.ConvertFromComposite(curRow.GetCell(cIndex).ToString().Trim());
+                        }
+                        cIndex++;
+                        //final
+                        distributionDataItems.Add(item);
+                    }
+                }
+                sheet = null;
+                workbook = null;
+                fs.Close();
+                fs = null;
+                GC.Collect();
+            }
+            catch (Exception)
+            {
+                distributionDataItems = null;
+            }
+            return distributionDataItems;
+        }
+        /// <summary>
+        ///  Xuất file Excel khi chuyển đổi báo cáo từ MIS
+        /// </summary>
+        /// <param name="dataSource"></param>
+        /// <param name="fullPath"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public bool WriteToExcelMemberEorkList(List<MemberWorkList> dataSource, string fullPath)
+        {
+            int count = 1;
+            bool check = false;
+            int preIndexFile = 1;
+            string preFile = preIndexFile.ToString().PadLeft(4, '0');
+            try
+            {
+                //const string fileName = @"C:\MyExcel.xlsx";
 
+                long total = 0;
+
+                SpreadsheetDocument spreadsheetDocument;
+                WorkbookPart workbookpart;
+                SheetData sheetData;
+                //header part
+                spreadsheetDocument = CreateToExcelMemberEorkList(fullPath, out workbookpart, out sheetData);
+                //detail part
+                foreach (var item in dataSource)
+                {
+                    total++;
+                    var newRow = new DocumentFormat.OpenXml.Spreadsheet.Row();                    
+                    newRow.AppendChild(new Cell() { DataType = CellValues.Number, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.INTERNAL_NO) });
+                    
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.WID_NO.ToString()) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.ISWC_NO.ToString()) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.TITLE) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.TITLE2) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.TITLE3) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.DURATION) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.LANGUAGE) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.CATEGORY) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.STATUS) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.ARTISTE) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.Number, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.SET_NO) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.NAME_TYPE) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.ROLE) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.NAME2) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.NAME3) });
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.SOCIETY) });                   
+                    sheetData.AppendChild(newRow);
+                    count++;
+                }
+                //save
+                if (sheetData != null && sheetData.Count() > 0)
+                {
+                    workbookpart.Workbook.Save();
+                    spreadsheetDocument.Close();
+                }
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                string mes = ex.ToString();
+            }
+            return check;
+        }
+        private static SpreadsheetDocument CreateToExcelMemberEorkList(string fullPath, out WorkbookPart workbookpart, out SheetData sheetData)
+        {
+            SpreadsheetDocument spreadsheetDocument;
+            //1.header   
+            string strHeader = string.Empty;
+            strHeader = " NTERNAL NO,WID NO.,ISWC NO,TITLE,TITLE2,TITLE3,DURATION,LANGUAGE,CATEGORY,STATUS,ARTISTE,SET NO.,NAME TYPE,ROLE,NAME2,NAME3,SOCIETY";
+            string[] strArray = strHeader.Split(',');
+            //Delete the file if it exists. 
+            fullPath = $"{fullPath}";
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+            }
+            uint sheetId = 1; //Start at the first sheet in the Excel workbook.
+
+            //This is the first time of creating the excel file and the first sheet.
+            // Create a spreadsheet document by supplying the filepath.
+            // By default, AutoSave = true, Editable = true, and Type = xlsx.
+            spreadsheetDocument = SpreadsheetDocument.
+                Create(fullPath, SpreadsheetDocumentType.Workbook);
+
+            // Add a WorkbookPart to the document.
+            workbookpart = spreadsheetDocument.AddWorkbookPart();
+            workbookpart.Workbook = new Workbook();
+
+            // Add a WorksheetPart to the WorkbookPart.
+            var worksheetPart = workbookpart.AddNewPart<WorksheetPart>();
+            sheetData = new SheetData();
+            worksheetPart.Worksheet = new Worksheet(sheetData);
+
+
+            var bold1 = new Bold();
+            CellFormat cf = new CellFormat();
+
+
+            // Add Sheets to the Workbook.
+            Sheets sheets;
+            sheets = spreadsheetDocument.WorkbookPart.Workbook.
+                AppendChild<Sheets>(new Sheets());
+
+            // Append a new worksheet and associate it with the workbook.
+            var sheet = new Sheet()
+            {
+                Id = spreadsheetDocument.WorkbookPart.
+                    GetIdOfPart(worksheetPart),
+                SheetId = sheetId,
+                Name = "Sheet" + sheetId
+            };
+            sheets.Append(sheet);
+            //Add Header Row.
+            var headerRow = new DocumentFormat.OpenXml.Spreadsheet.Row();
+            for (int i = 0; i < strArray.Length; i++)
+            {
+                var cell = new Cell { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(strArray[i]) };
+                headerRow.AppendChild(cell);
+            }
+            sheetData.AppendChild(headerRow);
+            return spreadsheetDocument;
+        }
+        #endregion
         #region convert to unsign
         public List<ConvertyToUnsign> ReadExcelConvertyToUnsign(string fileName)
         {           
@@ -2952,33 +3209,7 @@ namespace Vcpmc.Mis.Common.common.excel
                 strHeader = "Pool,Source,Date,TITLE (ENG),TITLE (LOCAL),COMPOSER,PERFORMER (ENG),PERFORMER (LOCAL),PUBLISHER,MIN,SEC,NO OF PERF,Amount,ISRC,ALBUM NAME,Work Int No,ISWC";               
             }
             else
-            {
-                /*
-                 item.IsMatching = false;
-                    item.IsSuccess = false;
-                    //thong tin tac pham matching
-                    item.TitleMatching = string.Empty;                    
-                    item.WorkCodeMatching = string.Empty;
-                    //thong tin nghe sy mathhing
-                    item.ArtistMatching = string.Empty;                   
-                    //thong tin tac gia matching
-                    item.InterestedPartiesMatching.Clear();
-                    item.SocietyMatching = string.Empty;
-                    item.WriterCodeMatching = string.Empty;
-                    item.WriterMatching = string.Empty;
-                    item.WriterMatchingWithSoceity = string.Empty;
-                    item.WriterIPNumberMatching = string.Empty;                  
-                    //doc quyen tac gia
-                    item.MemberFields = string.Empty;                    
-                    item.MemberMonopolyNote = string.Empty;                    
-                    item.IsMemberMonopoly = false;
-                    //do quyen tac pham
-                    item.WorkFields = string.Empty;
-                    item.WorkMonopolyNote = string.Empty;
-                    item.IsWorkMonopoly = false;
-                    // ghi chu matching
-                    item.Messsage = string.Empty;
-                 */
+            {                
                 strHeader = "Serial No," +
                 "WORKCODE,WORKCODE CHANGE NEW" +
                 "TITLE,TITLE2," +
@@ -3009,16 +3240,17 @@ namespace Vcpmc.Mis.Common.common.excel
             // Add a WorkbookPart to the document.
             workbookpart = spreadsheetDocument.AddWorkbookPart();
             workbookpart.Workbook = new Workbook();
+
+            //them
+            // Style Part
+            WorkbookStylesPart wbsp = workbookpart.AddNewPart<WorkbookStylesPart>();
+            wbsp.Stylesheet = CreateStylesheet();
+            wbsp.Stylesheet.Save();
+            //end them
+
             // Add a WorksheetPart to the WorkbookPart.
             /// Add a WorkbookPart to the document.
             var worksheetPart = workbookpart.AddNewPart<WorksheetPart>();
-            //string relId = worksheetPart.GetIdOfPart(worksheetPart);
-            // File Version
-            //var fileVersion = new FileVersion { ApplicationName = "Microsoft Office Excel" };
-            // Style Part
-            //WorkbookStylesPart wbsp = workbookpart.AddNewPart<WorkbookStylesPart>();
-            //wbsp.Stylesheet = CreateStylesheet();
-            //wbsp.Stylesheet.Save();
             // Add a WorksheetPart to the WorkbookPart.
             sheetData = new SheetData();
             worksheetPart.Worksheet = new Worksheet(sheetData);
@@ -3051,6 +3283,7 @@ namespace Vcpmc.Mis.Common.common.excel
         private static Stylesheet CreateStylesheet()
         {
             Stylesheet ss = new Stylesheet();
+
             var nfs = new NumberingFormats();
             var nformatDateTime = new NumberingFormat
             {
@@ -3059,6 +3292,7 @@ namespace Vcpmc.Mis.Common.common.excel
             };
             nfs.Append(nformatDateTime);
             ss.Append(nfs);
+
             return ss;
         }
         #endregion
@@ -5374,44 +5608,43 @@ namespace Vcpmc.Mis.Common.common.excel
             };
         private Cell DateCell2(DateTime date)
         {
-            //string strValue = date.ToOADate().ToString(CultureInfo.InvariantCulture);           
-            string strValue = date.ToShortDateString();           
-            return new Cell
-            {
-                /*ID  FORMAT CODE
-0   General
-1   0
-2   0.00
-3   #,##0
-4   #,##0.00
-9   0%
-10  0.00%
-11  0.00E+00
-12  # ?/?
-13  # ??/??
-14  d/m/yyyy
-15  d-mmm-yy
-16  d-mmm
-17  mmm-yy
-18  h:mm tt
-19  h:mm:ss tt
-20  H:mm
-21  H:mm:ss
-22  m/d/yyyy H:mm
-37  #,##0 ;(#,##0)
-38  #,##0 ;[Red](#,##0)
-39  #,##0.00;(#,##0.00)
-40  #,##0.00;[Red](#,##0.00)
-45  mm:ss
-46  [h]:mm:ss
-47  mmss.0
-48  ##0.0E+0
-49  @*/
-                DataType = new EnumValue<CellValues>(CellValues.Date),
-                CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(strValue),
-                StyleIndex = 14
-            };
-        }            
+            ////string strValue = date.ToOADate().ToString(CultureInfo.InvariantCulture);           
+            //string strValue = date.ToString("d/M/yyyy");
+            //Cell cell1 = new Cell {
+            //    DataType = new EnumValue<CellValues>(CellValues.Date),
+            //    CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(date.ToString("d/M/yyyy")),
+            //    StyleIndex = 14
+            //}; 
+            //Cell cell2 = new Cell
+            //{
+            //    DataType = new EnumValue<CellValues>(CellValues.Date),
+            //    CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(date.ToShortDateString()),
+            //    StyleIndex = 14
+            //};
+            //Cell cell3 = new Cell();
+            //string dataMemberS = date.ToOADate().ToString();  //OA Date needed to export number as Date  
+            //cell3.DataType = CellValues.Number;
+            //cell3.CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(dataMemberS);
+            //cell3.StyleIndex = 4;
+
+            Cell cell4 = new Cell();
+            cell4.DataType = CellValues.Number;
+            cell4.CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(date.ToOADate().ToString());
+            cell4.StyleIndex = 1; // <= here I try to apply the style...
+            return cell4;
+//            return new Cell
+//            {
+//                /*ID  FORMAT CODE
+//0   General,1   0,2   0.00,3   #,##0,4   #,##0.00,9   0%,10  0.00%,11  0.00E+00,12  # ?/?,13  # ??/??
+//14  d/m/yyyy,15  d-mmm-yy,16  d-mmm,17  mmm-yy,18  h:mm tt,19  h:mm:ss tt,20  H:mm,21  H:mm:ss,22  m/d/yyyy H:mm,37  #,##0 ;(#,##0)
+//38  #,##0 ;[Red](#,##0),39  #,##0.00;(#,##0.00),40  #,##0.00;[Red](#,##0.00),45  mm:ss
+//46  [h]:mm:ss,47  mmss.0,48  ##0.0E+0,49  @*/
+//                DataType = new EnumValue<CellValues>(CellValues.Date),
+//                CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(strValue),
+//                StyleIndex = 14
+//            };
+        }
+        
         #endregion
 
     }

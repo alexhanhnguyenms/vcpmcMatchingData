@@ -803,6 +803,19 @@ namespace Vcpmc.Mis.AppMatching.form.main
 
             }
         }
+        private void memberworkListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmMemberWorkList frm = new frmMemberWorkList();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
         #endregion
 
         #region 9.Admin
@@ -864,8 +877,9 @@ namespace Vcpmc.Mis.AppMatching.form.main
 
             }
         }
+
         #endregion
 
-        
+       
     }
 }

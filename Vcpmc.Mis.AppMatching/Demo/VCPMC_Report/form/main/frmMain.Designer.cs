@@ -99,6 +99,7 @@
             this.lbDbStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerCheckLogin = new System.Windows.Forms.Timer(this.components);
+            this.memberworkListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.mainStatus.SuspendLayout();
             this.SuspendLayout();
@@ -508,7 +509,7 @@
             this.membershipRetrievalToolStripMenuItem});
             this.tsbtnMembership.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnMembership.Image")));
             this.tsbtnMembership.Name = "tsbtnMembership";
-            this.tsbtnMembership.Size = new System.Drawing.Size(141, 22);
+            this.tsbtnMembership.Size = new System.Drawing.Size(180, 22);
             this.tsbtnMembership.Tag = "Tool.Membership";
             this.tsbtnMembership.Text = "Membership";
             this.tsbtnMembership.Visible = false;
@@ -524,10 +525,11 @@
             // controlToolStripMenuItem
             // 
             this.controlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ediFilesToolStripMenuItem});
+            this.ediFilesToolStripMenuItem,
+            this.memberworkListToolStripMenuItem});
             this.controlToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("controlToolStripMenuItem.Image")));
             this.controlToolStripMenuItem.Name = "controlToolStripMenuItem";
-            this.controlToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.controlToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.controlToolStripMenuItem.Tag = "Tool.Control";
             this.controlToolStripMenuItem.Text = "Control";
             // 
@@ -535,7 +537,7 @@
             // 
             this.ediFilesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ediFilesToolStripMenuItem.Image")));
             this.ediFilesToolStripMenuItem.Name = "ediFilesToolStripMenuItem";
-            this.ediFilesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.ediFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ediFilesToolStripMenuItem.Tag = "Tool.Control.EdiFiles";
             this.ediFilesToolStripMenuItem.Text = "Edi Files";
             this.ediFilesToolStripMenuItem.Click += new System.EventHandler(this.ediFilesToolStripMenuItem_Click);
@@ -546,7 +548,7 @@
             this.convertTOUnsignToolStripMenuItem});
             this.convertToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("convertToolStripMenuItem.Image")));
             this.convertToolStripMenuItem.Name = "convertToolStripMenuItem";
-            this.convertToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.convertToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.convertToolStripMenuItem.Tag = "Tool.Convert";
             this.convertToolStripMenuItem.Text = "Convert";
             // 
@@ -731,6 +733,15 @@
             this.timerCheckLogin.Interval = 300000;
             this.timerCheckLogin.Tick += new System.EventHandler(this.timerCheckLogin_Tick);
             // 
+            // memberworkListToolStripMenuItem
+            // 
+            this.memberworkListToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("memberworkListToolStripMenuItem.Image")));
+            this.memberworkListToolStripMenuItem.Name = "memberworkListToolStripMenuItem";
+            this.memberworkListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.memberworkListToolStripMenuItem.Tag = "Tool.Control.MemberWorkList";
+            this.memberworkListToolStripMenuItem.Text = "Member-work list";
+            this.memberworkListToolStripMenuItem.Click += new System.EventHandler(this.memberworkListToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -826,5 +837,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem fixParameterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem convertTOUnsignToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem memberworkListToolStripMenuItem;
     }
 }

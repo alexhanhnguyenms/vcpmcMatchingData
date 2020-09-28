@@ -427,6 +427,12 @@
     <Compile Include="form\Tool\control\frmGetNewWorkcode.Designer.cs">
       <DependentUpon>frmGetNewWorkcode.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\Tool\control\frmMemberWorkList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Tool\control\frmMemberWorkList.Designer.cs">
+      <DependentUpon>frmMemberWorkList.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Warehouse\Mis\Monopoly\frmMonopoly.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -711,6 +717,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\Tool\control\frmGetNewWorkcode.resx">
       <DependentUpon>frmGetNewWorkcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Tool\control\frmMemberWorkList.resx">
+      <DependentUpon>frmMemberWorkList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\Warehouse\Mis\Member\frmMemberList.resx">
       <DependentUpon>frmMemberList.cs</DependentUpon>

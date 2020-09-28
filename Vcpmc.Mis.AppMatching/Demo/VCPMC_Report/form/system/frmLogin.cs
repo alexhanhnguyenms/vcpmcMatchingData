@@ -75,8 +75,8 @@ namespace Vcpmc.Mis.AppMatching.form.system
 //#if DEBUG
 //            //txtUser.Text = "qazxsw";
 //            //txtPassword.Text = "P@ssw0rd
-//            txtUser.Text = "admin";
-//            txtPassword.Text = "Admin@123";
+            //txtUser.Text = "admin";
+            //txtPassword.Text = "Admin@123";
 //#endif
         }
         /// <summary>
