@@ -2764,6 +2764,8 @@ namespace Vcpmc.Mis.Common.common.excel
                 spreadsheetDocument = ExportWorkMatching(fullPath, typeExport, out workbookpart, out sheetData);
                 //detail part
                 int noRefer = 0;
+                string writer = string.Empty;
+                string[] writerList = null;
                 foreach (var item in dataSource)
                 {
                     noRefer++;
@@ -2792,8 +2794,14 @@ namespace Vcpmc.Mis.Common.common.excel
                         ////TITLE (ENG),TITLE (LOCAL),
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.Title2) });
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue("") });
-                        //COMPOSER,PERFORMER (ENG),PERFORMER (LOCAL),PUBLISHER,
-                        newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.Writer2) });
+                        //COMPOSER,PERFORMER (ENG),PERFORMER (LOCAL),PUBLISHER,                        
+                        writerList = item.Writer2.Split(',');
+                        writer = string.Empty;
+                        for (int k = 0; k < writerList.Length; k++)
+                        {
+                            writer += $"{writerList[k]} ";
+                        }
+                        newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(writer.Trim()) });
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue("") });
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue("") });
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue("") });
@@ -3216,7 +3224,10 @@ namespace Vcpmc.Mis.Common.common.excel
             if(typeExport == 0)
             {
                 //Pool												 			
-                strHeader = "Pool,Source,Date,TITLE (ENG),TITLE (LOCAL),COMPOSER,PERFORMER (ENG),PERFORMER (LOCAL),PUBLISHER,MIN,SEC,NO OF PERF,Amount,ISRC,ALBUM NAME,Work Int No,ISWC";               
+                strHeader = "Pool,Source,Date,TITLE (ENG),TITLE (LOCAL)," +
+                    "COMPOSER,PERFORMER (ENG)," +
+                    "PERFORMER (LOCAL),PUBLISHER,MIN,SEC,NO OF PERF," +
+                    "Amount,ISRC,ALBUM NAME,Work Int No,ISWC";               
             }
             else
             {                

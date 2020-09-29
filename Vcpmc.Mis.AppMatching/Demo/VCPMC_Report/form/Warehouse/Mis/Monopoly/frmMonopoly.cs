@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Vcpmc.Mis.AppMatching.Controllers.Warehouse.Mis;
@@ -120,11 +121,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly
                         richinfo.Text += $"Start time(search): {startTime.ToString("HH:mm:ss")}{Environment.NewLine}";
                         richinfo.Text += $"End time(search): {endtime.ToString("HH:mm:ss")}{Environment.NewLine}";
                         richinfo.Text += $"Time response(sec(s)): {(endtime - startTime).TotalSeconds.ToString("##0.00")}{Environment.NewLine}";
-                    }));
-                    //dgvMain.Invoke(new MethodInvoker(delegate
-                    //{
-                    //    dgvMain.DataSource = data.ResultObj.Items;
-                    //}));
+                    }));                    
                     cboFields_SelectedIndexChanged(null,null);
                     statusMain.Invoke(new MethodInvoker(delegate
                     {
@@ -134,11 +131,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly
                     cboFields_SelectedIndexChanged(null, null);
                 }
                 else
-                {
-                    //dgvMain.Invoke(new MethodInvoker(delegate
-                    //{
-                    //    dgvMain.DataSource = new List<MonopolyViewModel>();
-                    //}));
+                {                    
                     DirectionNarrowDisable();
                 }
                 isRequest = false;
@@ -889,7 +882,9 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly
                 txtFind.Text = string.Empty;
                 if (data != null && data.ResultObj != null && data.ResultObj.Items != null)
                 {
-                    dgvMain.DataSource = data.ResultObj.Items;
+                    fill = data.ResultObj.Items;
+                    dgvMain.DataSource = fill;
+                    warning();
                 }
                 cboFields.SelectedIndex = 0;
             }
@@ -968,6 +963,20 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly
                     var query = source.Where(c => c.NameType.IndexOf(txtFind.Text.Trim(), StringComparison.CurrentCultureIgnoreCase) >= 0);
                     fill = query.ToList();
                 }
+                //het han
+                else if (cboTypeChoise == 5)
+                {
+                    toolMain.Invoke(new MethodInvoker(delegate
+                    {
+                        txtFind.Text = string.Empty;
+                    }));
+                    fill = data.ResultObj.Items.Where(p => (
+                                    (p.StartTime - DateTime.Now).TotalDays >= 0) ||
+                                    ((DateTime.Now - p.EndTime).TotalDays >= -7) 
+                                    //&&
+                                    //(p.NameType.IndexOf(txtFind.Text.Trim(), StringComparison.CurrentCultureIgnoreCase) >= 0)
+                    ).ToList();
+                }                
                 //dgvMain.Invoke(new MethodInvoker(delegate
                 //{
                 //    dgvMain.DataSource = fill;
@@ -1060,11 +1069,12 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly
                 else if (field == 13)
                 {
                     fill = data.ResultObj.Items.Where(p => p.Other == true).ToList();
-                }
+                }                
                 fill = FilterData(fill);
                 dgvMain.Invoke(new MethodInvoker(delegate
                 {
                     dgvMain.DataSource = fill;
+                    warning();
                 }));
                 statusMain.Invoke(new MethodInvoker(delegate
                 {
@@ -1081,6 +1091,46 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly
         private void cboType_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboTypeChoise = cboType.SelectedIndex;
+            if(cboTypeChoise == 5)
+            {
+                btnFind_Click(null, null);
+            }
+        }
+
+        private void warning()
+        {
+            string id = string.Empty;
+            DateTime starttime;
+            DateTime endtime;
+            double days = 0;
+            double daye = 0;
+            for (int i = 0; i < dgvMain.Rows.Count; i++)
+            {
+                //StartTime
+                //EndTime
+                if(dgvMain.Rows[i].Cells["StartTime"].Value!=null)
+                {
+                    starttime = (DateTime)dgvMain.Rows[i].Cells["StartTime"].Value;
+                    days = (starttime - DateTime.Now).TotalDays;
+                    if (days >= 0)
+                    {
+                        dgvMain.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
+                    }                    
+                }
+                if (dgvMain.Rows[i].Cells["EndTime"].Value != null)
+                {
+                    endtime = (DateTime)dgvMain.Rows[i].Cells["EndTime"].Value;
+                    daye = (DateTime.Now - endtime).TotalDays;
+                    if (daye >= 0)
+                    {
+                        dgvMain.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
+                    }           
+                    else if (-7<= daye)
+                    {
+                        dgvMain.Rows[i].DefaultCellStyle.ForeColor = Color.Orange;
+                    }
+                }
+            }
         }
         #endregion   
 

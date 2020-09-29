@@ -320,14 +320,14 @@
             "Work code new",
             "Name 2",
             "Own 2",
-            "Name Type"});
+            "Name Type",
+            "Near expiration"});
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(130, 25);
             this.cboType.SelectedIndexChanged += new System.EventHandler(this.cboType_SelectedIndexChanged);
             // 
             // txtFind
             // 
-            this.txtFind.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(250, 25);
             this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFind_KeyDown);
