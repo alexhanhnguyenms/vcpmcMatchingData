@@ -1033,14 +1033,14 @@ namespace Vcpmc.Mis.AppMatching.form.config
                     fill = query.ToList();
                 }
                 
-                dgvMain.Invoke(new MethodInvoker(delegate
-                {
-                    dgvMain.DataSource = fill;
-                }));
-                statusMain.Invoke(new MethodInvoker(delegate
-                {
-                    lbOperation.Text = $"Filter data, total record(s): {fill.Count}";
-                }));
+                //dgvMain.Invoke(new MethodInvoker(delegate
+                //{
+                //    dgvMain.DataSource = fill;
+                //}));
+                //statusMain.Invoke(new MethodInvoker(delegate
+                //{
+                //    lbOperation.Text = $"Filter data, total record(s): {fill.Count}";
+                //}));
                 isFilter = false;
             }
             catch (Exception)
@@ -1217,9 +1217,9 @@ namespace Vcpmc.Mis.AppMatching.form.config
                         return;
                     }
                     //FilterData(data.ResultObj.Items);
-                    FilterData(fill);  
+                    //FilterData(fill);  
                     //cboFields_SelectedIndexChanged(null, null);
-                    //cboTypeFixParameter_SelectedIndexChanged(null, null);
+                    cboTypeFixParameter_SelectedIndexChanged(null, null);
                 }
                 else if (Operation == OperationType.ExportToExcel)
                 {

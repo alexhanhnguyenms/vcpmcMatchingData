@@ -184,8 +184,10 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly.Update
                 currenObjectCreate.Group = _group;
                 currenObjectCreate.CodeOld = VnHelper.ConvertToUnSign(txtCodeOld.Text.Trim().ToUpper());
                 currenObjectCreate.CodeNew = VnHelper.ConvertToUnSign(txtCodeNew.Text.Trim().ToUpper());
-                currenObjectCreate.Name = VnHelper.ConvertToUnSign(txtName.Text.Trim().ToUpper());
-                currenObjectCreate.Own = VnHelper.ConvertToUnSign(txtOwn.Text.Trim().ToUpper());
+                currenObjectCreate.Name = txtName.Text.Trim().ToUpper();
+                currenObjectCreate.Name2 = VnHelper.ConvertToUnSign(txtName.Text.Trim().ToUpper());
+                currenObjectCreate.Own = txtOwn.Text.Trim().ToUpper();
+                currenObjectCreate.Own2 = VnHelper.ConvertToUnSign(txtOwn.Text.Trim().ToUpper());
                 currenObjectCreate.NameType = VnHelper.ConvertToUnSign(txtNameType.Text.Trim().ToUpper());
 
                 currenObjectCreate.NoteMono = txtNoteMono.Text.Trim().ToUpper();
@@ -220,8 +222,10 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly.Update
                 currenObjectUpdate.Id = currenObject.Id;
                 currenObjectUpdate.CodeOld = VnHelper.ConvertToUnSign(txtCodeOld.Text.Trim().ToUpper());
                 currenObjectUpdate.CodeNew = VnHelper.ConvertToUnSign(txtCodeNew.Text.Trim().ToUpper());
-                currenObjectUpdate.Name = VnHelper.ConvertToUnSign(txtName.Text.Trim().ToUpper());
-                currenObjectUpdate.Own = VnHelper.ConvertToUnSign(txtOwn.Text.Trim().ToUpper());
+                currenObjectUpdate.Name = txtName.Text.Trim().ToUpper();
+                currenObjectUpdate.Name2 = VnHelper.ConvertToUnSign(txtName.Text.Trim().ToUpper());
+                currenObjectUpdate.Own = txtOwn.Text.Trim().ToUpper();
+                currenObjectUpdate.Own2 = VnHelper.ConvertToUnSign(txtOwn.Text.Trim().ToUpper());
                 currenObjectUpdate.NameType = VnHelper.ConvertToUnSign(txtNameType.Text.Trim().ToUpper());
 
                 currenObjectUpdate.NoteMono = txtNoteMono.Text.Trim().ToUpper();

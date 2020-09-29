@@ -916,6 +916,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly
                     //    else
                     //        return false;
                     //}).AsQueryable();
+                    //string a = txtFind.Text.Trim();
                     var query = source.Where(c => c.CodeOld.IndexOf(txtFind.Text.Trim(), StringComparison.CurrentCultureIgnoreCase) >= 0);
                     fill = query.ToList();
                 }
@@ -974,7 +975,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly
                 //statusMain.Invoke(new MethodInvoker(delegate
                 //{
                 //    lbOperation.Text = $"Filter data, total record(s): {fill.Count}";
-                //}));              
+                //}));
             }
             catch (Exception)
             {
@@ -1182,8 +1183,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Monopoly
                         return;
                     }
                     //FilterData(data.ResultObj.Items);
-                    FilterData(fill);
-                    //cboFields_SelectedIndexChanged(null, null);
+                    //FilterData(fill);
+                    cboFields_SelectedIndexChanged(null, null);
                 }
                 else if (Operation == OperationType.ExportToExcel)
                 {
