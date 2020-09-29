@@ -568,7 +568,7 @@ namespace Vcpmc.Mis.Common.common.excel
         /// <param name="fullPath"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public bool WriteToEditFiles(List<EdiFilesItem> dataSource, string fullPath, int type)
+        public bool WriteToEditFiles(List<EdiFilesItem> dataSource, string fullPath, int type, bool isVcpmcRegion)
         {
             int count = 1;
             bool check = false;
@@ -584,7 +584,7 @@ namespace Vcpmc.Mis.Common.common.excel
                 WorkbookPart workbookpart;
                 SheetData sheetData;
                 //header part
-                spreadsheetDocument = CreatenewFileEditFiles(fullPath, out workbookpart, out sheetData,type);
+                spreadsheetDocument = CreatenewFileEditFiles(fullPath, out workbookpart, out sheetData,type, isVcpmcRegion);
                 //detail part
                 foreach (var item in dataSource)
                 {
@@ -649,6 +649,11 @@ namespace Vcpmc.Mis.Common.common.excel
                     {
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.WorkMonopolyNote) });
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.MemberMonopolyNote) });
+                        newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.NonMember) });
+                        if (isVcpmcRegion)
+                        {
+                            newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.VcpmcRegion) });
+                        }
                         if(item.MemberMonopolyNote !=string.Empty)
                         {
                             //int a = 1;
@@ -667,12 +672,13 @@ namespace Vcpmc.Mis.Common.common.excel
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.MesssageCompareTitleAndWriter)});
                         newRow.AppendChild(new Cell() { DataType = CellValues.Number, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.TotalWriter.ToString())});
                         newRow.AppendChild(new Cell() { DataType = CellValues.Number, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.CountMatchWriter.ToString())});
+                        newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.NonMember) });
+                        newRow.AppendChild(new Cell() { DataType = CellValues.Number, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.VcpmcRegion.ToString()) });
                         if (item.MemberMonopolyNote != string.Empty)
                         {
                             //int a = 1;
                         }
                     }
-                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.NonMember) });    
                     sheetData.AppendChild(newRow);
                     count++;
                 }    
@@ -691,7 +697,7 @@ namespace Vcpmc.Mis.Common.common.excel
             }
             return check;
         }
-        private static SpreadsheetDocument CreatenewFileEditFiles(string fullPath, out WorkbookPart workbookpart, out SheetData sheetData, int type)
+        private static SpreadsheetDocument CreatenewFileEditFiles(string fullPath, out WorkbookPart workbookpart, out SheetData sheetData, int type, bool isVcpmcRegion)
         {
             SpreadsheetDocument spreadsheetDocument;
             //1.header   
@@ -706,6 +712,10 @@ namespace Vcpmc.Mis.Common.common.excel
                 "WORK STATUS," +
                 "WORK MONO NOTE, MEMBER MONO NOTE," +
                 "NON MEMBER";
+                if(isVcpmcRegion)
+                {
+                    strHeader += ",VcpmcRegion";
+                }
             }
             else if(type == 1)
             {
@@ -717,8 +727,8 @@ namespace Vcpmc.Mis.Common.common.excel
                  "WORK STATUS," + 
                  "IS WORK MONO,FIELD WORK MONO,WORK MONO NOTE," +
                  "IS MEMBER MONO,FIELD MEMBER MONO,MEMBER MONO NOT," +
-                 "Mesg Compare Title And Writer, Total writer, count writer matched" +
-                 "NON MEMBER";
+                 "Mesg Compare Title And Writer, Total writer, count writer matched," +
+                 "NON MEMBER,VcpmcRegion";                
             } 
             else
             {
@@ -745,7 +755,7 @@ namespace Vcpmc.Mis.Common.common.excel
                 //
                 "WORK TITLE2,WRITER,COMPOSER,LYRICS,PUBLISHER," +
                 "WORK MONO NOTE, MEMBER MONO NOTE," +
-                "NON MEMBER";
+                "NON MEMBER,VcpmcRegion";
             }
             string[] strArray = strHeader.Split(',');
             //Delete the file if it exists. 

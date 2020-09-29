@@ -392,14 +392,14 @@ namespace Vcpmc.Mis.Common.export
         /// <param name="fullPath"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static bool WriteExcelEditFiles(List<EdiFilesItem> dataSource, string fullPath,int type)
+        public static bool WriteExcelEditFiles(List<EdiFilesItem> dataSource, string fullPath,int type,bool isVcpmcRegion)
         {
             bool result = false;
             try
             {
                 ExcelHelper writer = new ExcelHelper();
                 //result = writer.Write(dataSource, fullPath);                
-                result = writer.WriteToEditFiles(dataSource, fullPath,type);
+                result = writer.WriteToEditFiles(dataSource, fullPath,type, isVcpmcRegion);
             }
             catch (Exception)
             {

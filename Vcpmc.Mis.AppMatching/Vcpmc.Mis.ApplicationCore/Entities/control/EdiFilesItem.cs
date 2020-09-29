@@ -224,11 +224,15 @@ namespace Vcpmc.Mis.ApplicationCore.Entities.control
         /// <summary>
         /// Số tác giả matching
         /// </summary>
-        public int CountMatchWriter { get; set; }
+        public int CountMatchWriter { get; set; } = 0;
         /// <summary>
         /// Tổng số tác giả
         /// </summary>
-        public int TotalWriter { get; set; }
+        public int TotalWriter { get; set; } = 0;
+        /// <summary>
+        /// Vùng miền của thành viên VCPMC
+        /// </summary>
+        public string VcpmcRegion { get; set; } = string.Empty;
 
         //public string RegionalNo { get; set; } = string.Empty;
 

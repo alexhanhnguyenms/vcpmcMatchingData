@@ -72,6 +72,7 @@
             this.MemberFields = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MemberMonopolyNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NonMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VcpmcRegion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolMain = new System.Windows.Forms.ToolStrip();
             this.btnChoiseFile = new System.Windows.Forms.ToolStripButton();
             this.tstxtPath = new System.Windows.Forms.ToolStripTextBox();
@@ -112,14 +113,6 @@
             this.btnSysToWork = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvEditCalcXXX = new System.Windows.Forms.DataGridView();
-            this.cheGroupMemberWithcmo = new System.Windows.Forms.CheckBox();
-            this.cboMatchedType = new System.Windows.Forms.ComboBox();
-            this.cheCompareTitleAndWriter = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radCompareTW = new System.Windows.Forms.RadioButton();
-            this.cboRateWriterMatched = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.Idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.indexx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DicMemberx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -173,6 +166,16 @@
             this.MesssageCompareTitleAndWriterx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalWriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountMatchWriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VcpmcRegionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cheGroupMemberWithcmo = new System.Windows.Forms.CheckBox();
+            this.cboMatchedType = new System.Windows.Forms.ComboBox();
+            this.cheCompareTitleAndWriter = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radCompareTW = new System.Windows.Forms.RadioButton();
+            this.cboRateWriterMatched = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cheVcpmcRegion = new System.Windows.Forms.CheckBox();
             this.gbChanelList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcloader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEditFileImport)).BeginInit();
@@ -252,7 +255,8 @@
             this.IsMemberMonopoly,
             this.MemberFields,
             this.MemberMonopolyNote,
-            this.NonMember});
+            this.NonMember,
+            this.VcpmcRegion});
             this.dgvEditFileImport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEditFileImport.Location = new System.Drawing.Point(3, 14);
             this.dgvEditFileImport.Name = "dgvEditFileImport";
@@ -590,6 +594,14 @@
             this.NonMember.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.NonMember.Visible = false;
             // 
+            // VcpmcRegion
+            // 
+            this.VcpmcRegion.DataPropertyName = "VcpmcRegion";
+            this.VcpmcRegion.HeaderText = "VcpmcRegion";
+            this.VcpmcRegion.Name = "VcpmcRegion";
+            this.VcpmcRegion.ReadOnly = true;
+            this.VcpmcRegion.Visible = false;
+            // 
             // toolMain
             // 
             this.toolMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -615,7 +627,6 @@
             // 
             // tstxtPath
             // 
-            this.tstxtPath.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tstxtPath.Name = "tstxtPath";
             this.tstxtPath.ReadOnly = true;
             this.tstxtPath.Size = new System.Drawing.Size(100, 25);
@@ -1047,107 +1058,13 @@
             this.IscheckCompareTitleAndWriterx,
             this.MesssageCompareTitleAndWriterx,
             this.TotalWriter,
-            this.CountMatchWriter});
+            this.CountMatchWriter,
+            this.VcpmcRegionx});
             this.dgvEditCalcXXX.Location = new System.Drawing.Point(3, 45);
             this.dgvEditCalcXXX.Name = "dgvEditCalcXXX";
             this.dgvEditCalcXXX.ReadOnly = true;
             this.dgvEditCalcXXX.Size = new System.Drawing.Size(1051, 148);
             this.dgvEditCalcXXX.TabIndex = 26;
-            // 
-            // cheGroupMemberWithcmo
-            // 
-            this.cheGroupMemberWithcmo.AutoSize = true;
-            this.cheGroupMemberWithcmo.Checked = true;
-            this.cheGroupMemberWithcmo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cheGroupMemberWithcmo.Location = new System.Drawing.Point(722, 37);
-            this.cheGroupMemberWithcmo.Name = "cheGroupMemberWithcmo";
-            this.cheGroupMemberWithcmo.Size = new System.Drawing.Size(152, 17);
-            this.cheGroupMemberWithcmo.TabIndex = 39;
-            this.cheGroupMemberWithcmo.Text = "Group member with society";
-            this.cheGroupMemberWithcmo.UseVisualStyleBackColor = true;
-            // 
-            // cboMatchedType
-            // 
-            this.cboMatchedType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMatchedType.FormattingEnabled = true;
-            this.cboMatchedType.Items.AddRange(new object[] {
-            "Generate report",
-            "Generate local report",
-            "New match report"});
-            this.cboMatchedType.Location = new System.Drawing.Point(6, 32);
-            this.cboMatchedType.Name = "cboMatchedType";
-            this.cboMatchedType.Size = new System.Drawing.Size(147, 20);
-            this.cboMatchedType.TabIndex = 40;
-            this.cboMatchedType.SelectedIndexChanged += new System.EventHandler(this.cboMatchedType_SelectedIndexChanged);
-            // 
-            // cheCompareTitleAndWriter
-            // 
-            this.cheCompareTitleAndWriter.AutoSize = true;
-            this.cheCompareTitleAndWriter.Checked = true;
-            this.cheCompareTitleAndWriter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cheCompareTitleAndWriter.Location = new System.Drawing.Point(159, 35);
-            this.cheCompareTitleAndWriter.Name = "cheCompareTitleAndWriter";
-            this.cheCompareTitleAndWriter.Size = new System.Drawing.Size(207, 17);
-            this.cheCompareTitleAndWriter.TabIndex = 41;
-            this.cheCompareTitleAndWriter.Text = "Compare Tile and count writer matched";
-            this.cheCompareTitleAndWriter.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radCompareTW);
-            this.groupBox2.Location = new System.Drawing.Point(372, 23);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(115, 31);
-            this.groupBox2.TabIndex = 42;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Title";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(65, 13);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(44, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Like";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radCompareTW
-            // 
-            this.radCompareTW.AutoSize = true;
-            this.radCompareTW.Location = new System.Drawing.Point(7, 13);
-            this.radCompareTW.Name = "radCompareTW";
-            this.radCompareTW.Size = new System.Drawing.Size(54, 17);
-            this.radCompareTW.TabIndex = 0;
-            this.radCompareTW.Text = "Match";
-            this.radCompareTW.UseVisualStyleBackColor = true;
-            // 
-            // cboRateWriterMatched
-            // 
-            this.cboRateWriterMatched.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRateWriterMatched.FormattingEnabled = true;
-            this.cboRateWriterMatched.Items.AddRange(new object[] {
-            "100%",
-            "75%",
-            "50%",
-            "25%",
-            "0%"});
-            this.cboRateWriterMatched.Location = new System.Drawing.Point(595, 33);
-            this.cboRateWriterMatched.Name = "cboRateWriterMatched";
-            this.cboRateWriterMatched.Size = new System.Drawing.Size(121, 20);
-            this.cboRateWriterMatched.TabIndex = 43;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(487, 36);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 13);
-            this.label6.TabIndex = 44;
-            this.label6.Text = "Rate Writer matched";
             // 
             // Idx
             // 
@@ -1621,11 +1538,126 @@
             this.CountMatchWriter.Name = "CountMatchWriter";
             this.CountMatchWriter.ReadOnly = true;
             // 
+            // VcpmcRegionx
+            // 
+            this.VcpmcRegionx.DataPropertyName = "VcpmcRegion";
+            this.VcpmcRegionx.FillWeight = 300F;
+            this.VcpmcRegionx.HeaderText = "VcpmcRegion";
+            this.VcpmcRegionx.Name = "VcpmcRegionx";
+            this.VcpmcRegionx.ReadOnly = true;
+            this.VcpmcRegionx.Width = 300;
+            // 
+            // cheGroupMemberWithcmo
+            // 
+            this.cheGroupMemberWithcmo.AutoSize = true;
+            this.cheGroupMemberWithcmo.Checked = true;
+            this.cheGroupMemberWithcmo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cheGroupMemberWithcmo.Location = new System.Drawing.Point(6, 58);
+            this.cheGroupMemberWithcmo.Name = "cheGroupMemberWithcmo";
+            this.cheGroupMemberWithcmo.Size = new System.Drawing.Size(152, 17);
+            this.cheGroupMemberWithcmo.TabIndex = 39;
+            this.cheGroupMemberWithcmo.Text = "Group member with society";
+            this.cheGroupMemberWithcmo.UseVisualStyleBackColor = true;
+            // 
+            // cboMatchedType
+            // 
+            this.cboMatchedType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMatchedType.FormattingEnabled = true;
+            this.cboMatchedType.Items.AddRange(new object[] {
+            "Generate report",
+            "Generate local report",
+            "New match report"});
+            this.cboMatchedType.Location = new System.Drawing.Point(6, 32);
+            this.cboMatchedType.Name = "cboMatchedType";
+            this.cboMatchedType.Size = new System.Drawing.Size(147, 20);
+            this.cboMatchedType.TabIndex = 40;
+            this.cboMatchedType.SelectedIndexChanged += new System.EventHandler(this.cboMatchedType_SelectedIndexChanged);
+            // 
+            // cheCompareTitleAndWriter
+            // 
+            this.cheCompareTitleAndWriter.AutoSize = true;
+            this.cheCompareTitleAndWriter.Checked = true;
+            this.cheCompareTitleAndWriter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cheCompareTitleAndWriter.Location = new System.Drawing.Point(159, 35);
+            this.cheCompareTitleAndWriter.Name = "cheCompareTitleAndWriter";
+            this.cheCompareTitleAndWriter.Size = new System.Drawing.Size(210, 17);
+            this.cheCompareTitleAndWriter.TabIndex = 41;
+            this.cheCompareTitleAndWriter.Text = "Compare Title and count writer matched";
+            this.cheCompareTitleAndWriter.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.radCompareTW);
+            this.groupBox2.Location = new System.Drawing.Point(372, 23);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(115, 31);
+            this.groupBox2.TabIndex = 42;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Title";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Location = new System.Drawing.Point(65, 13);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(44, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Like";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radCompareTW
+            // 
+            this.radCompareTW.AutoSize = true;
+            this.radCompareTW.Location = new System.Drawing.Point(7, 13);
+            this.radCompareTW.Name = "radCompareTW";
+            this.radCompareTW.Size = new System.Drawing.Size(54, 17);
+            this.radCompareTW.TabIndex = 0;
+            this.radCompareTW.Text = "Match";
+            this.radCompareTW.UseVisualStyleBackColor = true;
+            // 
+            // cboRateWriterMatched
+            // 
+            this.cboRateWriterMatched.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRateWriterMatched.FormattingEnabled = true;
+            this.cboRateWriterMatched.Items.AddRange(new object[] {
+            "100%",
+            "75%",
+            "50%",
+            "25%",
+            "0%"});
+            this.cboRateWriterMatched.Location = new System.Drawing.Point(595, 33);
+            this.cboRateWriterMatched.Name = "cboRateWriterMatched";
+            this.cboRateWriterMatched.Size = new System.Drawing.Size(121, 20);
+            this.cboRateWriterMatched.TabIndex = 43;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(487, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 13);
+            this.label6.TabIndex = 44;
+            this.label6.Text = "Rate Writer matched";
+            // 
+            // cheVcpmcRegion
+            // 
+            this.cheVcpmcRegion.AutoSize = true;
+            this.cheVcpmcRegion.Location = new System.Drawing.Point(159, 58);
+            this.cheVcpmcRegion.Name = "cheVcpmcRegion";
+            this.cheVcpmcRegion.Size = new System.Drawing.Size(116, 17);
+            this.cheVcpmcRegion.TabIndex = 45;
+            this.cheVcpmcRegion.Text = "VCPMC add region";
+            this.cheVcpmcRegion.UseVisualStyleBackColor = true;
+            // 
             // frmEdiFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1063, 505);
+            this.Controls.Add(this.cheVcpmcRegion);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cboRateWriterMatched);
             this.Controls.Add(this.cheCompareTitleAndWriter);
@@ -1713,6 +1745,17 @@
         private System.Windows.Forms.ComboBox cboMatchedType;
         private System.Windows.Forms.CheckBox cheCompareTitleAndWriter;
         private System.Windows.Forms.ToolStripMenuItem btnExportDistribution;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radCompareTW;
+        private System.Windows.Forms.ComboBox cboRateWriterMatched;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtFind;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.ComboBox cboType;
+        private System.Windows.Forms.Button btnClearFilter;
+        private System.Windows.Forms.CheckBox cheTrueFalse;
+        private System.Windows.Forms.CheckBox cheVcpmcRegion;
         private System.Windows.Forms.DataGridViewTextBoxColumn index;
         private System.Windows.Forms.DataGridViewTextBoxColumn DicMember;
         private System.Windows.Forms.DataGridViewTextBoxColumn seqNo;
@@ -1753,16 +1796,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MemberFields;
         private System.Windows.Forms.DataGridViewTextBoxColumn MemberMonopolyNote;
         private System.Windows.Forms.DataGridViewTextBoxColumn NonMember;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radCompareTW;
-        private System.Windows.Forms.ComboBox cboRateWriterMatched;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtFind;
-        private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.ComboBox cboType;
-        private System.Windows.Forms.Button btnClearFilter;
-        private System.Windows.Forms.CheckBox cheTrueFalse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VcpmcRegion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Idx;
         private System.Windows.Forms.DataGridViewTextBoxColumn indexx;
         private System.Windows.Forms.DataGridViewTextBoxColumn DicMemberx;
@@ -1816,5 +1850,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MesssageCompareTitleAndWriterx;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalWriter;
         private System.Windows.Forms.DataGridViewTextBoxColumn CountMatchWriter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VcpmcRegionx;
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Vcpmc.Mis.ApplicationCore.Entities.control;
@@ -12,6 +13,7 @@ using Vcpmc.Mis.AppMatching.Controllers.Warehouse.Mis;
 using Vcpmc.Mis.AppMatching.Services.System;
 using Vcpmc.Mis.AppMatching.Services.Warehouse.Mis;
 using Vcpmc.Mis.Common.common.excel;
+using Vcpmc.Mis.Common.csv;
 using Vcpmc.Mis.Common.enums;
 using Vcpmc.Mis.Common.export;
 using Vcpmc.Mis.Common.Member;
@@ -63,6 +65,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         int GenerateType = 0;
         int CompareTW = 0;
         float rateWriterMatched = 0;
+        //bool isVcpmcAddRegion = false;
         //private BindingSource bindingSourceImport = new BindingSource();
         //private BindingSource bindingSourceEdit = new BindingSource();
         #region init
@@ -97,6 +100,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
             }
             cboRateWriterMatched.SelectedIndex = 2;
             cboType.SelectedIndex = 1;
+            //isVcpmcAddRegion = cheVcpmcRegion.Checked;
             //dgvEditFileImport.DataSource = bindingSourceImport;
             //dgvEditCalcXXX.DataSource = bindingSourceEdit;
 
@@ -224,6 +228,16 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
 
                 }
+
+                if(cheVcpmcRegion.Checked)
+                {
+                    dgvEditCalcXXX.Columns["VcpmcRegionx"].Visible = true;
+                }
+                else
+                {
+                    dgvEditCalcXXX.Columns["VcpmcRegionx"].Visible = false;
+                }
+
                 #endregion
                
                 if (isLoad)
@@ -271,6 +285,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     MessageBox.Show("Please choise file to import");
                     return;
                 }
+                //isVcpmcAddRegion = cheVcpmcRegion.Checked;
                 //LoadDtaFromExcel();
                 Operation = OperationType.LoadExcel;
                 pcloader.Visible = true;
@@ -399,6 +414,12 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
                 //du lieu doc file
                 ediFilesItems = excelHelper.ReadExcelEditFile(tstxtPath.Text, out countread, out countGood, out countGood1, GenerateType);
+                List<VcpmcInfo> vcpmcInfo = new List<VcpmcInfo>();
+                if (cheVcpmcRegion.Checked)
+                {
+                    string pathx = Path.GetDirectoryName(Application.ExecutablePath) + @"\Data\member\VcpmcInfo.txt";
+                    vcpmcInfo = CsvReadHelper.ReadVCPMCInfo(pathx);
+                }
                 
                 #region 1.Loai bo dong trong   
                 List<EdiFilesItem> editFiles = new List<EdiFilesItem>();
@@ -703,6 +724,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 NoOfPerf = -1;
                 seqNo = -1;
                 string cmos = string.Empty;
+                string VcpmcRegion = string.Empty;
+
                 for (int i = 0; i < ediFilesItemsClone.Count; i++)
                 {
                     if (ediFilesItemsClone[i].seqNo == 104)
@@ -734,16 +757,18 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     }
                     if (editGroupXXX != null)
                     {
+                        #region WorkStatus
                         //chi can mot UNIDENTIFIED, incomlate la in
                         if (ediFilesItemsClone[i].WorkStatus == "UNIDENTIFIED" && (editGroupXXX.WorkStatus == "COMPLETE" || editGroupXXX.WorkStatus == "INCOMPLETE"))
                         {
                             editGroupXXX.WorkStatus = "UNIDENTIFIED";
                         }
-
-                        if (ediFilesItemsClone[i].WorkStatus == "INCOMPLETE" && (editGroupXXX.WorkStatus != "UNIDENTIFIED" && editGroupXXX.WorkStatus == "COMPLETE"))
+                        else if (ediFilesItemsClone[i].WorkStatus == "INCOMPLETE" && (editGroupXXX.WorkStatus != "UNIDENTIFIED" && editGroupXXX.WorkStatus == "COMPLETE"))
                         {
                             editGroupXXX.WorkStatus = "INCOMPLETE";
                         }
+                        #endregion
+
                         //Author, music, lyrics ListInterestedParty
                         editGroupXXX.ListInterestedParty.Add(new Shared.Mis.Works.InterestedParty
                         {
@@ -755,6 +780,26 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
                         });
                         cmos = cheGroupMemberWithcmo.Checked == false ? "" : $" ({ediFilesItemsClone[i].Society})";
+                        VcpmcRegion = string.Empty;
+                        if (cheVcpmcRegion.Checked )
+                        {
+                            if(cheVcpmcRegion.Checked && vcpmcInfo.Count > 0)
+                            {
+                                var vcpmcinfox = vcpmcInfo.Where(p => p.IpNumWithNameType == ediFilesItemsClone[i].IpInNo + ediFilesItemsClone[i].IpNameType).FirstOrDefault();
+                                if (vcpmcinfox != null)
+                                {
+                                    if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
+                                    {
+                                        VcpmcRegion = $" {ediFilesItemsClone[i].IpNameLocal2} ({vcpmcinfox.Region})";                                       
+                                    }
+                                    else
+                                    {
+                                        VcpmcRegion = $" {ediFilesItemsClone[i].IpName2} ({vcpmcinfox.Region})";                                      
+                                    }                                    
+                                }
+                            }
+                        }                        
+
                         if(cmos == " (NS)")
                         {
                             cmos = " (Không Xác Định)";
@@ -895,6 +940,17 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             {
                                 editGroupXXX.DicMember.Add($"{ediFilesItemsClone[i].IpInNo}{ediFilesItemsClone[i].IpNameType}", ediFilesItemsClone[i].IpName2);
                             }
+                        }
+                        if(cheVcpmcRegion.Checked)
+                        {
+                            if(VcpmcRegion!=string.Empty)
+                            {
+                                if (editGroupXXX.VcpmcRegion.Length > 0)
+                                {
+                                    editGroupXXX.VcpmcRegion += ", ";
+                                }
+                                editGroupXXX.VcpmcRegion += VcpmcRegion;
+                            } 
                         }
                     }
                     else
@@ -1957,7 +2013,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         {
             try
             {                
-                bool check = WriteReportHelper.WriteExcelEditFiles(ediFilesItemsClone, folderPath, type);
+                bool check = WriteReportHelper.WriteExcelEditFiles(ediFilesItemsClone, folderPath, type,cheVcpmcRegion.Checked);
 
             }
             catch (Exception ex)

@@ -10,6 +10,7 @@ using System.Text;
 using Vcpmc.Mis.ApplicationCore.Entities.youtube;
 using Vcpmc.Mis.Common.master;
 using Vcpmc.Mis.Common.vi;
+using Vcpmc.Mis.Shared.Mis.Members;
 using Vcpmc.Mis.Shared.Mis.Works;
 using Vcpmc.Mis.Shared.work;
 using Vcpmc.Mis.UnicodeConverter;
@@ -364,6 +365,48 @@ namespace Vcpmc.Mis.Common.csv
                     //{
                     //    int a = 1;
                     //}   
+                    list.Add(item);
+
+                }
+            }
+            catch (Exception)
+            {
+                list = null;
+            }
+            return list;
+        }
+        #endregion
+
+        #region vcpmc region
+        public static List<VcpmcInfo> ReadVCPMCInfo(string fullPath)
+        {
+            var data = new List<string>();
+            var fileStream = new FileStream(fullPath, FileMode.Open, FileAccess.Read);
+            using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
+            {
+                string line;
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    data.Add(line);
+                }
+            }
+            fileStream.Close();
+            List<VcpmcInfo> list = new List<VcpmcInfo>();
+            string aa = "";
+            try
+            {
+                VcpmcInfo item = null;
+                string[] row;                
+                for (int i = 1; i < data.Count; i++)
+                {
+                    aa = data[i];                  
+                    row = data[i].Replace("\"", "").Split('\t');
+                    item = new VcpmcInfo();
+                    if (row.Length == 2)
+                    {
+                        item.IpNumWithNameType = row[0];
+                        item.Region = row[1];
+                    }                   
                     list.Add(item);
 
                 }
