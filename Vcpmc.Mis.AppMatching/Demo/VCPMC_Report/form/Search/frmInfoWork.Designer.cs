@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInfoWork));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClearFilter = new System.Windows.Forms.ToolStripButton();
             this.txtISWC_NO = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -97,53 +97,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.gbMonopoly = new System.Windows.Forms.GroupBox();
             this.dgvMonopolyOfWork = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pcloader3 = new System.Windows.Forms.PictureBox();
-            this.cboMonoTypeSearch = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dgvMonopoly = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radExactMono = new System.Windows.Forms.RadioButton();
-            this.radContrainsMono = new System.Windows.Forms.RadioButton();
-            this.btnClearMono = new System.Windows.Forms.Button();
-            this.btnSearchMono = new System.Windows.Forms.Button();
-            this.txtName3 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtCode3 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.idMonoMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCboGroup3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn8 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn9 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn11 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn12 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn13 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn14 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewCheckBoxColumn15 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn16 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.choise1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idDetail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCboGroup2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -176,6 +129,53 @@
             this.ReceiveTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsExpired = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Note3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pcloader3 = new System.Windows.Forms.PictureBox();
+            this.cboMonoTypeSearch = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dgvMonopoly = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.idMonoMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCboGroup3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn8 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn9 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn11 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn12 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn13 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn14 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewCheckBoxColumn15 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn16 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radExactMono = new System.Windows.Forms.RadioButton();
+            this.radContrainsMono = new System.Windows.Forms.RadioButton();
+            this.btnClearMono = new System.Windows.Forms.Button();
+            this.btnSearchMono = new System.Windows.Forms.Button();
+            this.txtName3 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCode3 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.statusMain.SuspendLayout();
             this.toolMain.SuspendLayout();
             this.pRight.SuspendLayout();
@@ -399,7 +399,6 @@
             // 
             // txtFind
             // 
-            this.txtFind.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(150, 25);
             // 
@@ -458,7 +457,7 @@
             this.pRight.Controls.Add(this.dgvMain);
             this.pRight.Location = new System.Drawing.Point(3, 28);
             this.pRight.Name = "pRight";
-            this.pRight.Size = new System.Drawing.Size(1258, 186);
+            this.pRight.Size = new System.Drawing.Size(1258, 218);
             this.pRight.TabIndex = 15;
             // 
             // label6
@@ -512,6 +511,7 @@
             // radContrainsWork
             // 
             this.radContrainsWork.AutoSize = true;
+            this.radContrainsWork.Enabled = false;
             this.radContrainsWork.Location = new System.Drawing.Point(7, 9);
             this.radContrainsWork.Name = "radContrainsWork";
             this.radContrainsWork.Size = new System.Drawing.Size(66, 17);
@@ -525,7 +525,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(1079, 164);
+            this.label5.Location = new System.Drawing.Point(1079, 196);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(161, 13);
             this.label5.TabIndex = 53;
@@ -537,7 +537,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbInfoLoad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbInfoLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbInfoLoad.Location = new System.Drawing.Point(207, 162);
+            this.lbInfoLoad.Location = new System.Drawing.Point(207, 194);
             this.lbInfoLoad.Name = "lbInfoLoad";
             this.lbInfoLoad.Size = new System.Drawing.Size(866, 17);
             this.lbInfoLoad.TabIndex = 51;
@@ -570,7 +570,7 @@
             this.lbTotalPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbTotalPage.AutoSize = true;
             this.lbTotalPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalPage.Location = new System.Drawing.Point(122, 166);
+            this.lbTotalPage.Location = new System.Drawing.Point(122, 198);
             this.lbTotalPage.Name = "lbTotalPage";
             this.lbTotalPage.Size = new System.Drawing.Size(22, 13);
             this.lbTotalPage.TabIndex = 42;
@@ -581,7 +581,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(107, 166);
+            this.label7.Location = new System.Drawing.Point(107, 198);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(13, 13);
             this.label7.TabIndex = 41;
@@ -591,7 +591,7 @@
             // 
             this.txtPageCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtPageCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPageCurrent.Location = new System.Drawing.Point(52, 159);
+            this.txtPageCurrent.Location = new System.Drawing.Point(52, 191);
             this.txtPageCurrent.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -614,7 +614,7 @@
             this.btnPrevPage.Enabled = false;
             this.btnPrevPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrevPage.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevPage.Image")));
-            this.btnPrevPage.Location = new System.Drawing.Point(26, 158);
+            this.btnPrevPage.Location = new System.Drawing.Point(26, 190);
             this.btnPrevPage.Name = "btnPrevPage";
             this.btnPrevPage.Size = new System.Drawing.Size(22, 21);
             this.btnPrevPage.TabIndex = 38;
@@ -628,7 +628,7 @@
             this.btnLastPage.Enabled = false;
             this.btnLastPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLastPage.Image = ((System.Drawing.Image)(resources.GetObject("btnLastPage.Image")));
-            this.btnLastPage.Location = new System.Drawing.Point(179, 159);
+            this.btnLastPage.Location = new System.Drawing.Point(179, 191);
             this.btnLastPage.Name = "btnLastPage";
             this.btnLastPage.Size = new System.Drawing.Size(22, 20);
             this.btnLastPage.TabIndex = 39;
@@ -642,7 +642,7 @@
             this.btnNxtPage.Enabled = false;
             this.btnNxtPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNxtPage.Image = ((System.Drawing.Image)(resources.GetObject("btnNxtPage.Image")));
-            this.btnNxtPage.Location = new System.Drawing.Point(155, 158);
+            this.btnNxtPage.Location = new System.Drawing.Point(155, 190);
             this.btnNxtPage.Name = "btnNxtPage";
             this.btnNxtPage.Size = new System.Drawing.Size(22, 21);
             this.btnNxtPage.TabIndex = 36;
@@ -656,7 +656,7 @@
             this.btnFirstPAge.Enabled = false;
             this.btnFirstPAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFirstPAge.Image = ((System.Drawing.Image)(resources.GetObject("btnFirstPAge.Image")));
-            this.btnFirstPAge.Location = new System.Drawing.Point(1, 158);
+            this.btnFirstPAge.Location = new System.Drawing.Point(1, 190);
             this.btnFirstPAge.Name = "btnFirstPAge";
             this.btnFirstPAge.Size = new System.Drawing.Size(23, 21);
             this.btnFirstPAge.TabIndex = 37;
@@ -687,7 +687,7 @@
             this.dgvMain.Location = new System.Drawing.Point(3, 31);
             this.dgvMain.Name = "dgvMain";
             this.dgvMain.ReadOnly = true;
-            this.dgvMain.Size = new System.Drawing.Size(1248, 122);
+            this.dgvMain.Size = new System.Drawing.Size(1248, 154);
             this.dgvMain.TabIndex = 45;
             this.dgvMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_CellClick);
             this.dgvMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvMain_MouseDoubleClick);
@@ -811,9 +811,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbMonopoly.Controls.Add(this.dgvMonopolyOfWork);
             this.gbMonopoly.Controls.Add(this.label9);
-            this.gbMonopoly.Location = new System.Drawing.Point(3, 220);
+            this.gbMonopoly.Location = new System.Drawing.Point(3, 252);
             this.gbMonopoly.Name = "gbMonopoly";
-            this.gbMonopoly.Size = new System.Drawing.Size(1258, 192);
+            this.gbMonopoly.Size = new System.Drawing.Size(1258, 180);
             this.gbMonopoly.TabIndex = 53;
             this.gbMonopoly.TabStop = false;
             this.gbMonopoly.Text = "Detail monopoly (work)";
@@ -862,501 +862,9 @@
             this.dgvMonopolyOfWork.Location = new System.Drawing.Point(5, 17);
             this.dgvMonopolyOfWork.Name = "dgvMonopolyOfWork";
             this.dgvMonopolyOfWork.ReadOnly = true;
-            this.dgvMonopolyOfWork.Size = new System.Drawing.Size(1248, 169);
+            this.dgvMonopolyOfWork.Size = new System.Drawing.Size(1248, 157);
             this.dgvMonopolyOfWork.TabIndex = 45;
             this.dgvMonopolyOfWork.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvMonopoly_MouseDoubleClick);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.pcloader3);
-            this.groupBox2.Controls.Add(this.cboMonoTypeSearch);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.dgvMonopoly);
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.btnClearMono);
-            this.groupBox2.Controls.Add(this.btnSearchMono);
-            this.groupBox2.Controls.Add(this.txtName3);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.txtCode3);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Location = new System.Drawing.Point(3, 418);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1258, 230);
-            this.groupBox2.TabIndex = 59;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Detail monopoly (member)";
-            // 
-            // pcloader3
-            // 
-            this.pcloader3.Image = ((System.Drawing.Image)(resources.GetObject("pcloader3.Image")));
-            this.pcloader3.Location = new System.Drawing.Point(563, 94);
-            this.pcloader3.Name = "pcloader3";
-            this.pcloader3.Size = new System.Drawing.Size(64, 61);
-            this.pcloader3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pcloader3.TabIndex = 63;
-            this.pcloader3.TabStop = false;
-            this.pcloader3.Visible = false;
-            // 
-            // cboMonoTypeSearch
-            // 
-            this.cboMonoTypeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMonoTypeSearch.FormattingEnabled = true;
-            this.cboMonoTypeSearch.Items.AddRange(new object[] {
-            "All mono",
-            "Work mono",
-            "Member mono"});
-            this.cboMonoTypeSearch.Location = new System.Drawing.Point(148, 20);
-            this.cboMonoTypeSearch.Name = "cboMonoTypeSearch";
-            this.cboMonoTypeSearch.Size = new System.Drawing.Size(165, 20);
-            this.cboMonoTypeSearch.TabIndex = 62;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Green;
-            this.label8.Location = new System.Drawing.Point(922, 27);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(184, 13);
-            this.label8.TabIndex = 61;
-            this.label8.Text = "(Màu xanh là còn sử dụng độc quyền)";
-            // 
-            // dgvMonopoly
-            // 
-            this.dgvMonopoly.AllowUserToAddRows = false;
-            this.dgvMonopoly.AllowUserToDeleteRows = false;
-            this.dgvMonopoly.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvMonopoly.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMonopoly.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn2,
-            this.idMonoMember,
-            this.dgvCboGroup3,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewCheckBoxColumn3,
-            this.dataGridViewCheckBoxColumn4,
-            this.dataGridViewCheckBoxColumn5,
-            this.dataGridViewCheckBoxColumn6,
-            this.dataGridViewCheckBoxColumn7,
-            this.dataGridViewCheckBoxColumn8,
-            this.dataGridViewCheckBoxColumn9,
-            this.dataGridViewCheckBoxColumn10,
-            this.dataGridViewCheckBoxColumn11,
-            this.dataGridViewCheckBoxColumn12,
-            this.dataGridViewCheckBoxColumn13,
-            this.dataGridViewCheckBoxColumn14,
-            this.dataGridViewCheckBoxColumn15,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewCheckBoxColumn16,
-            this.dataGridViewTextBoxColumn17});
-            this.dgvMonopoly.Location = new System.Drawing.Point(3, 48);
-            this.dgvMonopoly.Name = "dgvMonopoly";
-            this.dgvMonopoly.ReadOnly = true;
-            this.dgvMonopoly.Size = new System.Drawing.Size(1250, 176);
-            this.dgvMonopoly.TabIndex = 60;
-            this.dgvMonopoly.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvMonopolyMember_MouseDoubleClick);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.radExactMono);
-            this.groupBox3.Controls.Add(this.radContrainsMono);
-            this.groupBox3.Location = new System.Drawing.Point(5, 14);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(137, 31);
-            this.groupBox3.TabIndex = 27;
-            this.groupBox3.TabStop = false;
-            // 
-            // radExactMono
-            // 
-            this.radExactMono.AutoSize = true;
-            this.radExactMono.Location = new System.Drawing.Point(79, 9);
-            this.radExactMono.Name = "radExactMono";
-            this.radExactMono.Size = new System.Drawing.Size(51, 17);
-            this.radExactMono.TabIndex = 2;
-            this.radExactMono.Text = "Exact";
-            this.radExactMono.UseVisualStyleBackColor = true;
-            // 
-            // radContrainsMono
-            // 
-            this.radContrainsMono.AutoSize = true;
-            this.radContrainsMono.Checked = true;
-            this.radContrainsMono.Location = new System.Drawing.Point(7, 9);
-            this.radContrainsMono.Name = "radContrainsMono";
-            this.radContrainsMono.Size = new System.Drawing.Size(66, 17);
-            this.radContrainsMono.TabIndex = 0;
-            this.radContrainsMono.TabStop = true;
-            this.radContrainsMono.Text = "Contains";
-            this.radContrainsMono.UseVisualStyleBackColor = true;
-            // 
-            // btnClearMono
-            // 
-            this.btnClearMono.BackColor = System.Drawing.SystemColors.Control;
-            this.btnClearMono.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearMono.ForeColor = System.Drawing.Color.Black;
-            this.btnClearMono.Image = ((System.Drawing.Image)(resources.GetObject("btnClearMono.Image")));
-            this.btnClearMono.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearMono.Location = new System.Drawing.Point(794, 17);
-            this.btnClearMono.Name = "btnClearMono";
-            this.btnClearMono.Size = new System.Drawing.Size(56, 24);
-            this.btnClearMono.TabIndex = 59;
-            this.btnClearMono.Text = "CLEAR";
-            this.btnClearMono.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClearMono.UseVisualStyleBackColor = false;
-            this.btnClearMono.Click += new System.EventHandler(this.btnClearMono_Click);
-            // 
-            // btnSearchMono
-            // 
-            this.btnSearchMono.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSearchMono.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchMono.ForeColor = System.Drawing.Color.Black;
-            this.btnSearchMono.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchMono.Image")));
-            this.btnSearchMono.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearchMono.Location = new System.Drawing.Point(856, 16);
-            this.btnSearchMono.Name = "btnSearchMono";
-            this.btnSearchMono.Size = new System.Drawing.Size(60, 24);
-            this.btnSearchMono.TabIndex = 58;
-            this.btnSearchMono.Text = "SEARCH";
-            this.btnSearchMono.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSearchMono.UseVisualStyleBackColor = false;
-            this.btnSearchMono.Click += new System.EventHandler(this.btnSearchMono_Click);
-            // 
-            // txtName3
-            // 
-            this.txtName3.Location = new System.Drawing.Point(385, 20);
-            this.txtName3.Name = "txtName3";
-            this.txtName3.Size = new System.Drawing.Size(196, 18);
-            this.txtName3.TabIndex = 57;
-            this.txtName3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EntertKeyDown_mono);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(329, 25);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 13);
-            this.label10.TabIndex = 56;
-            this.label10.Text = "Title/Own";
-            // 
-            // txtCode3
-            // 
-            this.txtCode3.Location = new System.Drawing.Point(714, 20);
-            this.txtCode3.Name = "txtCode3";
-            this.txtCode3.Size = new System.Drawing.Size(74, 18);
-            this.txtCode3.TabIndex = 55;
-            this.txtCode3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EntertKeyDown_mono);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(595, 23);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(115, 13);
-            this.label11.TabIndex = 54;
-            this.label11.Text = "workcode/membercode";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(1081, 13);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(161, 13);
-            this.label12.TabIndex = 53;
-            this.label12.Text = "(Double click to view item details)";
-            // 
-            // dataGridViewCheckBoxColumn2
-            // 
-            this.dataGridViewCheckBoxColumn2.DataPropertyName = "Choise";
-            this.dataGridViewCheckBoxColumn2.FillWeight = 40F;
-            this.dataGridViewCheckBoxColumn2.HeaderText = "";
-            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
-            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn2.Width = 40;
-            // 
-            // idMonoMember
-            // 
-            this.idMonoMember.DataPropertyName = "Id";
-            this.idMonoMember.HeaderText = "Id ";
-            this.idMonoMember.Name = "idMonoMember";
-            this.idMonoMember.ReadOnly = true;
-            this.idMonoMember.Visible = false;
-            // 
-            // dgvCboGroup3
-            // 
-            this.dgvCboGroup3.DataPropertyName = "Group";
-            this.dgvCboGroup3.HeaderText = "Group";
-            this.dgvCboGroup3.Name = "dgvCboGroup3";
-            this.dgvCboGroup3.ReadOnly = true;
-            this.dgvCboGroup3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCboGroup3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "SerialNo";
-            this.dataGridViewTextBoxColumn3.FillWeight = 50F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Serial";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "CodeOld";
-            this.dataGridViewTextBoxColumn4.FillWeight = 60F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Old Code";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "CodeNew";
-            this.dataGridViewTextBoxColumn5.FillWeight = 60F;
-            this.dataGridViewTextBoxColumn5.HeaderText = "New Code";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn6.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Tên";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Name2";
-            this.dataGridViewTextBoxColumn7.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Tên 2";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Visible = false;
-            this.dataGridViewTextBoxColumn7.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Own";
-            this.dataGridViewTextBoxColumn8.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn8.HeaderText = "Chủ s.hữu";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Own2";
-            this.dataGridViewTextBoxColumn9.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn9.HeaderText = "Chủ s.hữu 2";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Visible = false;
-            this.dataGridViewTextBoxColumn9.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "NameType";
-            this.dataGridViewTextBoxColumn10.FillWeight = 50F;
-            this.dataGridViewTextBoxColumn10.HeaderText = "Loại";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "NoteMono";
-            this.dataGridViewTextBoxColumn11.FillWeight = 300F;
-            this.dataGridViewTextBoxColumn11.HeaderText = "Ghi chú độc quyền";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 300;
-            // 
-            // dataGridViewCheckBoxColumn3
-            // 
-            this.dataGridViewCheckBoxColumn3.DataPropertyName = "Tone";
-            this.dataGridViewCheckBoxColumn3.FillWeight = 50F;
-            this.dataGridViewCheckBoxColumn3.HeaderText = "Tone";
-            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
-            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn3.Width = 50;
-            // 
-            // dataGridViewCheckBoxColumn4
-            // 
-            this.dataGridViewCheckBoxColumn4.DataPropertyName = "Web";
-            this.dataGridViewCheckBoxColumn4.FillWeight = 50F;
-            this.dataGridViewCheckBoxColumn4.HeaderText = "Web";
-            this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
-            this.dataGridViewCheckBoxColumn4.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn4.Width = 50;
-            // 
-            // dataGridViewCheckBoxColumn5
-            // 
-            this.dataGridViewCheckBoxColumn5.DataPropertyName = "Performances";
-            this.dataGridViewCheckBoxColumn5.FillWeight = 50F;
-            this.dataGridViewCheckBoxColumn5.HeaderText = "Perform";
-            this.dataGridViewCheckBoxColumn5.Name = "dataGridViewCheckBoxColumn5";
-            this.dataGridViewCheckBoxColumn5.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn5.Width = 50;
-            // 
-            // dataGridViewCheckBoxColumn6
-            // 
-            this.dataGridViewCheckBoxColumn6.DataPropertyName = "PerformancesHCM";
-            this.dataGridViewCheckBoxColumn6.FillWeight = 50F;
-            this.dataGridViewCheckBoxColumn6.HeaderText = "HCM Per";
-            this.dataGridViewCheckBoxColumn6.Name = "dataGridViewCheckBoxColumn6";
-            this.dataGridViewCheckBoxColumn6.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn6.Width = 50;
-            // 
-            // dataGridViewCheckBoxColumn7
-            // 
-            this.dataGridViewCheckBoxColumn7.DataPropertyName = "Cddvd";
-            this.dataGridViewCheckBoxColumn7.HeaderText = "CD-DVD";
-            this.dataGridViewCheckBoxColumn7.Name = "dataGridViewCheckBoxColumn7";
-            this.dataGridViewCheckBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn8
-            // 
-            this.dataGridViewCheckBoxColumn8.DataPropertyName = "Kok";
-            this.dataGridViewCheckBoxColumn8.HeaderText = "Kok";
-            this.dataGridViewCheckBoxColumn8.Name = "dataGridViewCheckBoxColumn8";
-            this.dataGridViewCheckBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn9
-            // 
-            this.dataGridViewCheckBoxColumn9.DataPropertyName = "Broadcasting";
-            this.dataGridViewCheckBoxColumn9.HeaderText = "Broadcasting";
-            this.dataGridViewCheckBoxColumn9.Name = "dataGridViewCheckBoxColumn9";
-            this.dataGridViewCheckBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn10
-            // 
-            this.dataGridViewCheckBoxColumn10.DataPropertyName = "Entertaiment";
-            this.dataGridViewCheckBoxColumn10.HeaderText = "Entertaiment";
-            this.dataGridViewCheckBoxColumn10.Name = "dataGridViewCheckBoxColumn10";
-            this.dataGridViewCheckBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn11
-            // 
-            this.dataGridViewCheckBoxColumn11.DataPropertyName = "Film";
-            this.dataGridViewCheckBoxColumn11.FillWeight = 50F;
-            this.dataGridViewCheckBoxColumn11.HeaderText = "Film";
-            this.dataGridViewCheckBoxColumn11.Name = "dataGridViewCheckBoxColumn11";
-            this.dataGridViewCheckBoxColumn11.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn11.Width = 50;
-            // 
-            // dataGridViewCheckBoxColumn12
-            // 
-            this.dataGridViewCheckBoxColumn12.DataPropertyName = "Advertisement";
-            this.dataGridViewCheckBoxColumn12.HeaderText = "Advertisement";
-            this.dataGridViewCheckBoxColumn12.Name = "dataGridViewCheckBoxColumn12";
-            this.dataGridViewCheckBoxColumn12.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn13
-            // 
-            this.dataGridViewCheckBoxColumn13.DataPropertyName = "PubMusicBook";
-            this.dataGridViewCheckBoxColumn13.HeaderText = "Pub M.Book";
-            this.dataGridViewCheckBoxColumn13.Name = "dataGridViewCheckBoxColumn13";
-            this.dataGridViewCheckBoxColumn13.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn14
-            // 
-            this.dataGridViewCheckBoxColumn14.DataPropertyName = "Youtube";
-            this.dataGridViewCheckBoxColumn14.HeaderText = "Youtube";
-            this.dataGridViewCheckBoxColumn14.Name = "dataGridViewCheckBoxColumn14";
-            this.dataGridViewCheckBoxColumn14.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn15
-            // 
-            this.dataGridViewCheckBoxColumn15.DataPropertyName = "Other";
-            this.dataGridViewCheckBoxColumn15.FillWeight = 50F;
-            this.dataGridViewCheckBoxColumn15.HeaderText = "Other";
-            this.dataGridViewCheckBoxColumn15.Name = "dataGridViewCheckBoxColumn15";
-            this.dataGridViewCheckBoxColumn15.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn15.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "Note2";
-            this.dataGridViewTextBoxColumn12.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn12.HeaderText = "Ghi chú";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "StartTime";
-            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn13.HeaderText = "Ngày bắt đầu";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "EndTime";
-            dataGridViewCellStyle6.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn14.HeaderText = "Ngày kết thúc";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "UpdateTime";
-            dataGridViewCellStyle7.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn15.HeaderText = "Ngày cập nhật";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "ReceiveTime";
-            dataGridViewCellStyle8.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn16.HeaderText = "Ngày nhận";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn16
-            // 
-            this.dataGridViewCheckBoxColumn16.DataPropertyName = "IsExpired";
-            this.dataGridViewCheckBoxColumn16.FillWeight = 50F;
-            this.dataGridViewCheckBoxColumn16.HeaderText = "Hết hạn ĐQ";
-            this.dataGridViewCheckBoxColumn16.Name = "dataGridViewCheckBoxColumn16";
-            this.dataGridViewCheckBoxColumn16.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn16.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "Note3";
-            this.dataGridViewTextBoxColumn17.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn17.HeaderText = "Ghi chú hết hạn ĐQ";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn17.Width = 150;
             // 
             // choise1
             // 
@@ -1583,8 +1091,8 @@
             // StartTime
             // 
             this.StartTime.DataPropertyName = "StartTime";
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            this.StartTime.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Format = "dd/MM/yyyy";
+            this.StartTime.DefaultCellStyle = dataGridViewCellStyle9;
             this.StartTime.HeaderText = "Ngày bắt đầu";
             this.StartTime.Name = "StartTime";
             this.StartTime.ReadOnly = true;
@@ -1592,8 +1100,8 @@
             // EndTime
             // 
             this.EndTime.DataPropertyName = "EndTime";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            this.EndTime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "dd/MM/yyyy";
+            this.EndTime.DefaultCellStyle = dataGridViewCellStyle10;
             this.EndTime.HeaderText = "Ngày kết thúc";
             this.EndTime.Name = "EndTime";
             this.EndTime.ReadOnly = true;
@@ -1601,8 +1109,8 @@
             // UpdateTime
             // 
             this.UpdateTime.DataPropertyName = "UpdateTime";
-            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
-            this.UpdateTime.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Format = "dd/MM/yyyy";
+            this.UpdateTime.DefaultCellStyle = dataGridViewCellStyle11;
             this.UpdateTime.HeaderText = "Ngày cập nhật";
             this.UpdateTime.Name = "UpdateTime";
             this.UpdateTime.ReadOnly = true;
@@ -1610,8 +1118,8 @@
             // ReceiveTime
             // 
             this.ReceiveTime.DataPropertyName = "ReceiveTime";
-            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
-            this.ReceiveTime.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Format = "dd/MM/yyyy";
+            this.ReceiveTime.DefaultCellStyle = dataGridViewCellStyle12;
             this.ReceiveTime.HeaderText = "Ngày nhận";
             this.ReceiveTime.Name = "ReceiveTime";
             this.ReceiveTime.ReadOnly = true;
@@ -1635,6 +1143,498 @@
             this.Note3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Note3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Note3.Width = 150;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.pcloader3);
+            this.groupBox2.Controls.Add(this.cboMonoTypeSearch);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.dgvMonopoly);
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.btnClearMono);
+            this.groupBox2.Controls.Add(this.btnSearchMono);
+            this.groupBox2.Controls.Add(this.txtName3);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.txtCode3);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Location = new System.Drawing.Point(3, 438);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1258, 210);
+            this.groupBox2.TabIndex = 59;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Detail monopoly (member)";
+            // 
+            // pcloader3
+            // 
+            this.pcloader3.Image = ((System.Drawing.Image)(resources.GetObject("pcloader3.Image")));
+            this.pcloader3.Location = new System.Drawing.Point(563, 94);
+            this.pcloader3.Name = "pcloader3";
+            this.pcloader3.Size = new System.Drawing.Size(64, 61);
+            this.pcloader3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pcloader3.TabIndex = 63;
+            this.pcloader3.TabStop = false;
+            this.pcloader3.Visible = false;
+            // 
+            // cboMonoTypeSearch
+            // 
+            this.cboMonoTypeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMonoTypeSearch.FormattingEnabled = true;
+            this.cboMonoTypeSearch.Items.AddRange(new object[] {
+            "All mono",
+            "Work mono",
+            "Member mono"});
+            this.cboMonoTypeSearch.Location = new System.Drawing.Point(148, 20);
+            this.cboMonoTypeSearch.Name = "cboMonoTypeSearch";
+            this.cboMonoTypeSearch.Size = new System.Drawing.Size(165, 20);
+            this.cboMonoTypeSearch.TabIndex = 62;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Green;
+            this.label8.Location = new System.Drawing.Point(922, 27);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(184, 13);
+            this.label8.TabIndex = 61;
+            this.label8.Text = "(Màu xanh là còn sử dụng độc quyền)";
+            // 
+            // dgvMonopoly
+            // 
+            this.dgvMonopoly.AllowUserToAddRows = false;
+            this.dgvMonopoly.AllowUserToDeleteRows = false;
+            this.dgvMonopoly.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMonopoly.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMonopoly.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn2,
+            this.idMonoMember,
+            this.dgvCboGroup3,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewCheckBoxColumn3,
+            this.dataGridViewCheckBoxColumn4,
+            this.dataGridViewCheckBoxColumn5,
+            this.dataGridViewCheckBoxColumn6,
+            this.dataGridViewCheckBoxColumn7,
+            this.dataGridViewCheckBoxColumn8,
+            this.dataGridViewCheckBoxColumn9,
+            this.dataGridViewCheckBoxColumn10,
+            this.dataGridViewCheckBoxColumn11,
+            this.dataGridViewCheckBoxColumn12,
+            this.dataGridViewCheckBoxColumn13,
+            this.dataGridViewCheckBoxColumn14,
+            this.dataGridViewCheckBoxColumn15,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewCheckBoxColumn16,
+            this.dataGridViewTextBoxColumn17});
+            this.dgvMonopoly.Location = new System.Drawing.Point(3, 48);
+            this.dgvMonopoly.Name = "dgvMonopoly";
+            this.dgvMonopoly.ReadOnly = true;
+            this.dgvMonopoly.Size = new System.Drawing.Size(1250, 156);
+            this.dgvMonopoly.TabIndex = 60;
+            this.dgvMonopoly.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvMonopolyMember_MouseDoubleClick);
+            // 
+            // dataGridViewCheckBoxColumn2
+            // 
+            this.dataGridViewCheckBoxColumn2.DataPropertyName = "Choise";
+            this.dataGridViewCheckBoxColumn2.FillWeight = 40F;
+            this.dataGridViewCheckBoxColumn2.HeaderText = "";
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn2.Width = 40;
+            // 
+            // idMonoMember
+            // 
+            this.idMonoMember.DataPropertyName = "Id";
+            this.idMonoMember.HeaderText = "Id ";
+            this.idMonoMember.Name = "idMonoMember";
+            this.idMonoMember.ReadOnly = true;
+            this.idMonoMember.Visible = false;
+            // 
+            // dgvCboGroup3
+            // 
+            this.dgvCboGroup3.DataPropertyName = "Group";
+            this.dgvCboGroup3.HeaderText = "Group";
+            this.dgvCboGroup3.Name = "dgvCboGroup3";
+            this.dgvCboGroup3.ReadOnly = true;
+            this.dgvCboGroup3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCboGroup3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "SerialNo";
+            this.dataGridViewTextBoxColumn3.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Serial";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "CodeOld";
+            this.dataGridViewTextBoxColumn4.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Old Code";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "CodeNew";
+            this.dataGridViewTextBoxColumn5.FillWeight = 60F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "New Code";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn6.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Tên";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Name2";
+            this.dataGridViewTextBoxColumn7.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Tên 2";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            this.dataGridViewTextBoxColumn7.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Own";
+            this.dataGridViewTextBoxColumn8.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Chủ s.hữu";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Own2";
+            this.dataGridViewTextBoxColumn9.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Chủ s.hữu 2";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            this.dataGridViewTextBoxColumn9.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "NameType";
+            this.dataGridViewTextBoxColumn10.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn10.HeaderText = "Loại";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "NoteMono";
+            this.dataGridViewTextBoxColumn11.FillWeight = 300F;
+            this.dataGridViewTextBoxColumn11.HeaderText = "Ghi chú độc quyền";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 300;
+            // 
+            // dataGridViewCheckBoxColumn3
+            // 
+            this.dataGridViewCheckBoxColumn3.DataPropertyName = "Tone";
+            this.dataGridViewCheckBoxColumn3.FillWeight = 50F;
+            this.dataGridViewCheckBoxColumn3.HeaderText = "Tone";
+            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn3.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn4
+            // 
+            this.dataGridViewCheckBoxColumn4.DataPropertyName = "Web";
+            this.dataGridViewCheckBoxColumn4.FillWeight = 50F;
+            this.dataGridViewCheckBoxColumn4.HeaderText = "Web";
+            this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
+            this.dataGridViewCheckBoxColumn4.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn4.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn5
+            // 
+            this.dataGridViewCheckBoxColumn5.DataPropertyName = "Performances";
+            this.dataGridViewCheckBoxColumn5.FillWeight = 50F;
+            this.dataGridViewCheckBoxColumn5.HeaderText = "Perform";
+            this.dataGridViewCheckBoxColumn5.Name = "dataGridViewCheckBoxColumn5";
+            this.dataGridViewCheckBoxColumn5.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn5.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn6
+            // 
+            this.dataGridViewCheckBoxColumn6.DataPropertyName = "PerformancesHCM";
+            this.dataGridViewCheckBoxColumn6.FillWeight = 50F;
+            this.dataGridViewCheckBoxColumn6.HeaderText = "HCM Per";
+            this.dataGridViewCheckBoxColumn6.Name = "dataGridViewCheckBoxColumn6";
+            this.dataGridViewCheckBoxColumn6.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn6.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn7
+            // 
+            this.dataGridViewCheckBoxColumn7.DataPropertyName = "Cddvd";
+            this.dataGridViewCheckBoxColumn7.HeaderText = "CD-DVD";
+            this.dataGridViewCheckBoxColumn7.Name = "dataGridViewCheckBoxColumn7";
+            this.dataGridViewCheckBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn8
+            // 
+            this.dataGridViewCheckBoxColumn8.DataPropertyName = "Kok";
+            this.dataGridViewCheckBoxColumn8.HeaderText = "Kok";
+            this.dataGridViewCheckBoxColumn8.Name = "dataGridViewCheckBoxColumn8";
+            this.dataGridViewCheckBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn9
+            // 
+            this.dataGridViewCheckBoxColumn9.DataPropertyName = "Broadcasting";
+            this.dataGridViewCheckBoxColumn9.HeaderText = "Broadcasting";
+            this.dataGridViewCheckBoxColumn9.Name = "dataGridViewCheckBoxColumn9";
+            this.dataGridViewCheckBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn10
+            // 
+            this.dataGridViewCheckBoxColumn10.DataPropertyName = "Entertaiment";
+            this.dataGridViewCheckBoxColumn10.HeaderText = "Entertaiment";
+            this.dataGridViewCheckBoxColumn10.Name = "dataGridViewCheckBoxColumn10";
+            this.dataGridViewCheckBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn11
+            // 
+            this.dataGridViewCheckBoxColumn11.DataPropertyName = "Film";
+            this.dataGridViewCheckBoxColumn11.FillWeight = 50F;
+            this.dataGridViewCheckBoxColumn11.HeaderText = "Film";
+            this.dataGridViewCheckBoxColumn11.Name = "dataGridViewCheckBoxColumn11";
+            this.dataGridViewCheckBoxColumn11.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn11.Width = 50;
+            // 
+            // dataGridViewCheckBoxColumn12
+            // 
+            this.dataGridViewCheckBoxColumn12.DataPropertyName = "Advertisement";
+            this.dataGridViewCheckBoxColumn12.HeaderText = "Advertisement";
+            this.dataGridViewCheckBoxColumn12.Name = "dataGridViewCheckBoxColumn12";
+            this.dataGridViewCheckBoxColumn12.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn13
+            // 
+            this.dataGridViewCheckBoxColumn13.DataPropertyName = "PubMusicBook";
+            this.dataGridViewCheckBoxColumn13.HeaderText = "Pub M.Book";
+            this.dataGridViewCheckBoxColumn13.Name = "dataGridViewCheckBoxColumn13";
+            this.dataGridViewCheckBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn14
+            // 
+            this.dataGridViewCheckBoxColumn14.DataPropertyName = "Youtube";
+            this.dataGridViewCheckBoxColumn14.HeaderText = "Youtube";
+            this.dataGridViewCheckBoxColumn14.Name = "dataGridViewCheckBoxColumn14";
+            this.dataGridViewCheckBoxColumn14.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn15
+            // 
+            this.dataGridViewCheckBoxColumn15.DataPropertyName = "Other";
+            this.dataGridViewCheckBoxColumn15.FillWeight = 50F;
+            this.dataGridViewCheckBoxColumn15.HeaderText = "Other";
+            this.dataGridViewCheckBoxColumn15.Name = "dataGridViewCheckBoxColumn15";
+            this.dataGridViewCheckBoxColumn15.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn15.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Note2";
+            this.dataGridViewTextBoxColumn12.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn12.HeaderText = "Ghi chú";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "StartTime";
+            dataGridViewCellStyle13.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewTextBoxColumn13.HeaderText = "Ngày bắt đầu";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "EndTime";
+            dataGridViewCellStyle14.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridViewTextBoxColumn14.HeaderText = "Ngày kết thúc";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "UpdateTime";
+            dataGridViewCellStyle15.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewTextBoxColumn15.HeaderText = "Ngày cập nhật";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "ReceiveTime";
+            dataGridViewCellStyle16.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewTextBoxColumn16.HeaderText = "Ngày nhận";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn16
+            // 
+            this.dataGridViewCheckBoxColumn16.DataPropertyName = "IsExpired";
+            this.dataGridViewCheckBoxColumn16.FillWeight = 50F;
+            this.dataGridViewCheckBoxColumn16.HeaderText = "Hết hạn ĐQ";
+            this.dataGridViewCheckBoxColumn16.Name = "dataGridViewCheckBoxColumn16";
+            this.dataGridViewCheckBoxColumn16.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn16.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Note3";
+            this.dataGridViewTextBoxColumn17.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn17.HeaderText = "Ghi chú hết hạn ĐQ";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn17.Width = 150;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radExactMono);
+            this.groupBox3.Controls.Add(this.radContrainsMono);
+            this.groupBox3.Location = new System.Drawing.Point(5, 14);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(137, 31);
+            this.groupBox3.TabIndex = 27;
+            this.groupBox3.TabStop = false;
+            // 
+            // radExactMono
+            // 
+            this.radExactMono.AutoSize = true;
+            this.radExactMono.Location = new System.Drawing.Point(79, 9);
+            this.radExactMono.Name = "radExactMono";
+            this.radExactMono.Size = new System.Drawing.Size(51, 17);
+            this.radExactMono.TabIndex = 2;
+            this.radExactMono.Text = "Exact";
+            this.radExactMono.UseVisualStyleBackColor = true;
+            // 
+            // radContrainsMono
+            // 
+            this.radContrainsMono.AutoSize = true;
+            this.radContrainsMono.Checked = true;
+            this.radContrainsMono.Location = new System.Drawing.Point(7, 9);
+            this.radContrainsMono.Name = "radContrainsMono";
+            this.radContrainsMono.Size = new System.Drawing.Size(66, 17);
+            this.radContrainsMono.TabIndex = 0;
+            this.radContrainsMono.TabStop = true;
+            this.radContrainsMono.Text = "Contains";
+            this.radContrainsMono.UseVisualStyleBackColor = true;
+            // 
+            // btnClearMono
+            // 
+            this.btnClearMono.BackColor = System.Drawing.SystemColors.Control;
+            this.btnClearMono.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearMono.ForeColor = System.Drawing.Color.Black;
+            this.btnClearMono.Image = ((System.Drawing.Image)(resources.GetObject("btnClearMono.Image")));
+            this.btnClearMono.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClearMono.Location = new System.Drawing.Point(794, 17);
+            this.btnClearMono.Name = "btnClearMono";
+            this.btnClearMono.Size = new System.Drawing.Size(56, 24);
+            this.btnClearMono.TabIndex = 59;
+            this.btnClearMono.Text = "CLEAR";
+            this.btnClearMono.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClearMono.UseVisualStyleBackColor = false;
+            this.btnClearMono.Click += new System.EventHandler(this.btnClearMono_Click);
+            // 
+            // btnSearchMono
+            // 
+            this.btnSearchMono.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSearchMono.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchMono.ForeColor = System.Drawing.Color.Black;
+            this.btnSearchMono.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchMono.Image")));
+            this.btnSearchMono.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearchMono.Location = new System.Drawing.Point(856, 16);
+            this.btnSearchMono.Name = "btnSearchMono";
+            this.btnSearchMono.Size = new System.Drawing.Size(60, 24);
+            this.btnSearchMono.TabIndex = 58;
+            this.btnSearchMono.Text = "SEARCH";
+            this.btnSearchMono.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSearchMono.UseVisualStyleBackColor = false;
+            this.btnSearchMono.Click += new System.EventHandler(this.btnSearchMono_Click);
+            // 
+            // txtName3
+            // 
+            this.txtName3.Location = new System.Drawing.Point(385, 20);
+            this.txtName3.Name = "txtName3";
+            this.txtName3.Size = new System.Drawing.Size(196, 18);
+            this.txtName3.TabIndex = 57;
+            this.txtName3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EntertKeyDown_mono);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(329, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 13);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "Title/Own";
+            // 
+            // txtCode3
+            // 
+            this.txtCode3.Location = new System.Drawing.Point(714, 20);
+            this.txtCode3.Name = "txtCode3";
+            this.txtCode3.Size = new System.Drawing.Size(74, 18);
+            this.txtCode3.TabIndex = 55;
+            this.txtCode3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EntertKeyDown_mono);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(595, 23);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(115, 13);
+            this.label11.TabIndex = 54;
+            this.label11.Text = "workcode/membercode";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(1081, 13);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(161, 13);
+            this.label12.TabIndex = 53;
+            this.label12.Text = "(Double click to view item details)";
             // 
             // frmInfoWork
             // 
