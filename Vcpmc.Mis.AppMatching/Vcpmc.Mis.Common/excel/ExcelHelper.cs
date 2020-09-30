@@ -636,6 +636,8 @@ namespace Vcpmc.Mis.Common.common.excel
 
                     }
                     newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.WorkTitle2.ToString()) }); 
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.StrOtherTitleOut.ToString()) }); 
+                    newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.StrOtherTitleOutUnSign.ToString()) }); 
                     newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.GroupWriter.ToString()) });
                     newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.GroupComposer) });
                     newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.GroupLyrics) });
@@ -706,7 +708,7 @@ namespace Vcpmc.Mis.Common.common.excel
             {
                 strHeader = 
                 "NO OF PERF.," +                           
-                "WORK INTER NO,WORK TITLE," +               
+                "WORK INTER NO,WORK TITLE,OTHER TITLE,UNSIGN OTHER TITLE," +               
                 "WRITER,COMPOSER,LYRICS,PUBLISHER," +
                 "ARTIST," +
                 "WORK STATUS," +
@@ -721,7 +723,7 @@ namespace Vcpmc.Mis.Common.common.excel
             {
                 strHeader =
                  "NO OF PERF.," +
-                 "WORK INTER NO,WORK TITLE," +
+                 "WORK INTER NO,WORK TITLE,OTHER TITLE,UNSIGN OTHER TITLE," +
                  "WRITER,COMPOSER,LYRICS,PUBLISHER," +
                  "ARTIST," +
                  "WORK STATUS," + 
@@ -753,7 +755,8 @@ namespace Vcpmc.Mis.Common.common.excel
                 "PER OWN SHR,PER COL SHR,MEC OWN SHR,MEC COL SHR," +
                 "SP SHR,TOTAL MEC SHR,SYN OWN SHR,SYN COL SHR,"+
                 //
-                "WORK TITLE2,WRITER,COMPOSER,LYRICS,PUBLISHER," +
+                "WORK TITLE2,OTHER TITLE,UNSIGN OTHER TITLE," +
+                "WRITER,COMPOSER,LYRICS,PUBLISHER," +
                 "WORK MONO NOTE, MEMBER MONO NOTE," +
                 "NON MEMBER,VcpmcRegion";
             }

@@ -233,6 +233,22 @@ namespace Vcpmc.Mis.ApplicationCore.Entities.control
         /// Vùng miền của thành viên VCPMC
         /// </summary>
         public string VcpmcRegion { get; set; } = string.Empty;
+        /// <summary>
+        /// Danh sach tieu de xuat ra khac
+        /// </summary>
+        public List<string> ListOtherTitleOutUnSign { get; set; } = new List<string>();
+        /// <summary>
+        /// Danh sach tieu de xuat ra khac
+        /// </summary>
+        public string StrOtherTitleOutUnSign { get; set; } = string.Empty;
+        /// <summary>
+        /// Danh sach tieu de xuat ra khac, co dau
+        /// </summary>
+        public List<string> ListOtherTitleOut { get; set; } = new List<string>();
+        /// <summary>
+        /// Danh sach tieu de xuat ra khac, co dau
+        /// </summary>
+        public string StrOtherTitleOut { get; set; } = string.Empty;
 
         //public string RegionalNo { get; set; } = string.Empty;
 

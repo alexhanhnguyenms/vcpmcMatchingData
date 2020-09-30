@@ -971,9 +971,13 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     bool isCheckcomareTitle = false;
                     bool isCheckcomareWriter = false;
                     int countMatchWriter = 0;
-                    bool worngWriter = false;
-                    string[] arrWorkTtileOutUnSign = null;
+                    bool worngWriter = false;                    
+                    //danh sach tieu de xuat ra tu mis
                     string[] arrWorkTtileOut = null;
+                    //danh sach tieu de con lại ngoài tieu de chinh
+                    //List<string> arrWorkTtileOutOther = new List<string>();
+                    //danh sach tieu de xuat ra tu mis, bo dau
+                    string[] arrWorkTtileOutUnSign = null;
                     string WorkTtileOutRemove = string.Empty;
                     foreach (var item in ediFilesItemsClone)
                     {
@@ -989,18 +993,18 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         isCheckcomareTitle = true;
                         isCheckcomareWriter = true;
                         #region So sanh tieu de
-                        //bang 1 trang cac tieu de la dung
+                        //1.bang 1 trang cac tieu de la dung
                         arrWorkTtileOut = item.WorkTitle.Split(',');
                         arrWorkTtileOutUnSign = VnHelper.ConvertToUnSign(item.WorkTitle).Split(',');
-                        //                        
-                        arrWorkTtileOut = ListGetTile(arrWorkTtileOut, item.IpNameLocal).ToArray();
+                        //lấy tiêu đề chính xác                       
+                        arrWorkTtileOut = ListGetTitle(arrWorkTtileOut, item.IpNameLocal).ToArray();
+                        //bỏ dấu tiêu đề
                         arrWorkTtileOutUnSign = new string[arrWorkTtileOut.Length];
                         for (int ml = 0; ml < arrWorkTtileOut.Length; ml++)
                         {
                             arrWorkTtileOutUnSign[ml] = VnHelper.ConvertToUnSign(arrWorkTtileOut[ml]);
                         }
-                        //
-                        
+                        //                        
                         isCheckcomareTitle = false;
                         if (arrWorkTtileOutUnSign != null && arrWorkTtileOutUnSign.Length > 0)
                         {
@@ -1028,17 +1032,28 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
 
                             }
-                            //lay ten gan giong nhat
-                            //int posSame = -1;
+                            //lay ten gan giong nhat                           
                             string titleSame = string.Empty;
                             var min = scoreTitleInput.Min();                           
                             for (int ig = 0; ig < arrWorkTtileOutUnSign.Length; ig++)
                             {
                                 if (scoreTitleInput[ig] == min)
                                 {
-                                    titleSame = arrWorkTtileOut[ig];
-                                    //posSame = ig;
-                                    break;
+                                    if (titleSame == string.Empty)
+                                    {
+                                        titleSame = arrWorkTtileOut[ig];                                        
+                                        //break;
+                                    }
+                                }
+                                else
+                                {
+                                    if (item.StrOtherTitleOutUnSign.Length > 0) item.StrOtherTitleOutUnSign += ", ";
+                                    item.StrOtherTitleOutUnSign += arrWorkTtileOutUnSign[ig];
+                                    item.ListOtherTitleOutUnSign.Add(arrWorkTtileOutUnSign[ig]);
+
+                                    if (item.StrOtherTitleOut.Length > 0) item.StrOtherTitleOut += ", ";
+                                    item.StrOtherTitleOut += arrWorkTtileOut[ig];
+                                    item.ListOtherTitleOut.Add(arrWorkTtileOut[ig]);
                                 }
                             }
                             //TODO
@@ -1260,6 +1275,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     {
                         lbTotalDuplicate.Text = totalDuplicate.ToString();
                     }));
+                    statusMain.Invoke(new MethodInvoker(delegate
+                    {
+                        lbInfo.Text = "Load data from Excel file be finish!";
+                    }));
                 }  
                 else
                 {
@@ -1352,7 +1371,13 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 item.WorkTitle2 = item.WorkTitle;
             }            
         }
-        private static List<string> ListGetTile(string[] ListtitleSame, string ipLocalName)
+        /// <summary>
+        /// Lấy danh sách tiêu đề lần lượt, nếu là tiếng việt thì lấy tiếng việt
+        /// </summary>
+        /// <param name="ListtitleSame"></param>
+        /// <param name="ipLocalName">Xác định có phải là tiếng việt hay không</param>
+        /// <returns></returns>
+        private static List<string> ListGetTitle(string[] ListtitleSame, string ipLocalName)
         {
             string part1, part2, part22;
             int posL = 0;
