@@ -3235,7 +3235,7 @@ namespace Vcpmc.Mis.Common.common.excel
             else
             {                
                 strHeader = "Serial No," +
-                "WORKCODE,WORKCODE CHANGE NEW" +
+                "WORKCODE,WORKCODE CHANGE NEW," +
                 "TITLE,TITLE2," +
                 "WRITER,WRITER2," +
                 "ARTIST,ARTIST2," +
@@ -3246,7 +3246,7 @@ namespace Vcpmc.Mis.Common.common.excel
                 "MESSAGE," +
                 "IS WORK MONO,WORK MONO FIELDS,WORK MONO NOTE," +
                 "IS MEMBER MONO,MEMBER MONO FIELDS,MEMBER MONO NOTE," +
-                "NonMember";                             
+                "NON MEMBER";                             
             }
             string[] strArray = strHeader.Split(',');
             //Delete the file if it exists. 

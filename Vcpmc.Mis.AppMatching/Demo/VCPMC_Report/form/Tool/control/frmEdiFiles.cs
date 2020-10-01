@@ -2475,6 +2475,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         {
             try
             {
+                int CountNoteDP_mono = 0;
+                int CountNoteNS_mono = 0;
                 #region innit
                 isFindMono = true;
                 statusMain.Invoke(new MethodInvoker(delegate
@@ -2513,13 +2515,13 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 #region 2. tinh toan doc quyen                
                 for (int i = 0; i < ediFilesItemsClone.Count; i++)
                 {
-                    if(ediFilesItemsClone[i].WorkInternalNo == "9279634"
-                        || ediFilesItemsClone[i].WorkInternalNo == "7681097"
-                        || ediFilesItemsClone[i].WorkInternalNo == "7673274"
-                        )
-                    {
-                        //int a = 1;
-                    }
+                    //if(ediFilesItemsClone[i].WorkInternalNo == "9279634"
+                    //    || ediFilesItemsClone[i].WorkInternalNo == "7681097"
+                    //    || ediFilesItemsClone[i].WorkInternalNo == "7673274"
+                    //    )
+                    //{
+                    //    //int a = 1;
+                    //}
                     #region reset before set
                     ediFilesItemsClone[i].WorkFields = string.Empty;
                     ediFilesItemsClone[i].WorkMonopolyNote = string.Empty;
@@ -2535,13 +2537,17 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
                     foreach (var inP in ediFilesItemsClone[i].ListInterestedParty)
                     {
-                        if (inP.Society == "NS")
+                        if (inP.Society == "DP")
+                        {
+                            int a = 1;
+                        }
+                        if (inP.Society == "NS"|| inP.Society == "DP")
                         {
                             if (ediFilesItemsClone[i].NonMember.Length > 0)
                             {
                                 ediFilesItemsClone[i].NonMember += ", ";
                             }
-                            ediFilesItemsClone[i].NonMember += inP.IP_NAME_LOCAL;                           
+                            ediFilesItemsClone[i].NonMember += $"{inP.IP_NAME_LOCAL} ({inP.Society})";                           
                         }
                         else
                         {
@@ -2579,8 +2585,18 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     #region gan doc quyen tac gia
                     if (monoMembers.Count > 0)
                     {
+                        CountNoteDP_mono = 0;
+                        CountNoteNS_mono = 0;
                         foreach (var inp in ediFilesItemsClone[i].ListInterestedParty)
                         {
+                            if(inp.Society == "NS")
+                            {
+                                CountNoteNS_mono++;
+                            }
+                            if (inp.Society == "DP")
+                            {
+                                CountNoteDP_mono++;
+                            }
                             var itemMonoMember = monoMembers.Where(p => p.CodeNew == inp.IP_INT_NO && p.NameType == inp.IP_NAMETYPE).ToList();
                             if (itemMonoMember.Count > 0)
                             {
@@ -2602,7 +2618,22 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                             }
                         }
-                        ediFilesItemsClone[i].MemberMonopolyNote = ediFilesItemsClone[i].MemberMonopolyNote.Trim();
+                        if (CountNoteNS_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
+                        {
+                            ediFilesItemsClone[i].MemberMonopolyNote = "100% không xác định";
+                        }
+                        else if (CountNoteDP_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
+                        {
+                            ediFilesItemsClone[i].MemberMonopolyNote = "100% DP";
+                        }
+                        else if ((CountNoteNS_mono+ CountNoteDP_mono) == ediFilesItemsClone[i].ListInterestedParty.Count)
+                        {
+                            ediFilesItemsClone[i].MemberMonopolyNote = "100% DP và không xác định";
+                        }
+                        else
+                        {
+                            ediFilesItemsClone[i].MemberMonopolyNote = ediFilesItemsClone[i].MemberMonopolyNote.Trim();
+                        }
                     }
                     #endregion
                 }
