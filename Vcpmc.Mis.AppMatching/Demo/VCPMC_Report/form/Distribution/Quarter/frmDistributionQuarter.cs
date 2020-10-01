@@ -50,6 +50,7 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
         bool isLoadMaster = true;
         bool isLoadDetail = false;
         bool isSync = false;
+        string strPP = string.Empty;
         #endregion
 
         #region Load
@@ -103,7 +104,7 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
 
         #endregion
 
-        #region timer      
+        #region timer     
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -121,11 +122,11 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
                 }
                 else if (Operation == OperationType.SaveAllPdf)
                 {
-                    SaveAll(currentDirectory, "PDF");
+                    SaveAll(currentDirectory, strPP, "PDF");
                 }
                 else if (Operation == OperationType.SaveExcel)
                 {
-                    SaveAll(currentDirectory, "Excel");
+                    SaveAll(currentDirectory, strPP, "Excel");
                 }
                 else if (Operation == OperationType.SysnData)
                 {
@@ -285,6 +286,8 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
                 year = (int)numYear.Value;
                 quarter = cboQuater.SelectedIndex + 1;
                 regions = cboRegons.Text;
+
+                strPP = $"PP{year}{quarter.ToString().PadLeft(2,'0')}";
                 isLoadMasterType = true;                
                 Operation = OperationType.LoadExcel;
                 pcloader.Visible = true;
@@ -330,6 +333,8 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
                 year = (int)numYear.Value;
                 quarter = cboQuater.SelectedIndex + 1;
                 regions = cboRegons.Text;
+
+                strPP = $"PP{year}{quarter.ToString().PadLeft(2, '0')}";
                 isLoadMaster = false;
                 //path = txtPath.Text.Trim();
                 //path1 = txtPath1.Text.Trim();
@@ -486,7 +491,7 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
                     if (dataMaster != null)
                     {
                         //dgvDetail.DataSource = detailData.Items;
-                        frmDistrisbutionQuarterReport f = new frmDistrisbutionQuarterReport(pathReportPDF);
+                        frmDistrisbutionQuarterReport f = new frmDistrisbutionQuarterReport(pathReportPDF,strPP);
                         f.dataSource = detailData;                        
                         f.ShowDialog();
                     }
@@ -692,7 +697,13 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
             }
             return check;
         }
-        private void SaveAll(string folderPath, string typeExport)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <param name="strPP">chuoi pp</param>
+        /// <param name="typeExport"></param>
+        private void SaveAll(string folderPath,string strPP, string typeExport)
         {
             try
             {
@@ -719,12 +730,12 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
                     if (typeExport == "PDF")
                     {
                         path = $"{folderPath}\\{item.NameFile}.pdf";
-                        SaveAll(localReport, exportS, path, typeExport);
+                        SaveAll(localReport, exportS, path, strPP, typeExport);
                     }
                     else
                     {
                         path = $"{folderPath}\\{item.NameFile}.xls";
-                        SaveAll(localReport, exportS, path, typeExport);
+                        SaveAll(localReport, exportS, path, strPP, typeExport);
                     }
                     exportS.Items.Clear();
                     exportS.Items = null;
@@ -757,7 +768,7 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
                 MessageBox.Show(ex.ToString());
             }
         }
-        private void SaveAll(LocalReport localReport,ViewModels.Mis.Distribution.Quarter.Distribution dataSource, string pathfull, string typeExport)
+        private void SaveAll(LocalReport localReport,ViewModels.Mis.Distribution.Quarter.Distribution dataSource, string pathfull,string strPP, string typeExport)
         {
             try
             {
@@ -774,6 +785,7 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
                     new ReportParameter("IPI_BASE_NO", dataSource.IPIBaseNo),
                     new ReportParameter("SERIAL_NO",dataSource.SerialNo.ToString()),
                     new ReportParameter("TOTAL", dataSource.TotalRoyalty.ToString()),
+                    new ReportParameter("STR_PP", strPP),
                 };
                
                 //localReport.      
