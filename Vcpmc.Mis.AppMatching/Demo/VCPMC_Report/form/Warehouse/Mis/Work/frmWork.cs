@@ -127,12 +127,17 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                         foreach (var item in data.ResultObj.Items)
                         {
                             item.WRITER = string.Empty;
+                            item.WRITER_LOCAL = string.Empty;
                             foreach (var sub in item.InterestedParties)
                             {
                                 item.WRITER += $"{sub.IP_NAME}, ";
+                                item.WRITER_LOCAL += $"{sub.IP_NAME_LOCAL}, ";
                             }
                             item.WRITER = item.WRITER.Trim();
                             if (item.WRITER.Length > 0) item.WRITER = item.WRITER.Substring(0, item.WRITER.Length - 1);
+
+                            item.WRITER_LOCAL = item.WRITER_LOCAL.Trim();
+                            if (item.WRITER_LOCAL.Length > 0) item.WRITER_LOCAL = item.WRITER_LOCAL.Substring(0, item.WRITER_LOCAL.Length - 1);
                         }
                         dgvMain.DataSource = data.ResultObj.Items;
                     }));

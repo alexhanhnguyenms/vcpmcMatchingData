@@ -132,7 +132,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
             }          
         }
         //int d = 1;
-        BindingSource bSource = new BindingSource();
+        //BindingSource bSource = new BindingSource();
         private void btnImport_Click(object sender, EventArgs e)
         {
             try
@@ -2263,7 +2263,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             IP_NAME = ediFilesItemsClone[i].IpName2,                           
                             IP_WK_ROLE = ediFilesItemsClone[i].IpWorkRole,
 
-                            WK_STATUS = "COMPLETE",
+                            //TODO 2020-10-02
+                            //WK_STATUS = "COMPLETE",
 
                             PER_OWN_SHR = ediFilesItemsClone[i].PerOwnShr,
                             PER_COL_SHR = ediFilesItemsClone[i].PerColShr,
@@ -2285,7 +2286,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             IP_NAMETYPE = ediFilesItemsClone[i].IpNameType,
                         });                        
                     }
-                    bool isCOMPLETE = true;
+                    //bool isCOMPLETE = true;
                     for (int iP = 0; iP < itmUpdate.InterestedParties.Count; iP++)
                     {
                         if (itmUpdate.WRITER != string.Empty)
@@ -2293,10 +2294,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             itmUpdate.WRITER += ",";
                         }
                         itmUpdate.WRITER += itmUpdate.InterestedParties[iP].IP_NAME;
-                        if (isCOMPLETE && itmUpdate.InterestedParties[iP].WK_STATUS != "COMPLETE")
-                        {
-                            isCOMPLETE = false;
-                        }
+                        //if (isCOMPLETE && itmUpdate.InterestedParties[iP].WK_STATUS != "COMPLETE")
+                        //{
+                        //    isCOMPLETE = false;
+                        //}
                     }
                     #endregion
                     
@@ -2310,7 +2311,9 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         //int a = 1;
                     }
                     itmUpdate.SOC_NAME = string.Empty;
-                    itmUpdate.WK_STATUS = isCOMPLETE == true ? "COMPLETE" : "INCOMPLETE";
+                    //TODO 2020-10-02
+                    //
+                    //itmUpdate.WK_STATUS = isCOMPLETE == true ? "COMPLETE" : "INCOMPLETE";
                     itmUpdate.StarRating = 1;
                     request.Items.Add(itmUpdate);
                 }

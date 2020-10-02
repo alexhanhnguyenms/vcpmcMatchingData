@@ -89,9 +89,11 @@
             this.serialNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WK_INT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TTL_ENG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TTL_LOCAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISWC_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISRC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WRITER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WRITER_LOCAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ARTIST = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SOC_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WK_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -230,9 +232,11 @@
             this.serialNo,
             this.WK_INT_NO,
             this.TTL_ENG,
+            this.TTL_LOCAL,
             this.ISWC_NO,
             this.ISRC,
             this.WRITER,
+            this.WRITER_LOCAL,
             this.ARTIST,
             this.SOC_NAME,
             this.WK_STATUS,
@@ -691,7 +695,7 @@
             // pcloader
             // 
             this.pcloader.Image = ((System.Drawing.Image)(resources.GetObject("pcloader.Image")));
-            this.pcloader.Location = new System.Drawing.Point(201, 97);
+            this.pcloader.Location = new System.Drawing.Point(309, 118);
             this.pcloader.Name = "pcloader";
             this.pcloader.Size = new System.Drawing.Size(64, 61);
             this.pcloader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -753,6 +757,15 @@
             this.TTL_ENG.ReadOnly = true;
             this.TTL_ENG.Width = 300;
             // 
+            // TTL_LOCAL
+            // 
+            this.TTL_LOCAL.DataPropertyName = "TTL_LOCAL";
+            this.TTL_LOCAL.FillWeight = 300F;
+            this.TTL_LOCAL.HeaderText = "Local title";
+            this.TTL_LOCAL.Name = "TTL_LOCAL";
+            this.TTL_LOCAL.ReadOnly = true;
+            this.TTL_LOCAL.Width = 300;
+            // 
             // ISWC_NO
             // 
             this.ISWC_NO.DataPropertyName = "ISWC_NO";
@@ -775,6 +788,15 @@
             this.WRITER.Name = "WRITER";
             this.WRITER.ReadOnly = true;
             this.WRITER.Width = 300;
+            // 
+            // WRITER_LOCAL
+            // 
+            this.WRITER_LOCAL.DataPropertyName = "WRITER_LOCAL";
+            this.WRITER_LOCAL.FillWeight = 300F;
+            this.WRITER_LOCAL.HeaderText = "Local writer";
+            this.WRITER_LOCAL.Name = "WRITER_LOCAL";
+            this.WRITER_LOCAL.ReadOnly = true;
+            this.WRITER_LOCAL.Width = 300;
             // 
             // ARTIST
             // 
@@ -997,9 +1019,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn serialNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn WK_INT_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn TTL_ENG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TTL_LOCAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISWC_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISRC;
         private System.Windows.Forms.DataGridViewTextBoxColumn WRITER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WRITER_LOCAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ARTIST;
         private System.Windows.Forms.DataGridViewTextBoxColumn SOC_NAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn WK_STATUS;

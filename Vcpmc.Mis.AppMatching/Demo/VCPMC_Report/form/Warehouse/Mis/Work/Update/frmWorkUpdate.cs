@@ -40,6 +40,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
         #region Data        
         private void LoadFrom()
         {
+            cboWK_STATUS.SelectedIndex = 0;
             if (_updataType == UpdataType.Edit || _updataType == UpdataType.View)
             {
                 if (_updataType == UpdataType.Edit)
@@ -59,6 +60,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                 txtTTL_ENG.Text = currenObject.TTL_ENG;
                 txtISWC_NO.Text = currenObject.ISWC_NO;
                 txtISRC.Text = currenObject.ISRC;               
+                txtTTL_LOCAL.Text = currenObject.TTL_LOCAL;               
 
                 string[] WRITERs = currenObject.WRITER.Split(',');
                 if (WRITERs.Length>0)
@@ -120,12 +122,14 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                     #region Common
                     txtWK_INT_NO.ReadOnly = true;
                     txtTTL_ENG.ReadOnly = true;
+                    txtTTL_LOCAL.ReadOnly = true;
                     txtISWC_NO.ReadOnly = true;
                     txtISRC.ReadOnly = true;
                     //txtWRITER.ReadOnly = true;
                     txtARTIST.ReadOnly = true;
                     txtSOC_NAME.ReadOnly = true;                    
                     btnOk.Enabled = false;
+                    cboWK_STATUS.Enabled = false;
                     //dgvInterestedParties.Enabled = false;
                     //dgvOtherTitle.Enabled = false;
                     ctMenuOtherTitle.Enabled = false;
@@ -157,9 +161,13 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
             {
                 currenObjectCreate.WK_INT_NO = VnHelper.ConvertToUnSign(txtWK_INT_NO.Text.Trim().ToUpper());
                 currenObjectCreate.TTL_ENG = VnHelper.ConvertToUnSign(txtTTL_ENG.Text.Trim().ToUpper());
+                currenObjectCreate.TTL_LOCAL = txtTTL_ENG.Text.Trim().ToUpper();
                 currenObjectCreate.ISWC_NO = VnHelper.ConvertToUnSign(txtISWC_NO.Text.Trim().ToUpper());
                 currenObjectCreate.ISRC = txtISRC.Text.Trim();
-                bool isCOMPLETE = true;
+
+                currenObjectCreate.WRITER = string.Empty;
+                currenObjectCreate.WRITER_LOCAL = string.Empty;
+                //bool isCOMPLETE = true;
                 for (int i = 0; i < currenObjectCreate.InterestedParties.Count; i++)
                 {
                     if(currenObjectCreate.WRITER!=string.Empty)
@@ -167,24 +175,39 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                         currenObjectCreate.WRITER += ",";
                     }
                     currenObjectCreate.WRITER += currenObjectCreate.InterestedParties[i].IP_NAME;
-                    if(isCOMPLETE && currenObjectCreate.InterestedParties[i].WK_STATUS != "COMPLETE")
+
+                    if (currenObjectCreate.InterestedParties[i].IP_NAME_LOCAL != string.Empty)
                     {
-                        isCOMPLETE = false;
+                        if (currenObjectCreate.WRITER_LOCAL != string.Empty)
+                        {
+                            currenObjectCreate.WRITER_LOCAL += ",";
+                        }
+                        currenObjectCreate.WRITER_LOCAL += currenObjectCreate.InterestedParties[i].IP_NAME_LOCAL;
+                        //TODO 2020-10-02
+                        //
+                        //if(isCOMPLETE && currenObjectCreate.InterestedParties[i].WK_STATUS != "COMPLETE")
+                        //{
+                        //    isCOMPLETE = false;
+                        //}
                     }
                 }
                 currenObjectCreate.ARTIST = VnHelper.ConvertToUnSign(txtARTIST.Text.Trim().ToUpper());
                 currenObjectCreate.SOC_NAME = VnHelper.ConvertToUnSign(txtSOC_NAME.Text.Trim().ToUpper());
-                currenObjectCreate.WK_STATUS = isCOMPLETE == true? "COMPLETE": "INCOMPLETE";
+                currenObjectCreate.WK_STATUS = cboWK_STATUS.Text;
                 currenObjectCreate.StarRating = (int)numStarRating.Value;
             }
             else
             {
-                bool isCOMPLETE = true;
+                //bool isCOMPLETE = true;
                 currenObjectUpdate.Id = currenObject.Id;
                 currenObjectUpdate.WK_INT_NO = VnHelper.ConvertToUnSign(txtWK_INT_NO.Text.Trim().ToUpper());
                 currenObjectUpdate.TTL_ENG = VnHelper.ConvertToUnSign(txtTTL_ENG.Text.Trim().ToUpper());
+                currenObjectUpdate.TTL_LOCAL = txtTTL_LOCAL.Text.Trim().ToUpper();
                 currenObjectUpdate.ISWC_NO = VnHelper.ConvertToUnSign(txtISWC_NO.Text.Trim().ToUpper());
                 currenObjectUpdate.ISRC = VnHelper.ConvertToUnSign(txtISRC.Text.Trim().ToUpper());
+
+                currenObjectUpdate.WRITER = string.Empty;
+                currenObjectUpdate.WRITER_LOCAL = string.Empty;
 
                 for (int i = 0; i < currenObjectUpdate.InterestedParties.Count; i++)
                 {
@@ -193,14 +216,25 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                         currenObjectUpdate.WRITER += ",";
                     }
                     currenObjectUpdate.WRITER += currenObjectUpdate.InterestedParties[i].IP_NAME;
-                    if (isCOMPLETE && currenObjectUpdate.InterestedParties[i].WK_STATUS != "COMPLETE")
+
+                    if(currenObjectUpdate.InterestedParties[i].IP_NAME_LOCAL!=string.Empty)
                     {
-                        isCOMPLETE = false;
+                        if (currenObjectUpdate.WRITER_LOCAL != string.Empty)
+                        {
+                            currenObjectUpdate.WRITER_LOCAL += ",";
+                        }
+                        currenObjectUpdate.WRITER_LOCAL += currenObjectUpdate.InterestedParties[i].IP_NAME_LOCAL;
+                        //TODO 2020-10-02
+                        //
+                        //if (isCOMPLETE && currenObjectUpdate.InterestedParties[i].WK_STATUS != "COMPLETE")
+                        //{
+                        //    isCOMPLETE = false;
+                        //}
                     }
                 }
                 currenObjectUpdate.ARTIST = VnHelper.ConvertToUnSign(txtARTIST.Text.Trim().ToUpper());
                 currenObjectUpdate.SOC_NAME = VnHelper.ConvertToUnSign(txtSOC_NAME.Text.Trim().ToUpper());
-                currenObjectUpdate.WK_STATUS = isCOMPLETE == true ? "COMPLETE" : "INCOMPLETE";
+                currenObjectUpdate.WK_STATUS = cboWK_STATUS.Text;
                 currenObjectUpdate.StarRating = (int)numStarRating.Value;
             }
 
@@ -593,7 +627,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                 item.IP_NAMETYPE = frm.inPar.IP_NAMETYPE;
                                 item.IP_WK_ROLE = frm.inPar.IP_WK_ROLE;
                                 item.IP_NAME = frm.inPar.IP_NAME;
-                                item.WK_STATUS = frm.inPar.WK_STATUS;
+                                //TODO 2020-10-02
+                                //item.WK_STATUS = frm.inPar.WK_STATUS;
                                 item.PER_OWN_SHR = frm.inPar.PER_OWN_SHR;
                                 item.PER_COL_SHR = frm.inPar.PER_COL_SHR;
                                 item.MEC_OWN_SHR = frm.inPar.MEC_OWN_SHR;
@@ -602,6 +637,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                 item.TOTAL_MEC_SHR = frm.inPar.TOTAL_MEC_SHR;
                                 item.SYN_OWN_SHR = frm.inPar.SYN_OWN_SHR;
                                 item.SYN_COL_SHR = frm.inPar.SYN_COL_SHR;
+                                item.Society = frm.inPar.Society;
+                                item.IP_NAME_LOCAL = frm.inPar.IP_NAME_LOCAL;
                             }
                             currenObjectCreate.InterestedParties = currenObjectCreate.InterestedParties.OrderBy(p => p.IP_INT_NO).ToList();
                             dgvInterestedParties.DataSource = currenObjectCreate.InterestedParties;
@@ -615,7 +652,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                 item.IP_NAMETYPE = frm.inPar.IP_NAMETYPE;
                                 item.IP_WK_ROLE = frm.inPar.IP_WK_ROLE;
                                 item.IP_NAME = frm.inPar.IP_NAME;
-                                item.WK_STATUS = frm.inPar.WK_STATUS;
+                                //TODO 2020-10-02
+                                //item.WK_STATUS = frm.inPar.WK_STATUS;
                                 item.PER_OWN_SHR = frm.inPar.PER_OWN_SHR;
                                 item.PER_COL_SHR = frm.inPar.PER_COL_SHR;
                                 item.MEC_OWN_SHR = frm.inPar.MEC_OWN_SHR;
@@ -624,6 +662,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                 item.TOTAL_MEC_SHR = frm.inPar.TOTAL_MEC_SHR;
                                 item.SYN_OWN_SHR = frm.inPar.SYN_OWN_SHR;
                                 item.SYN_COL_SHR = frm.inPar.SYN_COL_SHR;
+                                item.Society = frm.inPar.Society;
+                                item.IP_NAME_LOCAL = frm.inPar.IP_NAME_LOCAL;
                             }
                             currenObjectUpdate.InterestedParties = currenObjectUpdate.InterestedParties.OrderBy(p => p.IP_INT_NO).ToList();
                             dgvInterestedParties.DataSource = currenObjectUpdate.InterestedParties;

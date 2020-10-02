@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInfoWork));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClearFilter = new System.Windows.Forms.ToolStripButton();
             this.txtISWC_NO = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -82,18 +82,6 @@
             this.btnNxtPage = new System.Windows.Forms.Button();
             this.btnFirstPAge = new System.Windows.Forms.Button();
             this.dgvMain = new System.Windows.Forms.DataGridView();
-            this.Choise = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.MonopolyMembers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MonopolyWorks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serialNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WK_INT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TTL_ENG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WRITER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISWC_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISRC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARTIST = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOC_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.gbMonopoly = new System.Windows.Forms.GroupBox();
             this.dgvMonopolyOfWork = new System.Windows.Forms.DataGridView();
@@ -176,6 +164,27 @@
             this.txtCode3 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.Choise = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SerialNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MonopolyMembers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MonopolyWorks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WK_INT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TTL_ENG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WRITER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TTL_LOCAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WRITER_LOCAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARTIST = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISRC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISWC_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOC_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalWriterRequest = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalWriterMatching = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RateWriterMatch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsCheckMatchingArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalNonMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalMemberVcpmc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusMain.SuspendLayout();
             this.toolMain.SuspendLayout();
             this.pRight.SuspendLayout();
@@ -673,17 +682,26 @@
             this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Choise,
+            this.SerialNo,
             this.MonopolyMembers,
             this.MonopolyWorks,
             this.id,
-            this.serialNo,
             this.WK_INT_NO,
             this.TTL_ENG,
             this.WRITER,
-            this.ISWC_NO,
-            this.ISRC,
+            this.TTL_LOCAL,
+            this.WRITER_LOCAL,
             this.ARTIST,
-            this.SOC_NAME});
+            this.ISRC,
+            this.ISWC_NO,
+            this.SOC_NAME,
+            this.TotalWriterRequest,
+            this.TotalWriterMatching,
+            this.RateWriterMatch,
+            this.IsCheckMatchingArtist,
+            this.TotalMember,
+            this.TotalNonMember,
+            this.TotalMemberVcpmc});
             this.dgvMain.Location = new System.Drawing.Point(3, 31);
             this.dgvMain.Name = "dgvMain";
             this.dgvMain.ReadOnly = true;
@@ -691,107 +709,6 @@
             this.dgvMain.TabIndex = 45;
             this.dgvMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_CellClick);
             this.dgvMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvMain_MouseDoubleClick);
-            // 
-            // Choise
-            // 
-            this.Choise.DataPropertyName = "Choise";
-            this.Choise.FillWeight = 40F;
-            this.Choise.HeaderText = "";
-            this.Choise.Name = "Choise";
-            this.Choise.ReadOnly = true;
-            this.Choise.Width = 40;
-            // 
-            // MonopolyMembers
-            // 
-            this.MonopolyMembers.DataPropertyName = "MonopolyMembers";
-            this.MonopolyMembers.HeaderText = "MonopolyMmebers";
-            this.MonopolyMembers.Name = "MonopolyMembers";
-            this.MonopolyMembers.ReadOnly = true;
-            this.MonopolyMembers.Visible = false;
-            // 
-            // MonopolyWorks
-            // 
-            this.MonopolyWorks.DataPropertyName = "MonopolyWorks";
-            this.MonopolyWorks.HeaderText = "MonopolyWorks";
-            this.MonopolyWorks.Name = "MonopolyWorks";
-            this.MonopolyWorks.ReadOnly = true;
-            this.MonopolyWorks.Visible = false;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // serialNo
-            // 
-            this.serialNo.DataPropertyName = "SerialNo";
-            this.serialNo.FillWeight = 70F;
-            this.serialNo.HeaderText = "Serial no";
-            this.serialNo.Name = "serialNo";
-            this.serialNo.ReadOnly = true;
-            this.serialNo.Width = 70;
-            // 
-            // WK_INT_NO
-            // 
-            this.WK_INT_NO.DataPropertyName = "WK_INT_NO";
-            this.WK_INT_NO.FillWeight = 70F;
-            this.WK_INT_NO.HeaderText = "Workcode";
-            this.WK_INT_NO.Name = "WK_INT_NO";
-            this.WK_INT_NO.ReadOnly = true;
-            this.WK_INT_NO.Width = 70;
-            // 
-            // TTL_ENG
-            // 
-            this.TTL_ENG.DataPropertyName = "TTL_ENG";
-            this.TTL_ENG.FillWeight = 300F;
-            this.TTL_ENG.HeaderText = "Title";
-            this.TTL_ENG.Name = "TTL_ENG";
-            this.TTL_ENG.ReadOnly = true;
-            this.TTL_ENG.Width = 300;
-            // 
-            // WRITER
-            // 
-            this.WRITER.DataPropertyName = "WRITER";
-            this.WRITER.FillWeight = 300F;
-            this.WRITER.HeaderText = "Writers";
-            this.WRITER.Name = "WRITER";
-            this.WRITER.ReadOnly = true;
-            this.WRITER.Width = 300;
-            // 
-            // ISWC_NO
-            // 
-            this.ISWC_NO.DataPropertyName = "ISWC_NO";
-            this.ISWC_NO.HeaderText = "ISWC";
-            this.ISWC_NO.Name = "ISWC_NO";
-            this.ISWC_NO.ReadOnly = true;
-            // 
-            // ISRC
-            // 
-            this.ISRC.DataPropertyName = "ISRC";
-            this.ISRC.HeaderText = "ISRC";
-            this.ISRC.Name = "ISRC";
-            this.ISRC.ReadOnly = true;
-            // 
-            // ARTIST
-            // 
-            this.ARTIST.DataPropertyName = "ARTIST";
-            this.ARTIST.FillWeight = 300F;
-            this.ARTIST.HeaderText = "ARTIST";
-            this.ARTIST.Name = "ARTIST";
-            this.ARTIST.ReadOnly = true;
-            this.ARTIST.Width = 300;
-            // 
-            // SOC_NAME
-            // 
-            this.SOC_NAME.DataPropertyName = "SOC_NAME";
-            this.SOC_NAME.FillWeight = 50F;
-            this.SOC_NAME.HeaderText = "Soc Name";
-            this.SOC_NAME.Name = "SOC_NAME";
-            this.SOC_NAME.ReadOnly = true;
-            this.SOC_NAME.Width = 50;
             // 
             // label9
             // 
@@ -1091,8 +1008,8 @@
             // StartTime
             // 
             this.StartTime.DataPropertyName = "StartTime";
-            dataGridViewCellStyle9.Format = "dd/MM/yyyy";
-            this.StartTime.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle33.Format = "dd/MM/yyyy";
+            this.StartTime.DefaultCellStyle = dataGridViewCellStyle33;
             this.StartTime.HeaderText = "Ngày bắt đầu";
             this.StartTime.Name = "StartTime";
             this.StartTime.ReadOnly = true;
@@ -1100,8 +1017,8 @@
             // EndTime
             // 
             this.EndTime.DataPropertyName = "EndTime";
-            dataGridViewCellStyle10.Format = "dd/MM/yyyy";
-            this.EndTime.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle34.Format = "dd/MM/yyyy";
+            this.EndTime.DefaultCellStyle = dataGridViewCellStyle34;
             this.EndTime.HeaderText = "Ngày kết thúc";
             this.EndTime.Name = "EndTime";
             this.EndTime.ReadOnly = true;
@@ -1109,8 +1026,8 @@
             // UpdateTime
             // 
             this.UpdateTime.DataPropertyName = "UpdateTime";
-            dataGridViewCellStyle11.Format = "dd/MM/yyyy";
-            this.UpdateTime.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle35.Format = "dd/MM/yyyy";
+            this.UpdateTime.DefaultCellStyle = dataGridViewCellStyle35;
             this.UpdateTime.HeaderText = "Ngày cập nhật";
             this.UpdateTime.Name = "UpdateTime";
             this.UpdateTime.ReadOnly = true;
@@ -1118,8 +1035,8 @@
             // ReceiveTime
             // 
             this.ReceiveTime.DataPropertyName = "ReceiveTime";
-            dataGridViewCellStyle12.Format = "dd/MM/yyyy";
-            this.ReceiveTime.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle36.Format = "dd/MM/yyyy";
+            this.ReceiveTime.DefaultCellStyle = dataGridViewCellStyle36;
             this.ReceiveTime.HeaderText = "Ngày nhận";
             this.ReceiveTime.Name = "ReceiveTime";
             this.ReceiveTime.ReadOnly = true;
@@ -1473,8 +1390,8 @@
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.DataPropertyName = "StartTime";
-            dataGridViewCellStyle13.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle37.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle37;
             this.dataGridViewTextBoxColumn13.HeaderText = "Ngày bắt đầu";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
@@ -1482,8 +1399,8 @@
             // dataGridViewTextBoxColumn14
             // 
             this.dataGridViewTextBoxColumn14.DataPropertyName = "EndTime";
-            dataGridViewCellStyle14.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle38.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle38;
             this.dataGridViewTextBoxColumn14.HeaderText = "Ngày kết thúc";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
@@ -1491,8 +1408,8 @@
             // dataGridViewTextBoxColumn15
             // 
             this.dataGridViewTextBoxColumn15.DataPropertyName = "UpdateTime";
-            dataGridViewCellStyle15.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle39.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle39;
             this.dataGridViewTextBoxColumn15.HeaderText = "Ngày cập nhật";
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
@@ -1500,8 +1417,8 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "ReceiveTime";
-            dataGridViewCellStyle16.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle40.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle40;
             this.dataGridViewTextBoxColumn16.HeaderText = "Ngày nhận";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -1636,6 +1553,181 @@
             this.label12.TabIndex = 53;
             this.label12.Text = "(Double click to view item details)";
             // 
+            // Choise
+            // 
+            this.Choise.DataPropertyName = "Choise";
+            this.Choise.FillWeight = 40F;
+            this.Choise.HeaderText = "";
+            this.Choise.Name = "Choise";
+            this.Choise.ReadOnly = true;
+            this.Choise.Width = 40;
+            // 
+            // SerialNo
+            // 
+            this.SerialNo.DataPropertyName = "SerialNo";
+            this.SerialNo.HeaderText = "SerialNo";
+            this.SerialNo.Name = "SerialNo";
+            this.SerialNo.ReadOnly = true;
+            // 
+            // MonopolyMembers
+            // 
+            this.MonopolyMembers.DataPropertyName = "MonopolyMembers";
+            this.MonopolyMembers.HeaderText = "MonopolyMmebers";
+            this.MonopolyMembers.Name = "MonopolyMembers";
+            this.MonopolyMembers.ReadOnly = true;
+            this.MonopolyMembers.Visible = false;
+            // 
+            // MonopolyWorks
+            // 
+            this.MonopolyWorks.DataPropertyName = "MonopolyWorks";
+            this.MonopolyWorks.HeaderText = "MonopolyWorks";
+            this.MonopolyWorks.Name = "MonopolyWorks";
+            this.MonopolyWorks.ReadOnly = true;
+            this.MonopolyWorks.Visible = false;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // WK_INT_NO
+            // 
+            this.WK_INT_NO.DataPropertyName = "WK_INT_NO";
+            this.WK_INT_NO.FillWeight = 70F;
+            this.WK_INT_NO.HeaderText = "Workcode";
+            this.WK_INT_NO.Name = "WK_INT_NO";
+            this.WK_INT_NO.ReadOnly = true;
+            this.WK_INT_NO.Width = 70;
+            // 
+            // TTL_ENG
+            // 
+            this.TTL_ENG.DataPropertyName = "TTL_ENG";
+            this.TTL_ENG.FillWeight = 400F;
+            this.TTL_ENG.HeaderText = "Title";
+            this.TTL_ENG.Name = "TTL_ENG";
+            this.TTL_ENG.ReadOnly = true;
+            this.TTL_ENG.Width = 400;
+            // 
+            // WRITER
+            // 
+            this.WRITER.DataPropertyName = "WRITER";
+            this.WRITER.FillWeight = 400F;
+            this.WRITER.HeaderText = "Writers";
+            this.WRITER.Name = "WRITER";
+            this.WRITER.ReadOnly = true;
+            this.WRITER.Width = 400;
+            // 
+            // TTL_LOCAL
+            // 
+            this.TTL_LOCAL.DataPropertyName = "TTL_LOCAL";
+            this.TTL_LOCAL.FillWeight = 400F;
+            this.TTL_LOCAL.HeaderText = "Local title";
+            this.TTL_LOCAL.Name = "TTL_LOCAL";
+            this.TTL_LOCAL.ReadOnly = true;
+            this.TTL_LOCAL.Width = 400;
+            // 
+            // WRITER_LOCAL
+            // 
+            this.WRITER_LOCAL.DataPropertyName = "WRITER_LOCAL";
+            this.WRITER_LOCAL.FillWeight = 400F;
+            this.WRITER_LOCAL.HeaderText = "Local writers";
+            this.WRITER_LOCAL.Name = "WRITER_LOCAL";
+            this.WRITER_LOCAL.ReadOnly = true;
+            this.WRITER_LOCAL.Width = 400;
+            // 
+            // ARTIST
+            // 
+            this.ARTIST.DataPropertyName = "ARTIST";
+            this.ARTIST.FillWeight = 300F;
+            this.ARTIST.HeaderText = "ARTIST";
+            this.ARTIST.Name = "ARTIST";
+            this.ARTIST.ReadOnly = true;
+            this.ARTIST.Width = 300;
+            // 
+            // ISRC
+            // 
+            this.ISRC.DataPropertyName = "ISRC";
+            this.ISRC.HeaderText = "ISRC";
+            this.ISRC.Name = "ISRC";
+            this.ISRC.ReadOnly = true;
+            this.ISRC.Visible = false;
+            // 
+            // ISWC_NO
+            // 
+            this.ISWC_NO.DataPropertyName = "ISWC_NO";
+            this.ISWC_NO.HeaderText = "ISWC";
+            this.ISWC_NO.Name = "ISWC_NO";
+            this.ISWC_NO.ReadOnly = true;
+            this.ISWC_NO.Visible = false;
+            // 
+            // SOC_NAME
+            // 
+            this.SOC_NAME.DataPropertyName = "SOC_NAME";
+            this.SOC_NAME.FillWeight = 50F;
+            this.SOC_NAME.HeaderText = "Soc Name";
+            this.SOC_NAME.Name = "SOC_NAME";
+            this.SOC_NAME.ReadOnly = true;
+            this.SOC_NAME.Width = 50;
+            // 
+            // TotalWriterRequest
+            // 
+            this.TotalWriterRequest.DataPropertyName = "TotalWriterRequest";
+            this.TotalWriterRequest.HeaderText = "TotalWriterRequest";
+            this.TotalWriterRequest.Name = "TotalWriterRequest";
+            this.TotalWriterRequest.ReadOnly = true;
+            this.TotalWriterRequest.Visible = false;
+            // 
+            // TotalWriterMatching
+            // 
+            this.TotalWriterMatching.DataPropertyName = "TotalWriterMatching";
+            this.TotalWriterMatching.HeaderText = "TotalWriterMatching";
+            this.TotalWriterMatching.Name = "TotalWriterMatching";
+            this.TotalWriterMatching.ReadOnly = true;
+            this.TotalWriterMatching.Visible = false;
+            // 
+            // RateWriterMatch
+            // 
+            this.RateWriterMatch.DataPropertyName = "RateWriterMatch";
+            this.RateWriterMatch.HeaderText = "RateWriterMatch";
+            this.RateWriterMatch.Name = "RateWriterMatch";
+            this.RateWriterMatch.ReadOnly = true;
+            this.RateWriterMatch.Visible = false;
+            // 
+            // IsCheckMatchingArtist
+            // 
+            this.IsCheckMatchingArtist.DataPropertyName = "IsCheckMatchingArtist";
+            this.IsCheckMatchingArtist.HeaderText = "IsCheckMatchingArtist";
+            this.IsCheckMatchingArtist.Name = "IsCheckMatchingArtist";
+            this.IsCheckMatchingArtist.ReadOnly = true;
+            this.IsCheckMatchingArtist.Visible = false;
+            // 
+            // TotalMember
+            // 
+            this.TotalMember.DataPropertyName = "TotalMember";
+            this.TotalMember.HeaderText = "TotalMember";
+            this.TotalMember.Name = "TotalMember";
+            this.TotalMember.ReadOnly = true;
+            this.TotalMember.Visible = false;
+            // 
+            // TotalNonMember
+            // 
+            this.TotalNonMember.DataPropertyName = "TotalNonMember";
+            this.TotalNonMember.HeaderText = "TotalNonMember";
+            this.TotalNonMember.Name = "TotalNonMember";
+            this.TotalNonMember.ReadOnly = true;
+            this.TotalNonMember.Visible = false;
+            // 
+            // TotalMemberVcpmc
+            // 
+            this.TotalMemberVcpmc.DataPropertyName = "TotalMemberVcpmc";
+            this.TotalMemberVcpmc.HeaderText = "TotalMemberVcpmc";
+            this.TotalMemberVcpmc.Name = "TotalMemberVcpmc";
+            this.TotalMemberVcpmc.ReadOnly = true;
+            this.TotalMemberVcpmc.Visible = false;
+            // 
             // frmInfoWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1742,18 +1834,6 @@
         private System.Windows.Forms.DataGridView dgvMonopoly;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Choise;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MonopolyMembers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MonopolyWorks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serialNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WK_INT_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TTL_ENG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WRITER;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ISWC_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ISRC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ARTIST;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SOC_NAME;
         private System.Windows.Forms.ComboBox cboMonoTypeSearch;
         private System.Windows.Forms.PictureBox pcloader3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
@@ -1820,5 +1900,26 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ReceiveTime;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsExpired;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Choise;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SerialNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MonopolyMembers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MonopolyWorks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WK_INT_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TTL_ENG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WRITER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TTL_LOCAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WRITER_LOCAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ARTIST;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ISRC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ISWC_NO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SOC_NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalWriterRequest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalWriterMatching;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RateWriterMatch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IsCheckMatchingArtist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalNonMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalMemberVcpmc;
     }
 }

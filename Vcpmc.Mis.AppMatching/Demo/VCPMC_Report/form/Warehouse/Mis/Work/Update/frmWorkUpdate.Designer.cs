@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWorkUpdate));
             this.lbInfo = new System.Windows.Forms.Label();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cboWK_STATUS = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.numStarRating = new System.Windows.Forms.NumericUpDown();
             this.tabDetail = new System.Windows.Forms.TabControl();
@@ -45,7 +47,7 @@
             this.IP_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IP_NAMETYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IP_WK_ROLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WK_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Society = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountUpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastUpdateAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastChoiseAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +85,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTTL_LOCAL = new System.Windows.Forms.TextBox();
             this.tabMain.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStarRating)).BeginInit();
@@ -121,6 +125,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.txtTTL_LOCAL);
+            this.tabPage2.Controls.Add(this.cboWK_STATUS);
+            this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.numStarRating);
             this.tabPage2.Controls.Add(this.tabDetail);
@@ -144,27 +152,49 @@
             this.tabPage2.Text = "Common";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // cboWK_STATUS
+            // 
+            this.cboWK_STATUS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboWK_STATUS.FormattingEnabled = true;
+            this.cboWK_STATUS.Items.AddRange(new object[] {
+            "COMPLETE",
+            "INCOMPLETE",
+            "UNIDENTIFIED"});
+            this.cboWK_STATUS.Location = new System.Drawing.Point(99, 226);
+            this.cboWK_STATUS.Name = "cboWK_STATUS";
+            this.cboWK_STATUS.Size = new System.Drawing.Size(139, 20);
+            this.cboWK_STATUS.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 230);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "WORK STATUS";
+            // 
             // label11
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 187);
+            this.label11.Location = new System.Drawing.Point(6, 208);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 13);
-            this.label11.TabIndex = 12;
+            this.label11.TabIndex = 14;
             this.label11.Text = "Star rating";
             // 
             // numStarRating
             // 
-            this.numStarRating.Location = new System.Drawing.Point(99, 182);
+            this.numStarRating.Location = new System.Drawing.Point(99, 203);
             this.numStarRating.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
             this.numStarRating.Name = "numStarRating";
-            this.numStarRating.Size = new System.Drawing.Size(98, 18);
-            this.numStarRating.TabIndex = 13;
+            this.numStarRating.Size = new System.Drawing.Size(139, 18);
+            this.numStarRating.TabIndex = 15;
             this.numStarRating.Value = new decimal(new int[] {
             100,
             0,
@@ -178,10 +208,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabDetail.Controls.Add(this.tabPage3);
             this.tabDetail.Controls.Add(this.tabPage1);
-            this.tabDetail.Location = new System.Drawing.Point(9, 203);
+            this.tabDetail.Location = new System.Drawing.Point(9, 254);
             this.tabDetail.Name = "tabDetail";
             this.tabDetail.SelectedIndex = 0;
-            this.tabDetail.Size = new System.Drawing.Size(1257, 318);
+            this.tabDetail.Size = new System.Drawing.Size(1257, 267);
             this.tabDetail.TabIndex = 14;
             // 
             // tabPage3
@@ -190,7 +220,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 21);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1249, 293);
+            this.tabPage3.Size = new System.Drawing.Size(1249, 242);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Interested Parties";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -206,7 +236,7 @@
             this.IP_NAME,
             this.IP_NAMETYPE,
             this.IP_WK_ROLE,
-            this.WK_STATUS,
+            this.Society,
             this.CountUpdate,
             this.LastUpdateAt,
             this.LastChoiseAt,
@@ -223,7 +253,7 @@
             this.dgvInterestedParties.Location = new System.Drawing.Point(3, 3);
             this.dgvInterestedParties.Name = "dgvInterestedParties";
             this.dgvInterestedParties.ReadOnly = true;
-            this.dgvInterestedParties.Size = new System.Drawing.Size(1243, 287);
+            this.dgvInterestedParties.Size = new System.Drawing.Size(1243, 236);
             this.dgvInterestedParties.TabIndex = 0;
             // 
             // Nox
@@ -263,12 +293,12 @@
             this.IP_WK_ROLE.Name = "IP_WK_ROLE";
             this.IP_WK_ROLE.ReadOnly = true;
             // 
-            // WK_STATUS
+            // Society
             // 
-            this.WK_STATUS.DataPropertyName = "WK_STATUS";
-            this.WK_STATUS.HeaderText = "WK_STATUS";
-            this.WK_STATUS.Name = "WK_STATUS";
-            this.WK_STATUS.ReadOnly = true;
+            this.Society.DataPropertyName = "Society";
+            this.Society.HeaderText = "Society";
+            this.Society.Name = "Society";
+            this.Society.ReadOnly = true;
             // 
             // CountUpdate
             // 
@@ -280,8 +310,8 @@
             // LastUpdateAt
             // 
             this.LastUpdateAt.DataPropertyName = "LastUpdateAt";
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy HH:mm:ss";
-            this.LastUpdateAt.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy HH:mm:ss";
+            this.LastUpdateAt.DefaultCellStyle = dataGridViewCellStyle3;
             this.LastUpdateAt.FillWeight = 130F;
             this.LastUpdateAt.HeaderText = "Last Update At";
             this.LastUpdateAt.Name = "LastUpdateAt";
@@ -291,8 +321,8 @@
             // LastChoiseAt
             // 
             this.LastChoiseAt.DataPropertyName = "LastChoiseAt";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy HH:mm:ss";
-            this.LastChoiseAt.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm:ss";
+            this.LastChoiseAt.DefaultCellStyle = dataGridViewCellStyle4;
             this.LastChoiseAt.FillWeight = 130F;
             this.LastChoiseAt.HeaderText = "Last Choise At";
             this.LastChoiseAt.Name = "LastChoiseAt";
@@ -394,7 +424,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 21);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1249, 244);
+            this.tabPage1.Size = new System.Drawing.Size(1249, 261);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Other Title";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -412,7 +442,7 @@
             this.dgvOtherTitle.Location = new System.Drawing.Point(3, 3);
             this.dgvOtherTitle.Name = "dgvOtherTitle";
             this.dgvOtherTitle.ReadOnly = true;
-            this.dgvOtherTitle.Size = new System.Drawing.Size(1243, 238);
+            this.dgvOtherTitle.Size = new System.Drawing.Size(1243, 255);
             this.dgvOtherTitle.TabIndex = 0;
             // 
             // no
@@ -466,37 +496,37 @@
             // 
             // txtSOC_NAME
             // 
-            this.txtSOC_NAME.Location = new System.Drawing.Point(99, 159);
+            this.txtSOC_NAME.Location = new System.Drawing.Point(99, 180);
             this.txtSOC_NAME.Name = "txtSOC_NAME";
-            this.txtSOC_NAME.Size = new System.Drawing.Size(98, 18);
-            this.txtSOC_NAME.TabIndex = 11;
+            this.txtSOC_NAME.Size = new System.Drawing.Size(139, 18);
+            this.txtSOC_NAME.TabIndex = 13;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 162);
+            this.label5.Location = new System.Drawing.Point(6, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 13);
-            this.label5.TabIndex = 10;
+            this.label5.TabIndex = 12;
             this.label5.Text = "SOC NAME";
             // 
             // txtARTIST
             // 
             this.txtARTIST.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtARTIST.Location = new System.Drawing.Point(99, 91);
+            this.txtARTIST.Location = new System.Drawing.Point(99, 112);
             this.txtARTIST.Multiline = true;
             this.txtARTIST.Name = "txtARTIST";
             this.txtARTIST.Size = new System.Drawing.Size(1165, 62);
-            this.txtARTIST.TabIndex = 9;
+            this.txtARTIST.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 51);
+            this.label7.Location = new System.Drawing.Point(6, 73);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 13);
-            this.label7.TabIndex = 4;
+            this.label7.TabIndex = 6;
             this.label7.Text = "ISWC_NO";
             // 
             // label6
@@ -510,26 +540,26 @@
             // 
             // txtISRC
             // 
-            this.txtISRC.Location = new System.Drawing.Point(99, 69);
+            this.txtISRC.Location = new System.Drawing.Point(99, 91);
             this.txtISRC.Name = "txtISRC";
-            this.txtISRC.Size = new System.Drawing.Size(98, 18);
-            this.txtISRC.TabIndex = 7;
+            this.txtISRC.Size = new System.Drawing.Size(139, 18);
+            this.txtISRC.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 93);
+            this.label4.Location = new System.Drawing.Point(6, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 13);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 10;
             this.label4.Text = "Artist";
             // 
             // txtISWC_NO
             // 
-            this.txtISWC_NO.Location = new System.Drawing.Point(99, 48);
+            this.txtISWC_NO.Location = new System.Drawing.Point(99, 70);
             this.txtISWC_NO.Name = "txtISWC_NO";
-            this.txtISWC_NO.Size = new System.Drawing.Size(98, 18);
-            this.txtISWC_NO.TabIndex = 5;
+            this.txtISWC_NO.Size = new System.Drawing.Size(139, 18);
+            this.txtISWC_NO.TabIndex = 7;
             // 
             // txtTTL_ENG
             // 
@@ -543,17 +573,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 72);
+            this.label2.Location = new System.Drawing.Point(6, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 6;
+            this.label2.TabIndex = 8;
             this.label2.Text = "ISRC";
             // 
             // txtWK_INT_NO
             // 
             this.txtWK_INT_NO.Location = new System.Drawing.Point(99, 6);
             this.txtWK_INT_NO.Name = "txtWK_INT_NO";
-            this.txtWK_INT_NO.Size = new System.Drawing.Size(98, 18);
+            this.txtWK_INT_NO.Size = new System.Drawing.Size(139, 18);
             this.txtWK_INT_NO.TabIndex = 1;
             // 
             // label1
@@ -571,7 +601,7 @@
             this.btnCancel.Location = new System.Drawing.Point(79, 556);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 21);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -582,10 +612,28 @@
             this.btnOk.Location = new System.Drawing.Point(3, 556);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 21);
-            this.btnOk.TabIndex = 1;
+            this.btnOk.TabIndex = 0;
             this.btnOk.Text = "Save";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 51);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Title_local";
+            // 
+            // txtTTL_LOCAL
+            // 
+            this.txtTTL_LOCAL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTTL_LOCAL.Location = new System.Drawing.Point(99, 48);
+            this.txtTTL_LOCAL.Name = "txtTTL_LOCAL";
+            this.txtTTL_LOCAL.Size = new System.Drawing.Size(1165, 18);
+            this.txtTTL_LOCAL.TabIndex = 5;
             // 
             // frmWorkUpdate
             // 
@@ -654,12 +702,16 @@
         private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem1;
         private System.Windows.Forms.DataGridViewTextBoxColumn no;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown numStarRating;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboWK_STATUS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nox;
         private System.Windows.Forms.DataGridViewTextBoxColumn IP_INT_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn IP_NAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn IP_NAMETYPE;
         private System.Windows.Forms.DataGridViewTextBoxColumn IP_WK_ROLE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WK_STATUS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Society;
         private System.Windows.Forms.DataGridViewTextBoxColumn CountUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastUpdateAt;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastChoiseAt;
@@ -671,7 +723,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL_MEC_SHR;
         private System.Windows.Forms.DataGridViewTextBoxColumn SYN_OWN_SHR;
         private System.Windows.Forms.DataGridViewTextBoxColumn SYN_COL_SHR;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown numStarRating;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtTTL_LOCAL;
     }
 }

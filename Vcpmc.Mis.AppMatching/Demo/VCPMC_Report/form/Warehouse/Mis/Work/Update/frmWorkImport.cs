@@ -692,7 +692,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                 IP_NAME = dataLoad[i].WRITER,
                                 IP_WK_ROLE = dataLoad[i].WK_ROLE,
 
-                                WK_STATUS = dataLoad[i].STATUS,
+                                //TODO 2020-10-02
+                                //WK_STATUS = dataLoad[i].STATUS,
 
                                 PER_OWN_SHR = dataLoad[i].PER_OWN_SHR,
                                 PER_COL_SHR = dataLoad[i].PER_OWN_SHR,
@@ -734,7 +735,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                         IP_NAME = dataLoad[i].WRITER,
                                         IP_WK_ROLE = dataLoad[i].WK_ROLE,
 
-                                        WK_STATUS = dataLoad[i].STATUS,
+                                        //TODO 2020-10-02
+                                        //WK_STATUS = dataLoad[i].STATUS,
 
                                         PER_OWN_SHR = dataLoad[i].PER_OWN_SHR,
                                         PER_COL_SHR = dataLoad[i].PER_OWN_SHR,
@@ -824,7 +826,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                         IP_NAME = writer[k].Trim(),
                                         IP_WK_ROLE = role,
 
-                                        WK_STATUS = status,
+                                        //TODO 2020-10-02
+                                        //WK_STATUS = status,
 
                                         PER_OWN_SHR = 0,
                                         PER_COL_SHR = 0,

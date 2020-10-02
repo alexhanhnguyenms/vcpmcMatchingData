@@ -650,7 +650,7 @@ namespace Vcpmc.Mis.Application.Mis.Works
                         In.StarRating += data[0].StarRating;
                         In.OtherTitles = data[0].OtherTitles;
                         In.InterestedParties = data[0].InterestedParties;                                         
-                        bool isComplete = true;
+                        //bool isComplete = true;
 
                         #region Cap nhat tac pham
                         foreach (var par in otherTitleNews)
@@ -695,7 +695,7 @@ namespace Vcpmc.Mis.Application.Mis.Works
                                 {
                                     dataPar.IP_WK_ROLE = par.IP_WK_ROLE;
                                 }                               
-                                dataPar.WK_STATUS = "COMPLETE";
+                                //dataPar.WK_STATUS = "COMPLETE";
 
                                 dataPar.PER_OWN_SHR = par.PER_OWN_SHR;
                                 dataPar.PER_COL_SHR = par.PER_COL_SHR;
@@ -736,7 +736,7 @@ namespace Vcpmc.Mis.Application.Mis.Works
                                         dataParNames[0].IP_WK_ROLE = par.IP_WK_ROLE;
                                     }
                                     
-                                    dataParNames[0].WK_STATUS = "COMPLETE";
+                                    //dataParNames[0].WK_STATUS = "COMPLETE";
 
                                     dataParNames[0].PER_OWN_SHR = par.PER_OWN_SHR;
                                     dataParNames[0].PER_COL_SHR = par.PER_COL_SHR;
@@ -773,15 +773,17 @@ namespace Vcpmc.Mis.Application.Mis.Works
                         #endregion
 
                         #region trang thai
-                        foreach (var par in In.InterestedParties)
-                        {
-                            if (par.WK_STATUS != "COMPLETE")
-                            {
-                                isComplete = false;
-                                break;
-                            }
-                        }
-                        In.WK_STATUS = isComplete == true ? "COMPLETE" : "INCOMPLETE";
+                        //2020-10-02 TODO
+                        //foreach (var par in In.InterestedParties)
+                        //{
+                        //    if (par.WK_STATUS != "COMPLETE")
+                        //    {
+                        //        isComplete = false;
+                        //        break;
+                        //    }
+                        //}
+                        //In.WK_STATUS = isComplete == true ? "COMPLETE" : "INCOMPLETE";
+                        In.WK_STATUS = In.WK_STATUS;
                         #endregion
 
 

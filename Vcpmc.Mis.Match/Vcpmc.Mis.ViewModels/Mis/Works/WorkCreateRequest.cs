@@ -23,18 +23,20 @@ namespace Vcpmc.Mis.ViewModels.Mis.Works
         /// Tên tác phẩm: YEU CO GAI BAC LIEU; YEU CO GAI BAC LIEU YÊU CÔ GÁI BẠC LIÊU
         /// </summary>
         public string TTL_ENG { get; set; } = string.Empty;
+        public string TTL_LOCAL { get; set; } = string.Empty;
         public string ISWC_NO { get; set; } = string.Empty;
         public string ISRC { get; set; } = string.Empty;
         /// <summary>
         /// Tác giả
         /// </summary>
         public string WRITER { get; set; } = string.Empty;
+        public string WRITER_LOCAL { get; set; } = string.Empty;
         /// <summary>
         /// Nghệ sỹ biểu diễn: THUY TRANG  ,KIM TU LONG  KIM TỬ LONG,VU LINH  VŨ LINH
         /// </summary>
         public string ARTIST { get; set; } = string.Empty;
         /// <summary>
-        /// Trạng thái: COMPLETE, INCOMPLETE
+        /// Trạng thái: COMPLETE, INCOMPLETE, UNIDENTIFIED
         /// </summary>
         public string WK_STATUS { get; set; } = string.Empty;
         public string SOC_NAME { get; set; } = string.Empty;

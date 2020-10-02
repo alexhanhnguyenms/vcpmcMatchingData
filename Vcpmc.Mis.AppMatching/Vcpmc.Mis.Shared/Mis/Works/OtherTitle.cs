@@ -17,6 +17,7 @@ namespace Vcpmc.Mis.Shared.Mis.Works
         /// Tiêu đề
         /// </summary>
         public string Title { get; set; } = string.Empty;
+        public string TTL_LOCAL { get; set; } = string.Empty;
         /// <summary>
         /// Loại tiêu đề
         /// </summary>
