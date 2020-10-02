@@ -21,7 +21,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
     {
         #region vari
         MasterPageViewModel master = new MasterPageViewModel();
-        bool searchPageFirst = true;
+        //bool searchPageFirst = true;
         //OperationType operation = OperationType.LoadExcel;
         WorkViewModel CurrenObject = null;
         WorkController controller;
@@ -30,7 +30,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
         ApiResult<PagedResult<WorkViewModel>> data = new ApiResult<PagedResult<WorkViewModel>>();
         OperationType Operation = OperationType.LoadExcel;
         int currentPage = 1;
-        int totalPage = 1;
+        //int totalPage = 1;
         UpdataType _type = UpdataType.All;
         bool isRequest = false;
         bool isFilter = false;
@@ -71,42 +71,42 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                     dgvMain.DataSource = new List<WorkViewModel>();
                 }));
                 #region Get master              
-                if (searchPageFirst)
-                {
-                    totalPage = 1;
-                    master = await controller.TotalGetAllPaging(request);
-                    if (master.TotalRecordes == 0)
-                    {
-                        statusMain.Invoke(new MethodInvoker(delegate
-                        {
-                            lbOperation.Text = "data empty";
-                        }));                       
-                        isRequest = false;
-                        return;
-                    }
-                    else
-                    {
-                        if (master.TotalRecordes % request.PageSize == 0)
-                        {
-                            totalPage = master.TotalRecordes / request.PageSize;
-                        }
-                        else
-                        {
-                            totalPage = master.TotalRecordes / request.PageSize + 1;
-                        }
-                    }
-                    searchPageFirst = false;
-                }
+                //if (searchPageFirst)
+                //{
+                //    //totalPage = 1;
+                //    master = await controller.TotalGetAllPaging(request);
+                //    if (master.TotalRecordes == 0)
+                //    {
+                //        statusMain.Invoke(new MethodInvoker(delegate
+                //        {
+                //            lbOperation.Text = "data empty";
+                //        }));                       
+                //        isRequest = false;
+                //        return;
+                //    }
+                //    else
+                //    {
+                //        if (master.TotalRecordes % request.PageSize == 0)
+                //        {
+                //            totalPage = master.TotalRecordes / request.PageSize;
+                //        }
+                //        else
+                //        {
+                //            totalPage = master.TotalRecordes / request.PageSize + 1;
+                //        }
+                //    }
+                //    searchPageFirst = false;
+                //}
                 #endregion
                 request.PageIndex = PageIndex;                
                 data = await controller.GetAllPaging(request);
                 DateTime endtime = DateTime.Now;
                 if (data.IsSuccessed)
                 {
-                    lbTotalPage.Invoke(new MethodInvoker(delegate
-                    {
-                        lbTotalPage.Text = totalPage.ToString();
-                    }));
+                    //lbTotalPage.Invoke(new MethodInvoker(delegate
+                    //{
+                    //    lbTotalPage.Text = totalPage.ToString();
+                    //}));
                     txtPageCurrent.Invoke(new MethodInvoker(delegate
                     {
                         txtPageCurrent.Value = data.ResultObj.PageIndex;
@@ -116,7 +116,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                         richinfo.Text = "";
                         richinfo.Text += $"Total record(s): {master.TotalRecordes}{Environment.NewLine}";
                         richinfo.Text += $"Page index: {data.ResultObj.PageIndex}{Environment.NewLine}";
-                        richinfo.Text += $"Page count: {totalPage}{Environment.NewLine}";
+                        //richinfo.Text += $"Page count: {totalPage}{Environment.NewLine}";
                         richinfo.Text += $"Page size: {data.ResultObj.PageSize}{Environment.NewLine}";
                         richinfo.Text += $"Start time(search): {startTime.ToString("HH:mm:ss")}{Environment.NewLine}";
                         richinfo.Text += $"End time(search): {endtime.ToString("HH:mm:ss")}{Environment.NewLine}";
@@ -145,7 +145,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                     {
                         lbInfo.Text = $"Search data from serve, total record(s): {data.ResultObj.Items.Count}";
                     }));
-                    EnablePagging(data, totalPage);
+                    EnablePagging(data, data.ResultObj.Items.Count==0?true:false);
                 }
                 else
                 {                    
@@ -196,7 +196,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
             }));
         }
 
-        private void EnablePagging(ApiResult<PagedResult<WorkViewModel>> data, int pageTotal)
+        private void EnablePagging(ApiResult<PagedResult<WorkViewModel>> data, bool isCountZero)
         {
             txtPageCurrent.Invoke(new MethodInvoker(delegate
             {
@@ -233,7 +233,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                 }));
             }
             //>
-            if (data.ResultObj.PageIndex < pageTotal)
+            //if (data.ResultObj.PageIndex < pageTotal)
+            if(!isCountZero)
             {
                 btnNxtPage.Invoke(new MethodInvoker(delegate
                 {
@@ -248,20 +249,20 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                 }));
             }
             //>>
-            if (data.ResultObj.PageIndex == pageTotal)
-            {
-                btnLastPage.Invoke(new MethodInvoker(delegate
-                {
-                    btnLastPage.Enabled = false;
-                }));
-            }
-            else
-            {
-                btnLastPage.Invoke(new MethodInvoker(delegate
-                {
-                    btnLastPage.Enabled = true;
-                }));
-            }
+            //if (data.ResultObj.PageIndex == pageTotal)
+            //{
+            //    btnLastPage.Invoke(new MethodInvoker(delegate
+            //    {
+            //        btnLastPage.Enabled = false;
+            //    }));
+            //}
+            //else
+            //{
+            //    btnLastPage.Invoke(new MethodInvoker(delegate
+            //    {
+            //        btnLastPage.Enabled = true;
+            //    }));
+            //}
         }
         #endregion
 
@@ -321,14 +322,14 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                 {
                     dgvMain.DataSource = data.ResultObj.Items;
                 }));
-                searchPageFirst = true;
+                //searchPageFirst = true;
                 btnFirstPAge.Enabled = false;
                 btnPrevPage.Enabled = false;
                 btnNxtPage.Enabled = false;
                 btnLastPage.Enabled = false;
                 txtPageCurrent.ReadOnly = true;
                 currentPage = 1;
-                totalPage = 1;
+                //totalPage = 1;
 
                 #region set request
                 request.WK_INT_NO = txtWK_INT_NO.Text.Trim().ToUpper();
@@ -340,6 +341,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                 request.SOC_NAME = txtSOC_NAME.Text.Trim().ToUpper();
                 request.SOCIETY = txtSOCIETY.Text.Trim().ToUpper();
                 request.PageSize = Core.LimitRequestWork;
+                //todo
+                request.SearchType = 1;
                 #endregion
 
                 #region set backgroundWorker
@@ -473,7 +476,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
             }
             if (data != null && data.IsSuccessed && data.ResultObj != null)
             {
-                currentPage = totalPage;
+                //currentPage = totalPage;
                 #region set backgroundWorker
                 Operation = OperationType.GetDataFromServer;
                 pcloader.Visible = true;
@@ -513,10 +516,10 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                     {
                         txtPageCurrent.Value = 1;
                     }
-                    else if (((int)txtPageCurrent.Value) > totalPage)
-                    {
-                        txtPageCurrent.Value = totalPage;
-                    }
+                    //else if (((int)txtPageCurrent.Value) > totalPage)
+                    //{
+                    //    txtPageCurrent.Value = totalPage;
+                    //}
                     currentPage = (int)txtPageCurrent.Value;
                     #region set backgroundWorker
                     Operation = OperationType.GetDataFromServer;
@@ -1135,7 +1138,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
             {
                 #region Load data
                 List<WorkViewModel> md = new List<WorkViewModel>();
-                totalPage = 1;
+                //totalPage = 1;
                 //int PageIndex = 0;
                 GetWorkPagingRequest re = new GetWorkPagingRequest();
                 re.SOCIETY = "VCPMC";
@@ -1152,14 +1155,14 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                 }
                 else
                 {
-                    if (ms.TotalRecordes % request.PageSize == 0)
-                    {
-                        totalPage = ms.TotalRecordes / re.PageSize;
-                    }
-                    else
-                    {
-                        totalPage = ms.TotalRecordes / re.PageSize + 1;
-                    }
+                    //if (ms.TotalRecordes % request.PageSize == 0)
+                    //{
+                    //    totalPage = ms.TotalRecordes / re.PageSize;
+                    //}
+                    //else
+                    //{
+                    //    totalPage = ms.TotalRecordes / re.PageSize + 1;
+                    //}
                 }                
                 statusMain.Invoke(new MethodInvoker(delegate
                 {
@@ -1171,34 +1174,34 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work
                     lbOperation.Text = "Wating load data from server...";
                 }));
                 int serial = 0;
-                for (int i = 0; i < totalPage; i++)
-                {
-                    serial++;
-                    re.PageIndex = serial;
-                    var data = await controller.GetAllPaging(re);
-                    if (data == null || data.ResultObj == null || data.ResultObj.Items == null || data.ResultObj.Items.Count == 0 || filepath == string.Empty)
-                    {
-                        statusMain.Invoke(new MethodInvoker(delegate
-                        {
-                            lbOperation.Text = "Load data from server is error";
-                        }));
-                        return;
-                    }
-                    else
-                    {
-                        foreach (var item in data.ResultObj.Items)
-                        {
-                            md.Add(item);
-                        }
-                    }
-                    statusMain.Invoke(new MethodInvoker(delegate
-                    {
-                        if (serial > totalPage) serial = totalPage;
-                        float values = (float)(i + 1) / (float)totalPage * 100;
-                        progressBarImport.Value = (int)values;
-                        lbPercent.Text = $"{((int)values).ToString()}%";
-                    }));
-                }
+                //for (int i = 0; i < totalPage; i++)
+                //{
+                //    serial++;
+                //    re.PageIndex = serial;
+                //    var data = await controller.GetAllPaging(re);
+                //    if (data == null || data.ResultObj == null || data.ResultObj.Items == null || data.ResultObj.Items.Count == 0 || filepath == string.Empty)
+                //    {
+                //        statusMain.Invoke(new MethodInvoker(delegate
+                //        {
+                //            lbOperation.Text = "Load data from server is error";
+                //        }));
+                //        return;
+                //    }
+                //    else
+                //    {
+                //        foreach (var item in data.ResultObj.Items)
+                //        {
+                //            md.Add(item);
+                //        }
+                //    }
+                //    statusMain.Invoke(new MethodInvoker(delegate
+                //    {
+                //        if (serial > totalPage) serial = totalPage;
+                //        float values = (float)(i + 1) / (float)totalPage * 100;
+                //        progressBarImport.Value = (int)values;
+                //        lbPercent.Text = $"{((int)values).ToString()}%";
+                //    }));
+                //}
                 if (md.Count == 0)
                 {
                     statusMain.Invoke(new MethodInvoker(delegate
