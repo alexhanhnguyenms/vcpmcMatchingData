@@ -537,7 +537,7 @@ namespace Vcpmc.Mis.Common.csv
                         item.ISRC = row[3].Trim();
                         item.WRITER = row[4].Trim();
                         arrWriter = item.WRITER.Split(',');
-                        item.WRITER = string.Empty;
+                        item.WRITER = string.Empty;                       
                         for (int mk = 0; mk < arrWriter.Length; mk++)
                         {
                             if (arrWriter[mk].Trim() != string.Empty)
@@ -549,6 +549,7 @@ namespace Vcpmc.Mis.Common.csv
                         {
                             item.WRITER = item.WRITER.Substring(0, item.WRITER.Length - 1);
                         }
+                        item.WRITER_LOCAL = item.WRITER;
                         item.ARTIST = row[5].Trim();
                         arrArtist = item.ARTIST.Split(',');
                         item.ARTIST = string.Empty;
@@ -563,6 +564,7 @@ namespace Vcpmc.Mis.Common.csv
                         {
                             item.ARTIST = item.ARTIST.Substring(0, item.ARTIST.Length - 1);
                         }
+                        item.STATUS = "UNIDENTIFIED";
                         item.SOC_NAME = row[6].Trim();
                         list.Add(item);
                     } 
@@ -630,6 +632,7 @@ namespace Vcpmc.Mis.Common.csv
                         item.SerialNo = ser;
                         item.WK_INT_NO = row[0].Trim();
                         item.TTL_ENG = row[1].Trim();
+                        item.TTL_LOCAL = row[1].Trim();
                         item.ISWC_NO = row[2].Trim();
                         item.ISRC = row[3].Trim();
                         item.WRITER = row[4].Trim();
@@ -646,6 +649,7 @@ namespace Vcpmc.Mis.Common.csv
                         {
                             item.WRITER = item.WRITER.Substring(0, item.WRITER.Length - 1);
                         }
+                        item.WRITER_LOCAL = item.WRITER;
                         item.WRITER2 = string.Empty;
                         item.WRITER3 = string.Empty;
                         for (int ik = 5; ik < row.Length - 1; ik++)
@@ -665,9 +669,16 @@ namespace Vcpmc.Mis.Common.csv
                         {
                             item.ARTIST = item.ARTIST.Substring(0, item.ARTIST.Length - 1);
                         }
-                        item.STATUS = "COMPLETE";
+                        item.STATUS = "UNIDENTIFIED";
                         item.SOC_NAME = row[row.Length - 1].Trim();
-                        list.Add(item);
+                        if(item.WRITER==string.Empty)
+                        {
+                            listErr.Add(strline);
+                        }   
+                        else
+                        {
+                            list.Add(item);
+                        }                        
                     }
                     else
                     {
@@ -692,6 +703,7 @@ namespace Vcpmc.Mis.Common.csv
                         {
                             item.WRITER = item.WRITER.Substring(0, item.WRITER.Length - 1);
                         }
+                        item.WRITER_LOCAL = item.WRITER;
                         item.WRITER2 = string.Empty;
                         item.WRITER3 = string.Empty;
                         item.ARTIST = row[5].Trim();
@@ -708,9 +720,16 @@ namespace Vcpmc.Mis.Common.csv
                         {
                             item.ARTIST = item.ARTIST.Substring(0, item.ARTIST.Length - 1);
                         }
-                        item.STATUS = "COMPLETE";
+                        item.STATUS = "UNIDENTIFIED";
                         item.SOC_NAME = row[6].Trim();
-                        list.Add(item);
+                        if (item.WRITER == string.Empty)
+                        {
+                            listErr.Add(strline);
+                        }
+                        else
+                        {
+                            list.Add(item);
+                        }
                     }
                 }
             }
@@ -897,26 +916,39 @@ namespace Vcpmc.Mis.Common.csv
                         item = new WorkTXT();
                         item.SerialNo = ser;
                         item.WK_INT_NO = row[0].Trim();
-                        item.TTL_ENG = VnHelper.ConvertToUnSign(row[1].Trim());                        
+                        item.TTL_ENG = VnHelper.ConvertToUnSign(row[1].Trim().ToUpper());                        
+                        item.TTL_LOCAL = row[2].Trim().ToUpper();   
+                        if(item.TTL_LOCAL == string.Empty)
+                        {
+                            item.TTL_LOCAL = item.TTL_ENG;
+                        }
                         if (row[3].Trim() == "COM")
                         {
                             item.STATUS = "COMPLETE";
                         }
-                        else
+                        else if (row[3].Trim() == "INC")
                         {
                             item.STATUS = "INCOMPLETE";
                         }
+                        else
+                        {
+                            item.STATUS = "UNIDENTIFIED";
+                        }    
                         item.IpNumber = VnHelper.ConvertToUnSign(row[4].Trim());
-                        item.WK_ROLE = VnHelper.ConvertToUnSign(row[5].Trim());
+                        item.WK_ROLE = VnHelper.ConvertToUnSign(row[5].Trim().ToUpper());
                         item.InternalNo = VnHelper.ConvertToUnSign(row[6].Trim());
-                        item.IP_NAME_TYPE = VnHelper.ConvertToUnSign(row[7].Trim());
-                        writer = VnHelper.ConvertToUnSign(row[8].Trim());
+                        item.IP_NAME_TYPE = VnHelper.ConvertToUnSign(row[7].Trim().ToUpper());
+                        writer = VnHelper.ConvertToUnSign(row[8].Trim().ToUpper());
                         item.WRITER = SwappName(writer);
                         //item.WRITER2 = row[6].Trim();
                         //item.WRITER3 = row[7].Trim();
-                        item.WRITER_LOCAL = SwappName(row[9].Trim());
+                        item.WRITER_LOCAL = SwappName(row[9].Trim().ToUpper());
+                        if(item.WRITER_LOCAL==string.Empty)
+                        {
+                            item.WRITER_LOCAL = item.WRITER;
+                        }    
                         item.ARTIST = string.Empty;                          
-                        item.Society = VnHelper.ConvertToUnSign(row[10].Trim());                        
+                        item.Society = VnHelper.ConvertToUnSign(row[10].Trim().ToUpper());                        
                         item.PER_OWN_SHR = decimal.Parse(row[11].Trim());
                         item.MEC_COL_SHR = decimal.Parse(row[12].Trim());
                         if(row.Length == 14)

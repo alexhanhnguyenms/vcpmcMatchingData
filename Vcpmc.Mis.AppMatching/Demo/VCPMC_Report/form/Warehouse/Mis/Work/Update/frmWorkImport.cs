@@ -684,16 +684,15 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                             WorkCreateRequest itmUpdate = new WorkCreateRequest();
                             itmUpdate.WK_INT_NO = VnHelper.ConvertToUnSign(dataLoad[i].WK_INT_NO.ToUpper());
                             itmUpdate.TTL_ENG = VnHelper.ConvertToUnSign(dataLoad[i].TTL_ENG.Trim().ToUpper());
-                            itmUpdate.WK_STATUS = dataLoad[i].STATUS;                                                                       
+                            itmUpdate.TTL_LOCAL = dataLoad[i].TTL_LOCAL.Trim().ToUpper();
+                            itmUpdate.WK_STATUS = dataLoad[i].STATUS;
+                            #region Tac gia
                             itmUpdate.InterestedParties.Add(new Shared.Mis.Works.InterestedParty
                             {
-                                No = 1,
+                                No = itmUpdate.InterestedParties.Count + 1,
                                 IP_INT_NO = dataLoad[i].InternalNo,
                                 IP_NAME = dataLoad[i].WRITER,
                                 IP_WK_ROLE = dataLoad[i].WK_ROLE,
-
-                                //TODO 2020-10-02
-                                //WK_STATUS = dataLoad[i].STATUS,
 
                                 PER_OWN_SHR = dataLoad[i].PER_OWN_SHR,
                                 PER_COL_SHR = dataLoad[i].PER_OWN_SHR,
@@ -714,7 +713,9 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                 IP_NAME_LOCAL = dataLoad[i].WRITER_LOCAL,
                                 IP_NAMETYPE = dataLoad[i].IP_NAME_TYPE,
                             });
+                            #endregion
                             itmUpdate.WRITER = dataLoad[i].WRITER;
+                            itmUpdate.WRITER_LOCAL = dataLoad[i].WRITER_LOCAL;
                             itmUpdate.ARTIST = dataLoad[i].ARTIST;
                             itmUpdate.SOC_NAME = dataLoad[i].SOC_NAME;
                             itmUpdate.ISWC_NO = dataLoad[i].ISWC_NO;
@@ -726,11 +727,12 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                             var item = request.Items.Where(p => p.WK_INT_NO == dataLoad[i].WK_INT_NO).FirstOrDefault();
                             if(item!=null)
                             {
-                                if(!item.InterestedParties.Where(p=>p.IP_INT_NO == dataLoad[i].WK_INT_NO).Any())
+                                #region tac gia                               
+                                if (!item.InterestedParties.Where(p=>p.IP_INT_NO == dataLoad[i].WK_INT_NO).Any())
                                 {
                                     item.InterestedParties.Add(new Shared.Mis.Works.InterestedParty
                                     {
-                                        No = 1,
+                                        No = item.InterestedParties.Count + 1,
                                         IP_INT_NO = dataLoad[i].InternalNo,
                                         IP_NAME = dataLoad[i].WRITER,
                                         IP_WK_ROLE = dataLoad[i].WK_ROLE,
@@ -757,11 +759,39 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                         IP_NAME_LOCAL = dataLoad[i].WRITER_LOCAL,
                                         IP_NAMETYPE = dataLoad[i].IP_NAME_TYPE,
                                     });
+
+                                    if(item.WRITER!=string.Empty)
+                                    {
+                                        item.WRITER += ",";
+                                    }
+                                    item.WRITER += dataLoad[i].WRITER;
+                                    if (item.WRITER_LOCAL != string.Empty)
+                                    {
+                                        item.WRITER_LOCAL += ",";
+                                    }
+                                    item.WRITER_LOCAL += dataLoad[i].WRITER_LOCAL;
                                 }
                                 else
                                 {
                                     //int a = 1;
                                 }
+                                #endregion
+
+                                #region Other title
+                                if ((item.TTL_ENG != dataLoad[i].TTL_ENG) && (!item.OtherTitles.Where(p => p.Title == dataLoad[i].TTL_ENG).Any()))
+                                {
+                                    item.OtherTitles.Add(new Shared.Mis.Works.OtherTitle
+                                    {
+                                        No = item.OtherTitles.Count+1,
+                                        Title = dataLoad[i].TTL_ENG,
+                                        TTL_LOCAL = dataLoad[i].TTL_LOCAL,
+                                    });
+                                }
+                                else
+                                {
+                                    //int a = 1;
+                                }
+                                #endregion
                             }
                         }
                         #endregion
@@ -774,27 +804,23 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                             WorkCreateRequest itmUpdate = new WorkCreateRequest();
                             itmUpdate.WK_INT_NO = VnHelper.ConvertToUnSign(dataLoad[i].WK_INT_NO.ToUpper());
                             itmUpdate.TTL_ENG = VnHelper.ConvertToUnSign(dataLoad[i].TTL_ENG.Trim().ToUpper());
+                            itmUpdate.TTL_LOCAL = dataLoad[i].TTL_LOCAL.Trim().ToUpper();
+                            itmUpdate.WK_STATUS = dataLoad[i].STATUS;
                             if (dataLoad[i].WK_INT_NO == "17615461")
                             {
                                 //int a = 1;
-                            }
-                            if (dataLoad[i].STATUS != string.Empty)
-                            {
-                                status = dataLoad[i].STATUS;
-                            }
-                            else
-                            {
-                                status = "COMPLETE";
-                            }
+                            }                            
                             //HUNSAKER JASON BRADLEY,MARCKS WILLIAM DANIEL,WILCOX JAMES STEVEN,WOOD JEREMY M
                             writer = dataLoad[i].WRITER.Split(',');
                             //nhac
                             writer1 = dataLoad[i].WRITER2.Split(',');
                             //loi
                             writer2 = dataLoad[i].WRITER3.Split(',');
-                            string role;
+                           
+                            string role=string.Empty;
                             for (int k = 0; k < writer.Length; k++)
                             {
+                                #region role
                                 if (dataLoad[i].WRITER2.Length > 0 || dataLoad[i].WRITER3.Length > 0)
                                 {
                                     //loi trong=> CA
@@ -812,22 +838,19 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                         //nhac
                                         role = "C";
                                     }
-                                }
-                                else
-                                {
-                                    role = "CA";
-                                }
+                                }                                
+                                #endregion
+
+                                #region Tac gia
                                 if (writer[k] != string.Empty)
                                 {
                                     itmUpdate.InterestedParties.Add(new Shared.Mis.Works.InterestedParty
                                     {
-                                        No = 1,
-                                        IP_INT_NO = string.Empty,
+                                        No = itmUpdate.InterestedParties.Count+1,
+                                        //CHo nay neu danh sach co ma thi phai xu ly khac
+                                        IP_INT_NO = dataLoad[i].InternalNo,
                                         IP_NAME = writer[k].Trim(),
                                         IP_WK_ROLE = role,
-
-                                        //TODO 2020-10-02
-                                        //WK_STATUS = status,
 
                                         PER_OWN_SHR = 0,
                                         PER_COL_SHR = 0,
@@ -840,6 +863,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
 
                                         SYN_OWN_SHR = 0,
                                         SYN_COL_SHR = 0,
+                                        Society = dataLoad[i].Society,
                                         CountUpdate = 1,
                                         LastUpdateAt = DateTime.Now,
                                         LastChoiseAt = DateTime.Now,
@@ -848,19 +872,120 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                                         IP_NAMETYPE = dataLoad[i].IP_NAME_TYPE,
                                     });
                                 }
+                                #endregion
                             }
                             itmUpdate.WRITER = dataLoad[i].WRITER;
+                            itmUpdate.WRITER_LOCAL = dataLoad[i].WRITER_LOCAL;
                             itmUpdate.ARTIST = dataLoad[i].ARTIST;
                             itmUpdate.SOC_NAME = dataLoad[i].SOC_NAME;
                             itmUpdate.ISWC_NO = dataLoad[i].ISWC_NO;
-                            itmUpdate.ISRC = dataLoad[i].ISRC;
-                            itmUpdate.WK_STATUS = "COMPLETE";
-                            request.Items.Add(itmUpdate);
-
-                        }
+                            itmUpdate.ISRC = dataLoad[i].ISRC;                            
+                            request.Items.Add(itmUpdate);                        }
                         else
                         {
-                            //int a = 1;
+                            int a = 1;
+                            var item = request.Items.Where(p => p.WK_INT_NO == dataLoad[i].WK_INT_NO).FirstOrDefault();
+                            writer = dataLoad[i].WRITER.Split(',');
+                            //nhac
+                            writer1 = dataLoad[i].WRITER2.Split(',');
+                            //loi
+                            writer2 = dataLoad[i].WRITER3.Split(',');
+
+                            string role=string.Empty;
+                            for (int k = 0; k < writer.Length; k++)
+                            {
+                                #region role
+                                if (dataLoad[i].WRITER2.Length > 0 || dataLoad[i].WRITER3.Length > 0)
+                                {
+                                    //loi trong=> CA
+                                    if (dataLoad[i].WRITER3.Length == 0)
+                                    {
+                                        role = "CA";
+                                    }
+                                    //nam trong loi
+                                    else if (writer2.Contains(writer[k].Trim()))
+                                    {
+                                        role = "A";
+                                    }
+                                    else
+                                    {
+                                        //nhac
+                                        role = "C";
+                                    }
+                                }                                
+                                #endregion
+
+                                if (item != null)
+                                {
+                                    #region tac gia                               
+                                    if (!item.InterestedParties.Where(p => p.IP_INT_NO == dataLoad[i].WK_INT_NO).Any())
+                                    {
+                                        item.InterestedParties.Add(new Shared.Mis.Works.InterestedParty
+                                        {
+                                            No = item.InterestedParties.Count + 1,
+                                            //cho nay co ma thi phai xu ly khac
+                                            IP_INT_NO = dataLoad[i].InternalNo,
+                                            IP_NAME = writer[k].Trim(),
+                                            IP_WK_ROLE = dataLoad[i].WK_ROLE,
+
+                                            //TODO 2020-10-02
+                                            //WK_STATUS = dataLoad[i].STATUS,
+
+                                            PER_OWN_SHR = dataLoad[i].PER_OWN_SHR,
+                                            PER_COL_SHR = dataLoad[i].PER_OWN_SHR,
+
+                                            MEC_OWN_SHR = dataLoad[i].MEC_COL_SHR,
+                                            MEC_COL_SHR = dataLoad[i].MEC_COL_SHR,
+
+                                            SP_SHR = dataLoad[i].PER_OWN_SHR,
+                                            TOTAL_MEC_SHR = dataLoad[i].MEC_COL_SHR,
+
+                                            SYN_OWN_SHR = 0,
+                                            SYN_COL_SHR = 0,
+                                            //cho nay co ma, chac chan socity se khac
+                                            Society = dataLoad[i].Society,
+                                            CountUpdate = 1,
+                                            LastUpdateAt = DateTime.Now,
+                                            LastChoiseAt = DateTime.Now,
+                                            IP_NUMBER = dataLoad[i].IpNumber,
+                                            IP_NAME_LOCAL = dataLoad[i].WRITER_LOCAL,
+                                            IP_NAMETYPE = dataLoad[i].IP_NAME_TYPE,
+                                        });
+
+                                        if (item.WRITER != string.Empty)
+                                        {
+                                            item.WRITER += ",";
+                                        }
+                                        item.WRITER += dataLoad[i].WRITER;
+                                        if (item.WRITER_LOCAL != string.Empty)
+                                        {
+                                            item.WRITER_LOCAL += ",";
+                                        }
+                                        item.WRITER_LOCAL += dataLoad[i].WRITER_LOCAL;
+                                    }
+                                    else
+                                    {
+                                        //int a = 1;
+                                    }
+                                    #endregion
+
+                                    #region Other title
+                                    if ((item.TTL_ENG != dataLoad[i].TTL_ENG) && (!item.OtherTitles.Where(p => p.Title == dataLoad[i].TTL_ENG).Any()))
+                                    {
+                                        item.OtherTitles.Add(new Shared.Mis.Works.OtherTitle
+                                        {
+                                            No = item.OtherTitles.Count + 1,
+                                            Title = dataLoad[i].TTL_ENG,
+                                            TTL_LOCAL = dataLoad[i].TTL_LOCAL,
+                                        });
+                                    }
+                                    else
+                                    {
+                                        //int a = 1;
+                                    }
+                                    #endregion
+                                }                               
+                            }   
                         }
                         #endregion
                     }

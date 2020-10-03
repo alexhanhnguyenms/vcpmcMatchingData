@@ -650,6 +650,7 @@ namespace Vcpmc.Mis.Application.Mis.Works
                         In.StarRating += data[0].StarRating;
                         In.OtherTitles = data[0].OtherTitles;
                         In.InterestedParties = data[0].InterestedParties;                                         
+                        In.WK_STATUS = data[0].WK_STATUS;                                         
                         //bool isComplete = true;
 
                         #region Cap nhat tac pham
@@ -682,6 +683,7 @@ namespace Vcpmc.Mis.Application.Mis.Works
                             var dataPar = In.InterestedParties.Where(p => p.IP_INT_NO == par.IP_INT_NO && p.IP_INT_NO != string.Empty).FirstOrDefault();
                             if (dataPar != null)
                             {
+                                #region nêu đã có tác gia có mã, thì cập nhật thêm thông tin                               
                                 x2 = dataPar.IP_NAME;
                                 x22 = dataPar.IP_INT_NO;
                                 //dataPar.No = dataPar.No;//giu nguyen stt
@@ -690,11 +692,16 @@ namespace Vcpmc.Mis.Application.Mis.Works
                                 if(!string.IsNullOrEmpty(par.IP_NAME))
                                 {
                                     dataPar.IP_NAME = par.IP_NAME;
-                                }                                
-                                if(!string.IsNullOrEmpty(par.IP_WK_ROLE))
+                                }
+                                if (!string.IsNullOrEmpty(par.IP_NAME_LOCAL))
+                                {
+                                    dataPar.IP_NAME_LOCAL = par.IP_NAME_LOCAL;
+                                }
+                                if (!string.IsNullOrEmpty(par.IP_WK_ROLE))
                                 {
                                     dataPar.IP_WK_ROLE = par.IP_WK_ROLE;
-                                }                               
+                                }
+                                
                                 //dataPar.WK_STATUS = "COMPLETE";
 
                                 dataPar.PER_OWN_SHR = par.PER_OWN_SHR;
@@ -722,15 +729,18 @@ namespace Vcpmc.Mis.Application.Mis.Works
                                 //int maxNo = In.InterestedParties.Count;
                                 //dataPar.No = maxNo;
                                 //In.InterestedParties.Add(par);
+                                #endregion
                             }
                             else
                             {
+                                #region Nếu tác giả chỉ chưa có mã thì cập nhật cả mã. Ngược lại thêm mới                                
                                 var dataParNames = In.InterestedParties.Where(p => p.IP_NAME == par.IP_NAME).ToList();
                                 if (dataParNames.Count > 0)
                                 {
                                     //dataParNames[0].IP_INT_NO = par.IP_INT_NO;/giu nguyen stt
                                     dataParNames[0].IP_INT_NO = par.IP_INT_NO;
                                     dataParNames[0].IP_NAME = par.IP_NAME;
+                                    dataParNames[0].IP_NAME_LOCAL = par.IP_NAME_LOCAL;
                                     if(!string.IsNullOrEmpty(par.IP_WK_ROLE))
                                     {
                                         dataParNames[0].IP_WK_ROLE = par.IP_WK_ROLE;
@@ -767,25 +777,11 @@ namespace Vcpmc.Mis.Application.Mis.Works
                                     par.No = maxNo;
                                     In.InterestedParties.Add(par);
                                 }
+                                #endregion
                             }
                             #endregion
                         }
                         #endregion
-
-                        #region trang thai
-                        //2020-10-02 TODO
-                        //foreach (var par in In.InterestedParties)
-                        //{
-                        //    if (par.WK_STATUS != "COMPLETE")
-                        //    {
-                        //        isComplete = false;
-                        //        break;
-                        //    }
-                        //}
-                        //In.WK_STATUS = isComplete == true ? "COMPLETE" : "INCOMPLETE";
-                        In.WK_STATUS = In.WK_STATUS;
-                        #endregion
-
 
                         var result = await _collection.ReplaceOneAsync
                                 (p =>

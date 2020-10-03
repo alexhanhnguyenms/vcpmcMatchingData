@@ -16,6 +16,7 @@ namespace Vcpmc.Mis.Shared.Mis.Works
         /// Tieu de bai hat
         /// </summary>
         public string TTL_ENG { get; set; } = string.Empty;
+        public string TTL_LOCAL { get; set; } = string.Empty;
         public string ISWC_NO { get; set; } = string.Empty;
         /// <summary>
         /// Ma tac gia neu co
@@ -54,16 +55,16 @@ namespace Vcpmc.Mis.Shared.Mis.Works
         /// <summary>
         ///  VCPMC, GEMA, GEMA,VCPMC
         /// </summary>
-        public string Society { get; set; }
-        public string IpNumber { get; set; }
-        public string WRITER_LOCAL { get; set; }
+        public string Society { get; set; } = string.Empty;
+        public string IpNumber { get; set; } = string.Empty;
+        public string WRITER_LOCAL { get; set; } = string.Empty;
         /// <summary>
         /// quyen bieu dien
         /// </summary>
-        public decimal PER_OWN_SHR { get; set; }
+        public decimal PER_OWN_SHR { get; set; } = 0;
         /// <summary>
         /// quyen so huu
         /// </summary>
-        public decimal MEC_COL_SHR { get; set; }
+        public decimal MEC_COL_SHR { get; set; } = 0;
     }
 }
