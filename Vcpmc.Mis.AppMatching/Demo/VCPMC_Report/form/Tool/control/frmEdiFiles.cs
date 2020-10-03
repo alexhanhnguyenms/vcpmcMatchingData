@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Presentation;
+using Org.BouncyCastle.Operators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -536,9 +537,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 string text2 = string.Empty;
                 for (int i = 0; i < ediFilesItemsClone.Count; i++)
                 {
-                    if(ediFilesItemsClone[i].WorkInternalNo == "19176136")
+                    if(ediFilesItemsClone[i].WorkInternalNo == "12227329")
                     {
-                        //int a = 1;
+                        var xxx = ediFilesItemsClone[i];
+                        int a = 1;
                     }
                     WorkCreateRequest itmUpdate = new WorkCreateRequest();
 
@@ -630,7 +632,14 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             }
                             else
                             {
-
+                                //TODO
+                                //ip name: VIET VOICE ENTERTAINMENT VIETNAM,
+                                //local: CÔNG TY TNHH GIẢI TRÍ TIẾNG HÁT VIỆT
+                                //composer work: UYEN PHUONG, VIET VOICE ENTERTAINMENT VIETNAM
+                                //binh thuong name va local giong nhau chi bij mat khoang trang
+                                //trong truong hop nay bi loi=> do mis
+                                //vay quat luon nhu goc
+                                ediFilesItemsClone[i].IpNameLocal2 = ediFilesItemsClone[i].IpNameLocal;
                             }
                         }
                         ediFilesItemsClone[i].IpNameLocal2 = ediFilesItemsClone[i].IpNameLocal2.Trim();
@@ -738,8 +747,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         if (ediFilesItemsClone[i].NoOfPerf != NoOfPerf)
                         {
                             NoOfPerf = ediFilesItemsClone[i].NoOfPerf;
-                            var itemGroup = (EdiFilesItem)ediFilesItemsClone[i].Clone();
-                            itemGroup.WorkStatus = "COMPLETE";
+                            var itemGroup = (EdiFilesItem)ediFilesItemsClone[i].Clone();                           
                             editGroup.Add(itemGroup);
                         }
                         editGroupXXX = editGroup.Where(p => p.NoOfPerf == NoOfPerf).FirstOrDefault();
@@ -749,8 +757,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         if (ediFilesItemsClone[i].seqNo != seqNo)
                         {
                             seqNo = ediFilesItemsClone[i].seqNo;
-                            var itemGroup = (EdiFilesItem)ediFilesItemsClone[i].Clone();
-                            itemGroup.WorkStatus = "COMPLETE";
+                            var itemGroup = (EdiFilesItem)ediFilesItemsClone[i].Clone();                           
                             editGroup.Add(itemGroup);
                         }
                         editGroupXXX = editGroup.Where(p => p.seqNo == seqNo).FirstOrDefault();
@@ -1034,6 +1041,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             }
                             //lay ten gan giong nhat                           
                             string titleSame = string.Empty;
+                            string titleSameUnsign = string.Empty;
                             var min = scoreTitleInput.Min();                           
                             for (int ig = 0; ig < arrWorkTtileOutUnSign.Length; ig++)
                             {
@@ -1041,7 +1049,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 {
                                     if (titleSame == string.Empty)
                                     {
-                                        titleSame = arrWorkTtileOut[ig];                                        
+                                        titleSame = arrWorkTtileOut[ig];
+                                        titleSameUnsign = arrWorkTtileOutUnSign[ig];
                                         //break;
                                     }
                                 }
@@ -1060,6 +1069,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             //Chinh sua tieu de
                             //GetTile(item, titleSame,item.IpNameLocal);
                             item.WorkTitle2 = titleSame;
+                            item.WorkTitle2Unsign = titleSameUnsign;
                             if (!isCheckcomareTitle)
                             {
                                 if(item.Title.Length <= 10)
@@ -2115,6 +2125,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         {
             try
             {
+                #region init
                 if (ediFilesItemsClone == null || ediFilesItemsClone.Count == 0)
                 {
                     return;
@@ -2160,17 +2171,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 }));
                 
                 DateTime startTime = DateTime.Now;
-
-                WorkChangeListRequest request = new WorkChangeListRequest();
-                //string[] arraIpname = null;
-                //string[] arraComposer = null;
-                string Ip_name1 = string.Empty;
-                string Ip_name2 = string.Empty;
-                string HoAndTen = string.Empty;
-                string writerReal = string.Empty;
-                //string[] arrWriterReal = null;
-                string text = string.Empty;
-                string text2 = string.Empty;
+                #endregion
+                WorkChangeListRequest request = new WorkChangeListRequest();                
+                string workNameLocal = string.Empty;
+                //string IpNameLocal2 = string.Empty;
                 for (int i = 0; i < ediFilesItemsClone.Count; i++)
                 {
                     WorkCreateRequest itmUpdate = new WorkCreateRequest();
@@ -2192,101 +2196,75 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         itmUpdate = request.Items.Where(p => p.WK_INT_NO == ediFilesItemsClone[i].WorkInternalNo.ToUpper()).FirstOrDefault();
                     }
                     itmUpdate.WK_INT_NO = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].WorkInternalNo.ToUpper());
-                    #endregion
-
-                    #region Thiet lap ten
-                    //if (itmUpdate.TTL_ENG != string.Empty)
-                    //{                       
-                    //xu ly ten phu
-                    //TODO
-                    if (ediFilesItemsClone[i].WorkTitle.Length > 0)
+                    //itmUpdate.ISRC = ediFilesItemsClone[i].
+                    itmUpdate.TTL_ENG = ediFilesItemsClone[i].WorkTitle2Unsign;
+                    itmUpdate.TTL_LOCAL = ediFilesItemsClone[i].WorkTitle2;
+                    for (int iAddOther = 0; iAddOther < ediFilesItemsClone[i].ListOtherTitleOutUnSign.Count; iAddOther++)
                     {
-                        //GOI TEN NGUOI YEU ,ALINE ,GỌI TÊN NGƯỜI YÊU GOI TEN NGUOI YEU
-                        //GỌI TÊN NGƯỜI YÊU 
-                        //GOI TEN NGUOI YEU
-                        string[] ilistTitle = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].WorkTitle.Trim().ToUpper()).Split(',');                         
-                        string s1 = "";
-                        string s2 = "";                      
-                        int len_div1 = 0;
-                        int len_div2 = 0;
-                        string subTitle = string.Empty;
-                        string subRealTitle = string.Empty;
-                        foreach (var iTitel in ilistTitle)
+                        if (!itmUpdate.OtherTitles.Where(p => p.Title == ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther]).Any() 
+                            && itmUpdate.TTL_ENG != ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther]
+                            && ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther] != string.Empty)
                         {
-                            subTitle = iTitel.Trim();
-                            len_div1 = subTitle.Length / 2;
-                            len_div2 = subTitle.Length - len_div1;
-                            s1 = subTitle.Substring(0, len_div1).Trim();
-                            s2 = subTitle.Substring(len_div1, len_div2).Trim();
-                            if(s1 == s2)
+                            workNameLocal = string.Empty;
+                            if (ediFilesItemsClone[i].ListOtherTitleOut.Count>= iAddOther)
                             {
-                                subRealTitle = s1;
+                                workNameLocal = ediFilesItemsClone[i].ListOtherTitleOut[iAddOther];
                             }
-                            else
+                            if(workNameLocal == string.Empty)
                             {
-                                subRealTitle = subTitle;
+                                workNameLocal = ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther];
                             }
-                            //1.cap nhat tieu dechinh
-                            if (itmUpdate.TTL_ENG == string.Empty&& subRealTitle!=string.Empty)
+                            itmUpdate.OtherTitles.Add(new Shared.Mis.Works.OtherTitle
                             {
-                                itmUpdate.TTL_ENG = subRealTitle;
-                                //lay lam tieu de chinh roi, thi khong dua vao tieu de phu
-                                continue;
-                            }
-                            //2.neu co tieu de chinh, dua vao tieu de phu neu co
-                            if (!itmUpdate.OtherTitles.Where(p => p.Title == subRealTitle).Any() && itmUpdate.TTL_ENG != subRealTitle && subRealTitle!=string.Empty)
-                            {
-                                itmUpdate.OtherTitles.Add(new Shared.Mis.Works.OtherTitle
-                                {
-                                    No = itmUpdate.OtherTitles.Count + 1,
-                                    Title = subRealTitle
-                                });
-                            }
+                                No = itmUpdate.OtherTitles.Count + 1,
+                                Title = ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther],                               
+                                TTL_LOCAL = workNameLocal
+                            });
                         }
                     }
-                    //}
-                    //else
-                    //{
-                    //    //dua vao tieu de chinh
-                    //    itmUpdate.TTL_ENG = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].Title.ToUpper());
-                    //}
+
                     #endregion
 
                     #region thiet lap tac gia
-                    //Chua co tac gia nay thi them vao
-                    if (!itmUpdate.InterestedParties.Where(p => p.IP_INT_NO == ediFilesItemsClone[i].IpInNo).Any())
+                    //Chua co tac gia nay thi them vao                    
+                    foreach (var addMember in ediFilesItemsClone[i].ListInterestedParty)
                     {
-                        itmUpdate.InterestedParties.Add(new Shared.Mis.Works.InterestedParty
-                        {
-                            No = 1,
-                            IP_INT_NO = ediFilesItemsClone[i].IpInNo,
-                            IP_NAME = ediFilesItemsClone[i].IpName2,                           
-                            IP_WK_ROLE = ediFilesItemsClone[i].IpWorkRole,
+                        if (!itmUpdate.InterestedParties.Where(p => p.IP_INT_NO == addMember.IP_INT_NO).Any())
+                        {                           
+                            itmUpdate.InterestedParties.Add(new Shared.Mis.Works.InterestedParty
+                            {
+                                No = itmUpdate.InterestedParties.Count + 1,
+                                IP_INT_NO = addMember.IP_INT_NO,
+                                IP_NAME = addMember.IP_NAME,
+                                IP_NAME_LOCAL = addMember.IP_NAME_LOCAL,
+                                IP_WK_ROLE = addMember.IP_WK_ROLE,
 
-                            //TODO 2020-10-02
-                            //WK_STATUS = "COMPLETE",
+                                //TODO 2020-10-02
+                                //WK_STATUS = "COMPLETE",
 
-                            PER_OWN_SHR = ediFilesItemsClone[i].PerOwnShr,
-                            PER_COL_SHR = ediFilesItemsClone[i].PerColShr,
+                                PER_OWN_SHR = addMember.PER_OWN_SHR,
+                                PER_COL_SHR = addMember.PER_COL_SHR,
 
-                            MEC_OWN_SHR = ediFilesItemsClone[i].MecOwnShr,
-                            MEC_COL_SHR = ediFilesItemsClone[i].MecColShr,
+                                MEC_OWN_SHR = addMember.MEC_OWN_SHR,
+                                MEC_COL_SHR = addMember.MEC_COL_SHR,
 
-                            SP_SHR = ediFilesItemsClone[i].SpShr,
-                            TOTAL_MEC_SHR = ediFilesItemsClone[i].TotalMecShr,
+                                SP_SHR = addMember.SP_SHR,
+                                TOTAL_MEC_SHR = addMember.TOTAL_MEC_SHR,
 
-                            SYN_OWN_SHR = ediFilesItemsClone[i].SynOwnShr,
-                            SYN_COL_SHR = ediFilesItemsClone[i].SynColShr,
-                            Society = ediFilesItemsClone[i].Society,
-                            CountUpdate = 1,
-                            LastUpdateAt = DateTime.Now,
-                            LastChoiseAt = DateTime.Now,
-                            IP_NUMBER = ediFilesItemsClone[i].NameNo,//ma ten
-                            IP_NAME_LOCAL = ediFilesItemsClone[i].IpNameLocal2,
-                            IP_NAMETYPE = ediFilesItemsClone[i].IpNameType,
-                        });                        
+                                SYN_OWN_SHR = addMember.SYN_OWN_SHR,
+                                SYN_COL_SHR = addMember.SYN_COL_SHR,
+                                Society = addMember.Society,
+                                CountUpdate = 1,
+                                LastUpdateAt = DateTime.Now,
+                                LastChoiseAt = DateTime.Now,
+                                IP_NUMBER = addMember.IP_NUMBER,//ma ten                           
+                                IP_NAMETYPE = addMember.IP_NAMETYPE,
+                            });
+                        }                       
                     }
-                    //bool isCOMPLETE = true;
+
+                    itmUpdate.WRITER = string.Empty;
+                    itmUpdate.WRITER_LOCAL = string.Empty;
                     for (int iP = 0; iP < itmUpdate.InterestedParties.Count; iP++)
                     {
                         if (itmUpdate.WRITER != string.Empty)
@@ -2294,30 +2272,22 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             itmUpdate.WRITER += ",";
                         }
                         itmUpdate.WRITER += itmUpdate.InterestedParties[iP].IP_NAME;
-                        //if (isCOMPLETE && itmUpdate.InterestedParties[iP].WK_STATUS != "COMPLETE")
-                        //{
-                        //    isCOMPLETE = false;
-                        //}
+
+                        if (itmUpdate.WRITER_LOCAL != string.Empty)
+                        {
+                            itmUpdate.WRITER_LOCAL += ",";
+                        }
+                        itmUpdate.WRITER_LOCAL += itmUpdate.InterestedParties[iP].IP_NAME_LOCAL;
                     }
                     #endregion
-                    
-                    itmUpdate.ARTIST = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].WorkArtist.ToUpper());
-                    //if(ediFilesItemsClone[i].WorkArtist != string.Empty)
-                    //{
-                    //    int a = 1;
-                    //}
-                    if (itmUpdate.ARTIST != string.Empty)
-                    {
-                        //int a = 1;
-                    }
+                    itmUpdate.WK_STATUS = ediFilesItemsClone[i].WorkStatus;
+                    itmUpdate.ARTIST = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].WorkArtist.ToUpper());                    
                     itmUpdate.SOC_NAME = string.Empty;
-                    //TODO 2020-10-02
-                    //
-                    //itmUpdate.WK_STATUS = isCOMPLETE == true ? "COMPLETE" : "INCOMPLETE";
+                    
                     itmUpdate.StarRating = 1;
                     request.Items.Add(itmUpdate);
                 }
-                var dfsf = request.Items.Where(p => p.WK_INT_NO == "1602179").ToList();
+                //var dfsf = request.Items.Where(p => p.WK_INT_NO == "1602179").ToList();
                 var data = await workController.ChangeList(request);
                 statusMain.Invoke(new MethodInvoker(delegate
                 {                   
@@ -2621,21 +2591,24 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                             }
                         }
-                        if (CountNoteNS_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
+                        if(ediFilesItemsClone[i].MemberMonopolyNote.Trim()!=string.Empty)
                         {
-                            ediFilesItemsClone[i].MemberMonopolyNote = "100% không xác định";
-                        }
-                        else if (CountNoteDP_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
-                        {
-                            ediFilesItemsClone[i].MemberMonopolyNote = "100% DP";
-                        }
-                        else if ((CountNoteNS_mono+ CountNoteDP_mono) == ediFilesItemsClone[i].ListInterestedParty.Count)
-                        {
-                            ediFilesItemsClone[i].MemberMonopolyNote = "100% DP và không xác định";
+                            ediFilesItemsClone[i].MemberMonopolyNote = ediFilesItemsClone[i].MemberMonopolyNote.Trim();
                         }
                         else
                         {
-                            ediFilesItemsClone[i].MemberMonopolyNote = ediFilesItemsClone[i].MemberMonopolyNote.Trim();
+                            if (CountNoteNS_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
+                            {
+                                ediFilesItemsClone[i].MemberMonopolyNote = "100% không xác định";
+                            }
+                            else if (CountNoteDP_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
+                            {
+                                ediFilesItemsClone[i].MemberMonopolyNote = "100% DP";
+                            }
+                            else if ((CountNoteNS_mono + CountNoteDP_mono) == ediFilesItemsClone[i].ListInterestedParty.Count)
+                            {
+                                ediFilesItemsClone[i].MemberMonopolyNote = "100% DP và không xác định";
+                            }
                         }
                     }
                     #endregion

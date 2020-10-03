@@ -32,55 +32,6 @@
             this.gbChanelList = new System.Windows.Forms.GroupBox();
             this.pcloader = new System.Windows.Forms.PictureBox();
             this.dgvEditFileImport = new System.Windows.Forms.DataGridView();
-            this.toolMain = new System.Windows.Forms.ToolStrip();
-            this.btnChoiseFile = new System.Windows.Forms.ToolStripButton();
-            this.tstxtPath = new System.Windows.Forms.ToolStripTextBox();
-            this.btnImport = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnExport = new System.Windows.Forms.ToolStripDropDownButton();
-            this.btnExportDefault = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnbtnExportDetail = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExportDistribution = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.statusMain = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbInfo = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbOperation = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.progressBarImport = new System.Windows.Forms.ToolStripProgressBar();
-            this.lbPercent = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbTotalLoad = new System.Windows.Forms.Label();
-            this.lbTotalrest = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lbTotalDuplicate = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbTotalAftercalc = new System.Windows.Forms.Label();
-            this.lbTotalAftercalcxxx = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cheTrueFalse = new System.Windows.Forms.CheckBox();
-            this.btnClearFilter = new System.Windows.Forms.Button();
-            this.txtFind = new System.Windows.Forms.TextBox();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.cboType = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnCalcMono = new System.Windows.Forms.Button();
-            this.cboMonopolyType = new System.Windows.Forms.ComboBox();
-            this.btnSysToWork = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dgvEditCalcXXX = new System.Windows.Forms.DataGridView();
-            this.cheGroupMemberWithcmo = new System.Windows.Forms.CheckBox();
-            this.cboMatchedType = new System.Windows.Forms.ComboBox();
-            this.cheCompareTitleAndWriter = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radCompareTW = new System.Windows.Forms.RadioButton();
-            this.cboRateWriterMatched = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cheVcpmcRegion = new System.Windows.Forms.CheckBox();
             this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DicMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.seqNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,6 +76,46 @@
             this.MemberMonopolyNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NonMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VcpmcRegion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolMain = new System.Windows.Forms.ToolStrip();
+            this.btnChoiseFile = new System.Windows.Forms.ToolStripButton();
+            this.tstxtPath = new System.Windows.Forms.ToolStripTextBox();
+            this.btnImport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnExport = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnExportDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnbtnExportDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExportDistribution = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.statusMain = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbOperation = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.progressBarImport = new System.Windows.Forms.ToolStripProgressBar();
+            this.lbPercent = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbTotalLoad = new System.Windows.Forms.Label();
+            this.lbTotalrest = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbTotalDuplicate = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbTotalAftercalc = new System.Windows.Forms.Label();
+            this.lbTotalAftercalcxxx = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cheTrueFalse = new System.Windows.Forms.CheckBox();
+            this.btnClearFilter = new System.Windows.Forms.Button();
+            this.txtFind = new System.Windows.Forms.TextBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.cboType = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnCalcMono = new System.Windows.Forms.Button();
+            this.cboMonopolyType = new System.Windows.Forms.ComboBox();
+            this.btnSysToWork = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dgvEditCalcXXX = new System.Windows.Forms.DataGridView();
             this.Idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.indexx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DicMemberx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -181,6 +172,15 @@
             this.TotalWriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountMatchWriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VcpmcRegionx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cheGroupMemberWithcmo = new System.Windows.Forms.CheckBox();
+            this.cboMatchedType = new System.Windows.Forms.ComboBox();
+            this.cheCompareTitleAndWriter = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radCompareTW = new System.Windows.Forms.RadioButton();
+            this.cboRateWriterMatched = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cheVcpmcRegion = new System.Windows.Forms.CheckBox();
             this.gbChanelList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcloader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEditFileImport)).BeginInit();
@@ -271,6 +271,368 @@
             this.dgvEditFileImport.ReadOnly = true;
             this.dgvEditFileImport.Size = new System.Drawing.Size(1051, 169);
             this.dgvEditFileImport.TabIndex = 0;
+            // 
+            // index
+            // 
+            this.index.DataPropertyName = "index";
+            this.index.HeaderText = "index";
+            this.index.Name = "index";
+            this.index.ReadOnly = true;
+            // 
+            // DicMember
+            // 
+            this.DicMember.DataPropertyName = "DicMember";
+            this.DicMember.HeaderText = "DicMember";
+            this.DicMember.Name = "DicMember";
+            this.DicMember.ReadOnly = true;
+            this.DicMember.Visible = false;
+            // 
+            // seqNo
+            // 
+            this.seqNo.DataPropertyName = "seqNo";
+            this.seqNo.HeaderText = "seqNo";
+            this.seqNo.Name = "seqNo";
+            this.seqNo.ReadOnly = true;
+            this.seqNo.Width = 63;
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Title";
+            this.Title.FillWeight = 300F;
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            this.Title.Width = 300;
+            // 
+            // Title3
+            // 
+            this.Title3.DataPropertyName = "Title3";
+            this.Title3.FillWeight = 300F;
+            this.Title3.HeaderText = "Title3";
+            this.Title3.Name = "Title3";
+            this.Title3.ReadOnly = true;
+            this.Title3.Width = 300;
+            // 
+            // NoOfPerf
+            // 
+            this.NoOfPerf.DataPropertyName = "NoOfPerf";
+            this.NoOfPerf.HeaderText = "NoOfPerf";
+            this.NoOfPerf.Name = "NoOfPerf";
+            this.NoOfPerf.ReadOnly = true;
+            this.NoOfPerf.Width = 76;
+            // 
+            // Composer
+            // 
+            this.Composer.DataPropertyName = "Composer";
+            this.Composer.FillWeight = 300F;
+            this.Composer.HeaderText = "Composer";
+            this.Composer.Name = "Composer";
+            this.Composer.ReadOnly = true;
+            this.Composer.Width = 300;
+            // 
+            // Artist
+            // 
+            this.Artist.DataPropertyName = "Artist";
+            this.Artist.FillWeight = 300F;
+            this.Artist.HeaderText = "Artist";
+            this.Artist.Name = "Artist";
+            this.Artist.ReadOnly = true;
+            this.Artist.Width = 300;
+            // 
+            // Publisher
+            // 
+            this.Publisher.DataPropertyName = "Publisher";
+            this.Publisher.HeaderText = "Publisher";
+            this.Publisher.Name = "Publisher";
+            this.Publisher.ReadOnly = true;
+            this.Publisher.Width = 75;
+            // 
+            // WorkInternalNo
+            // 
+            this.WorkInternalNo.DataPropertyName = "WorkInternalNo";
+            this.WorkInternalNo.HeaderText = "WorkInternalNo";
+            this.WorkInternalNo.Name = "WorkInternalNo";
+            this.WorkInternalNo.ReadOnly = true;
+            this.WorkInternalNo.Width = 107;
+            // 
+            // RegionalNo
+            // 
+            this.RegionalNo.DataPropertyName = "RegionalNo";
+            this.RegionalNo.HeaderText = "RegionalNo";
+            this.RegionalNo.Name = "RegionalNo";
+            this.RegionalNo.ReadOnly = true;
+            this.RegionalNo.Width = 88;
+            // 
+            // WorkTitle
+            // 
+            this.WorkTitle.DataPropertyName = "WorkTitle";
+            this.WorkTitle.FillWeight = 300F;
+            this.WorkTitle.HeaderText = "WorkTitle";
+            this.WorkTitle.Name = "WorkTitle";
+            this.WorkTitle.ReadOnly = true;
+            this.WorkTitle.Width = 300;
+            // 
+            // WorkTitle2
+            // 
+            this.WorkTitle2.DataPropertyName = "WorkTitle2";
+            this.WorkTitle2.HeaderText = "WorkTitle2";
+            this.WorkTitle2.Name = "WorkTitle2";
+            this.WorkTitle2.ReadOnly = true;
+            this.WorkTitle2.Visible = false;
+            // 
+            // StrOtherTitleOutUnSign
+            // 
+            this.StrOtherTitleOutUnSign.DataPropertyName = "StrOtherTitleOutUnSign";
+            this.StrOtherTitleOutUnSign.HeaderText = "StrOtherTitleOutUnSign";
+            this.StrOtherTitleOutUnSign.Name = "StrOtherTitleOutUnSign";
+            this.StrOtherTitleOutUnSign.ReadOnly = true;
+            this.StrOtherTitleOutUnSign.Visible = false;
+            // 
+            // StrOtherTitleOut
+            // 
+            this.StrOtherTitleOut.DataPropertyName = "StrOtherTitleOut";
+            this.StrOtherTitleOut.HeaderText = "StrOtherTitleOut";
+            this.StrOtherTitleOut.Name = "StrOtherTitleOut";
+            this.StrOtherTitleOut.ReadOnly = true;
+            this.StrOtherTitleOut.Visible = false;
+            // 
+            // WorkArtist
+            // 
+            this.WorkArtist.DataPropertyName = "WorkArtist";
+            this.WorkArtist.FillWeight = 300F;
+            this.WorkArtist.HeaderText = "WorkArtist";
+            this.WorkArtist.Name = "WorkArtist";
+            this.WorkArtist.ReadOnly = true;
+            this.WorkArtist.Width = 300;
+            // 
+            // WorkComposer
+            // 
+            this.WorkComposer.DataPropertyName = "WorkComposer";
+            this.WorkComposer.FillWeight = 300F;
+            this.WorkComposer.HeaderText = "WorkComposer";
+            this.WorkComposer.Name = "WorkComposer";
+            this.WorkComposer.ReadOnly = true;
+            this.WorkComposer.Width = 300;
+            // 
+            // WorkStatus
+            // 
+            this.WorkStatus.DataPropertyName = "WorkStatus";
+            this.WorkStatus.HeaderText = "WorkStatus";
+            this.WorkStatus.Name = "WorkStatus";
+            this.WorkStatus.ReadOnly = true;
+            this.WorkStatus.Width = 88;
+            // 
+            // IpSetNo
+            // 
+            this.IpSetNo.DataPropertyName = "IpSetNo";
+            this.IpSetNo.HeaderText = "IpSetNo";
+            this.IpSetNo.Name = "IpSetNo";
+            this.IpSetNo.ReadOnly = true;
+            this.IpSetNo.Width = 71;
+            // 
+            // IpInNo
+            // 
+            this.IpInNo.DataPropertyName = "IpInNo";
+            this.IpInNo.HeaderText = "IpInNo";
+            this.IpInNo.Name = "IpInNo";
+            this.IpInNo.ReadOnly = true;
+            this.IpInNo.Width = 64;
+            // 
+            // NameNo
+            // 
+            this.NameNo.DataPropertyName = "NameNo";
+            this.NameNo.HeaderText = "NameNo";
+            this.NameNo.Name = "NameNo";
+            this.NameNo.ReadOnly = true;
+            this.NameNo.Width = 74;
+            // 
+            // IpNameType
+            // 
+            this.IpNameType.DataPropertyName = "IpNameType";
+            this.IpNameType.HeaderText = "IpNameType";
+            this.IpNameType.Name = "IpNameType";
+            this.IpNameType.ReadOnly = true;
+            this.IpNameType.Width = 93;
+            // 
+            // IpWorkRole
+            // 
+            this.IpWorkRole.DataPropertyName = "IpWorkRole";
+            this.IpWorkRole.HeaderText = "IpWorkRole";
+            this.IpWorkRole.Name = "IpWorkRole";
+            this.IpWorkRole.ReadOnly = true;
+            this.IpWorkRole.Width = 89;
+            // 
+            // IpName
+            // 
+            this.IpName.DataPropertyName = "IpName";
+            this.IpName.FillWeight = 200F;
+            this.IpName.HeaderText = "IpName";
+            this.IpName.Name = "IpName";
+            this.IpName.ReadOnly = true;
+            this.IpName.Width = 200;
+            // 
+            // IpNameLocal
+            // 
+            this.IpNameLocal.DataPropertyName = "IpNameLocal";
+            this.IpNameLocal.FillWeight = 200F;
+            this.IpNameLocal.HeaderText = "IpNameLocal";
+            this.IpNameLocal.Name = "IpNameLocal";
+            this.IpNameLocal.ReadOnly = true;
+            this.IpNameLocal.Width = 200;
+            // 
+            // Society
+            // 
+            this.Society.DataPropertyName = "Society";
+            this.Society.HeaderText = "Society";
+            this.Society.Name = "Society";
+            this.Society.ReadOnly = true;
+            this.Society.Width = 67;
+            // 
+            // SpName
+            // 
+            this.SpName.DataPropertyName = "SpName";
+            this.SpName.HeaderText = "SpName";
+            this.SpName.Name = "SpName";
+            this.SpName.ReadOnly = true;
+            this.SpName.Width = 73;
+            // 
+            // Society2
+            // 
+            this.Society2.DataPropertyName = "Society2";
+            this.Society2.HeaderText = "Society2";
+            this.Society2.Name = "Society2";
+            this.Society2.ReadOnly = true;
+            this.Society2.Width = 73;
+            // 
+            // PerOwnShr
+            // 
+            this.PerOwnShr.DataPropertyName = "PerOwnShr";
+            this.PerOwnShr.HeaderText = "PerOwnShr";
+            this.PerOwnShr.Name = "PerOwnShr";
+            this.PerOwnShr.ReadOnly = true;
+            this.PerOwnShr.Width = 86;
+            // 
+            // PerColShr
+            // 
+            this.PerColShr.DataPropertyName = "PerColShr";
+            this.PerColShr.HeaderText = "PerColShr";
+            this.PerColShr.Name = "PerColShr";
+            this.PerColShr.ReadOnly = true;
+            this.PerColShr.Width = 79;
+            // 
+            // MecOwnShr
+            // 
+            this.MecOwnShr.DataPropertyName = "MecOwnShr";
+            this.MecOwnShr.HeaderText = "MecOwnShr";
+            this.MecOwnShr.Name = "MecOwnShr";
+            this.MecOwnShr.ReadOnly = true;
+            this.MecOwnShr.Width = 91;
+            // 
+            // MecColShr
+            // 
+            this.MecColShr.DataPropertyName = "MecColShr";
+            this.MecColShr.HeaderText = "MecColShr";
+            this.MecColShr.Name = "MecColShr";
+            this.MecColShr.ReadOnly = true;
+            this.MecColShr.Width = 84;
+            // 
+            // SpShr
+            // 
+            this.SpShr.DataPropertyName = "SpShr";
+            this.SpShr.HeaderText = "SpShr";
+            this.SpShr.Name = "SpShr";
+            this.SpShr.ReadOnly = true;
+            this.SpShr.Width = 61;
+            // 
+            // TotalMecShr
+            // 
+            this.TotalMecShr.DataPropertyName = "TotalMecShr";
+            this.TotalMecShr.HeaderText = "TotalMecShr";
+            this.TotalMecShr.Name = "TotalMecShr";
+            this.TotalMecShr.ReadOnly = true;
+            this.TotalMecShr.Width = 93;
+            // 
+            // SynOwnShr
+            // 
+            this.SynOwnShr.DataPropertyName = "SynOwnShr";
+            this.SynOwnShr.HeaderText = "SynOwnShr";
+            this.SynOwnShr.Name = "SynOwnShr";
+            this.SynOwnShr.ReadOnly = true;
+            this.SynOwnShr.Width = 88;
+            // 
+            // SynColShr
+            // 
+            this.SynColShr.DataPropertyName = "SynColShr";
+            this.SynColShr.HeaderText = "SynColShr";
+            this.SynColShr.Name = "SynColShr";
+            this.SynColShr.ReadOnly = true;
+            this.SynColShr.Width = 81;
+            // 
+            // IsWorkMonopoly
+            // 
+            this.IsWorkMonopoly.DataPropertyName = "IsWorkMonopoly";
+            this.IsWorkMonopoly.HeaderText = "IsWorkMonopoly";
+            this.IsWorkMonopoly.Name = "IsWorkMonopoly";
+            this.IsWorkMonopoly.ReadOnly = true;
+            this.IsWorkMonopoly.Visible = false;
+            // 
+            // WorkFields
+            // 
+            this.WorkFields.DataPropertyName = "WorkFields";
+            this.WorkFields.HeaderText = "WorkFields";
+            this.WorkFields.Name = "WorkFields";
+            this.WorkFields.ReadOnly = true;
+            this.WorkFields.Visible = false;
+            // 
+            // WorkMonopolyNote
+            // 
+            this.WorkMonopolyNote.DataPropertyName = "WorkMonopolyNote";
+            this.WorkMonopolyNote.HeaderText = "WorkMonopolyNote";
+            this.WorkMonopolyNote.Name = "WorkMonopolyNote";
+            this.WorkMonopolyNote.ReadOnly = true;
+            this.WorkMonopolyNote.Visible = false;
+            // 
+            // IsMemberMonopoly
+            // 
+            this.IsMemberMonopoly.DataPropertyName = "IsMemberMonopoly";
+            this.IsMemberMonopoly.HeaderText = "IsMemberMonopoly";
+            this.IsMemberMonopoly.Name = "IsMemberMonopoly";
+            this.IsMemberMonopoly.ReadOnly = true;
+            this.IsMemberMonopoly.Visible = false;
+            // 
+            // MemberFields
+            // 
+            this.MemberFields.DataPropertyName = "MemberFields";
+            this.MemberFields.HeaderText = "MemberFields";
+            this.MemberFields.Name = "MemberFields";
+            this.MemberFields.ReadOnly = true;
+            this.MemberFields.Visible = false;
+            // 
+            // MemberMonopolyNote
+            // 
+            this.MemberMonopolyNote.DataPropertyName = "MemberMonopolyNote";
+            this.MemberMonopolyNote.HeaderText = "MemberMonopolyNote";
+            this.MemberMonopolyNote.Name = "MemberMonopolyNote";
+            this.MemberMonopolyNote.ReadOnly = true;
+            this.MemberMonopolyNote.Visible = false;
+            // 
+            // NonMember
+            // 
+            this.NonMember.DataPropertyName = "NonMember";
+            this.NonMember.HeaderText = "IsNonMember";
+            this.NonMember.Name = "NonMember";
+            this.NonMember.ReadOnly = true;
+            this.NonMember.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NonMember.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NonMember.Visible = false;
+            // 
+            // VcpmcRegion
+            // 
+            this.VcpmcRegion.DataPropertyName = "VcpmcRegion";
+            this.VcpmcRegion.HeaderText = "VcpmcRegion";
+            this.VcpmcRegion.Name = "VcpmcRegion";
+            this.VcpmcRegion.ReadOnly = true;
+            this.VcpmcRegion.Visible = false;
             // 
             // toolMain
             // 
@@ -738,473 +1100,6 @@
             this.dgvEditCalcXXX.ReadOnly = true;
             this.dgvEditCalcXXX.Size = new System.Drawing.Size(1051, 148);
             this.dgvEditCalcXXX.TabIndex = 26;
-            // 
-            // cheGroupMemberWithcmo
-            // 
-            this.cheGroupMemberWithcmo.AutoSize = true;
-            this.cheGroupMemberWithcmo.Checked = true;
-            this.cheGroupMemberWithcmo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cheGroupMemberWithcmo.Location = new System.Drawing.Point(6, 58);
-            this.cheGroupMemberWithcmo.Name = "cheGroupMemberWithcmo";
-            this.cheGroupMemberWithcmo.Size = new System.Drawing.Size(152, 17);
-            this.cheGroupMemberWithcmo.TabIndex = 39;
-            this.cheGroupMemberWithcmo.Text = "Group member with society";
-            this.cheGroupMemberWithcmo.UseVisualStyleBackColor = true;
-            // 
-            // cboMatchedType
-            // 
-            this.cboMatchedType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMatchedType.FormattingEnabled = true;
-            this.cboMatchedType.Items.AddRange(new object[] {
-            "Generate report",
-            "Generate local report",
-            "New match report"});
-            this.cboMatchedType.Location = new System.Drawing.Point(6, 32);
-            this.cboMatchedType.Name = "cboMatchedType";
-            this.cboMatchedType.Size = new System.Drawing.Size(147, 20);
-            this.cboMatchedType.TabIndex = 40;
-            this.cboMatchedType.SelectedIndexChanged += new System.EventHandler(this.cboMatchedType_SelectedIndexChanged);
-            // 
-            // cheCompareTitleAndWriter
-            // 
-            this.cheCompareTitleAndWriter.AutoSize = true;
-            this.cheCompareTitleAndWriter.Checked = true;
-            this.cheCompareTitleAndWriter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cheCompareTitleAndWriter.Location = new System.Drawing.Point(159, 35);
-            this.cheCompareTitleAndWriter.Name = "cheCompareTitleAndWriter";
-            this.cheCompareTitleAndWriter.Size = new System.Drawing.Size(210, 17);
-            this.cheCompareTitleAndWriter.TabIndex = 41;
-            this.cheCompareTitleAndWriter.Text = "Compare Title and count writer matched";
-            this.cheCompareTitleAndWriter.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radCompareTW);
-            this.groupBox2.Location = new System.Drawing.Point(372, 23);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(115, 31);
-            this.groupBox2.TabIndex = 42;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Title";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(65, 13);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(44, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Like";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radCompareTW
-            // 
-            this.radCompareTW.AutoSize = true;
-            this.radCompareTW.Location = new System.Drawing.Point(7, 13);
-            this.radCompareTW.Name = "radCompareTW";
-            this.radCompareTW.Size = new System.Drawing.Size(54, 17);
-            this.radCompareTW.TabIndex = 0;
-            this.radCompareTW.Text = "Match";
-            this.radCompareTW.UseVisualStyleBackColor = true;
-            // 
-            // cboRateWriterMatched
-            // 
-            this.cboRateWriterMatched.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRateWriterMatched.FormattingEnabled = true;
-            this.cboRateWriterMatched.Items.AddRange(new object[] {
-            "100%",
-            "75%",
-            "50%",
-            "25%",
-            "0%"});
-            this.cboRateWriterMatched.Location = new System.Drawing.Point(595, 33);
-            this.cboRateWriterMatched.Name = "cboRateWriterMatched";
-            this.cboRateWriterMatched.Size = new System.Drawing.Size(121, 20);
-            this.cboRateWriterMatched.TabIndex = 43;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(487, 36);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 13);
-            this.label6.TabIndex = 44;
-            this.label6.Text = "Rate Writer matched";
-            // 
-            // cheVcpmcRegion
-            // 
-            this.cheVcpmcRegion.AutoSize = true;
-            this.cheVcpmcRegion.Location = new System.Drawing.Point(159, 58);
-            this.cheVcpmcRegion.Name = "cheVcpmcRegion";
-            this.cheVcpmcRegion.Size = new System.Drawing.Size(116, 17);
-            this.cheVcpmcRegion.TabIndex = 45;
-            this.cheVcpmcRegion.Text = "VCPMC add region";
-            this.cheVcpmcRegion.UseVisualStyleBackColor = true;
-            // 
-            // index
-            // 
-            this.index.DataPropertyName = "index";
-            this.index.HeaderText = "index";
-            this.index.Name = "index";
-            this.index.ReadOnly = true;
-            // 
-            // DicMember
-            // 
-            this.DicMember.DataPropertyName = "DicMember";
-            this.DicMember.HeaderText = "DicMember";
-            this.DicMember.Name = "DicMember";
-            this.DicMember.ReadOnly = true;
-            this.DicMember.Visible = false;
-            // 
-            // seqNo
-            // 
-            this.seqNo.DataPropertyName = "seqNo";
-            this.seqNo.HeaderText = "seqNo";
-            this.seqNo.Name = "seqNo";
-            this.seqNo.ReadOnly = true;
-            this.seqNo.Width = 63;
-            // 
-            // Title
-            // 
-            this.Title.DataPropertyName = "Title";
-            this.Title.FillWeight = 300F;
-            this.Title.HeaderText = "Title";
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            this.Title.Width = 300;
-            // 
-            // Title3
-            // 
-            this.Title3.DataPropertyName = "Title3";
-            this.Title3.FillWeight = 300F;
-            this.Title3.HeaderText = "Title3";
-            this.Title3.Name = "Title3";
-            this.Title3.ReadOnly = true;
-            this.Title3.Width = 300;
-            // 
-            // NoOfPerf
-            // 
-            this.NoOfPerf.DataPropertyName = "NoOfPerf";
-            this.NoOfPerf.HeaderText = "NoOfPerf";
-            this.NoOfPerf.Name = "NoOfPerf";
-            this.NoOfPerf.ReadOnly = true;
-            this.NoOfPerf.Width = 76;
-            // 
-            // Composer
-            // 
-            this.Composer.DataPropertyName = "Composer";
-            this.Composer.FillWeight = 300F;
-            this.Composer.HeaderText = "Composer";
-            this.Composer.Name = "Composer";
-            this.Composer.ReadOnly = true;
-            this.Composer.Width = 300;
-            // 
-            // Artist
-            // 
-            this.Artist.DataPropertyName = "Artist";
-            this.Artist.FillWeight = 300F;
-            this.Artist.HeaderText = "Artist";
-            this.Artist.Name = "Artist";
-            this.Artist.ReadOnly = true;
-            this.Artist.Width = 300;
-            // 
-            // Publisher
-            // 
-            this.Publisher.DataPropertyName = "Publisher";
-            this.Publisher.HeaderText = "Publisher";
-            this.Publisher.Name = "Publisher";
-            this.Publisher.ReadOnly = true;
-            this.Publisher.Width = 75;
-            // 
-            // WorkInternalNo
-            // 
-            this.WorkInternalNo.DataPropertyName = "WorkInternalNo";
-            this.WorkInternalNo.HeaderText = "WorkInternalNo";
-            this.WorkInternalNo.Name = "WorkInternalNo";
-            this.WorkInternalNo.ReadOnly = true;
-            this.WorkInternalNo.Width = 107;
-            // 
-            // RegionalNo
-            // 
-            this.RegionalNo.DataPropertyName = "RegionalNo";
-            this.RegionalNo.HeaderText = "RegionalNo";
-            this.RegionalNo.Name = "RegionalNo";
-            this.RegionalNo.ReadOnly = true;
-            this.RegionalNo.Width = 88;
-            // 
-            // WorkTitle
-            // 
-            this.WorkTitle.DataPropertyName = "WorkTitle";
-            this.WorkTitle.FillWeight = 300F;
-            this.WorkTitle.HeaderText = "WorkTitle";
-            this.WorkTitle.Name = "WorkTitle";
-            this.WorkTitle.ReadOnly = true;
-            this.WorkTitle.Width = 300;
-            // 
-            // WorkTitle2
-            // 
-            this.WorkTitle2.DataPropertyName = "WorkTitle2";
-            this.WorkTitle2.HeaderText = "WorkTitle2";
-            this.WorkTitle2.Name = "WorkTitle2";
-            this.WorkTitle2.ReadOnly = true;
-            this.WorkTitle2.Visible = false;
-            // 
-            // StrOtherTitleOutUnSign
-            // 
-            this.StrOtherTitleOutUnSign.DataPropertyName = "StrOtherTitleOutUnSign";
-            this.StrOtherTitleOutUnSign.HeaderText = "StrOtherTitleOutUnSign";
-            this.StrOtherTitleOutUnSign.Name = "StrOtherTitleOutUnSign";
-            this.StrOtherTitleOutUnSign.ReadOnly = true;
-            this.StrOtherTitleOutUnSign.Visible = false;
-            // 
-            // StrOtherTitleOut
-            // 
-            this.StrOtherTitleOut.DataPropertyName = "StrOtherTitleOut";
-            this.StrOtherTitleOut.HeaderText = "StrOtherTitleOut";
-            this.StrOtherTitleOut.Name = "StrOtherTitleOut";
-            this.StrOtherTitleOut.ReadOnly = true;
-            this.StrOtherTitleOut.Visible = false;
-            // 
-            // WorkArtist
-            // 
-            this.WorkArtist.DataPropertyName = "WorkArtist";
-            this.WorkArtist.FillWeight = 300F;
-            this.WorkArtist.HeaderText = "WorkArtist";
-            this.WorkArtist.Name = "WorkArtist";
-            this.WorkArtist.ReadOnly = true;
-            this.WorkArtist.Width = 300;
-            // 
-            // WorkComposer
-            // 
-            this.WorkComposer.DataPropertyName = "WorkComposer";
-            this.WorkComposer.FillWeight = 300F;
-            this.WorkComposer.HeaderText = "WorkComposer";
-            this.WorkComposer.Name = "WorkComposer";
-            this.WorkComposer.ReadOnly = true;
-            this.WorkComposer.Width = 300;
-            // 
-            // WorkStatus
-            // 
-            this.WorkStatus.DataPropertyName = "WorkStatus";
-            this.WorkStatus.HeaderText = "WorkStatus";
-            this.WorkStatus.Name = "WorkStatus";
-            this.WorkStatus.ReadOnly = true;
-            this.WorkStatus.Width = 88;
-            // 
-            // IpSetNo
-            // 
-            this.IpSetNo.DataPropertyName = "IpSetNo";
-            this.IpSetNo.HeaderText = "IpSetNo";
-            this.IpSetNo.Name = "IpSetNo";
-            this.IpSetNo.ReadOnly = true;
-            this.IpSetNo.Width = 71;
-            // 
-            // IpInNo
-            // 
-            this.IpInNo.DataPropertyName = "IpInNo";
-            this.IpInNo.HeaderText = "IpInNo";
-            this.IpInNo.Name = "IpInNo";
-            this.IpInNo.ReadOnly = true;
-            this.IpInNo.Width = 64;
-            // 
-            // NameNo
-            // 
-            this.NameNo.DataPropertyName = "NameNo";
-            this.NameNo.HeaderText = "NameNo";
-            this.NameNo.Name = "NameNo";
-            this.NameNo.ReadOnly = true;
-            this.NameNo.Width = 74;
-            // 
-            // IpNameType
-            // 
-            this.IpNameType.DataPropertyName = "IpNameType";
-            this.IpNameType.HeaderText = "IpNameType";
-            this.IpNameType.Name = "IpNameType";
-            this.IpNameType.ReadOnly = true;
-            this.IpNameType.Width = 93;
-            // 
-            // IpWorkRole
-            // 
-            this.IpWorkRole.DataPropertyName = "IpWorkRole";
-            this.IpWorkRole.HeaderText = "IpWorkRole";
-            this.IpWorkRole.Name = "IpWorkRole";
-            this.IpWorkRole.ReadOnly = true;
-            this.IpWorkRole.Width = 89;
-            // 
-            // IpName
-            // 
-            this.IpName.DataPropertyName = "IpName";
-            this.IpName.FillWeight = 200F;
-            this.IpName.HeaderText = "IpName";
-            this.IpName.Name = "IpName";
-            this.IpName.ReadOnly = true;
-            this.IpName.Width = 200;
-            // 
-            // IpNameLocal
-            // 
-            this.IpNameLocal.DataPropertyName = "IpNameLocal";
-            this.IpNameLocal.FillWeight = 200F;
-            this.IpNameLocal.HeaderText = "IpNameLocal";
-            this.IpNameLocal.Name = "IpNameLocal";
-            this.IpNameLocal.ReadOnly = true;
-            this.IpNameLocal.Width = 200;
-            // 
-            // Society
-            // 
-            this.Society.DataPropertyName = "Society";
-            this.Society.HeaderText = "Society";
-            this.Society.Name = "Society";
-            this.Society.ReadOnly = true;
-            this.Society.Width = 67;
-            // 
-            // SpName
-            // 
-            this.SpName.DataPropertyName = "SpName";
-            this.SpName.HeaderText = "SpName";
-            this.SpName.Name = "SpName";
-            this.SpName.ReadOnly = true;
-            this.SpName.Width = 73;
-            // 
-            // Society2
-            // 
-            this.Society2.DataPropertyName = "Society2";
-            this.Society2.HeaderText = "Society2";
-            this.Society2.Name = "Society2";
-            this.Society2.ReadOnly = true;
-            this.Society2.Width = 73;
-            // 
-            // PerOwnShr
-            // 
-            this.PerOwnShr.DataPropertyName = "PerOwnShr";
-            this.PerOwnShr.HeaderText = "PerOwnShr";
-            this.PerOwnShr.Name = "PerOwnShr";
-            this.PerOwnShr.ReadOnly = true;
-            this.PerOwnShr.Width = 86;
-            // 
-            // PerColShr
-            // 
-            this.PerColShr.DataPropertyName = "PerColShr";
-            this.PerColShr.HeaderText = "PerColShr";
-            this.PerColShr.Name = "PerColShr";
-            this.PerColShr.ReadOnly = true;
-            this.PerColShr.Width = 79;
-            // 
-            // MecOwnShr
-            // 
-            this.MecOwnShr.DataPropertyName = "MecOwnShr";
-            this.MecOwnShr.HeaderText = "MecOwnShr";
-            this.MecOwnShr.Name = "MecOwnShr";
-            this.MecOwnShr.ReadOnly = true;
-            this.MecOwnShr.Width = 91;
-            // 
-            // MecColShr
-            // 
-            this.MecColShr.DataPropertyName = "MecColShr";
-            this.MecColShr.HeaderText = "MecColShr";
-            this.MecColShr.Name = "MecColShr";
-            this.MecColShr.ReadOnly = true;
-            this.MecColShr.Width = 84;
-            // 
-            // SpShr
-            // 
-            this.SpShr.DataPropertyName = "SpShr";
-            this.SpShr.HeaderText = "SpShr";
-            this.SpShr.Name = "SpShr";
-            this.SpShr.ReadOnly = true;
-            this.SpShr.Width = 61;
-            // 
-            // TotalMecShr
-            // 
-            this.TotalMecShr.DataPropertyName = "TotalMecShr";
-            this.TotalMecShr.HeaderText = "TotalMecShr";
-            this.TotalMecShr.Name = "TotalMecShr";
-            this.TotalMecShr.ReadOnly = true;
-            this.TotalMecShr.Width = 93;
-            // 
-            // SynOwnShr
-            // 
-            this.SynOwnShr.DataPropertyName = "SynOwnShr";
-            this.SynOwnShr.HeaderText = "SynOwnShr";
-            this.SynOwnShr.Name = "SynOwnShr";
-            this.SynOwnShr.ReadOnly = true;
-            this.SynOwnShr.Width = 88;
-            // 
-            // SynColShr
-            // 
-            this.SynColShr.DataPropertyName = "SynColShr";
-            this.SynColShr.HeaderText = "SynColShr";
-            this.SynColShr.Name = "SynColShr";
-            this.SynColShr.ReadOnly = true;
-            this.SynColShr.Width = 81;
-            // 
-            // IsWorkMonopoly
-            // 
-            this.IsWorkMonopoly.DataPropertyName = "IsWorkMonopoly";
-            this.IsWorkMonopoly.HeaderText = "IsWorkMonopoly";
-            this.IsWorkMonopoly.Name = "IsWorkMonopoly";
-            this.IsWorkMonopoly.ReadOnly = true;
-            this.IsWorkMonopoly.Visible = false;
-            // 
-            // WorkFields
-            // 
-            this.WorkFields.DataPropertyName = "WorkFields";
-            this.WorkFields.HeaderText = "WorkFields";
-            this.WorkFields.Name = "WorkFields";
-            this.WorkFields.ReadOnly = true;
-            this.WorkFields.Visible = false;
-            // 
-            // WorkMonopolyNote
-            // 
-            this.WorkMonopolyNote.DataPropertyName = "WorkMonopolyNote";
-            this.WorkMonopolyNote.HeaderText = "WorkMonopolyNote";
-            this.WorkMonopolyNote.Name = "WorkMonopolyNote";
-            this.WorkMonopolyNote.ReadOnly = true;
-            this.WorkMonopolyNote.Visible = false;
-            // 
-            // IsMemberMonopoly
-            // 
-            this.IsMemberMonopoly.DataPropertyName = "IsMemberMonopoly";
-            this.IsMemberMonopoly.HeaderText = "IsMemberMonopoly";
-            this.IsMemberMonopoly.Name = "IsMemberMonopoly";
-            this.IsMemberMonopoly.ReadOnly = true;
-            this.IsMemberMonopoly.Visible = false;
-            // 
-            // MemberFields
-            // 
-            this.MemberFields.DataPropertyName = "MemberFields";
-            this.MemberFields.HeaderText = "MemberFields";
-            this.MemberFields.Name = "MemberFields";
-            this.MemberFields.ReadOnly = true;
-            this.MemberFields.Visible = false;
-            // 
-            // MemberMonopolyNote
-            // 
-            this.MemberMonopolyNote.DataPropertyName = "MemberMonopolyNote";
-            this.MemberMonopolyNote.HeaderText = "MemberMonopolyNote";
-            this.MemberMonopolyNote.Name = "MemberMonopolyNote";
-            this.MemberMonopolyNote.ReadOnly = true;
-            this.MemberMonopolyNote.Visible = false;
-            // 
-            // NonMember
-            // 
-            this.NonMember.DataPropertyName = "NonMember";
-            this.NonMember.HeaderText = "IsNonMember";
-            this.NonMember.Name = "NonMember";
-            this.NonMember.ReadOnly = true;
-            this.NonMember.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NonMember.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NonMember.Visible = false;
-            // 
-            // VcpmcRegion
-            // 
-            this.VcpmcRegion.DataPropertyName = "VcpmcRegion";
-            this.VcpmcRegion.HeaderText = "VcpmcRegion";
-            this.VcpmcRegion.Name = "VcpmcRegion";
-            this.VcpmcRegion.ReadOnly = true;
-            this.VcpmcRegion.Visible = false;
             // 
             // Idx
             // 
@@ -1704,6 +1599,112 @@
             this.VcpmcRegionx.Name = "VcpmcRegionx";
             this.VcpmcRegionx.ReadOnly = true;
             this.VcpmcRegionx.Width = 300;
+            // 
+            // cheGroupMemberWithcmo
+            // 
+            this.cheGroupMemberWithcmo.AutoSize = true;
+            this.cheGroupMemberWithcmo.Checked = true;
+            this.cheGroupMemberWithcmo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cheGroupMemberWithcmo.Location = new System.Drawing.Point(6, 58);
+            this.cheGroupMemberWithcmo.Name = "cheGroupMemberWithcmo";
+            this.cheGroupMemberWithcmo.Size = new System.Drawing.Size(152, 17);
+            this.cheGroupMemberWithcmo.TabIndex = 39;
+            this.cheGroupMemberWithcmo.Text = "Group member with society";
+            this.cheGroupMemberWithcmo.UseVisualStyleBackColor = true;
+            // 
+            // cboMatchedType
+            // 
+            this.cboMatchedType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMatchedType.FormattingEnabled = true;
+            this.cboMatchedType.Items.AddRange(new object[] {
+            "Generate report",
+            "Generate local report",
+            "New match report"});
+            this.cboMatchedType.Location = new System.Drawing.Point(6, 32);
+            this.cboMatchedType.Name = "cboMatchedType";
+            this.cboMatchedType.Size = new System.Drawing.Size(147, 20);
+            this.cboMatchedType.TabIndex = 40;
+            this.cboMatchedType.SelectedIndexChanged += new System.EventHandler(this.cboMatchedType_SelectedIndexChanged);
+            // 
+            // cheCompareTitleAndWriter
+            // 
+            this.cheCompareTitleAndWriter.AutoSize = true;
+            this.cheCompareTitleAndWriter.Checked = true;
+            this.cheCompareTitleAndWriter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cheCompareTitleAndWriter.Enabled = false;
+            this.cheCompareTitleAndWriter.Location = new System.Drawing.Point(159, 35);
+            this.cheCompareTitleAndWriter.Name = "cheCompareTitleAndWriter";
+            this.cheCompareTitleAndWriter.Size = new System.Drawing.Size(210, 17);
+            this.cheCompareTitleAndWriter.TabIndex = 41;
+            this.cheCompareTitleAndWriter.Text = "Compare Title and count writer matched";
+            this.cheCompareTitleAndWriter.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.radCompareTW);
+            this.groupBox2.Location = new System.Drawing.Point(372, 23);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(115, 31);
+            this.groupBox2.TabIndex = 42;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Title";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Location = new System.Drawing.Point(65, 13);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(44, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Like";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radCompareTW
+            // 
+            this.radCompareTW.AutoSize = true;
+            this.radCompareTW.Location = new System.Drawing.Point(7, 13);
+            this.radCompareTW.Name = "radCompareTW";
+            this.radCompareTW.Size = new System.Drawing.Size(54, 17);
+            this.radCompareTW.TabIndex = 0;
+            this.radCompareTW.Text = "Match";
+            this.radCompareTW.UseVisualStyleBackColor = true;
+            // 
+            // cboRateWriterMatched
+            // 
+            this.cboRateWriterMatched.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRateWriterMatched.FormattingEnabled = true;
+            this.cboRateWriterMatched.Items.AddRange(new object[] {
+            "100%",
+            "75%",
+            "50%",
+            "25%",
+            "0%"});
+            this.cboRateWriterMatched.Location = new System.Drawing.Point(595, 33);
+            this.cboRateWriterMatched.Name = "cboRateWriterMatched";
+            this.cboRateWriterMatched.Size = new System.Drawing.Size(121, 20);
+            this.cboRateWriterMatched.TabIndex = 43;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(487, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 13);
+            this.label6.TabIndex = 44;
+            this.label6.Text = "Rate Writer matched";
+            // 
+            // cheVcpmcRegion
+            // 
+            this.cheVcpmcRegion.AutoSize = true;
+            this.cheVcpmcRegion.Location = new System.Drawing.Point(159, 58);
+            this.cheVcpmcRegion.Name = "cheVcpmcRegion";
+            this.cheVcpmcRegion.Size = new System.Drawing.Size(116, 17);
+            this.cheVcpmcRegion.TabIndex = 45;
+            this.cheVcpmcRegion.Text = "VCPMC add region";
+            this.cheVcpmcRegion.UseVisualStyleBackColor = true;
             // 
             // frmEdiFiles
             // 

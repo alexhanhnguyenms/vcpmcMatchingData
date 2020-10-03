@@ -65,9 +65,13 @@ namespace Vcpmc.Mis.ApplicationCore.Entities.control
         /// </summary>
         public string WorkTitle { get; set; } = string.Empty;
         /// <summary>
-        /// tieu de chinh sua
+        /// tieu de chinh sua có dấu(ten chính xác)
         /// </summary>
         public string WorkTitle2 { get; set; } = string.Empty;
+        /// <summary>
+        /// Tiêu đề chỉnh sửa không dấu(ten chính xác)
+        /// </summary>
+        public string WorkTitle2Unsign { get; set; } = string.Empty;
         /// <summary>
         /// Danh sach ca si bieu dien
         /// </summary>
