@@ -101,6 +101,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
             }
             cboRateWriterMatched.SelectedIndex = 2;
             cboType.SelectedIndex = 1;
+            btnApply.Enabled = false;
             //isVcpmcAddRegion = cheVcpmcRegion.Checked;
             //dgvEditFileImport.DataSource = bindingSourceImport;
             //dgvEditCalcXXX.DataSource = bindingSourceEdit;
@@ -138,6 +139,20 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         {
             try
             {
+                btnApply.Enabled = false;
+                tstxtPath.Text = "";
+                var filePath = string.Empty;
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Excel Files|*.xls;*.xlsx";
+                    //openFileDialog.InitialDirectory = "D:\\";                   
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        //Get the path of specified file
+                        filePath = openFileDialog.FileName;
+                        tstxtPath.Text = filePath;
+                    }
+                }
                 switch (cboRateWriterMatched.SelectedIndex)
                 {
                     case 0:
@@ -160,24 +175,24 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         break;
                 }
                 GenerateType = cboMatchedType.SelectedIndex;
-                _comareTitleAndWriter = cheCompareTitleAndWriter.Checked;              
+                _comareTitleAndWriter = cheCompareTitleAndWriter.Checked;
                 #region display
                 if (_comareTitleAndWriter)
                 {
                     dgvEditCalcXXX.Columns["IscheckCompareTitleAndWriterx"].Visible = true;
                     dgvEditCalcXXX.Columns["MesssageCompareTitleAndWriterx"].Visible = true;
-                    dgvEditCalcXXX.Columns["CountMatchWriter"].Visible = true;
-                    dgvEditCalcXXX.Columns["TotalWriter"].Visible = true;
-                }  
+                    dgvEditCalcXXX.Columns["CountMatchWriterx"].Visible = true;
+                    dgvEditCalcXXX.Columns["TotalWriterx"].Visible = true;
+                }
                 else
                 {
                     dgvEditCalcXXX.Columns["IscheckCompareTitleAndWriterx"].Visible = false;
                     dgvEditCalcXXX.Columns["MesssageCompareTitleAndWriterx"].Visible = false;
-                    dgvEditCalcXXX.Columns["CountMatchWriter"].Visible = false;
-                    dgvEditCalcXXX.Columns["TotalWriter"].Visible = false;
+                    dgvEditCalcXXX.Columns["CountMatchWriterx"].Visible = false;
+                    dgvEditCalcXXX.Columns["TotalWriterx"].Visible = false;
                 }
 
-                if(GenerateType == 0|| GenerateType == 1)
+                if (GenerateType == 0 || GenerateType == 1)
                 {
                     //thong thuong
                     dgvEditCalcXXX.Columns["IpSetNox"].Visible = false;
@@ -191,12 +206,12 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     dgvEditCalcXXX.Columns["IpNamex"].Visible = false;
                     dgvEditCalcXXX.Columns["IpNameLocal2x"].Visible = false;
                     dgvEditCalcXXX.Columns["Societyx"].Visible = false;
-                   
+
                     dgvEditCalcXXX.Columns["PerOwnShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["PerColShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["MecOwnShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["TotalMecShrx"].Visible = false;
-                  
+
                     dgvEditCalcXXX.Columns["SpShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["TotalMecShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["SynOwnShrx"].Visible = false;
@@ -230,7 +245,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
                 }
 
-                if(cheVcpmcRegion.Checked)
+                if (cheVcpmcRegion.Checked)
                 {
                     dgvEditCalcXXX.Columns["VcpmcRegionx"].Visible = true;
                 }
@@ -240,7 +255,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 }
 
                 #endregion
-               
+
                 if (isLoad)
                 {
                     lbTotalLoad.Invoke(new MethodInvoker(delegate
@@ -298,29 +313,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 MessageBox.Show(ex.ToString());
             }
         }
-        private void btnChoiseFile_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                tstxtPath.Text = "";
-                var filePath = string.Empty;
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
-                {
-                    openFileDialog.Filter = "Excel Files|*.xls;*.xlsx";
-                    //openFileDialog.InitialDirectory = "D:\\";                   
-                    if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        //Get the path of specified file
-                        filePath = openFileDialog.FileName;
-                        tstxtPath.Text = filePath;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.ToString()}");
-            }
-        }
+        
         #endregion
 
         #region timer      
@@ -361,6 +354,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             pcloader.Visible = false;
+            pictureBox1.Visible = false;
         }
         #endregion
 
@@ -368,7 +362,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         private async void LoadDtaFromExcel()
         {
             try
-            {                
+            {
+                
                 #region init   
                 int NoOfPerf = 0;
                 int seqNo = 0;
@@ -421,7 +416,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     string pathx = Path.GetDirectoryName(Application.ExecutablePath) + @"\Data\member\VcpmcInfo.txt";
                     vcpmcInfo = CsvReadHelper.ReadVCPMCInfo(pathx);
                 }
-                
+               
                 #region 1.Loai bo dong trong   
                 List<EdiFilesItem> editFiles = new List<EdiFilesItem>();
                 if (ediFilesItems != null)
@@ -647,9 +642,9 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     #endregion                   
                 }
                 #endregion
-
+                
                 #region Chuyen doi mot so tac gia 
-                if(ediFilesItemsClone.Count > 0 )
+                if (ediFilesItemsClone.Count > 0 )
                 {
                     string valueFix = string.Empty;                   
 
@@ -1232,16 +1227,14 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 #endregion
 
                 #region Chinh sua tieu de
-                
+
                 //foreach (var item in ediFilesItemsClone)
                 //{
                 //    GetTile(item);
                 //}
-                #endregion                
-
-                #region Hien thi du lieu goc
-                //bindingSourceImport.DataSource = ediFilesItems;
-                //bindingSourceEdit.DataSource = ediFilesItemsClone;
+                #endregion
+                
+                #region Hien thi du lieu goc                
                 if (ediFilesItems != null)
                 {                    
                     totalLoad = ediFilesItems.Count;
@@ -2110,8 +2103,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 if (DialogResult == DialogResult.Yes)
                 {
                     Operation = OperationType.SysnData;
-                    pcloader.Visible = true;
-                    pcloader.Dock = DockStyle.Fill;
+                    pictureBox1.Visible = true;
+                    pictureBox1.Dock = DockStyle.Fill;
                     backgroundWorker.RunWorkerAsync();
                 }
             }
@@ -2161,7 +2154,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                
                 toolMain.Invoke(new MethodInvoker(delegate
                 {
-                    btnChoiseFile.Enabled = false;
+                    //btnChoiseFile.Enabled = false;
                     btnImport.Enabled = false;                  
                     btnExport.Enabled = false;                    
                 }));
@@ -2307,7 +2300,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 }));
                 toolMain.Invoke(new MethodInvoker(delegate
                 {
-                    btnChoiseFile.Enabled = true;
+                    //btnChoiseFile.Enabled = true;
                     btnImport.Enabled = true;                   
                     btnExport.Enabled = true;
                 }));
@@ -2334,7 +2327,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 {
                     toolMain.Invoke(new MethodInvoker(delegate
                     {
-                        btnChoiseFile.Enabled = true;
+                        //btnChoiseFile.Enabled = true;
                         btnImport.Enabled = true;                       
                         btnExport.Enabled = true;
                     }));
@@ -2433,8 +2426,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
                 #region set backgroundWorker
                 Operation = OperationType.FindMonopoly;
-                pcloader.Visible = true;
-                pcloader.Dock = DockStyle.Fill;
+                pictureBox1.Visible = true;
+                pictureBox1.Dock = DockStyle.Fill;
                 backgroundWorker.RunWorkerAsync();
                 #endregion  
             }
@@ -2463,6 +2456,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 btnSysToWork.Invoke(new MethodInvoker(delegate
                 {
                     btnSysToWork.Enabled = false;
+                }));
+                btnApply.Invoke(new MethodInvoker(delegate
+                {
+                    btnApply.Enabled = false; ;
                 }));
                 #endregion
 
@@ -2644,6 +2641,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 btnSysToWork.Invoke(new MethodInvoker(delegate
                 {
                     btnSysToWork.Enabled = true;
+                }));
+                btnApply.Invoke(new MethodInvoker(delegate
+                {
+                    btnApply.Enabled = true; ;
                 }));
                 isFindMono = false;
             }
@@ -3088,6 +3089,244 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
             }
         }
 
-        #endregion        
+        #endregion
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+
+        }
+        #region working are        
+        string indexChoise = "";
+        string seqNoxChoise = "";
+        string NoOfPerfChoise = "";
+        private void dgvEditCalcXXX_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if(dgvEditCalcXXX.Rows.Count>0)
+                {
+                    //.dau vao
+                    indexChoise = dgvEditCalcXXX.CurrentRow.Cells["indexx"].Value.ToString().Trim();
+                    seqNoxChoise = dgvEditCalcXXX.CurrentRow.Cells["seqNox"].Value.ToString().Trim();
+                    NoOfPerfChoise = dgvEditCalcXXX.CurrentRow.Cells["NoOfPerfx"].Value.ToString().Trim();
+                    string Titlex = dgvEditCalcXXX.CurrentRow.Cells["Titlex"].Value.ToString().Trim();
+                    string Title3x = dgvEditCalcXXX.CurrentRow.Cells["Title3x"].Value.ToString().Trim();
+                    string Composerx = dgvEditCalcXXX.CurrentRow.Cells["Composerx"].Value.ToString().Trim();
+                    string ListComposerx = dgvEditCalcXXX.CurrentRow.Cells["ListComposerx"].Value.ToString().Trim();
+                    string Artistx = dgvEditCalcXXX.CurrentRow.Cells["Artistx"].Value.ToString().Trim();
+                    string Publisherx = dgvEditCalcXXX.CurrentRow.Cells["Publisherx"].Value.ToString().Trim();
+                    txtindex.Text = indexChoise;
+                    txtseqNox.Text = seqNoxChoise;
+                    txtNoOfPerf.Text = NoOfPerfChoise;
+                    txtTitleIn.Text = Titlex;
+
+                    txtWriterIn.Text = $"Composer: {Composerx} {Environment.NewLine} {Publisherx}";
+
+                    //tac pham
+                    string WorkInternalNox = dgvEditCalcXXX.CurrentRow.Cells["WorkInternalNox"].Value.ToString().Trim();
+                    string LocalWorkIntNox = dgvEditCalcXXX.CurrentRow.Cells["LocalWorkIntNox"].Value.ToString().Trim();
+                    string WorkTitlex = dgvEditCalcXXX.CurrentRow.Cells["WorkTitlex"].Value.ToString().Trim();
+                    string WorkTitle2x = dgvEditCalcXXX.CurrentRow.Cells["WorkTitle2x"].Value.ToString().Trim();                                    
+                    string WorkTitle2Unsignx = dgvEditCalcXXX.CurrentRow.Cells["WorkTitle2Unsignx"].Value.ToString().Trim();                                    
+                    string WorkArtistx = dgvEditCalcXXX.CurrentRow.Cells["WorkArtistx"].Value.ToString().Trim(); 
+                    string WorkComposerx = dgvEditCalcXXX.CurrentRow.Cells["WorkComposerx"].Value.ToString().Trim();
+                    string WorkStatusx = dgvEditCalcXXX.CurrentRow.Cells["WorkStatusx"].Value.ToString().Trim();
+                    List<string> ListOtherTitleOutUnSignx = (List<string>)dgvEditCalcXXX.CurrentRow.Cells["ListOtherTitleOutUnSignx"].Value;
+                    string StrOtherTitleOutUnSignx = dgvEditCalcXXX.CurrentRow.Cells["StrOtherTitleOutUnSignx"].Value.ToString().Trim();
+                    List<string> ListOtherTitleOutx = (List<string>)dgvEditCalcXXX.CurrentRow.Cells["ListOtherTitleOutx"].Value;
+                    string StrOtherTitleOut = dgvEditCalcXXX.CurrentRow.Cells["StrOtherTitleOutx"].Value.ToString().Trim();
+                    List<string> source = new List<string>();
+                    foreach (var item in ListOtherTitleOutx)
+                    {
+                        source.Add(item);
+                    }
+                    source.Add(WorkTitle2x);                   
+                    cboTitleout.DataSource = source;
+                    cboTitleout.Text = WorkTitle2x;
+                    txtWorkInCode.Text = WorkInternalNox;
+                    txtOtherTitleOut.Text = StrOtherTitleOut;
+                    //tac gia
+                    string IpSetNox = dgvEditCalcXXX.CurrentRow.Cells["IpSetNox"].Value.ToString().Trim();
+                    string IpInNox = dgvEditCalcXXX.CurrentRow.Cells["IpInNox"].Value.ToString().Trim();
+                    string LocalIpIntNox = dgvEditCalcXXX.CurrentRow.Cells["LocalIpIntNox"].Value.ToString().Trim();
+                    string NameNox = dgvEditCalcXXX.CurrentRow.Cells["NameNox"].Value.ToString().Trim();
+                    string IpNameTypex = dgvEditCalcXXX.CurrentRow.Cells["IpNameTypex"].Value.ToString().Trim();
+                    string IpWorkRolex = dgvEditCalcXXX.CurrentRow.Cells["IpWorkRolex"].Value.ToString().Trim();
+                    string IpNamex = dgvEditCalcXXX.CurrentRow.Cells["IpNamex"].Value.ToString().Trim();
+                    string IpName2x = dgvEditCalcXXX.CurrentRow.Cells["IpName2x"].Value.ToString().Trim();
+                    string IpNameLocalx = dgvEditCalcXXX.CurrentRow.Cells["IpNameLocalx"].Value.ToString().Trim();
+                    string IpNameLocal2x = dgvEditCalcXXX.CurrentRow.Cells["IpNameLocal2x"].Value.ToString().Trim();
+                    string Societyx = dgvEditCalcXXX.CurrentRow.Cells["Societyx"].Value.ToString().Trim();
+                    string Society2x = dgvEditCalcXXX.CurrentRow.Cells["Society2x"].Value.ToString().Trim();
+                    string SpNamex = dgvEditCalcXXX.CurrentRow.Cells["SpNamex"].Value.ToString().Trim();
+
+                    string GroupWriterx = dgvEditCalcXXX.CurrentRow.Cells["GroupWriterx"].Value.ToString().Trim();
+                    string GroupComposerx = dgvEditCalcXXX.CurrentRow.Cells["GroupComposerx"].Value.ToString().Trim();
+                    string GroupLyricsx = dgvEditCalcXXX.CurrentRow.Cells["GroupLyricsx"].Value.ToString().Trim();
+                    string GroupPublisherx = dgvEditCalcXXX.CurrentRow.Cells["GroupPublisherx"].Value.ToString().Trim();
+                    
+                    string ListGroupWriterCodex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupWriterCodex"].Value.ToString().Trim();
+                    string ListGroupWriterNamex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupWriterNamex"].Value.ToString().Trim();
+                    string ListGroupComposerCodex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupComposerCodex"].Value.ToString().Trim();
+                    string ListGroupLyricsCodex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupLyricsCodex"].Value.ToString().Trim();
+                    string ListGroupPublisherCodex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupPublisherCodex"].Value.ToString().Trim();
+                    string DicMemberxx = dgvEditCalcXXX.CurrentRow.Cells["DicMemberx"].Value.ToString().Trim();
+                    string ListInterestedPartyx = dgvEditCalcXXX.CurrentRow.Cells["ListInterestedPartyx"].Value.ToString().Trim();
+                    string NonMemberx = dgvEditCalcXXX.CurrentRow.Cells["NonMemberx"].Value.ToString().Trim();
+
+                    txtWriterOut.Text = $"GroupWriter: {GroupWriterx} {Environment.NewLine}";
+                    txtWriterOut.Text += $"GroupComposer: {GroupComposerx} {Environment.NewLine}";
+                    txtWriterOut.Text += $"GroupLyrics: {GroupLyricsx} {Environment.NewLine}";
+                    txtWriterOut.Text += $"GroupPublisher: {GroupPublisherx} {Environment.NewLine}";
+                    txtNonMember.Text = NonMemberx;
+
+                    //ty le
+                    string PerOwnShrx = dgvEditCalcXXX.CurrentRow.Cells["PerOwnShrx"].Value.ToString().Trim();
+                    string PerColShrx = dgvEditCalcXXX.CurrentRow.Cells["PerColShrx"].Value.ToString().Trim();
+                    string MecOwnShrx = dgvEditCalcXXX.CurrentRow.Cells["MecOwnShrx"].Value.ToString().Trim();
+                    string MecColShrx = dgvEditCalcXXX.CurrentRow.Cells["MecColShrx"].Value.ToString().Trim();
+                    string SpShrx = dgvEditCalcXXX.CurrentRow.Cells["SpShrx"].Value.ToString().Trim();
+                    string TotalMecShrx = dgvEditCalcXXX.CurrentRow.Cells["TotalMecShrx"].Value.ToString().Trim();
+                    string SynOwnShrx = dgvEditCalcXXX.CurrentRow.Cells["SynOwnShrx"].Value.ToString().Trim();
+                    string SynColShrx = dgvEditCalcXXX.CurrentRow.Cells["SynColShrx"].Value.ToString().Trim();
+                    //doc quyen
+                    bool IsWorkMonopolyx = (bool)dgvEditCalcXXX.CurrentRow.Cells["IsWorkMonopolyx"].Value;
+                    string WorkFieldsx = dgvEditCalcXXX.CurrentRow.Cells["WorkFieldsx"].Value.ToString().Trim();
+                    string WorkMonopolyNotex = dgvEditCalcXXX.CurrentRow.Cells["WorkMonopolyNotex"].Value.ToString().Trim();
+                    bool IsMemberMonopolyx = (bool)dgvEditCalcXXX.CurrentRow.Cells["IsMemberMonopolyx"].Value;
+                    string MemberFieldsx = dgvEditCalcXXX.CurrentRow.Cells["MemberFieldsx"].Value.ToString().Trim();
+                    string MemberMonopolyNotex = dgvEditCalcXXX.CurrentRow.Cells["MemberMonopolyNotex"].Value.ToString().Trim();
+
+                    cheWorkMono.Checked = IsWorkMonopolyx;
+                    txtWorkMonoFields.Text = WorkFieldsx;
+                    txtWorkMonoNote.Text = WorkMonopolyNotex;
+                    cheMemberMono.Checked = IsMemberMonopolyx;
+                    txtMemberMonoFields.Text = MemberFieldsx;
+                    txtMemberMonoNote.Text = MemberMonopolyNotex;
+                    
+                    //so sanh
+
+                    bool IscheckCompareTitleAndWriterx = (bool)dgvEditCalcXXX.CurrentRow.Cells["IscheckCompareTitleAndWriterx"].Value;
+                    string MesssageCompareTitleAndWriterx = dgvEditCalcXXX.CurrentRow.Cells["MesssageCompareTitleAndWriterx"].Value.ToString().Trim();
+                    string CountMatchWriterx = dgvEditCalcXXX.CurrentRow.Cells["CountMatchWriterx"].Value.ToString().Trim();
+                    string TotalWriterx = dgvEditCalcXXX.CurrentRow.Cells["TotalWriterx"].Value.ToString().Trim();
+                    string VcpmcRegionx = dgvEditCalcXXX.CurrentRow.Cells["VcpmcRegionx"].Value.ToString().Trim();
+                    txtTotalWriter.Text = TotalWriterx;
+                    txtTotalMatchWriter.Text = CountMatchWriterx;
+                    txtCompareMessage.Text = MesssageCompareTitleAndWriterx;
+
+                    cheIscheckCompareTitleAndWriter.Checked = IscheckCompareTitleAndWriterx;
+                    if(cheIscheckCompareTitleAndWriter.Checked)
+                    {
+                        cheIscheckCompareTitleAndWriter.ForeColor = Color.Green;
+                    }
+                    else
+                    {
+                        cheIscheckCompareTitleAndWriter.ForeColor = Color.Red;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                int a = 1;
+                //throw;
+            }
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(cboTitleout.Text.Trim()==string.Empty)
+                {
+                    MessageBox.Show("Work title out is empty, please input!");
+                    return;
+                }
+                var x = ediFilesItemsClone.Where(p => p.index == int.Parse(indexChoise)
+                && p.NoOfPerf == int.Parse(NoOfPerfChoise)
+                && p.seqNo == int.Parse(seqNoxChoise)).FirstOrDefault();
+                if(x!=null)
+                {
+                    x.IscheckCompareTitleAndWriter = cheIscheckCompareTitleAndWriter.Checked;
+
+                    x.ListOtherTitleOut.Add(x.WorkTitle2);
+                    x.ListOtherTitleOutUnSign.Add(x.WorkTitle2Unsign);
+                    cboTitleout.Text = cboTitleout.Text.Trim().ToUpper();
+                    x.WorkTitle2 = cboTitleout.Text;
+                    x.WorkTitle2Unsign = VnHelper.ConvertToUnSign(x.WorkTitle2);
+
+                    var item1 = x.ListOtherTitleOut.Where(p => p == x.WorkTitle2).FirstOrDefault();
+                    if(item1!=null)
+                    {
+                        x.ListOtherTitleOut.Remove(item1);
+                    }
+                    x.StrOtherTitleOut = string.Empty;
+                    foreach (var x1 in x.ListOtherTitleOut)
+                    {
+                        if(x.StrOtherTitleOut.Length>0)
+                        {
+                            x.StrOtherTitleOut += ", ";
+                        }
+                        x.StrOtherTitleOut += x1;
+                    }
+                    var item2 = x.ListOtherTitleOutUnSign.Where(p => p == x.WorkTitle2Unsign).FirstOrDefault();
+                    if (item2 != null)
+                    {
+                        x.ListOtherTitleOutUnSign.Remove(item2);
+                    }
+                    x.StrOtherTitleOutUnSign = string.Empty;
+                    foreach (var x2 in x.ListOtherTitleOutUnSign)
+                    {
+                        if (x.StrOtherTitleOutUnSign.Length > 0)
+                        {
+                            x.StrOtherTitleOutUnSign += ", ";
+                        }
+                        x.StrOtherTitleOutUnSign += x2;
+                    }
+                    dgvEditCalcXXX.CurrentRow.Cells["WorkTitle2x"].Value = x.WorkTitle2;
+                    dgvEditCalcXXX.CurrentRow.Cells["WorkTitle2Unsignx"].Value = x.WorkTitle2Unsign;
+                    dgvEditCalcXXX.CurrentRow.Cells["StrOtherTitleOutx"].Value = x.StrOtherTitleOut;
+                    dgvEditCalcXXX.CurrentRow.Cells["StrOtherTitleOutUnSignx"].Value = x.StrOtherTitleOutUnSign;
+                    txtOtherTitleOut.Text = x.StrOtherTitleOut;
+                    //x.ListOtherTitleOut 
+                    if (!x.IscheckCompareTitleAndWriter)
+                    {
+                        dgvEditCalcXXX.CurrentRow.DefaultCellStyle.BackColor = Color.Khaki;
+                        dgvEditCalcXXX.CurrentRow.Cells["IscheckCompareTitleAndWriterx"].Value = x.IscheckCompareTitleAndWriter;
+                    }
+                    else
+                    {
+                        dgvEditCalcXXX.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                        dgvEditCalcXXX.CurrentRow.Cells["IscheckCompareTitleAndWriterx"].Value = x.IscheckCompareTitleAndWriter;
+                    }
+                }
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void cheIscheckCompareTitleAndWriter_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cheIscheckCompareTitleAndWriter.Checked)
+                {
+                    cheIscheckCompareTitleAndWriter.ForeColor = Color.Green;
+                }
+                else
+                {
+                    cheIscheckCompareTitleAndWriter.ForeColor = Color.Red;
+                }
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+        }
+        #endregion
     }
 }
