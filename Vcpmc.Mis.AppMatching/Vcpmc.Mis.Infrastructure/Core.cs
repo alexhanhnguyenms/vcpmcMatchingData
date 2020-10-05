@@ -89,6 +89,7 @@ namespace Vcpmc.Mis.Infrastructure
         /// </summary>
         public static int LimitRequestDetect { get; set; } = 1000;
         public static int LimitRequestUpdate { get; set; } = 5000;
+        public static int LimitRequestWorkHistory { get; set; } = 5000;
         /// <summary>
         /// Quyen
         /// </summary>
@@ -129,6 +130,7 @@ namespace Vcpmc.Mis.Infrastructure
             TimeSession = Int32.Parse(ConfigurationManager.AppSettings["TimeSession"]);
             LimitMatchingWorkRequest = Int32.Parse(ConfigurationManager.AppSettings["LimitMatchingWorkRequest"]);
             LimitMatchingPreclaimRequest = Int32.Parse(ConfigurationManager.AppSettings["LimitMatchingPreclaimRequest"]);
+            LimitRequestWorkHistory = Int32.Parse(ConfigurationManager.AppSettings["LimitRequestWorkHistory"]);
             int timmeOut = Int32.Parse(ConfigurationManager.AppSettings["TimeoutHttpClient"]);
             TimeoutHttpClient = new TimeSpan(0, 0, 0, timmeOut, 0);
         }

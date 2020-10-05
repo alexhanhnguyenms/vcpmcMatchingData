@@ -18,6 +18,9 @@ using Vcpmc.Mis.Data.Entities.Mis.Members;
 using Vcpmc.Mis.ViewModels.Mis.Members;
 using Vcpmc.Mis.Data.Entities.System.Para;
 using Vcpmc.Mis.ViewModels.System.Para;
+using Vcpmc.Mis.Data.Entities.Mis.Historys;
+using Vcpmc.Mis.ViewModels.Mis.History;
+using Vcpmc.Mis.Data.Entities.Mis.Historys;
 
 namespace Vcpmc.Mis.Application.map
 {
@@ -89,6 +92,21 @@ namespace Vcpmc.Mis.Application.map
             //4.create
             CreateMap<Work, WorkCreateRequest>();
             CreateMap<WorkCreateRequest, Work>();
+            #endregion
+
+            #region WorkHistory
+            //1.view
+            CreateMap<WorkHistory, WorkHistoryViewModel>();
+            CreateMap<WorkHistoryViewModel, WorkHistory>();
+            //2.paging
+            CreateMap<WorkHistory, GetWorkHistoryPagingRequest>();
+            CreateMap<GetWorkHistoryPagingRequest, WorkHistory>();
+            //3.update
+            CreateMap<WorkHistory, WorkHistoryUpdateRequest>();
+            CreateMap<WorkHistoryUpdateRequest, WorkHistory>();
+            //4.create
+            CreateMap<WorkHistory, WorkHistoryCreateRequest>();
+            CreateMap<WorkHistoryCreateRequest, WorkHistory>();
             #endregion
 
             #region WorkTracking

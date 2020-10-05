@@ -33,6 +33,7 @@ using Vcpmc.Mis.Application.Mis.Monopolys;
 using Vcpmc.Mis.Application.MasterLists;
 using Vcpmc.Mis.Application.Mis.Members;
 using Vcpmc.Mis.Application.System.Para;
+using Vcpmc.Mis.Application.Mis.WorkHistorys;
 
 namespace Vcpmc.Mis.BackendApi
 {
@@ -57,6 +58,7 @@ namespace Vcpmc.Mis.BackendApi
 
             services.AddSingleton<PreclaimService>();
             services.AddSingleton<WorkService>();
+            services.AddSingleton<WorkHistoryService>();
             services.AddSingleton<WorkTrackingService>();
             services.AddSingleton<MonopolyService>();
             services.AddSingleton<UserService2>();
@@ -89,6 +91,7 @@ namespace Vcpmc.Mis.BackendApi
             //warehouse
             services.AddTransient<IPreclaimService, PreclaimService>();
             services.AddTransient<IWorkService, WorkService>();
+            services.AddTransient<IWorkHistoryService, WorkHistoryService>();
             services.AddTransient<IWorkTrackingService, WorkTrackingService>();
             services.AddTransient<IMonopolyService, MonopolyService>();
             services.AddTransient<IUserService2, UserService2>();

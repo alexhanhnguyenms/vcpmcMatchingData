@@ -195,6 +195,7 @@
     <Compile Include="Controllers\Warehouse\Mis\MemberController.cs" />
     <Compile Include="Controllers\Warehouse\Mis\MonopolyController.cs" />
     <Compile Include="Controllers\Warehouse\Mis\WorkController.cs" />
+    <Compile Include="Controllers\Warehouse\Mis\WorkHistoryController.cs" />
     <Compile Include="Controllers\Warehouse\Mis\WorkTrackingController.cs" />
     <Compile Include="Controllers\Warehouse\Youtube\PreclaimController.cs" />
     <Compile Include="form\Admin\frmAssignRight.cs">
@@ -566,6 +567,7 @@
     <Compile Include="Services\Warehouse\Mis\MemberApiClient.cs" />
     <Compile Include="Services\Warehouse\Mis\MonopolyApiClient.cs" />
     <Compile Include="Services\Warehouse\Mis\WorkApiClient.cs" />
+    <Compile Include="Services\Warehouse\Mis\WorkHistoryApiClient.cs" />
     <Compile Include="Services\Warehouse\Mis\WorkTrackingApiClient.cs" />
     <Compile Include="Services\Warehouse\Youtube\PreclaimApiClient.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
