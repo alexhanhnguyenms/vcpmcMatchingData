@@ -671,6 +671,9 @@ namespace Vcpmc.Mis.Common.common.excel
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.MemberFields)});
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.MemberMonopolyNote)});
 
+                        newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.IscheckCompareTitle.ToString()) });
+                        newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.IscheckCompareWriter.ToString()) });
+                        newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.IscheckCompareTitleAndWriter.ToString())});
                         newRow.AppendChild(new Cell() { DataType = CellValues.String, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.MesssageCompareTitleAndWriter)});
                         newRow.AppendChild(new Cell() { DataType = CellValues.Number, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.TotalWriter.ToString())});
                         newRow.AppendChild(new Cell() { DataType = CellValues.Number, CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(item.CountMatchWriter.ToString())});
@@ -729,6 +732,7 @@ namespace Vcpmc.Mis.Common.common.excel
                  "WORK STATUS," + 
                  "IS WORK MONO,FIELD WORK MONO,WORK MONO NOTE," +
                  "IS MEMBER MONO,FIELD MEMBER MONO,MEMBER MONO NOT," +
+                 "COM TITLE,COM WRITER,COM TITLE AND WRITER," +
                  "Mesg Compare Title And Writer, Total writer, count writer matched," +
                  "NON MEMBER,VcpmcRegion";                
             } 

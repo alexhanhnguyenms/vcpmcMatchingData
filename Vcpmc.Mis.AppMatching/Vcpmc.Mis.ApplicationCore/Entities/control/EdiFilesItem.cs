@@ -241,7 +241,18 @@ namespace Vcpmc.Mis.ApplicationCore.Entities.control
         #endregion
 
         #region so sanh
+        /// <summary>
+        /// so sanh writer và tile
+        /// </summary>
         public bool IscheckCompareTitleAndWriter { get; set; } = true;
+        /// <summary>
+        /// Só sanh title
+        /// </summary>
+        public bool IscheckCompareTitle { get; set; } = true;
+        /// <summary>
+        /// so sanh writer
+        /// </summary>
+        public bool IscheckCompareWriter { get; set; } = true;
         /// <summary>
         /// So sanh thông tin đâu vào và ra
         /// </summary>

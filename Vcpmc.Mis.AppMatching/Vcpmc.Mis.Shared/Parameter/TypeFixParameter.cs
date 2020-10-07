@@ -22,6 +22,9 @@ namespace Vcpmc.Mis.Shared.Parameter
         /// Thay thế tác giả trong matching
         /// </summary>
         MatchingReplateWriter,
-        
+        /// <summary>
+        /// Tên của tác giả trong report
+        /// </summary>
+        MemberNameReport,        
     }
 }

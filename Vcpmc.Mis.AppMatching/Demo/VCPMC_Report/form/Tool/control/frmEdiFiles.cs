@@ -55,6 +55,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         ApiResult<PagedResult<FixParameterViewModel>> fixdata = new ApiResult<PagedResult<FixParameterViewModel>>();
 
         bool isGroupByMember = false;
+        bool isGroupByIpname = false;
         bool isSync = false;
         bool isLoad = false;
         bool isFindMono = false;        
@@ -89,6 +90,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
             fixcontroller = new FixParameterController(fixapiClient);
             cboMonopolyType.SelectedIndex = 0;
             isGroupByMember = cheGroupMemberWithcmo.Checked;
+            isGroupByIpname = cheGroupIpName.Checked;
             cboMatchedType.SelectedIndex = 0;
             _comareTitleAndWriter = cheCompareTitleAndWriter.Checked;
             if(radCompareTW.Checked)
@@ -369,6 +371,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 int seqNo = 0;
                 isLoad = true;
                 isGroupByMember = cheGroupMemberWithcmo.Checked;
+                isGroupByIpname = cheGroupIpName.Checked;
                 ExcelHelper excelHelper = new ExcelHelper();
                 int countread = 0;
                 int countGood = 0;
@@ -431,6 +434,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     //bool isAdd = false;
                     for (int i = 0; i < ediFilesItems.Count; i++)
                     {
+                        //if(ediFilesItems[i].WorkInternalNo == "2721572")
+                        //{
+                        //    var sfsd = (EdiFilesItem)ediFilesItems[i].Clone();
+                        //}
                         //isAdd = false;
                         #region general report: thuong dung
                         if (GenerateType == 0)
@@ -458,12 +465,19 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                     {
                                         ediFilesItemsClone[ediFilesItemsClone.Count - 1].NoOfPerf = NoOfPerf;
                                     }
+                                    var sfsd = ediFilesItemsClone[ediFilesItemsClone.Count - 1];
                                     //cong cac WorkArtist neu bij troi xuong dong duoi
                                     if (ediFilesItems[i].WorkArtist != string.Empty)
                                     {
                                         ediFilesItemsClone[ediFilesItemsClone.Count - 1].WorkArtist =
                                             ediFilesItemsClone[ediFilesItemsClone.Count - 1].WorkArtist + " " + ediFilesItems[i].WorkArtist;
                                     }
+                                    if (ediFilesItems[i].WorkComposer != string.Empty)
+                                    {
+                                        ediFilesItemsClone[ediFilesItemsClone.Count - 1].WorkComposer =
+                                            ediFilesItemsClone[ediFilesItemsClone.Count - 1].WorkComposer + " " + ediFilesItems[i].WorkComposer;
+                                    }
+
                                 }
                                 #endregion
                             }
@@ -642,10 +656,31 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     #endregion                   
                 }
                 #endregion
-                
+
                 #region Chuyen doi mot so tac gia 
+                List<MemberNameReport> memberNameReportList = new List<MemberNameReport>();
                 if (ediFilesItemsClone.Count > 0 )
                 {
+                    #region Lấy một số tên hiển thị trong report
+                    fixrequest.Type = TypeFixParameter.MemberNameReport.ToString();
+                    fixdata = await fixcontroller.GetAllPaging(fixrequest);                    
+                    if (fixdata != null && fixdata.ResultObj != null && fixdata.ResultObj.Items != null && fixdata.ResultObj.Items.Count > 0)
+                    {
+                        #region 3.Data fix
+                        var data1 = fixdata.ResultObj.Items.Where(p => p.Type == TypeFixParameter.MemberNameReport.ToString()).ToList();                      
+                        for (int i = 0; i < data1.Count; i++)
+                        {
+                            memberNameReportList.Add(new MemberNameReport
+                            {
+                                MemberCode = data1[i].Key,
+                                Name = data1[i].Value1,
+                                NameLocal = data1[i].Value2,
+                            });
+                        }
+                        #endregion
+                    }
+                    #endregion
+
                     string valueFix = string.Empty;                   
 
                     #region Chuyen tu none member sang to member
@@ -728,8 +763,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 NoOfPerf = -1;
                 seqNo = -1;
                 string cmos = string.Empty;
+                string ipName = string.Empty;
                 string VcpmcRegion = string.Empty;
-
+                string memberNamereport = string.Empty;
+                string memberNamerLocaleport = string.Empty;
                 for (int i = 0; i < ediFilesItemsClone.Count; i++)
                 {
                     if (ediFilesItemsClone[i].seqNo == 104)
@@ -782,7 +819,22 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
                         });
                         cmos = cheGroupMemberWithcmo.Checked == false ? "" : $" ({ediFilesItemsClone[i].Society})";
+                        ipName = cheGroupIpName.Checked == false ? "" : $" ({ediFilesItemsClone[i].IpInNo}{ediFilesItemsClone[i].IpNameType})";
                         VcpmcRegion = string.Empty;
+                        var fixMemberNameReportItem = memberNameReportList.Where(p => p.MemberCode == ediFilesItemsClone[i].IpInNo + ediFilesItemsClone[i].IpNameType).FirstOrDefault();
+                        if(fixMemberNameReportItem!=null)
+                        {
+                            memberNamereport = fixMemberNameReportItem.Name;
+                            memberNamerLocaleport = fixMemberNameReportItem.NameLocal;
+                            if(memberNamereport!=string.Empty)
+                            {
+                                ediFilesItemsClone[i].IpName2 = memberNamereport;
+                            }
+                            if (memberNamereport != string.Empty)
+                            {
+                                ediFilesItemsClone[i].IpNameLocal2 = memberNamerLocaleport;
+                            }
+                        }
                         if (cheVcpmcRegion.Checked )
                         {
                             if(cheVcpmcRegion.Checked && vcpmcInfo.Count > 0)
@@ -818,11 +870,11 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }                                
                             }
                             #endregion
@@ -839,11 +891,11 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }
                             }
                             #endregion
@@ -861,28 +913,28 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }
                             }
                             //neu chua co loi them loi
                             if (!editGroupXXX.ListGroupLyricsCode.Contains(ediFilesItemsClone[i].IpInNo + ediFilesItemsClone[i].IpNameType))
                             {
-                                editGroupXXX.ListGroupComposerCode.Add(ediFilesItemsClone[i].IpName2 + cmos);
+                                editGroupXXX.ListGroupComposerCode.Add(ediFilesItemsClone[i].IpName2 + ipName + cmos);
                                 if (editGroupXXX.GroupLyrics.Length > 0)
                                 {
                                     editGroupXXX.GroupLyrics += ", ";
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }
                             }
                             #endregion
@@ -899,11 +951,11 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupPublisher += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupPublisher += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupPublisher += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupPublisher += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }
                             }
                             #endregion
@@ -922,11 +974,11 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupWriter += ediFilesItemsClone[i].IpNameLocal2 + cmos;                                        
+                                    editGroupXXX.GroupWriter += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;                                        
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupWriter += ediFilesItemsClone[i].IpName2 + cmos;                                        
+                                    editGroupXXX.GroupWriter += ediFilesItemsClone[i].IpName2 + ipName + cmos;                                        
                                 }
                             }
                             #endregion
@@ -983,10 +1035,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     string WorkTtileOutRemove = string.Empty;
                     foreach (var item in ediFilesItemsClone)
                     {
-                        //if(item.WorkInternalNo == "17582584" )
-                        //{
-                        //    int a = 1;
-                        //}
+                        if (item.WorkInternalNo == "7722360")
+                        {
+                            int a = 1;
+                        }
                         //if (item.WorkInternalNo == "19176136")
                         //{
                         //    int a = 1;
@@ -1211,7 +1263,9 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 isCheckcomareWriter = true;
                             }
                         }
-                        if(isCheckcomareTitle && isCheckcomareWriter)
+                        item.IscheckCompareTitle = isCheckcomareTitle;
+                        item.IscheckCompareWriter = isCheckcomareWriter;
+                        if (isCheckcomareTitle && isCheckcomareWriter)
                         {
                             item.IscheckCompareTitleAndWriter = true;
                         }
@@ -2517,7 +2571,14 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             {
                                 ediFilesItemsClone[i].NonMember += ", ";
                             }
-                            ediFilesItemsClone[i].NonMember += $"{inP.IP_NAME_LOCAL} ({inP.Society})";                           
+                            if(inP.Society == "NS")
+                            {
+                                ediFilesItemsClone[i].NonMember += $"{inP.IP_NAME_LOCAL} (Không Xác Định)";
+                            }   
+                            else
+                            {
+                                ediFilesItemsClone[i].NonMember += $"{inP.IP_NAME_LOCAL} ({inP.Society})";
+                            }                                                    
                         }
                         else
                         {
@@ -3010,6 +3071,30 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     var query = ediFilesItemsClone.Where(c => c.IscheckCompareTitleAndWriter == isCheckTrueFalse);
                     fill = query.ToList();
                 }
+                else if (cboTypeChoise == 12)
+                {
+                    //var query = ediFilesItemsClone.Where(delegate (EdiFilesItem c)
+                    //{
+                    //    if (VnHelper.ConvertToUnSign(c.Society).IndexOf(txtFind.Text.Trim(), StringComparison.CurrentCultureIgnoreCase) >= 0)
+                    //        return true;
+                    //    else
+                    //        return false;
+                    //}).AsQueryable();
+                    var query = ediFilesItemsClone.Where(c => c.IscheckCompareTitle == isCheckTrueFalse);
+                    fill = query.ToList();
+                }
+                else if (cboTypeChoise == 13)
+                {
+                    //var query = ediFilesItemsClone.Where(delegate (EdiFilesItem c)
+                    //{
+                    //    if (VnHelper.ConvertToUnSign(c.Society).IndexOf(txtFind.Text.Trim(), StringComparison.CurrentCultureIgnoreCase) >= 0)
+                    //        return true;
+                    //    else
+                    //        return false;
+                    //}).AsQueryable();
+                    var query = ediFilesItemsClone.Where(c => c.IscheckCompareWriter == isCheckTrueFalse);
+                    fill = query.ToList();
+                }
                 dgvEditCalcXXX.Invoke(new MethodInvoker(delegate
                 {
                     dgvEditCalcXXX.DataSource = fill;
@@ -3069,7 +3154,9 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     || cboTypeChoise == 8
                     || cboTypeChoise == 9
                     || cboTypeChoise == 10
-                    || cboTypeChoise == 11)
+                    || cboTypeChoise == 11
+                    || cboTypeChoise == 12
+                    || cboTypeChoise == 13)
                 {
                     cheTrueFalse.Visible = true;
                     txtFind.Visible = false;

@@ -100,7 +100,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbTotalDuplicate = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.lbTotalAftercalc = new System.Windows.Forms.Label();
             this.lbTotalAftercalcxxx = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -125,46 +124,53 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cheVcpmcRegion = new System.Windows.Forms.CheckBox();
             this.gbEdit = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtTitleIn = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cboTitleout = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtindex = new System.Windows.Forms.TextBox();
-            this.txtseqNox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtNoOfPerf = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtWriterIn = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtWriterOut = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtNonMember = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtWorkMonoFields = new System.Windows.Forms.TextBox();
-            this.cheWorkMono = new System.Windows.Forms.CheckBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtWorkMonoNote = new System.Windows.Forms.TextBox();
+            this.txtOtherTitleOut = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.btnApply = new System.Windows.Forms.Button();
+            this.cheIscheckCompareTitleAndWriter = new System.Windows.Forms.CheckBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtCompareMessage = new System.Windows.Forms.TextBox();
+            this.txtTotalMatchWriter = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtTotalWriter = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtWorkInCode = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtMemberMonoNote = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.cheMemberMono = new System.Windows.Forms.CheckBox();
             this.txtMemberMonoFields = new System.Windows.Forms.TextBox();
-            this.txtWorkInCode = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtTotalWriter = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtTotalMatchWriter = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtCompareMessage = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.txtWorkMonoNote = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cheWorkMono = new System.Windows.Forms.CheckBox();
+            this.txtWorkMonoFields = new System.Windows.Forms.TextBox();
+            this.txtNonMember = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtWriterOut = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtWriterIn = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtNoOfPerf = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtseqNox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtindex = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboTitleout = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTitleIn = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cheGroupIpName = new System.Windows.Forms.CheckBox();
             this.Clonex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.indexx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.seqNox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoOfPerfx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IscheckCompareTitleAndWriterx = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IscheckCompareTitle = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IscheckCompareWriter = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MesssageCompareTitleAndWriterx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CountMatchWriterx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalWriterx = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -227,10 +233,6 @@
             this.ListInterestedPartyx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListOtherTitleOutUnSignx = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListOtherTitleOutx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cheIscheckCompareTitleAndWriter = new System.Windows.Forms.CheckBox();
-            this.btnApply = new System.Windows.Forms.Button();
-            this.txtOtherTitleOut = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.gbChanelList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcloader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEditFileImport)).BeginInit();
@@ -249,6 +251,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbChanelList.Controls.Add(this.pcloader);
             this.gbChanelList.Controls.Add(this.dgvEditFileImport);
+            this.gbChanelList.Controls.Add(this.label3);
+            this.gbChanelList.Controls.Add(this.lbTotalrest);
+            this.gbChanelList.Controls.Add(this.lbTotalAftercalcxxx);
+            this.gbChanelList.Controls.Add(this.lbTotalAftercalc);
+            this.gbChanelList.Controls.Add(this.label5);
+            this.gbChanelList.Controls.Add(this.lbTotalDuplicate);
             this.gbChanelList.Location = new System.Drawing.Point(3, 52);
             this.gbChanelList.Name = "gbChanelList";
             this.gbChanelList.Size = new System.Drawing.Size(1279, 119);
@@ -271,6 +279,9 @@
             // 
             this.dgvEditFileImport.AllowUserToAddRows = false;
             this.dgvEditFileImport.AllowUserToDeleteRows = false;
+            this.dgvEditFileImport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvEditFileImport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.index,
             this.DicMember,
@@ -316,11 +327,10 @@
             this.MemberMonopolyNote,
             this.NonMember,
             this.VcpmcRegion});
-            this.dgvEditFileImport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEditFileImport.Location = new System.Drawing.Point(3, 14);
             this.dgvEditFileImport.Name = "dgvEditFileImport";
             this.dgvEditFileImport.ReadOnly = true;
-            this.dgvEditFileImport.Size = new System.Drawing.Size(1273, 102);
+            this.dgvEditFileImport.Size = new System.Drawing.Size(1131, 102);
             this.dgvEditFileImport.TabIndex = 0;
             // 
             // index
@@ -700,7 +710,6 @@
             // 
             // tstxtPath
             // 
-            this.tstxtPath.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tstxtPath.Name = "tstxtPath";
             this.tstxtPath.ReadOnly = true;
             this.tstxtPath.Size = new System.Drawing.Size(100, 25);
@@ -856,16 +865,18 @@
             // 
             // lbTotalrest
             // 
+            this.lbTotalrest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTotalrest.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbTotalrest.Location = new System.Drawing.Point(107, 175);
+            this.lbTotalrest.Location = new System.Drawing.Point(1143, 31);
             this.lbTotalrest.Name = "lbTotalrest";
             this.lbTotalrest.Size = new System.Drawing.Size(72, 15);
             this.lbTotalrest.TabIndex = 29;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 174);
+            this.label3.Location = new System.Drawing.Point(1143, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 28;
@@ -873,43 +884,37 @@
             // 
             // lbTotalDuplicate
             // 
+            this.lbTotalDuplicate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTotalDuplicate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbTotalDuplicate.Location = new System.Drawing.Point(526, 175);
+            this.lbTotalDuplicate.Location = new System.Drawing.Point(1143, 87);
             this.lbTotalDuplicate.Name = "lbTotalDuplicate";
             this.lbTotalDuplicate.Size = new System.Drawing.Size(72, 15);
             this.lbTotalDuplicate.TabIndex = 31;
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(393, 175);
+            this.label5.Location = new System.Drawing.Point(1143, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 13);
             this.label5.TabIndex = 30;
             this.label5.Text = "Total records (duplicate): ";
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1055, 175);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(218, 13);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "Remove WorkInternalNo or IpInNo are empty!";
-            // 
             // lbTotalAftercalc
             // 
+            this.lbTotalAftercalc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTotalAftercalc.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbTotalAftercalc.Location = new System.Drawing.Point(315, 174);
+            this.lbTotalAftercalc.Location = new System.Drawing.Point(1143, 59);
             this.lbTotalAftercalc.Name = "lbTotalAftercalc";
             this.lbTotalAftercalc.Size = new System.Drawing.Size(72, 15);
             this.lbTotalAftercalc.TabIndex = 34;
             // 
             // lbTotalAftercalcxxx
             // 
+            this.lbTotalAftercalcxxx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTotalAftercalcxxx.AutoSize = true;
-            this.lbTotalAftercalcxxx.Location = new System.Drawing.Point(185, 175);
+            this.lbTotalAftercalcxxx.Location = new System.Drawing.Point(1143, 46);
             this.lbTotalAftercalcxxx.Name = "lbTotalAftercalcxxx";
             this.lbTotalAftercalcxxx.Size = new System.Drawing.Size(126, 13);
             this.lbTotalAftercalcxxx.TabIndex = 33;
@@ -931,9 +936,9 @@
             this.groupBox1.Controls.Add(this.btnSysToWork);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.dgvEditCalcXXX);
-            this.groupBox1.Location = new System.Drawing.Point(3, 484);
+            this.groupBox1.Location = new System.Drawing.Point(3, 454);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1279, 139);
+            this.groupBox1.Size = new System.Drawing.Size(1279, 169);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Youtube ";
@@ -995,7 +1000,9 @@
             "Is Work Mono",
             "Is MemberMono",
             "Is Non-member",
-            "Is Comp Title and writer"});
+            "Is Comp Title and writer",
+            "Is Comp Title",
+            "Is Comp Writer"});
             this.cboType.Location = new System.Drawing.Point(369, 19);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(173, 20);
@@ -1089,6 +1096,8 @@
             this.seqNox,
             this.NoOfPerfx,
             this.IscheckCompareTitleAndWriterx,
+            this.IscheckCompareTitle,
+            this.IscheckCompareWriter,
             this.MesssageCompareTitleAndWriterx,
             this.CountMatchWriterx,
             this.TotalWriterx,
@@ -1154,7 +1163,7 @@
             this.dgvEditCalcXXX.Location = new System.Drawing.Point(3, 45);
             this.dgvEditCalcXXX.Name = "dgvEditCalcXXX";
             this.dgvEditCalcXXX.ReadOnly = true;
-            this.dgvEditCalcXXX.Size = new System.Drawing.Size(1273, 88);
+            this.dgvEditCalcXXX.Size = new System.Drawing.Size(1273, 118);
             this.dgvEditCalcXXX.TabIndex = 26;
             this.dgvEditCalcXXX.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEditCalcXXX_CellClick);
             // 
@@ -1165,9 +1174,9 @@
             this.cheGroupMemberWithcmo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cheGroupMemberWithcmo.Location = new System.Drawing.Point(722, 37);
             this.cheGroupMemberWithcmo.Name = "cheGroupMemberWithcmo";
-            this.cheGroupMemberWithcmo.Size = new System.Drawing.Size(152, 17);
+            this.cheGroupMemberWithcmo.Size = new System.Drawing.Size(112, 17);
             this.cheGroupMemberWithcmo.TabIndex = 39;
-            this.cheGroupMemberWithcmo.Text = "Group member with society";
+            this.cheGroupMemberWithcmo.Text = "Group with society";
             this.cheGroupMemberWithcmo.UseVisualStyleBackColor = true;
             // 
             // cboMatchedType
@@ -1257,7 +1266,7 @@
             // cheVcpmcRegion
             // 
             this.cheVcpmcRegion.AutoSize = true;
-            this.cheVcpmcRegion.Location = new System.Drawing.Point(880, 37);
+            this.cheVcpmcRegion.Location = new System.Drawing.Point(981, 37);
             this.cheVcpmcRegion.Name = "cheVcpmcRegion";
             this.cheVcpmcRegion.Size = new System.Drawing.Size(116, 17);
             this.cheVcpmcRegion.TabIndex = 45;
@@ -1308,207 +1317,130 @@
             this.gbEdit.Controls.Add(this.txtTitleIn);
             this.gbEdit.Controls.Add(this.label7);
             this.gbEdit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.gbEdit.Location = new System.Drawing.Point(6, 203);
+            this.gbEdit.Location = new System.Drawing.Point(6, 173);
             this.gbEdit.Name = "gbEdit";
             this.gbEdit.Size = new System.Drawing.Size(1276, 275);
             this.gbEdit.TabIndex = 46;
             this.gbEdit.TabStop = false;
             this.gbEdit.Text = "Working area";
             // 
-            // label7
+            // txtOtherTitleOut
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 35);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Title in";
+            this.txtOtherTitleOut.Location = new System.Drawing.Point(97, 78);
+            this.txtOtherTitleOut.Multiline = true;
+            this.txtOtherTitleOut.Name = "txtOtherTitleOut";
+            this.txtOtherTitleOut.ReadOnly = true;
+            this.txtOtherTitleOut.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtOtherTitleOut.Size = new System.Drawing.Size(565, 34);
+            this.txtOtherTitleOut.TabIndex = 42;
             // 
-            // txtTitleIn
+            // label22
             // 
-            this.txtTitleIn.Location = new System.Drawing.Point(97, 34);
-            this.txtTitleIn.Name = "txtTitleIn";
-            this.txtTitleIn.ReadOnly = true;
-            this.txtTitleIn.Size = new System.Drawing.Size(565, 18);
-            this.txtTitleIn.TabIndex = 1;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(7, 78);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(80, 13);
+            this.label22.TabIndex = 41;
+            this.label22.Text = "Other Writer out";
             // 
-            // label8
+            // btnApply
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 61);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "WorkTitle out";
+            this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApply.Location = new System.Drawing.Point(1125, 238);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(148, 31);
+            this.btnApply.TabIndex = 40;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // cboTitleout
+            // cheIscheckCompareTitleAndWriter
             // 
-            this.cboTitleout.FormattingEnabled = true;
-            this.cboTitleout.Location = new System.Drawing.Point(97, 55);
-            this.cboTitleout.Name = "cboTitleout";
-            this.cboTitleout.Size = new System.Drawing.Size(565, 20);
-            this.cboTitleout.TabIndex = 3;
+            this.cheIscheckCompareTitleAndWriter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cheIscheckCompareTitleAndWriter.AutoSize = true;
+            this.cheIscheckCompareTitleAndWriter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cheIscheckCompareTitleAndWriter.Location = new System.Drawing.Point(1127, 147);
+            this.cheIscheckCompareTitleAndWriter.Name = "cheIscheckCompareTitleAndWriter";
+            this.cheIscheckCompareTitleAndWriter.Size = new System.Drawing.Size(135, 17);
+            this.cheIscheckCompareTitleAndWriter.TabIndex = 39;
+            this.cheIscheckCompareTitleAndWriter.Text = "Com title and writer";
+            this.cheIscheckCompareTitleAndWriter.UseVisualStyleBackColor = true;
+            this.cheIscheckCompareTitleAndWriter.CheckedChanged += new System.EventHandler(this.cheIscheckCompareTitleAndWriter_CheckedChanged);
             // 
-            // label9
+            // label23
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 14);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(33, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Index";
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(1122, 57);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(50, 13);
+            this.label23.TabIndex = 38;
+            this.label23.Text = "Com msg";
             // 
-            // txtindex
+            // txtCompareMessage
             // 
-            this.txtindex.Location = new System.Drawing.Point(97, 11);
-            this.txtindex.Name = "txtindex";
-            this.txtindex.ReadOnly = true;
-            this.txtindex.Size = new System.Drawing.Size(84, 18);
-            this.txtindex.TabIndex = 6;
+            this.txtCompareMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCompareMessage.Location = new System.Drawing.Point(1123, 73);
+            this.txtCompareMessage.Multiline = true;
+            this.txtCompareMessage.Name = "txtCompareMessage";
+            this.txtCompareMessage.ReadOnly = true;
+            this.txtCompareMessage.Size = new System.Drawing.Size(150, 68);
+            this.txtCompareMessage.TabIndex = 37;
             // 
-            // txtseqNox
+            // txtTotalMatchWriter
             // 
-            this.txtseqNox.Location = new System.Drawing.Point(231, 14);
-            this.txtseqNox.Name = "txtseqNox";
-            this.txtseqNox.ReadOnly = true;
-            this.txtseqNox.Size = new System.Drawing.Size(84, 18);
-            this.txtseqNox.TabIndex = 8;
+            this.txtTotalMatchWriter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalMatchWriter.Location = new System.Drawing.Point(1214, 35);
+            this.txtTotalMatchWriter.Name = "txtTotalMatchWriter";
+            this.txtTotalMatchWriter.ReadOnly = true;
+            this.txtTotalMatchWriter.Size = new System.Drawing.Size(62, 18);
+            this.txtTotalMatchWriter.TabIndex = 35;
             // 
-            // label10
+            // label21
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(189, 17);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 13);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "seqNo";
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(1120, 38);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(88, 13);
+            this.label21.TabIndex = 34;
+            this.label21.Text = "Total match writer";
             // 
-            // txtNoOfPerf
+            // txtTotalWriter
             // 
-            this.txtNoOfPerf.Location = new System.Drawing.Point(374, 14);
-            this.txtNoOfPerf.Name = "txtNoOfPerf";
-            this.txtNoOfPerf.ReadOnly = true;
-            this.txtNoOfPerf.Size = new System.Drawing.Size(101, 18);
-            this.txtNoOfPerf.TabIndex = 10;
+            this.txtTotalWriter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalWriter.Location = new System.Drawing.Point(1214, 13);
+            this.txtTotalWriter.Name = "txtTotalWriter";
+            this.txtTotalWriter.ReadOnly = true;
+            this.txtTotalWriter.Size = new System.Drawing.Size(62, 18);
+            this.txtTotalWriter.TabIndex = 33;
             // 
-            // label11
+            // label20
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(320, 17);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "NoOfPerf";
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(1120, 16);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(57, 13);
+            this.label20.TabIndex = 32;
+            this.label20.Text = "Total writer";
             // 
-            // txtWriterIn
+            // txtWorkInCode
             // 
-            this.txtWriterIn.Location = new System.Drawing.Point(97, 115);
-            this.txtWriterIn.Multiline = true;
-            this.txtWriterIn.Name = "txtWriterIn";
-            this.txtWriterIn.ReadOnly = true;
-            this.txtWriterIn.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtWriterIn.Size = new System.Drawing.Size(565, 46);
-            this.txtWriterIn.TabIndex = 12;
+            this.txtWorkInCode.Location = new System.Drawing.Point(554, 14);
+            this.txtWorkInCode.Name = "txtWorkInCode";
+            this.txtWorkInCode.ReadOnly = true;
+            this.txtWorkInCode.Size = new System.Drawing.Size(108, 18);
+            this.txtWorkInCode.TabIndex = 30;
             // 
-            // label12
+            // label15
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 115);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Writer in";
-            // 
-            // txtWriterOut
-            // 
-            this.txtWriterOut.Location = new System.Drawing.Point(97, 164);
-            this.txtWriterOut.Multiline = true;
-            this.txtWriterOut.Name = "txtWriterOut";
-            this.txtWriterOut.ReadOnly = true;
-            this.txtWriterOut.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtWriterOut.Size = new System.Drawing.Size(565, 70);
-            this.txtWriterOut.TabIndex = 14;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 164);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 13);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "Writer out";
-            // 
-            // txtNonMember
-            // 
-            this.txtNonMember.Location = new System.Drawing.Point(97, 237);
-            this.txtNonMember.Multiline = true;
-            this.txtNonMember.Name = "txtNonMember";
-            this.txtNonMember.ReadOnly = true;
-            this.txtNonMember.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtNonMember.Size = new System.Drawing.Size(565, 31);
-            this.txtNonMember.TabIndex = 16;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(7, 237);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(66, 13);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Non-member";
-            // 
-            // txtWorkMonoFields
-            // 
-            this.txtWorkMonoFields.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtWorkMonoFields.Location = new System.Drawing.Point(775, 14);
-            this.txtWorkMonoFields.Multiline = true;
-            this.txtWorkMonoFields.Name = "txtWorkMonoFields";
-            this.txtWorkMonoFields.ReadOnly = true;
-            this.txtWorkMonoFields.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtWorkMonoFields.Size = new System.Drawing.Size(341, 34);
-            this.txtWorkMonoFields.TabIndex = 18;
-            // 
-            // cheWorkMono
-            // 
-            this.cheWorkMono.AutoSize = true;
-            this.cheWorkMono.Enabled = false;
-            this.cheWorkMono.Location = new System.Drawing.Point(671, 19);
-            this.cheWorkMono.Name = "cheWorkMono";
-            this.cheWorkMono.Size = new System.Drawing.Size(78, 17);
-            this.cheWorkMono.TabIndex = 19;
-            this.cheWorkMono.Text = "Work mono";
-            this.cheWorkMono.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(668, 39);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(86, 13);
-            this.label16.TabIndex = 20;
-            this.label16.Text = "Work mono fields";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(668, 64);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(86, 13);
-            this.label17.TabIndex = 21;
-            this.label17.Text = "Work  mono note";
-            // 
-            // txtWorkMonoNote
-            // 
-            this.txtWorkMonoNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtWorkMonoNote.Location = new System.Drawing.Point(775, 54);
-            this.txtWorkMonoNote.Multiline = true;
-            this.txtWorkMonoNote.Name = "txtWorkMonoNote";
-            this.txtWorkMonoNote.ReadOnly = true;
-            this.txtWorkMonoNote.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtWorkMonoNote.Size = new System.Drawing.Size(341, 70);
-            this.txtWorkMonoNote.TabIndex = 22;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(480, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 13);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Work In code";
             // 
             // txtMemberMonoNote
             // 
@@ -1563,80 +1495,210 @@
             this.txtMemberMonoFields.Size = new System.Drawing.Size(341, 34);
             this.txtMemberMonoFields.TabIndex = 24;
             // 
-            // txtWorkInCode
+            // txtWorkMonoNote
             // 
-            this.txtWorkInCode.Location = new System.Drawing.Point(554, 14);
-            this.txtWorkInCode.Name = "txtWorkInCode";
-            this.txtWorkInCode.ReadOnly = true;
-            this.txtWorkInCode.Size = new System.Drawing.Size(108, 18);
-            this.txtWorkInCode.TabIndex = 30;
+            this.txtWorkMonoNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWorkMonoNote.Location = new System.Drawing.Point(775, 54);
+            this.txtWorkMonoNote.Multiline = true;
+            this.txtWorkMonoNote.Name = "txtWorkMonoNote";
+            this.txtWorkMonoNote.ReadOnly = true;
+            this.txtWorkMonoNote.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtWorkMonoNote.Size = new System.Drawing.Size(341, 70);
+            this.txtWorkMonoNote.TabIndex = 22;
             // 
-            // label15
+            // label17
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(480, 16);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(68, 13);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Work In code";
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(668, 64);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(86, 13);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "Work  mono note";
             // 
-            // txtTotalWriter
+            // label16
             // 
-            this.txtTotalWriter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalWriter.Location = new System.Drawing.Point(1214, 13);
-            this.txtTotalWriter.Name = "txtTotalWriter";
-            this.txtTotalWriter.ReadOnly = true;
-            this.txtTotalWriter.Size = new System.Drawing.Size(62, 18);
-            this.txtTotalWriter.TabIndex = 33;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(668, 39);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(86, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "Work mono fields";
             // 
-            // label20
+            // cheWorkMono
             // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(1120, 16);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(57, 13);
-            this.label20.TabIndex = 32;
-            this.label20.Text = "Total writer";
+            this.cheWorkMono.AutoSize = true;
+            this.cheWorkMono.Enabled = false;
+            this.cheWorkMono.Location = new System.Drawing.Point(671, 19);
+            this.cheWorkMono.Name = "cheWorkMono";
+            this.cheWorkMono.Size = new System.Drawing.Size(78, 17);
+            this.cheWorkMono.TabIndex = 19;
+            this.cheWorkMono.Text = "Work mono";
+            this.cheWorkMono.UseVisualStyleBackColor = true;
             // 
-            // txtTotalMatchWriter
+            // txtWorkMonoFields
             // 
-            this.txtTotalMatchWriter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalMatchWriter.Location = new System.Drawing.Point(1214, 35);
-            this.txtTotalMatchWriter.Name = "txtTotalMatchWriter";
-            this.txtTotalMatchWriter.ReadOnly = true;
-            this.txtTotalMatchWriter.Size = new System.Drawing.Size(62, 18);
-            this.txtTotalMatchWriter.TabIndex = 35;
+            this.txtWorkMonoFields.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWorkMonoFields.Location = new System.Drawing.Point(775, 14);
+            this.txtWorkMonoFields.Multiline = true;
+            this.txtWorkMonoFields.Name = "txtWorkMonoFields";
+            this.txtWorkMonoFields.ReadOnly = true;
+            this.txtWorkMonoFields.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtWorkMonoFields.Size = new System.Drawing.Size(341, 34);
+            this.txtWorkMonoFields.TabIndex = 18;
             // 
-            // label21
+            // txtNonMember
             // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(1120, 38);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(88, 13);
-            this.label21.TabIndex = 34;
-            this.label21.Text = "Total match writer";
+            this.txtNonMember.Location = new System.Drawing.Point(97, 237);
+            this.txtNonMember.Multiline = true;
+            this.txtNonMember.Name = "txtNonMember";
+            this.txtNonMember.ReadOnly = true;
+            this.txtNonMember.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtNonMember.Size = new System.Drawing.Size(565, 31);
+            this.txtNonMember.TabIndex = 16;
             // 
-            // txtCompareMessage
+            // label14
             // 
-            this.txtCompareMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCompareMessage.Location = new System.Drawing.Point(1123, 73);
-            this.txtCompareMessage.Multiline = true;
-            this.txtCompareMessage.Name = "txtCompareMessage";
-            this.txtCompareMessage.ReadOnly = true;
-            this.txtCompareMessage.Size = new System.Drawing.Size(150, 68);
-            this.txtCompareMessage.TabIndex = 37;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(7, 237);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(66, 13);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Non-member";
             // 
-            // label23
+            // txtWriterOut
             // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(1122, 57);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(50, 13);
-            this.label23.TabIndex = 38;
-            this.label23.Text = "Com msg";
+            this.txtWriterOut.Location = new System.Drawing.Point(97, 164);
+            this.txtWriterOut.Multiline = true;
+            this.txtWriterOut.Name = "txtWriterOut";
+            this.txtWriterOut.ReadOnly = true;
+            this.txtWriterOut.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtWriterOut.Size = new System.Drawing.Size(565, 70);
+            this.txtWriterOut.TabIndex = 14;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 164);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(51, 13);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Writer out";
+            // 
+            // txtWriterIn
+            // 
+            this.txtWriterIn.Location = new System.Drawing.Point(97, 115);
+            this.txtWriterIn.Multiline = true;
+            this.txtWriterIn.Name = "txtWriterIn";
+            this.txtWriterIn.ReadOnly = true;
+            this.txtWriterIn.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtWriterIn.Size = new System.Drawing.Size(565, 46);
+            this.txtWriterIn.TabIndex = 12;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(7, 115);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 13);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Writer in";
+            // 
+            // txtNoOfPerf
+            // 
+            this.txtNoOfPerf.Location = new System.Drawing.Point(374, 14);
+            this.txtNoOfPerf.Name = "txtNoOfPerf";
+            this.txtNoOfPerf.ReadOnly = true;
+            this.txtNoOfPerf.Size = new System.Drawing.Size(101, 18);
+            this.txtNoOfPerf.TabIndex = 10;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(320, 17);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "NoOfPerf";
+            // 
+            // txtseqNox
+            // 
+            this.txtseqNox.Location = new System.Drawing.Point(231, 14);
+            this.txtseqNox.Name = "txtseqNox";
+            this.txtseqNox.ReadOnly = true;
+            this.txtseqNox.Size = new System.Drawing.Size(84, 18);
+            this.txtseqNox.TabIndex = 8;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(189, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "seqNo";
+            // 
+            // txtindex
+            // 
+            this.txtindex.Location = new System.Drawing.Point(97, 11);
+            this.txtindex.Name = "txtindex";
+            this.txtindex.ReadOnly = true;
+            this.txtindex.Size = new System.Drawing.Size(84, 18);
+            this.txtindex.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 14);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(33, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Index";
+            // 
+            // cboTitleout
+            // 
+            this.cboTitleout.FormattingEnabled = true;
+            this.cboTitleout.Location = new System.Drawing.Point(97, 55);
+            this.cboTitleout.Name = "cboTitleout";
+            this.cboTitleout.Size = new System.Drawing.Size(565, 20);
+            this.cboTitleout.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 61);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "WorkTitle out";
+            // 
+            // txtTitleIn
+            // 
+            this.txtTitleIn.Location = new System.Drawing.Point(97, 34);
+            this.txtTitleIn.Name = "txtTitleIn";
+            this.txtTitleIn.ReadOnly = true;
+            this.txtTitleIn.Size = new System.Drawing.Size(565, 18);
+            this.txtTitleIn.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 35);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Title in";
+            // 
+            // cheGroupIpName
+            // 
+            this.cheGroupIpName.AutoSize = true;
+            this.cheGroupIpName.Location = new System.Drawing.Point(840, 37);
+            this.cheGroupIpName.Name = "cheGroupIpName";
+            this.cheGroupIpName.Size = new System.Drawing.Size(119, 17);
+            this.cheGroupIpName.TabIndex = 47;
+            this.cheGroupIpName.Text = "Group with Ip Name";
+            this.cheGroupIpName.UseVisualStyleBackColor = true;
             // 
             // Clonex
             // 
@@ -1691,6 +1753,26 @@
             this.IscheckCompareTitleAndWriterx.ReadOnly = true;
             this.IscheckCompareTitleAndWriterx.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.IscheckCompareTitleAndWriterx.Width = 90;
+            // 
+            // IscheckCompareTitle
+            // 
+            this.IscheckCompareTitle.DataPropertyName = "IscheckCompareTitle";
+            this.IscheckCompareTitle.FillWeight = 70F;
+            this.IscheckCompareTitle.HeaderText = "Com.Title";
+            this.IscheckCompareTitle.Name = "IscheckCompareTitle";
+            this.IscheckCompareTitle.ReadOnly = true;
+            this.IscheckCompareTitle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IscheckCompareTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.IscheckCompareTitle.Width = 70;
+            // 
+            // IscheckCompareWriter
+            // 
+            this.IscheckCompareWriter.DataPropertyName = "IscheckCompareWriter";
+            this.IscheckCompareWriter.FillWeight = 70F;
+            this.IscheckCompareWriter.HeaderText = "Com.Writer";
+            this.IscheckCompareWriter.Name = "IscheckCompareWriter";
+            this.IscheckCompareWriter.ReadOnly = true;
+            this.IscheckCompareWriter.Width = 70;
             // 
             // MesssageCompareTitleAndWriterx
             // 
@@ -2217,54 +2299,12 @@
             this.ListOtherTitleOutx.ReadOnly = true;
             this.ListOtherTitleOutx.Visible = false;
             // 
-            // cheIscheckCompareTitleAndWriter
-            // 
-            this.cheIscheckCompareTitleAndWriter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cheIscheckCompareTitleAndWriter.AutoSize = true;
-            this.cheIscheckCompareTitleAndWriter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cheIscheckCompareTitleAndWriter.Location = new System.Drawing.Point(1127, 147);
-            this.cheIscheckCompareTitleAndWriter.Name = "cheIscheckCompareTitleAndWriter";
-            this.cheIscheckCompareTitleAndWriter.Size = new System.Drawing.Size(135, 17);
-            this.cheIscheckCompareTitleAndWriter.TabIndex = 39;
-            this.cheIscheckCompareTitleAndWriter.Text = "Com title and writer";
-            this.cheIscheckCompareTitleAndWriter.UseVisualStyleBackColor = true;
-            this.cheIscheckCompareTitleAndWriter.CheckedChanged += new System.EventHandler(this.cheIscheckCompareTitleAndWriter_CheckedChanged);
-            // 
-            // btnApply
-            // 
-            this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(1125, 238);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(148, 31);
-            this.btnApply.TabIndex = 40;
-            this.btnApply.Text = "Apply";
-            this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
-            // 
-            // txtOtherTitleOut
-            // 
-            this.txtOtherTitleOut.Location = new System.Drawing.Point(97, 78);
-            this.txtOtherTitleOut.Multiline = true;
-            this.txtOtherTitleOut.Name = "txtOtherTitleOut";
-            this.txtOtherTitleOut.ReadOnly = true;
-            this.txtOtherTitleOut.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtOtherTitleOut.Size = new System.Drawing.Size(565, 34);
-            this.txtOtherTitleOut.TabIndex = 42;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(7, 78);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(80, 13);
-            this.label22.TabIndex = 41;
-            this.label22.Text = "Other Writer out";
-            // 
             // frmEdiFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1285, 647);
+            this.Controls.Add(this.cheGroupIpName);
             this.Controls.Add(this.gbEdit);
             this.Controls.Add(this.cheVcpmcRegion);
             this.Controls.Add(this.label6);
@@ -2274,13 +2314,6 @@
             this.Controls.Add(this.cboMatchedType);
             this.Controls.Add(this.cheGroupMemberWithcmo);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lbTotalAftercalc);
-            this.Controls.Add(this.lbTotalAftercalcxxx);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lbTotalDuplicate);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lbTotalrest);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.lbTotalLoad);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusMain);
@@ -2294,6 +2327,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmEdiFiles_Load);
             this.gbChanelList.ResumeLayout(false);
+            this.gbChanelList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcloader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEditFileImport)).EndInit();
             this.toolMain.ResumeLayout(false);
@@ -2330,7 +2364,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbTotalDuplicate;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbTotalAftercalc;
         private System.Windows.Forms.Label lbTotalAftercalcxxx;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -2445,12 +2478,19 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txtTotalWriter;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox cheIscheckCompareTitleAndWriter;
+        private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.TextBox txtOtherTitleOut;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox cheGroupIpName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Clonex;
         private System.Windows.Forms.DataGridViewTextBoxColumn Idx;
         private System.Windows.Forms.DataGridViewTextBoxColumn indexx;
         private System.Windows.Forms.DataGridViewTextBoxColumn seqNox;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoOfPerfx;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IscheckCompareTitleAndWriterx;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IscheckCompareTitle;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IscheckCompareWriter;
         private System.Windows.Forms.DataGridViewTextBoxColumn MesssageCompareTitleAndWriterx;
         private System.Windows.Forms.DataGridViewTextBoxColumn CountMatchWriterx;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalWriterx;
@@ -2513,9 +2553,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ListInterestedPartyx;
         private System.Windows.Forms.DataGridViewTextBoxColumn ListOtherTitleOutUnSignx;
         private System.Windows.Forms.DataGridViewTextBoxColumn ListOtherTitleOutx;
-        private System.Windows.Forms.CheckBox cheIscheckCompareTitleAndWriter;
-        private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.TextBox txtOtherTitleOut;
-        private System.Windows.Forms.Label label22;
     }
 }
