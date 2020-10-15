@@ -37,6 +37,32 @@
             this.btnNxtPage = new System.Windows.Forms.Button();
             this.btnFirstPAge = new System.Windows.Forms.Button();
             this.dgvMain = new System.Windows.Forms.DataGridView();
+            this.Choise = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serialNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WK_INT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TTL_ENG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TTL_LOCAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISWC_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISRC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WRITER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WRITER_LOCAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ARTIST = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SOC_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WK_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StarRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MonopolyWorks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MonopolyMembers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OtherTitles = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InterestedParties = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalWriterRequest = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalWriterMatching = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RateWriterMatch = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ListArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsCheckMatchingArtist = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TotalMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalNonMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalMemberVcpmc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClear = new System.Windows.Forms.Button();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.plInfo = new System.Windows.Forms.Panel();
@@ -84,30 +110,6 @@
             this.pRight = new System.Windows.Forms.Panel();
             this.pcloader = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.Choise = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serialNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WK_INT_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TTL_ENG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISWC_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISRC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WRITER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ARTIST = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SOC_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WK_STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StarRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MonopolyWorks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MonopolyMembers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OtherTitles = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InterestedParties = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalWriterRequest = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalWriterMatching = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RateWriterMatch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ListArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsCheckMatchingArtist = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TotalMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalNonMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalMemberVcpmc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtPageCurrent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.plInfo.SuspendLayout();
@@ -186,6 +188,7 @@
             this.btnLastPage.Size = new System.Drawing.Size(22, 20);
             this.btnLastPage.TabIndex = 39;
             this.btnLastPage.UseVisualStyleBackColor = false;
+            this.btnLastPage.Visible = false;
             this.btnLastPage.Click += new System.EventHandler(this.btnLastPage_Click);
             // 
             // btnNxtPage
@@ -230,9 +233,11 @@
             this.serialNo,
             this.WK_INT_NO,
             this.TTL_ENG,
+            this.TTL_LOCAL,
             this.ISWC_NO,
             this.ISRC,
             this.WRITER,
+            this.WRITER_LOCAL,
             this.ARTIST,
             this.SOC_NAME,
             this.WK_STATUS,
@@ -256,6 +261,215 @@
             this.dgvMain.TabIndex = 0;
             this.dgvMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_CellClick);
             this.dgvMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvMain_MouseDoubleClick);
+            // 
+            // Choise
+            // 
+            this.Choise.DataPropertyName = "Choise";
+            this.Choise.FillWeight = 40F;
+            this.Choise.HeaderText = "";
+            this.Choise.Name = "Choise";
+            this.Choise.ReadOnly = true;
+            this.Choise.Width = 40;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // serialNo
+            // 
+            this.serialNo.DataPropertyName = "SerialNo";
+            this.serialNo.FillWeight = 80F;
+            this.serialNo.HeaderText = "Serial no";
+            this.serialNo.Name = "serialNo";
+            this.serialNo.ReadOnly = true;
+            this.serialNo.Width = 80;
+            // 
+            // WK_INT_NO
+            // 
+            this.WK_INT_NO.DataPropertyName = "WK_INT_NO";
+            this.WK_INT_NO.HeaderText = "Workcode";
+            this.WK_INT_NO.Name = "WK_INT_NO";
+            this.WK_INT_NO.ReadOnly = true;
+            // 
+            // TTL_ENG
+            // 
+            this.TTL_ENG.DataPropertyName = "TTL_ENG";
+            this.TTL_ENG.FillWeight = 300F;
+            this.TTL_ENG.HeaderText = "Title";
+            this.TTL_ENG.Name = "TTL_ENG";
+            this.TTL_ENG.ReadOnly = true;
+            this.TTL_ENG.Width = 300;
+            // 
+            // TTL_LOCAL
+            // 
+            this.TTL_LOCAL.DataPropertyName = "TTL_LOCAL";
+            this.TTL_LOCAL.FillWeight = 300F;
+            this.TTL_LOCAL.HeaderText = "Local title";
+            this.TTL_LOCAL.Name = "TTL_LOCAL";
+            this.TTL_LOCAL.ReadOnly = true;
+            this.TTL_LOCAL.Width = 300;
+            // 
+            // ISWC_NO
+            // 
+            this.ISWC_NO.DataPropertyName = "ISWC_NO";
+            this.ISWC_NO.HeaderText = "ISWC";
+            this.ISWC_NO.Name = "ISWC_NO";
+            this.ISWC_NO.ReadOnly = true;
+            // 
+            // ISRC
+            // 
+            this.ISRC.DataPropertyName = "ISRC";
+            this.ISRC.HeaderText = "ISRC";
+            this.ISRC.Name = "ISRC";
+            this.ISRC.ReadOnly = true;
+            // 
+            // WRITER
+            // 
+            this.WRITER.DataPropertyName = "WRITER";
+            this.WRITER.FillWeight = 300F;
+            this.WRITER.HeaderText = "Writers";
+            this.WRITER.Name = "WRITER";
+            this.WRITER.ReadOnly = true;
+            this.WRITER.Width = 300;
+            // 
+            // WRITER_LOCAL
+            // 
+            this.WRITER_LOCAL.DataPropertyName = "WRITER_LOCAL";
+            this.WRITER_LOCAL.FillWeight = 300F;
+            this.WRITER_LOCAL.HeaderText = "Local writer";
+            this.WRITER_LOCAL.Name = "WRITER_LOCAL";
+            this.WRITER_LOCAL.ReadOnly = true;
+            this.WRITER_LOCAL.Width = 300;
+            // 
+            // ARTIST
+            // 
+            this.ARTIST.DataPropertyName = "ARTIST";
+            this.ARTIST.HeaderText = "ARTIST";
+            this.ARTIST.Name = "ARTIST";
+            this.ARTIST.ReadOnly = true;
+            // 
+            // SOC_NAME
+            // 
+            this.SOC_NAME.DataPropertyName = "SOC_NAME";
+            this.SOC_NAME.HeaderText = "Soc Name";
+            this.SOC_NAME.Name = "SOC_NAME";
+            this.SOC_NAME.ReadOnly = true;
+            // 
+            // WK_STATUS
+            // 
+            this.WK_STATUS.DataPropertyName = "WK_STATUS";
+            this.WK_STATUS.HeaderText = "Work status";
+            this.WK_STATUS.Name = "WK_STATUS";
+            this.WK_STATUS.ReadOnly = true;
+            // 
+            // StarRating
+            // 
+            this.StarRating.DataPropertyName = "StarRating";
+            this.StarRating.HeaderText = "Star Rating";
+            this.StarRating.Name = "StarRating";
+            this.StarRating.ReadOnly = true;
+            // 
+            // MonopolyWorks
+            // 
+            this.MonopolyWorks.DataPropertyName = "MonopolyWorks";
+            this.MonopolyWorks.HeaderText = "MonopolyWorks";
+            this.MonopolyWorks.Name = "MonopolyWorks";
+            this.MonopolyWorks.ReadOnly = true;
+            this.MonopolyWorks.Visible = false;
+            // 
+            // MonopolyMembers
+            // 
+            this.MonopolyMembers.DataPropertyName = "MonopolyMembers";
+            this.MonopolyMembers.HeaderText = "MonopolyMembers";
+            this.MonopolyMembers.Name = "MonopolyMembers";
+            this.MonopolyMembers.ReadOnly = true;
+            this.MonopolyMembers.Visible = false;
+            // 
+            // OtherTitles
+            // 
+            this.OtherTitles.DataPropertyName = "OtherTitles";
+            this.OtherTitles.HeaderText = "OtherTitles";
+            this.OtherTitles.Name = "OtherTitles";
+            this.OtherTitles.ReadOnly = true;
+            this.OtherTitles.Visible = false;
+            // 
+            // InterestedParties
+            // 
+            this.InterestedParties.DataPropertyName = "InterestedParties";
+            this.InterestedParties.HeaderText = "InterestedParties";
+            this.InterestedParties.Name = "InterestedParties";
+            this.InterestedParties.ReadOnly = true;
+            this.InterestedParties.Visible = false;
+            // 
+            // TotalWriterRequest
+            // 
+            this.TotalWriterRequest.DataPropertyName = "TotalWriterRequest";
+            this.TotalWriterRequest.HeaderText = "TotalWriterRequest";
+            this.TotalWriterRequest.Name = "TotalWriterRequest";
+            this.TotalWriterRequest.ReadOnly = true;
+            this.TotalWriterRequest.Visible = false;
+            // 
+            // TotalWriterMatching
+            // 
+            this.TotalWriterMatching.DataPropertyName = "TotalWriterMatching";
+            this.TotalWriterMatching.HeaderText = "TotalWriterMatching";
+            this.TotalWriterMatching.Name = "TotalWriterMatching";
+            this.TotalWriterMatching.ReadOnly = true;
+            this.TotalWriterMatching.Visible = false;
+            // 
+            // RateWriterMatch
+            // 
+            this.RateWriterMatch.DataPropertyName = "RateWriterMatch";
+            this.RateWriterMatch.HeaderText = "RateWriterMatch";
+            this.RateWriterMatch.Name = "RateWriterMatch";
+            this.RateWriterMatch.ReadOnly = true;
+            this.RateWriterMatch.Visible = false;
+            // 
+            // ListArtist
+            // 
+            this.ListArtist.DataPropertyName = "ListArtist";
+            this.ListArtist.HeaderText = "ListArtist";
+            this.ListArtist.Name = "ListArtist";
+            this.ListArtist.ReadOnly = true;
+            this.ListArtist.Visible = false;
+            // 
+            // IsCheckMatchingArtist
+            // 
+            this.IsCheckMatchingArtist.DataPropertyName = "IsCheckMatchingArtist";
+            this.IsCheckMatchingArtist.HeaderText = "IsCheckMatchingArtist";
+            this.IsCheckMatchingArtist.Name = "IsCheckMatchingArtist";
+            this.IsCheckMatchingArtist.ReadOnly = true;
+            this.IsCheckMatchingArtist.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsCheckMatchingArtist.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.IsCheckMatchingArtist.Visible = false;
+            // 
+            // TotalMember
+            // 
+            this.TotalMember.DataPropertyName = "TotalMember";
+            this.TotalMember.HeaderText = "TotalMember";
+            this.TotalMember.Name = "TotalMember";
+            this.TotalMember.ReadOnly = true;
+            this.TotalMember.Visible = false;
+            // 
+            // TotalNonMember
+            // 
+            this.TotalNonMember.DataPropertyName = "TotalNonMember";
+            this.TotalNonMember.HeaderText = "TotalNonMember";
+            this.TotalNonMember.Name = "TotalNonMember";
+            this.TotalNonMember.ReadOnly = true;
+            this.TotalNonMember.Visible = false;
+            // 
+            // TotalMemberVcpmc
+            // 
+            this.TotalMemberVcpmc.DataPropertyName = "TotalMemberVcpmc";
+            this.TotalMemberVcpmc.HeaderText = "TotalMemberVcpmc";
+            this.TotalMemberVcpmc.Name = "TotalMemberVcpmc";
+            this.TotalMemberVcpmc.ReadOnly = true;
+            this.TotalMemberVcpmc.Visible = false;
             // 
             // btnClear
             // 
@@ -545,6 +759,7 @@
             // 
             // txtFind
             // 
+            this.txtFind.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(250, 25);
             this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFind_KeyDown);
@@ -578,6 +793,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(103, 22);
             this.btnExport.Text = "Export-VCPMC";
+            this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExportVcpmc_Click);
             // 
             // pLeft
@@ -691,7 +907,7 @@
             // pcloader
             // 
             this.pcloader.Image = ((System.Drawing.Image)(resources.GetObject("pcloader.Image")));
-            this.pcloader.Location = new System.Drawing.Point(201, 97);
+            this.pcloader.Location = new System.Drawing.Point(309, 118);
             this.pcloader.Name = "pcloader";
             this.pcloader.Size = new System.Drawing.Size(64, 61);
             this.pcloader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -710,197 +926,6 @@
             this.label9.Size = new System.Drawing.Size(199, 13);
             this.label9.TabIndex = 43;
             this.label9.Text = "(Double click to view item details)";
-            // 
-            // Choise
-            // 
-            this.Choise.DataPropertyName = "Choise";
-            this.Choise.FillWeight = 40F;
-            this.Choise.HeaderText = "";
-            this.Choise.Name = "Choise";
-            this.Choise.ReadOnly = true;
-            this.Choise.Width = 40;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // serialNo
-            // 
-            this.serialNo.DataPropertyName = "SerialNo";
-            this.serialNo.FillWeight = 80F;
-            this.serialNo.HeaderText = "Serial no";
-            this.serialNo.Name = "serialNo";
-            this.serialNo.ReadOnly = true;
-            this.serialNo.Width = 80;
-            // 
-            // WK_INT_NO
-            // 
-            this.WK_INT_NO.DataPropertyName = "WK_INT_NO";
-            this.WK_INT_NO.HeaderText = "Workcode";
-            this.WK_INT_NO.Name = "WK_INT_NO";
-            this.WK_INT_NO.ReadOnly = true;
-            // 
-            // TTL_ENG
-            // 
-            this.TTL_ENG.DataPropertyName = "TTL_ENG";
-            this.TTL_ENG.FillWeight = 300F;
-            this.TTL_ENG.HeaderText = "Title";
-            this.TTL_ENG.Name = "TTL_ENG";
-            this.TTL_ENG.ReadOnly = true;
-            this.TTL_ENG.Width = 300;
-            // 
-            // ISWC_NO
-            // 
-            this.ISWC_NO.DataPropertyName = "ISWC_NO";
-            this.ISWC_NO.HeaderText = "ISWC";
-            this.ISWC_NO.Name = "ISWC_NO";
-            this.ISWC_NO.ReadOnly = true;
-            // 
-            // ISRC
-            // 
-            this.ISRC.DataPropertyName = "ISRC";
-            this.ISRC.HeaderText = "ISRC";
-            this.ISRC.Name = "ISRC";
-            this.ISRC.ReadOnly = true;
-            // 
-            // WRITER
-            // 
-            this.WRITER.DataPropertyName = "WRITER";
-            this.WRITER.FillWeight = 300F;
-            this.WRITER.HeaderText = "Writers";
-            this.WRITER.Name = "WRITER";
-            this.WRITER.ReadOnly = true;
-            this.WRITER.Width = 300;
-            // 
-            // ARTIST
-            // 
-            this.ARTIST.DataPropertyName = "ARTIST";
-            this.ARTIST.HeaderText = "ARTIST";
-            this.ARTIST.Name = "ARTIST";
-            this.ARTIST.ReadOnly = true;
-            // 
-            // SOC_NAME
-            // 
-            this.SOC_NAME.DataPropertyName = "SOC_NAME";
-            this.SOC_NAME.HeaderText = "Soc Name";
-            this.SOC_NAME.Name = "SOC_NAME";
-            this.SOC_NAME.ReadOnly = true;
-            // 
-            // WK_STATUS
-            // 
-            this.WK_STATUS.DataPropertyName = "WK_STATUS";
-            this.WK_STATUS.HeaderText = "Work status";
-            this.WK_STATUS.Name = "WK_STATUS";
-            this.WK_STATUS.ReadOnly = true;
-            // 
-            // StarRating
-            // 
-            this.StarRating.DataPropertyName = "StarRating";
-            this.StarRating.HeaderText = "Star Rating";
-            this.StarRating.Name = "StarRating";
-            this.StarRating.ReadOnly = true;
-            // 
-            // MonopolyWorks
-            // 
-            this.MonopolyWorks.DataPropertyName = "MonopolyWorks";
-            this.MonopolyWorks.HeaderText = "MonopolyWorks";
-            this.MonopolyWorks.Name = "MonopolyWorks";
-            this.MonopolyWorks.ReadOnly = true;
-            this.MonopolyWorks.Visible = false;
-            // 
-            // MonopolyMembers
-            // 
-            this.MonopolyMembers.DataPropertyName = "MonopolyMembers";
-            this.MonopolyMembers.HeaderText = "MonopolyMembers";
-            this.MonopolyMembers.Name = "MonopolyMembers";
-            this.MonopolyMembers.ReadOnly = true;
-            this.MonopolyMembers.Visible = false;
-            // 
-            // OtherTitles
-            // 
-            this.OtherTitles.DataPropertyName = "OtherTitles";
-            this.OtherTitles.HeaderText = "OtherTitles";
-            this.OtherTitles.Name = "OtherTitles";
-            this.OtherTitles.ReadOnly = true;
-            this.OtherTitles.Visible = false;
-            // 
-            // InterestedParties
-            // 
-            this.InterestedParties.DataPropertyName = "InterestedParties";
-            this.InterestedParties.HeaderText = "InterestedParties";
-            this.InterestedParties.Name = "InterestedParties";
-            this.InterestedParties.ReadOnly = true;
-            this.InterestedParties.Visible = false;
-            // 
-            // TotalWriterRequest
-            // 
-            this.TotalWriterRequest.DataPropertyName = "TotalWriterRequest";
-            this.TotalWriterRequest.HeaderText = "TotalWriterRequest";
-            this.TotalWriterRequest.Name = "TotalWriterRequest";
-            this.TotalWriterRequest.ReadOnly = true;
-            this.TotalWriterRequest.Visible = false;
-            // 
-            // TotalWriterMatching
-            // 
-            this.TotalWriterMatching.DataPropertyName = "TotalWriterMatching";
-            this.TotalWriterMatching.HeaderText = "TotalWriterMatching";
-            this.TotalWriterMatching.Name = "TotalWriterMatching";
-            this.TotalWriterMatching.ReadOnly = true;
-            this.TotalWriterMatching.Visible = false;
-            // 
-            // RateWriterMatch
-            // 
-            this.RateWriterMatch.DataPropertyName = "RateWriterMatch";
-            this.RateWriterMatch.HeaderText = "RateWriterMatch";
-            this.RateWriterMatch.Name = "RateWriterMatch";
-            this.RateWriterMatch.ReadOnly = true;
-            this.RateWriterMatch.Visible = false;
-            // 
-            // ListArtist
-            // 
-            this.ListArtist.DataPropertyName = "ListArtist";
-            this.ListArtist.HeaderText = "ListArtist";
-            this.ListArtist.Name = "ListArtist";
-            this.ListArtist.ReadOnly = true;
-            this.ListArtist.Visible = false;
-            // 
-            // IsCheckMatchingArtist
-            // 
-            this.IsCheckMatchingArtist.DataPropertyName = "IsCheckMatchingArtist";
-            this.IsCheckMatchingArtist.HeaderText = "IsCheckMatchingArtist";
-            this.IsCheckMatchingArtist.Name = "IsCheckMatchingArtist";
-            this.IsCheckMatchingArtist.ReadOnly = true;
-            this.IsCheckMatchingArtist.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsCheckMatchingArtist.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.IsCheckMatchingArtist.Visible = false;
-            // 
-            // TotalMember
-            // 
-            this.TotalMember.DataPropertyName = "TotalMember";
-            this.TotalMember.HeaderText = "TotalMember";
-            this.TotalMember.Name = "TotalMember";
-            this.TotalMember.ReadOnly = true;
-            this.TotalMember.Visible = false;
-            // 
-            // TotalNonMember
-            // 
-            this.TotalNonMember.DataPropertyName = "TotalNonMember";
-            this.TotalNonMember.HeaderText = "TotalNonMember";
-            this.TotalNonMember.Name = "TotalNonMember";
-            this.TotalNonMember.ReadOnly = true;
-            this.TotalNonMember.Visible = false;
-            // 
-            // TotalMemberVcpmc
-            // 
-            this.TotalMemberVcpmc.DataPropertyName = "TotalMemberVcpmc";
-            this.TotalMemberVcpmc.HeaderText = "TotalMemberVcpmc";
-            this.TotalMemberVcpmc.Name = "TotalMemberVcpmc";
-            this.TotalMemberVcpmc.ReadOnly = true;
-            this.TotalMemberVcpmc.Visible = false;
             // 
             // frmWork
             // 
@@ -997,9 +1022,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn serialNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn WK_INT_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn TTL_ENG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TTL_LOCAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISWC_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISRC;
         private System.Windows.Forms.DataGridViewTextBoxColumn WRITER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WRITER_LOCAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ARTIST;
         private System.Windows.Forms.DataGridViewTextBoxColumn SOC_NAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn WK_STATUS;

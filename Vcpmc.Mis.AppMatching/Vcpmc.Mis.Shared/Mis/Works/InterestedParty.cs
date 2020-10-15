@@ -61,7 +61,7 @@ namespace Vcpmc.Mis.Shared.Mis.Works
         /// <summary>
         /// Trạng thái: COMPLETE, INCOMPLETE
         /// </summary>
-        public string WK_STATUS { get; set; } = "INCOMPLETE";// string.Empty;
+        //public string WK_STATUS { get; set; } = "INCOMPLETE";// string.Empty;
         /// <summary>
         /// Quyền biểu diễn
         /// </summary>

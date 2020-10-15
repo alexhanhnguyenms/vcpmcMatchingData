@@ -42,6 +42,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                     txtTitle.Enabled = false;
                 }
                 txtTitle.Text = otherTitle.Title;
+                txtTTL_LOCAL.Text = otherTitle.TTL_LOCAL;
             }
         }
 
@@ -56,6 +57,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
             otherTitle = new OtherTitle();
             otherTitle.No = (maxNo+1);
             otherTitle.Title = VnHelper.ConvertToUnSign(txtTitle.Text.Trim()).ToUpper();
+            otherTitle.TTL_LOCAL = txtTTL_LOCAL.Text.Trim().ToUpper();
             //otherTitle.TitleType = txtTitleType.Text.Trim();
             //otherTitle.Language = txtLanguage.Text.Trim();
             this.Close();

@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Presentation;
+using Org.BouncyCastle.Operators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ using Vcpmc.Mis.Common.search;
 using Vcpmc.Mis.Common.vi;
 using Vcpmc.Mis.Infrastructure;
 using Vcpmc.Mis.Shared.Mis.Members;
+using Vcpmc.Mis.Shared.Mis.Works;
 using Vcpmc.Mis.Shared.Parameter;
 using Vcpmc.Mis.UnicodeConverter;
 using Vcpmc.Mis.Utilities.Common;
@@ -54,6 +56,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         ApiResult<PagedResult<FixParameterViewModel>> fixdata = new ApiResult<PagedResult<FixParameterViewModel>>();
 
         bool isGroupByMember = false;
+        bool isGroupByIpname = false;
         bool isSync = false;
         bool isLoad = false;
         bool isFindMono = false;        
@@ -88,6 +91,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
             fixcontroller = new FixParameterController(fixapiClient);
             cboMonopolyType.SelectedIndex = 0;
             isGroupByMember = cheGroupMemberWithcmo.Checked;
+            isGroupByIpname = cheGroupIpName.Checked;
             cboMatchedType.SelectedIndex = 0;
             _comareTitleAndWriter = cheCompareTitleAndWriter.Checked;
             if(radCompareTW.Checked)
@@ -100,6 +104,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
             }
             cboRateWriterMatched.SelectedIndex = 2;
             cboType.SelectedIndex = 1;
+            btnApply.Enabled = false;
             //isVcpmcAddRegion = cheVcpmcRegion.Checked;
             //dgvEditFileImport.DataSource = bindingSourceImport;
             //dgvEditCalcXXX.DataSource = bindingSourceEdit;
@@ -132,11 +137,25 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
             }          
         }
         //int d = 1;
-        BindingSource bSource = new BindingSource();
+        //BindingSource bSource = new BindingSource();
         private void btnImport_Click(object sender, EventArgs e)
         {
             try
             {
+                btnApply.Enabled = false;
+                tstxtPath.Text = "";
+                var filePath = string.Empty;
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Excel Files|*.xls;*.xlsx";
+                    //openFileDialog.InitialDirectory = "D:\\";                   
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        //Get the path of specified file
+                        filePath = openFileDialog.FileName;
+                        tstxtPath.Text = filePath;
+                    }
+                }
                 switch (cboRateWriterMatched.SelectedIndex)
                 {
                     case 0:
@@ -159,24 +178,24 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         break;
                 }
                 GenerateType = cboMatchedType.SelectedIndex;
-                _comareTitleAndWriter = cheCompareTitleAndWriter.Checked;              
+                _comareTitleAndWriter = cheCompareTitleAndWriter.Checked;
                 #region display
                 if (_comareTitleAndWriter)
                 {
                     dgvEditCalcXXX.Columns["IscheckCompareTitleAndWriterx"].Visible = true;
                     dgvEditCalcXXX.Columns["MesssageCompareTitleAndWriterx"].Visible = true;
-                    dgvEditCalcXXX.Columns["CountMatchWriter"].Visible = true;
-                    dgvEditCalcXXX.Columns["TotalWriter"].Visible = true;
-                }  
+                    dgvEditCalcXXX.Columns["CountMatchWriterx"].Visible = true;
+                    dgvEditCalcXXX.Columns["TotalWriterx"].Visible = true;
+                }
                 else
                 {
                     dgvEditCalcXXX.Columns["IscheckCompareTitleAndWriterx"].Visible = false;
                     dgvEditCalcXXX.Columns["MesssageCompareTitleAndWriterx"].Visible = false;
-                    dgvEditCalcXXX.Columns["CountMatchWriter"].Visible = false;
-                    dgvEditCalcXXX.Columns["TotalWriter"].Visible = false;
+                    dgvEditCalcXXX.Columns["CountMatchWriterx"].Visible = false;
+                    dgvEditCalcXXX.Columns["TotalWriterx"].Visible = false;
                 }
 
-                if(GenerateType == 0|| GenerateType == 1)
+                if (GenerateType == 0 || GenerateType == 1)
                 {
                     //thong thuong
                     dgvEditCalcXXX.Columns["IpSetNox"].Visible = false;
@@ -190,12 +209,12 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     dgvEditCalcXXX.Columns["IpNamex"].Visible = false;
                     dgvEditCalcXXX.Columns["IpNameLocal2x"].Visible = false;
                     dgvEditCalcXXX.Columns["Societyx"].Visible = false;
-                   
+
                     dgvEditCalcXXX.Columns["PerOwnShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["PerColShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["MecOwnShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["TotalMecShrx"].Visible = false;
-                  
+
                     dgvEditCalcXXX.Columns["SpShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["TotalMecShrx"].Visible = false;
                     dgvEditCalcXXX.Columns["SynOwnShrx"].Visible = false;
@@ -229,7 +248,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
                 }
 
-                if(cheVcpmcRegion.Checked)
+                if (cheVcpmcRegion.Checked)
                 {
                     dgvEditCalcXXX.Columns["VcpmcRegionx"].Visible = true;
                 }
@@ -239,7 +258,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 }
 
                 #endregion
-               
+
                 if (isLoad)
                 {
                     lbTotalLoad.Invoke(new MethodInvoker(delegate
@@ -297,29 +316,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 MessageBox.Show(ex.ToString());
             }
         }
-        private void btnChoiseFile_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                tstxtPath.Text = "";
-                var filePath = string.Empty;
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
-                {
-                    openFileDialog.Filter = "Excel Files|*.xls;*.xlsx";
-                    //openFileDialog.InitialDirectory = "D:\\";                   
-                    if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        //Get the path of specified file
-                        filePath = openFileDialog.FileName;
-                        tstxtPath.Text = filePath;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.ToString()}");
-            }
-        }
+        
         #endregion
 
         #region timer      
@@ -360,19 +357,23 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             pcloader.Visible = false;
+            pictureBox1.Visible = false;
         }
         #endregion
 
         #region data
+        List<WorkMonoWithStatus> listWMS = new List<WorkMonoWithStatus>();
         private async void LoadDtaFromExcel()
         {
             try
-            {                
+            {
+                
                 #region init   
                 int NoOfPerf = 0;
                 int seqNo = 0;
                 isLoad = true;
                 isGroupByMember = cheGroupMemberWithcmo.Checked;
+                isGroupByIpname = cheGroupIpName.Checked;
                 ExcelHelper excelHelper = new ExcelHelper();
                 int countread = 0;
                 int countGood = 0;
@@ -420,7 +421,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     string pathx = Path.GetDirectoryName(Application.ExecutablePath) + @"\Data\member\VcpmcInfo.txt";
                     vcpmcInfo = CsvReadHelper.ReadVCPMCInfo(pathx);
                 }
-                
+               
                 #region 1.Loai bo dong trong   
                 List<EdiFilesItem> editFiles = new List<EdiFilesItem>();
                 if (ediFilesItems != null)
@@ -435,6 +436,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     //bool isAdd = false;
                     for (int i = 0; i < ediFilesItems.Count; i++)
                     {
+                        //if(ediFilesItems[i].WorkInternalNo == "2721572")
+                        //{
+                        //    var sfsd = (EdiFilesItem)ediFilesItems[i].Clone();
+                        //}
                         //isAdd = false;
                         #region general report: thuong dung
                         if (GenerateType == 0)
@@ -462,12 +467,19 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                     {
                                         ediFilesItemsClone[ediFilesItemsClone.Count - 1].NoOfPerf = NoOfPerf;
                                     }
+                                    var sfsd = ediFilesItemsClone[ediFilesItemsClone.Count - 1];
                                     //cong cac WorkArtist neu bij troi xuong dong duoi
                                     if (ediFilesItems[i].WorkArtist != string.Empty)
                                     {
                                         ediFilesItemsClone[ediFilesItemsClone.Count - 1].WorkArtist =
                                             ediFilesItemsClone[ediFilesItemsClone.Count - 1].WorkArtist + " " + ediFilesItems[i].WorkArtist;
                                     }
+                                    if (ediFilesItems[i].WorkComposer != string.Empty)
+                                    {
+                                        ediFilesItemsClone[ediFilesItemsClone.Count - 1].WorkComposer =
+                                            ediFilesItemsClone[ediFilesItemsClone.Count - 1].WorkComposer + " " + ediFilesItems[i].WorkComposer;
+                                    }
+
                                 }
                                 #endregion
                             }
@@ -536,9 +548,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 string text2 = string.Empty;
                 for (int i = 0; i < ediFilesItemsClone.Count; i++)
                 {
-                    if(ediFilesItemsClone[i].WorkInternalNo == "19176136")
+                    if(ediFilesItemsClone[i].WorkInternalNo == "12227329")
                     {
-                        //int a = 1;
+                        var xxx = ediFilesItemsClone[i];
+                        int a = 1;
                     }
                     WorkCreateRequest itmUpdate = new WorkCreateRequest();
 
@@ -630,7 +643,14 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             }
                             else
                             {
-
+                                //TODO
+                                //ip name: VIET VOICE ENTERTAINMENT VIETNAM,
+                                //local: CÔNG TY TNHH GIẢI TRÍ TIẾNG HÁT VIỆT
+                                //composer work: UYEN PHUONG, VIET VOICE ENTERTAINMENT VIETNAM
+                                //binh thuong name va local giong nhau chi bij mat khoang trang
+                                //trong truong hop nay bi loi=> do mis
+                                //vay quat luon nhu goc
+                                ediFilesItemsClone[i].IpNameLocal2 = ediFilesItemsClone[i].IpNameLocal;
                             }
                         }
                         ediFilesItemsClone[i].IpNameLocal2 = ediFilesItemsClone[i].IpNameLocal2.Trim();
@@ -640,8 +660,29 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 #endregion
 
                 #region Chuyen doi mot so tac gia 
-                if(ediFilesItemsClone.Count > 0 )
+                List<MemberNameReport> memberNameReportList = new List<MemberNameReport>();
+                if (ediFilesItemsClone.Count > 0 )
                 {
+                    #region Lấy một số tên hiển thị trong report
+                    fixrequest.Type = TypeFixParameter.MemberNameReport.ToString();
+                    fixdata = await fixcontroller.GetAllPaging(fixrequest);                    
+                    if (fixdata != null && fixdata.ResultObj != null && fixdata.ResultObj.Items != null && fixdata.ResultObj.Items.Count > 0)
+                    {
+                        #region 3.Data fix
+                        var data1 = fixdata.ResultObj.Items.Where(p => p.Type == TypeFixParameter.MemberNameReport.ToString()).ToList();                      
+                        for (int i = 0; i < data1.Count; i++)
+                        {
+                            memberNameReportList.Add(new MemberNameReport
+                            {
+                                MemberCode = data1[i].Key,
+                                Name = data1[i].Value1,
+                                NameLocal = data1[i].Value2,
+                            });
+                        }
+                        #endregion
+                    }
+                    #endregion
+
                     string valueFix = string.Empty;                   
 
                     #region Chuyen tu none member sang to member
@@ -716,16 +757,38 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     }
                     #endregion
 
+                    #region Chuyen mot so trạng thai voi ghi chu doc quyen
+                    listWMS.Clear();
+                    fixrequest.Type = TypeFixParameter.WorkMonoNoteWithStatus.ToString();
+                    fixdata = await fixcontroller.GetAllPaging(fixrequest);                    
+                    if (fixdata != null && fixdata.ResultObj != null && fixdata.ResultObj.Items != null && fixdata.ResultObj.Items.Count > 0)
+                    {
+                        var data2 = fixdata.ResultObj.Items.Where(p => p.Type == TypeFixParameter.WorkMonoNoteWithStatus.ToString()).ToList();                     
+                        for (int i = 0; i < data2.Count; i++)
+                        {
+                            listWMS.Add(new WorkMonoWithStatus
+                            {
+                                FirstTitle = data2[i].Key.Trim()+" ",
+                                Status = data2[i].Value1,
+                                MonoNote = data2[i].Value2,
+
+                            });
+                        }
+                    }
+                    #endregion
+
                 }
                 #endregion
-                
+
                 #region nhom tac gia
                 List<EdiFilesItem> editGroup = new List<EdiFilesItem>();
                 NoOfPerf = -1;
                 seqNo = -1;
                 string cmos = string.Empty;
+                string ipName = string.Empty;
                 string VcpmcRegion = string.Empty;
-
+                string memberNamereport = string.Empty;
+                string memberNamerLocaleport = string.Empty;
                 for (int i = 0; i < ediFilesItemsClone.Count; i++)
                 {
                     if (ediFilesItemsClone[i].seqNo == 104)
@@ -738,8 +801,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         if (ediFilesItemsClone[i].NoOfPerf != NoOfPerf)
                         {
                             NoOfPerf = ediFilesItemsClone[i].NoOfPerf;
-                            var itemGroup = (EdiFilesItem)ediFilesItemsClone[i].Clone();
-                            itemGroup.WorkStatus = "COMPLETE";
+                            var itemGroup = (EdiFilesItem)ediFilesItemsClone[i].Clone();                           
                             editGroup.Add(itemGroup);
                         }
                         editGroupXXX = editGroup.Where(p => p.NoOfPerf == NoOfPerf).FirstOrDefault();
@@ -749,8 +811,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         if (ediFilesItemsClone[i].seqNo != seqNo)
                         {
                             seqNo = ediFilesItemsClone[i].seqNo;
-                            var itemGroup = (EdiFilesItem)ediFilesItemsClone[i].Clone();
-                            itemGroup.WorkStatus = "COMPLETE";
+                            var itemGroup = (EdiFilesItem)ediFilesItemsClone[i].Clone();                           
                             editGroup.Add(itemGroup);
                         }
                         editGroupXXX = editGroup.Where(p => p.seqNo == seqNo).FirstOrDefault();
@@ -780,7 +841,22 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
                         });
                         cmos = cheGroupMemberWithcmo.Checked == false ? "" : $" ({ediFilesItemsClone[i].Society})";
+                        ipName = cheGroupIpName.Checked == false ? "" : $" ({ediFilesItemsClone[i].IpInNo}{ediFilesItemsClone[i].IpNameType})";
                         VcpmcRegion = string.Empty;
+                        var fixMemberNameReportItem = memberNameReportList.Where(p => p.MemberCode == ediFilesItemsClone[i].IpInNo + ediFilesItemsClone[i].IpNameType).FirstOrDefault();
+                        if(fixMemberNameReportItem!=null)
+                        {
+                            memberNamereport = fixMemberNameReportItem.Name;
+                            memberNamerLocaleport = fixMemberNameReportItem.NameLocal;
+                            if(memberNamereport!=string.Empty)
+                            {
+                                ediFilesItemsClone[i].IpName2 = memberNamereport;
+                            }
+                            if (memberNamereport != string.Empty)
+                            {
+                                ediFilesItemsClone[i].IpNameLocal2 = memberNamerLocaleport;
+                            }
+                        }
                         if (cheVcpmcRegion.Checked )
                         {
                             if(cheVcpmcRegion.Checked && vcpmcInfo.Count > 0)
@@ -816,11 +892,11 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }                                
                             }
                             #endregion
@@ -837,11 +913,11 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }
                             }
                             #endregion
@@ -859,28 +935,28 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupComposer += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }
                             }
                             //neu chua co loi them loi
                             if (!editGroupXXX.ListGroupLyricsCode.Contains(ediFilesItemsClone[i].IpInNo + ediFilesItemsClone[i].IpNameType))
                             {
-                                editGroupXXX.ListGroupComposerCode.Add(ediFilesItemsClone[i].IpName2 + cmos);
+                                editGroupXXX.ListGroupComposerCode.Add(ediFilesItemsClone[i].IpName2 + ipName + cmos);
                                 if (editGroupXXX.GroupLyrics.Length > 0)
                                 {
                                     editGroupXXX.GroupLyrics += ", ";
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupLyrics += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }
                             }
                             #endregion
@@ -897,11 +973,11 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupPublisher += ediFilesItemsClone[i].IpNameLocal2 + cmos;
+                                    editGroupXXX.GroupPublisher += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupPublisher += ediFilesItemsClone[i].IpName2 + cmos;
+                                    editGroupXXX.GroupPublisher += ediFilesItemsClone[i].IpName2 + ipName + cmos;
                                 }
                             }
                             #endregion
@@ -920,11 +996,11 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                                 if (ediFilesItemsClone[i].IpNameLocal2 != string.Empty)
                                 {
-                                    editGroupXXX.GroupWriter += ediFilesItemsClone[i].IpNameLocal2 + cmos;                                        
+                                    editGroupXXX.GroupWriter += ediFilesItemsClone[i].IpNameLocal2 + ipName + cmos;                                        
                                 }
                                 else
                                 {
-                                    editGroupXXX.GroupWriter += ediFilesItemsClone[i].IpName2 + cmos;                                        
+                                    editGroupXXX.GroupWriter += ediFilesItemsClone[i].IpName2 + ipName + cmos;                                        
                                 }
                             }
                             #endregion
@@ -981,10 +1057,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     string WorkTtileOutRemove = string.Empty;
                     foreach (var item in ediFilesItemsClone)
                     {
-                        //if(item.WorkInternalNo == "17582584" )
-                        //{
-                        //    int a = 1;
-                        //}
+                        if (item.WorkInternalNo == "7722360")
+                        {
+                            int a = 1;
+                        }
                         //if (item.WorkInternalNo == "19176136")
                         //{
                         //    int a = 1;
@@ -1034,6 +1110,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             }
                             //lay ten gan giong nhat                           
                             string titleSame = string.Empty;
+                            string titleSameUnsign = string.Empty;
                             var min = scoreTitleInput.Min();                           
                             for (int ig = 0; ig < arrWorkTtileOutUnSign.Length; ig++)
                             {
@@ -1041,7 +1118,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 {
                                     if (titleSame == string.Empty)
                                     {
-                                        titleSame = arrWorkTtileOut[ig];                                        
+                                        titleSame = arrWorkTtileOut[ig];
+                                        titleSameUnsign = arrWorkTtileOutUnSign[ig];
                                         //break;
                                     }
                                 }
@@ -1060,6 +1138,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             //Chinh sua tieu de
                             //GetTile(item, titleSame,item.IpNameLocal);
                             item.WorkTitle2 = titleSame;
+                            item.WorkTitle2Unsign = titleSameUnsign;
                             if (!isCheckcomareTitle)
                             {
                                 if(item.Title.Length <= 10)
@@ -1206,7 +1285,9 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 isCheckcomareWriter = true;
                             }
                         }
-                        if(isCheckcomareTitle && isCheckcomareWriter)
+                        item.IscheckCompareTitle = isCheckcomareTitle;
+                        item.IscheckCompareWriter = isCheckcomareWriter;
+                        if (isCheckcomareTitle && isCheckcomareWriter)
                         {
                             item.IscheckCompareTitleAndWriter = true;
                         }
@@ -1222,16 +1303,14 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 #endregion
 
                 #region Chinh sua tieu de
-                
+
                 //foreach (var item in ediFilesItemsClone)
                 //{
                 //    GetTile(item);
                 //}
-                #endregion                
-
-                #region Hien thi du lieu goc
-                //bindingSourceImport.DataSource = ediFilesItems;
-                //bindingSourceEdit.DataSource = ediFilesItemsClone;
+                #endregion
+                
+                #region Hien thi du lieu goc                
                 if (ediFilesItems != null)
                 {                    
                     totalLoad = ediFilesItems.Count;
@@ -2100,8 +2179,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 if (DialogResult == DialogResult.Yes)
                 {
                     Operation = OperationType.SysnData;
-                    pcloader.Visible = true;
-                    pcloader.Dock = DockStyle.Fill;
+                    pictureBox1.Visible = true;
+                    pictureBox1.Dock = DockStyle.Fill;
                     backgroundWorker.RunWorkerAsync();
                 }
             }
@@ -2115,6 +2194,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
         {
             try
             {
+                #region init
                 if (ediFilesItemsClone == null || ediFilesItemsClone.Count == 0)
                 {
                     return;
@@ -2150,7 +2230,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                
                 toolMain.Invoke(new MethodInvoker(delegate
                 {
-                    btnChoiseFile.Enabled = false;
+                    //btnChoiseFile.Enabled = false;
                     btnImport.Enabled = false;                  
                     btnExport.Enabled = false;                    
                 }));
@@ -2160,17 +2240,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 }));
                 
                 DateTime startTime = DateTime.Now;
-
-                WorkChangeListRequest request = new WorkChangeListRequest();
-                //string[] arraIpname = null;
-                //string[] arraComposer = null;
-                string Ip_name1 = string.Empty;
-                string Ip_name2 = string.Empty;
-                string HoAndTen = string.Empty;
-                string writerReal = string.Empty;
-                //string[] arrWriterReal = null;
-                string text = string.Empty;
-                string text2 = string.Empty;
+                #endregion
+                WorkChangeListRequest request = new WorkChangeListRequest();                
+                string workNameLocal = string.Empty;
+                //string IpNameLocal2 = string.Empty;
                 for (int i = 0; i < ediFilesItemsClone.Count; i++)
                 {
                     WorkCreateRequest itmUpdate = new WorkCreateRequest();
@@ -2192,100 +2265,75 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                         itmUpdate = request.Items.Where(p => p.WK_INT_NO == ediFilesItemsClone[i].WorkInternalNo.ToUpper()).FirstOrDefault();
                     }
                     itmUpdate.WK_INT_NO = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].WorkInternalNo.ToUpper());
-                    #endregion
-
-                    #region Thiet lap ten
-                    //if (itmUpdate.TTL_ENG != string.Empty)
-                    //{                       
-                    //xu ly ten phu
-                    //TODO
-                    if (ediFilesItemsClone[i].WorkTitle.Length > 0)
+                    //itmUpdate.ISRC = ediFilesItemsClone[i].
+                    itmUpdate.TTL_ENG = ediFilesItemsClone[i].WorkTitle2Unsign;
+                    itmUpdate.TTL_LOCAL = ediFilesItemsClone[i].WorkTitle2;
+                    for (int iAddOther = 0; iAddOther < ediFilesItemsClone[i].ListOtherTitleOutUnSign.Count; iAddOther++)
                     {
-                        //GOI TEN NGUOI YEU ,ALINE ,GỌI TÊN NGƯỜI YÊU GOI TEN NGUOI YEU
-                        //GỌI TÊN NGƯỜI YÊU 
-                        //GOI TEN NGUOI YEU
-                        string[] ilistTitle = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].WorkTitle.Trim().ToUpper()).Split(',');                         
-                        string s1 = "";
-                        string s2 = "";                      
-                        int len_div1 = 0;
-                        int len_div2 = 0;
-                        string subTitle = string.Empty;
-                        string subRealTitle = string.Empty;
-                        foreach (var iTitel in ilistTitle)
+                        if (!itmUpdate.OtherTitles.Where(p => p.Title == ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther]).Any() 
+                            && itmUpdate.TTL_ENG != ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther]
+                            && ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther] != string.Empty)
                         {
-                            subTitle = iTitel.Trim();
-                            len_div1 = subTitle.Length / 2;
-                            len_div2 = subTitle.Length - len_div1;
-                            s1 = subTitle.Substring(0, len_div1).Trim();
-                            s2 = subTitle.Substring(len_div1, len_div2).Trim();
-                            if(s1 == s2)
+                            workNameLocal = string.Empty;
+                            if (ediFilesItemsClone[i].ListOtherTitleOut.Count>= iAddOther)
                             {
-                                subRealTitle = s1;
+                                workNameLocal = ediFilesItemsClone[i].ListOtherTitleOut[iAddOther];
                             }
-                            else
+                            if(workNameLocal == string.Empty)
                             {
-                                subRealTitle = subTitle;
+                                workNameLocal = ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther];
                             }
-                            //1.cap nhat tieu dechinh
-                            if (itmUpdate.TTL_ENG == string.Empty&& subRealTitle!=string.Empty)
+                            itmUpdate.OtherTitles.Add(new Shared.Mis.Works.OtherTitle
                             {
-                                itmUpdate.TTL_ENG = subRealTitle;
-                                //lay lam tieu de chinh roi, thi khong dua vao tieu de phu
-                                continue;
-                            }
-                            //2.neu co tieu de chinh, dua vao tieu de phu neu co
-                            if (!itmUpdate.OtherTitles.Where(p => p.Title == subRealTitle).Any() && itmUpdate.TTL_ENG != subRealTitle && subRealTitle!=string.Empty)
-                            {
-                                itmUpdate.OtherTitles.Add(new Shared.Mis.Works.OtherTitle
-                                {
-                                    No = itmUpdate.OtherTitles.Count + 1,
-                                    Title = subRealTitle
-                                });
-                            }
+                                No = itmUpdate.OtherTitles.Count + 1,
+                                Title = ediFilesItemsClone[i].ListOtherTitleOutUnSign[iAddOther],                               
+                                TTL_LOCAL = workNameLocal
+                            });
                         }
                     }
-                    //}
-                    //else
-                    //{
-                    //    //dua vao tieu de chinh
-                    //    itmUpdate.TTL_ENG = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].Title.ToUpper());
-                    //}
+
                     #endregion
 
                     #region thiet lap tac gia
-                    //Chua co tac gia nay thi them vao
-                    if (!itmUpdate.InterestedParties.Where(p => p.IP_INT_NO == ediFilesItemsClone[i].IpInNo).Any())
+                    //Chua co tac gia nay thi them vao                    
+                    foreach (var addMember in ediFilesItemsClone[i].ListInterestedParty)
                     {
-                        itmUpdate.InterestedParties.Add(new Shared.Mis.Works.InterestedParty
-                        {
-                            No = 1,
-                            IP_INT_NO = ediFilesItemsClone[i].IpInNo,
-                            IP_NAME = ediFilesItemsClone[i].IpName2,                           
-                            IP_WK_ROLE = ediFilesItemsClone[i].IpWorkRole,
+                        if (!itmUpdate.InterestedParties.Where(p => p.IP_INT_NO == addMember.IP_INT_NO).Any())
+                        {                           
+                            itmUpdate.InterestedParties.Add(new Shared.Mis.Works.InterestedParty
+                            {
+                                No = itmUpdate.InterestedParties.Count + 1,
+                                IP_INT_NO = addMember.IP_INT_NO,
+                                IP_NAME = addMember.IP_NAME,
+                                IP_NAME_LOCAL = addMember.IP_NAME_LOCAL,
+                                IP_WK_ROLE = addMember.IP_WK_ROLE,
 
-                            WK_STATUS = "COMPLETE",
+                                //TODO 2020-10-02
+                                //WK_STATUS = "COMPLETE",
 
-                            PER_OWN_SHR = ediFilesItemsClone[i].PerOwnShr,
-                            PER_COL_SHR = ediFilesItemsClone[i].PerColShr,
+                                PER_OWN_SHR = addMember.PER_OWN_SHR,
+                                PER_COL_SHR = addMember.PER_COL_SHR,
 
-                            MEC_OWN_SHR = ediFilesItemsClone[i].MecOwnShr,
-                            MEC_COL_SHR = ediFilesItemsClone[i].MecColShr,
+                                MEC_OWN_SHR = addMember.MEC_OWN_SHR,
+                                MEC_COL_SHR = addMember.MEC_COL_SHR,
 
-                            SP_SHR = ediFilesItemsClone[i].SpShr,
-                            TOTAL_MEC_SHR = ediFilesItemsClone[i].TotalMecShr,
+                                SP_SHR = addMember.SP_SHR,
+                                TOTAL_MEC_SHR = addMember.TOTAL_MEC_SHR,
 
-                            SYN_OWN_SHR = ediFilesItemsClone[i].SynOwnShr,
-                            SYN_COL_SHR = ediFilesItemsClone[i].SynColShr,
-                            Society = ediFilesItemsClone[i].Society,
-                            CountUpdate = 1,
-                            LastUpdateAt = DateTime.Now,
-                            LastChoiseAt = DateTime.Now,
-                            IP_NUMBER = ediFilesItemsClone[i].NameNo,//ma ten
-                            IP_NAME_LOCAL = ediFilesItemsClone[i].IpNameLocal2,
-                            IP_NAMETYPE = ediFilesItemsClone[i].IpNameType,
-                        });                        
+                                SYN_OWN_SHR = addMember.SYN_OWN_SHR,
+                                SYN_COL_SHR = addMember.SYN_COL_SHR,
+                                Society = addMember.Society,
+                                CountUpdate = 1,
+                                LastUpdateAt = DateTime.Now,
+                                LastChoiseAt = DateTime.Now,
+                                IP_NUMBER = addMember.IP_NUMBER,//ma ten                           
+                                IP_NAMETYPE = addMember.IP_NAMETYPE,
+                            });
+                        }                       
                     }
-                    bool isCOMPLETE = true;
+
+                    itmUpdate.WRITER = string.Empty;
+                    itmUpdate.WRITER_LOCAL = string.Empty;
                     for (int iP = 0; iP < itmUpdate.InterestedParties.Count; iP++)
                     {
                         if (itmUpdate.WRITER != string.Empty)
@@ -2293,28 +2341,22 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             itmUpdate.WRITER += ",";
                         }
                         itmUpdate.WRITER += itmUpdate.InterestedParties[iP].IP_NAME;
-                        if (isCOMPLETE && itmUpdate.InterestedParties[iP].WK_STATUS != "COMPLETE")
+
+                        if (itmUpdate.WRITER_LOCAL != string.Empty)
                         {
-                            isCOMPLETE = false;
+                            itmUpdate.WRITER_LOCAL += ",";
                         }
+                        itmUpdate.WRITER_LOCAL += itmUpdate.InterestedParties[iP].IP_NAME_LOCAL;
                     }
                     #endregion
-                    
-                    itmUpdate.ARTIST = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].WorkArtist.ToUpper());
-                    //if(ediFilesItemsClone[i].WorkArtist != string.Empty)
-                    //{
-                    //    int a = 1;
-                    //}
-                    if (itmUpdate.ARTIST != string.Empty)
-                    {
-                        //int a = 1;
-                    }
+                    itmUpdate.WK_STATUS = ediFilesItemsClone[i].WorkStatus;
+                    itmUpdate.ARTIST = VnHelper.ConvertToUnSign(ediFilesItemsClone[i].WorkArtist.ToUpper());                    
                     itmUpdate.SOC_NAME = string.Empty;
-                    itmUpdate.WK_STATUS = isCOMPLETE == true ? "COMPLETE" : "INCOMPLETE";
+                    
                     itmUpdate.StarRating = 1;
                     request.Items.Add(itmUpdate);
                 }
-                var dfsf = request.Items.Where(p => p.WK_INT_NO == "1602179").ToList();
+                //var dfsf = request.Items.Where(p => p.WK_INT_NO == "1602179").ToList();
                 var data = await workController.ChangeList(request);
                 statusMain.Invoke(new MethodInvoker(delegate
                 {                   
@@ -2334,7 +2376,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 }));
                 toolMain.Invoke(new MethodInvoker(delegate
                 {
-                    btnChoiseFile.Enabled = true;
+                    //btnChoiseFile.Enabled = true;
                     btnImport.Enabled = true;                   
                     btnExport.Enabled = true;
                 }));
@@ -2361,7 +2403,7 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 {
                     toolMain.Invoke(new MethodInvoker(delegate
                     {
-                        btnChoiseFile.Enabled = true;
+                        //btnChoiseFile.Enabled = true;
                         btnImport.Enabled = true;                       
                         btnExport.Enabled = true;
                     }));
@@ -2460,8 +2502,8 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
 
                 #region set backgroundWorker
                 Operation = OperationType.FindMonopoly;
-                pcloader.Visible = true;
-                pcloader.Dock = DockStyle.Fill;
+                pictureBox1.Visible = true;
+                pictureBox1.Dock = DockStyle.Fill;
                 backgroundWorker.RunWorkerAsync();
                 #endregion  
             }
@@ -2490,6 +2532,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 btnSysToWork.Invoke(new MethodInvoker(delegate
                 {
                     btnSysToWork.Enabled = false;
+                }));
+                btnApply.Invoke(new MethodInvoker(delegate
+                {
+                    btnApply.Enabled = false; ;
                 }));
                 #endregion
 
@@ -2547,7 +2593,14 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                             {
                                 ediFilesItemsClone[i].NonMember += ", ";
                             }
-                            ediFilesItemsClone[i].NonMember += $"{inP.IP_NAME_LOCAL} ({inP.Society})";                           
+                            if(inP.Society == "NS")
+                            {
+                                ediFilesItemsClone[i].NonMember += $"{inP.IP_NAME_LOCAL} (Không Xác Định)";
+                            }   
+                            else
+                            {
+                                ediFilesItemsClone[i].NonMember += $"{inP.IP_NAME_LOCAL} ({inP.Society})";
+                            }                                                    
                         }
                         else
                         {
@@ -2618,21 +2671,43 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                                 }
                             }
                         }
-                        if (CountNoteNS_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
+                        if(ediFilesItemsClone[i].MemberMonopolyNote.Trim()!=string.Empty)
                         {
-                            ediFilesItemsClone[i].MemberMonopolyNote = "100% không xác định";
-                        }
-                        else if (CountNoteDP_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
-                        {
-                            ediFilesItemsClone[i].MemberMonopolyNote = "100% DP";
-                        }
-                        else if ((CountNoteNS_mono+ CountNoteDP_mono) == ediFilesItemsClone[i].ListInterestedParty.Count)
-                        {
-                            ediFilesItemsClone[i].MemberMonopolyNote = "100% DP và không xác định";
+                            ediFilesItemsClone[i].MemberMonopolyNote = ediFilesItemsClone[i].MemberMonopolyNote.Trim();
                         }
                         else
                         {
-                            ediFilesItemsClone[i].MemberMonopolyNote = ediFilesItemsClone[i].MemberMonopolyNote.Trim();
+                            if (CountNoteNS_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
+                            {
+                                ediFilesItemsClone[i].MemberMonopolyNote = "100% không xác định";
+                            }
+                            else if (CountNoteDP_mono == ediFilesItemsClone[i].ListInterestedParty.Count)
+                            {
+                                ediFilesItemsClone[i].MemberMonopolyNote = "100% DP";
+                            }
+                            else if ((CountNoteNS_mono + CountNoteDP_mono) == ediFilesItemsClone[i].ListInterestedParty.Count)
+                            {
+                                ediFilesItemsClone[i].MemberMonopolyNote = "100% DP và không xác định";
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region Set lai mot so ghi chu doc quyen
+                    if(listWMS.Count>0)
+                    {
+                        foreach (var wms in listWMS)
+                        {
+                            //ediFilesItemsClone[i].WorkTitle2 = "LIEN KHUC chieu mua";
+                            if (ediFilesItemsClone[i].WorkTitle2.IndexOf(wms.FirstTitle)==0)
+                            {
+                                if(ediFilesItemsClone[i].WorkStatus == wms.Status)
+                                {
+                                    ediFilesItemsClone[i].MemberMonopolyNote = wms.MonoNote;
+                                    ediFilesItemsClone[i].WorkMonopolyNote = wms.MonoNote;
+                                }    
+                                break;
+                            }    
                         }
                     }
                     #endregion
@@ -2668,6 +2743,10 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                 btnSysToWork.Invoke(new MethodInvoker(delegate
                 {
                     btnSysToWork.Enabled = true;
+                }));
+                btnApply.Invoke(new MethodInvoker(delegate
+                {
+                    btnApply.Enabled = true; ;
                 }));
                 isFindMono = false;
             }
@@ -3033,6 +3112,30 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     var query = ediFilesItemsClone.Where(c => c.IscheckCompareTitleAndWriter == isCheckTrueFalse);
                     fill = query.ToList();
                 }
+                else if (cboTypeChoise == 12)
+                {
+                    //var query = ediFilesItemsClone.Where(delegate (EdiFilesItem c)
+                    //{
+                    //    if (VnHelper.ConvertToUnSign(c.Society).IndexOf(txtFind.Text.Trim(), StringComparison.CurrentCultureIgnoreCase) >= 0)
+                    //        return true;
+                    //    else
+                    //        return false;
+                    //}).AsQueryable();
+                    var query = ediFilesItemsClone.Where(c => c.IscheckCompareTitle == isCheckTrueFalse);
+                    fill = query.ToList();
+                }
+                else if (cboTypeChoise == 13)
+                {
+                    //var query = ediFilesItemsClone.Where(delegate (EdiFilesItem c)
+                    //{
+                    //    if (VnHelper.ConvertToUnSign(c.Society).IndexOf(txtFind.Text.Trim(), StringComparison.CurrentCultureIgnoreCase) >= 0)
+                    //        return true;
+                    //    else
+                    //        return false;
+                    //}).AsQueryable();
+                    var query = ediFilesItemsClone.Where(c => c.IscheckCompareWriter == isCheckTrueFalse);
+                    fill = query.ToList();
+                }
                 dgvEditCalcXXX.Invoke(new MethodInvoker(delegate
                 {
                     dgvEditCalcXXX.DataSource = fill;
@@ -3092,7 +3195,9 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
                     || cboTypeChoise == 8
                     || cboTypeChoise == 9
                     || cboTypeChoise == 10
-                    || cboTypeChoise == 11)
+                    || cboTypeChoise == 11
+                    || cboTypeChoise == 12
+                    || cboTypeChoise == 13)
                 {
                     cheTrueFalse.Visible = true;
                     txtFind.Visible = false;
@@ -3112,6 +3217,244 @@ namespace Vcpmc.Mis.AppMatching.form.Tool.control
             }
         }
 
-        #endregion        
+        #endregion
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+
+        }
+        #region working are        
+        string indexChoise = "";
+        string seqNoxChoise = "";
+        string NoOfPerfChoise = "";
+        private void dgvEditCalcXXX_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if(dgvEditCalcXXX.Rows.Count>0)
+                {
+                    //.dau vao
+                    indexChoise = dgvEditCalcXXX.CurrentRow.Cells["indexx"].Value.ToString().Trim();
+                    seqNoxChoise = dgvEditCalcXXX.CurrentRow.Cells["seqNox"].Value.ToString().Trim();
+                    NoOfPerfChoise = dgvEditCalcXXX.CurrentRow.Cells["NoOfPerfx"].Value.ToString().Trim();
+                    string Titlex = dgvEditCalcXXX.CurrentRow.Cells["Titlex"].Value.ToString().Trim();
+                    string Title3x = dgvEditCalcXXX.CurrentRow.Cells["Title3x"].Value.ToString().Trim();
+                    string Composerx = dgvEditCalcXXX.CurrentRow.Cells["Composerx"].Value.ToString().Trim();
+                    string ListComposerx = dgvEditCalcXXX.CurrentRow.Cells["ListComposerx"].Value.ToString().Trim();
+                    string Artistx = dgvEditCalcXXX.CurrentRow.Cells["Artistx"].Value.ToString().Trim();
+                    string Publisherx = dgvEditCalcXXX.CurrentRow.Cells["Publisherx"].Value.ToString().Trim();
+                    txtindex.Text = indexChoise;
+                    txtseqNox.Text = seqNoxChoise;
+                    txtNoOfPerf.Text = NoOfPerfChoise;
+                    txtTitleIn.Text = Titlex;
+
+                    txtWriterIn.Text = $"Composer: {Composerx} {Environment.NewLine} {Publisherx}";
+
+                    //tac pham
+                    string WorkInternalNox = dgvEditCalcXXX.CurrentRow.Cells["WorkInternalNox"].Value.ToString().Trim();
+                    string LocalWorkIntNox = dgvEditCalcXXX.CurrentRow.Cells["LocalWorkIntNox"].Value.ToString().Trim();
+                    string WorkTitlex = dgvEditCalcXXX.CurrentRow.Cells["WorkTitlex"].Value.ToString().Trim();
+                    string WorkTitle2x = dgvEditCalcXXX.CurrentRow.Cells["WorkTitle2x"].Value.ToString().Trim();                                    
+                    string WorkTitle2Unsignx = dgvEditCalcXXX.CurrentRow.Cells["WorkTitle2Unsignx"].Value.ToString().Trim();                                    
+                    string WorkArtistx = dgvEditCalcXXX.CurrentRow.Cells["WorkArtistx"].Value.ToString().Trim(); 
+                    string WorkComposerx = dgvEditCalcXXX.CurrentRow.Cells["WorkComposerx"].Value.ToString().Trim();
+                    string WorkStatusx = dgvEditCalcXXX.CurrentRow.Cells["WorkStatusx"].Value.ToString().Trim();
+                    List<string> ListOtherTitleOutUnSignx = (List<string>)dgvEditCalcXXX.CurrentRow.Cells["ListOtherTitleOutUnSignx"].Value;
+                    string StrOtherTitleOutUnSignx = dgvEditCalcXXX.CurrentRow.Cells["StrOtherTitleOutUnSignx"].Value.ToString().Trim();
+                    List<string> ListOtherTitleOutx = (List<string>)dgvEditCalcXXX.CurrentRow.Cells["ListOtherTitleOutx"].Value;
+                    string StrOtherTitleOut = dgvEditCalcXXX.CurrentRow.Cells["StrOtherTitleOutx"].Value.ToString().Trim();
+                    List<string> source = new List<string>();
+                    foreach (var item in ListOtherTitleOutx)
+                    {
+                        source.Add(item);
+                    }
+                    source.Add(WorkTitle2x);                   
+                    cboTitleout.DataSource = source;
+                    cboTitleout.Text = WorkTitle2x;
+                    txtWorkInCode.Text = WorkInternalNox;
+                    txtOtherTitleOut.Text = StrOtherTitleOut;
+                    //tac gia
+                    string IpSetNox = dgvEditCalcXXX.CurrentRow.Cells["IpSetNox"].Value.ToString().Trim();
+                    string IpInNox = dgvEditCalcXXX.CurrentRow.Cells["IpInNox"].Value.ToString().Trim();
+                    string LocalIpIntNox = dgvEditCalcXXX.CurrentRow.Cells["LocalIpIntNox"].Value.ToString().Trim();
+                    string NameNox = dgvEditCalcXXX.CurrentRow.Cells["NameNox"].Value.ToString().Trim();
+                    string IpNameTypex = dgvEditCalcXXX.CurrentRow.Cells["IpNameTypex"].Value.ToString().Trim();
+                    string IpWorkRolex = dgvEditCalcXXX.CurrentRow.Cells["IpWorkRolex"].Value.ToString().Trim();
+                    string IpNamex = dgvEditCalcXXX.CurrentRow.Cells["IpNamex"].Value.ToString().Trim();
+                    string IpName2x = dgvEditCalcXXX.CurrentRow.Cells["IpName2x"].Value.ToString().Trim();
+                    string IpNameLocalx = dgvEditCalcXXX.CurrentRow.Cells["IpNameLocalx"].Value.ToString().Trim();
+                    string IpNameLocal2x = dgvEditCalcXXX.CurrentRow.Cells["IpNameLocal2x"].Value.ToString().Trim();
+                    string Societyx = dgvEditCalcXXX.CurrentRow.Cells["Societyx"].Value.ToString().Trim();
+                    string Society2x = dgvEditCalcXXX.CurrentRow.Cells["Society2x"].Value.ToString().Trim();
+                    string SpNamex = dgvEditCalcXXX.CurrentRow.Cells["SpNamex"].Value.ToString().Trim();
+
+                    string GroupWriterx = dgvEditCalcXXX.CurrentRow.Cells["GroupWriterx"].Value.ToString().Trim();
+                    string GroupComposerx = dgvEditCalcXXX.CurrentRow.Cells["GroupComposerx"].Value.ToString().Trim();
+                    string GroupLyricsx = dgvEditCalcXXX.CurrentRow.Cells["GroupLyricsx"].Value.ToString().Trim();
+                    string GroupPublisherx = dgvEditCalcXXX.CurrentRow.Cells["GroupPublisherx"].Value.ToString().Trim();
+                    
+                    string ListGroupWriterCodex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupWriterCodex"].Value.ToString().Trim();
+                    string ListGroupWriterNamex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupWriterNamex"].Value.ToString().Trim();
+                    string ListGroupComposerCodex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupComposerCodex"].Value.ToString().Trim();
+                    string ListGroupLyricsCodex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupLyricsCodex"].Value.ToString().Trim();
+                    string ListGroupPublisherCodex = dgvEditCalcXXX.CurrentRow.Cells["ListGroupPublisherCodex"].Value.ToString().Trim();
+                    string DicMemberxx = dgvEditCalcXXX.CurrentRow.Cells["DicMemberx"].Value.ToString().Trim();
+                    string ListInterestedPartyx = dgvEditCalcXXX.CurrentRow.Cells["ListInterestedPartyx"].Value.ToString().Trim();
+                    string NonMemberx = dgvEditCalcXXX.CurrentRow.Cells["NonMemberx"].Value.ToString().Trim();
+
+                    txtWriterOut.Text = $"GroupWriter: {GroupWriterx} {Environment.NewLine}";
+                    txtWriterOut.Text += $"GroupComposer: {GroupComposerx} {Environment.NewLine}";
+                    txtWriterOut.Text += $"GroupLyrics: {GroupLyricsx} {Environment.NewLine}";
+                    txtWriterOut.Text += $"GroupPublisher: {GroupPublisherx} {Environment.NewLine}";
+                    txtNonMember.Text = NonMemberx;
+
+                    //ty le
+                    string PerOwnShrx = dgvEditCalcXXX.CurrentRow.Cells["PerOwnShrx"].Value.ToString().Trim();
+                    string PerColShrx = dgvEditCalcXXX.CurrentRow.Cells["PerColShrx"].Value.ToString().Trim();
+                    string MecOwnShrx = dgvEditCalcXXX.CurrentRow.Cells["MecOwnShrx"].Value.ToString().Trim();
+                    string MecColShrx = dgvEditCalcXXX.CurrentRow.Cells["MecColShrx"].Value.ToString().Trim();
+                    string SpShrx = dgvEditCalcXXX.CurrentRow.Cells["SpShrx"].Value.ToString().Trim();
+                    string TotalMecShrx = dgvEditCalcXXX.CurrentRow.Cells["TotalMecShrx"].Value.ToString().Trim();
+                    string SynOwnShrx = dgvEditCalcXXX.CurrentRow.Cells["SynOwnShrx"].Value.ToString().Trim();
+                    string SynColShrx = dgvEditCalcXXX.CurrentRow.Cells["SynColShrx"].Value.ToString().Trim();
+                    //doc quyen
+                    bool IsWorkMonopolyx = (bool)dgvEditCalcXXX.CurrentRow.Cells["IsWorkMonopolyx"].Value;
+                    string WorkFieldsx = dgvEditCalcXXX.CurrentRow.Cells["WorkFieldsx"].Value.ToString().Trim();
+                    string WorkMonopolyNotex = dgvEditCalcXXX.CurrentRow.Cells["WorkMonopolyNotex"].Value.ToString().Trim();
+                    bool IsMemberMonopolyx = (bool)dgvEditCalcXXX.CurrentRow.Cells["IsMemberMonopolyx"].Value;
+                    string MemberFieldsx = dgvEditCalcXXX.CurrentRow.Cells["MemberFieldsx"].Value.ToString().Trim();
+                    string MemberMonopolyNotex = dgvEditCalcXXX.CurrentRow.Cells["MemberMonopolyNotex"].Value.ToString().Trim();
+
+                    cheWorkMono.Checked = IsWorkMonopolyx;
+                    txtWorkMonoFields.Text = WorkFieldsx;
+                    txtWorkMonoNote.Text = WorkMonopolyNotex;
+                    cheMemberMono.Checked = IsMemberMonopolyx;
+                    txtMemberMonoFields.Text = MemberFieldsx;
+                    txtMemberMonoNote.Text = MemberMonopolyNotex;
+                    
+                    //so sanh
+
+                    bool IscheckCompareTitleAndWriterx = (bool)dgvEditCalcXXX.CurrentRow.Cells["IscheckCompareTitleAndWriterx"].Value;
+                    string MesssageCompareTitleAndWriterx = dgvEditCalcXXX.CurrentRow.Cells["MesssageCompareTitleAndWriterx"].Value.ToString().Trim();
+                    string CountMatchWriterx = dgvEditCalcXXX.CurrentRow.Cells["CountMatchWriterx"].Value.ToString().Trim();
+                    string TotalWriterx = dgvEditCalcXXX.CurrentRow.Cells["TotalWriterx"].Value.ToString().Trim();
+                    string VcpmcRegionx = dgvEditCalcXXX.CurrentRow.Cells["VcpmcRegionx"].Value.ToString().Trim();
+                    txtTotalWriter.Text = TotalWriterx;
+                    txtTotalMatchWriter.Text = CountMatchWriterx;
+                    txtCompareMessage.Text = MesssageCompareTitleAndWriterx;
+
+                    cheIscheckCompareTitleAndWriter.Checked = IscheckCompareTitleAndWriterx;
+                    if(cheIscheckCompareTitleAndWriter.Checked)
+                    {
+                        cheIscheckCompareTitleAndWriter.ForeColor = Color.Green;
+                    }
+                    else
+                    {
+                        cheIscheckCompareTitleAndWriter.ForeColor = Color.Red;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                int a = 1;
+                //throw;
+            }
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(cboTitleout.Text.Trim()==string.Empty)
+                {
+                    MessageBox.Show("Work title out is empty, please input!");
+                    return;
+                }
+                var x = ediFilesItemsClone.Where(p => p.index == int.Parse(indexChoise)
+                && p.NoOfPerf == int.Parse(NoOfPerfChoise)
+                && p.seqNo == int.Parse(seqNoxChoise)).FirstOrDefault();
+                if(x!=null)
+                {
+                    x.IscheckCompareTitleAndWriter = cheIscheckCompareTitleAndWriter.Checked;
+
+                    x.ListOtherTitleOut.Add(x.WorkTitle2);
+                    x.ListOtherTitleOutUnSign.Add(x.WorkTitle2Unsign);
+                    cboTitleout.Text = cboTitleout.Text.Trim().ToUpper();
+                    x.WorkTitle2 = cboTitleout.Text;
+                    x.WorkTitle2Unsign = VnHelper.ConvertToUnSign(x.WorkTitle2);
+
+                    var item1 = x.ListOtherTitleOut.Where(p => p == x.WorkTitle2).FirstOrDefault();
+                    if(item1!=null)
+                    {
+                        x.ListOtherTitleOut.Remove(item1);
+                    }
+                    x.StrOtherTitleOut = string.Empty;
+                    foreach (var x1 in x.ListOtherTitleOut)
+                    {
+                        if(x.StrOtherTitleOut.Length>0)
+                        {
+                            x.StrOtherTitleOut += ", ";
+                        }
+                        x.StrOtherTitleOut += x1;
+                    }
+                    var item2 = x.ListOtherTitleOutUnSign.Where(p => p == x.WorkTitle2Unsign).FirstOrDefault();
+                    if (item2 != null)
+                    {
+                        x.ListOtherTitleOutUnSign.Remove(item2);
+                    }
+                    x.StrOtherTitleOutUnSign = string.Empty;
+                    foreach (var x2 in x.ListOtherTitleOutUnSign)
+                    {
+                        if (x.StrOtherTitleOutUnSign.Length > 0)
+                        {
+                            x.StrOtherTitleOutUnSign += ", ";
+                        }
+                        x.StrOtherTitleOutUnSign += x2;
+                    }
+                    dgvEditCalcXXX.CurrentRow.Cells["WorkTitle2x"].Value = x.WorkTitle2;
+                    dgvEditCalcXXX.CurrentRow.Cells["WorkTitle2Unsignx"].Value = x.WorkTitle2Unsign;
+                    dgvEditCalcXXX.CurrentRow.Cells["StrOtherTitleOutx"].Value = x.StrOtherTitleOut;
+                    dgvEditCalcXXX.CurrentRow.Cells["StrOtherTitleOutUnSignx"].Value = x.StrOtherTitleOutUnSign;
+                    txtOtherTitleOut.Text = x.StrOtherTitleOut;
+                    //x.ListOtherTitleOut 
+                    if (!x.IscheckCompareTitleAndWriter)
+                    {
+                        dgvEditCalcXXX.CurrentRow.DefaultCellStyle.BackColor = Color.Khaki;
+                        dgvEditCalcXXX.CurrentRow.Cells["IscheckCompareTitleAndWriterx"].Value = x.IscheckCompareTitleAndWriter;
+                    }
+                    else
+                    {
+                        dgvEditCalcXXX.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                        dgvEditCalcXXX.CurrentRow.Cells["IscheckCompareTitleAndWriterx"].Value = x.IscheckCompareTitleAndWriter;
+                    }
+                }
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void cheIscheckCompareTitleAndWriter_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cheIscheckCompareTitleAndWriter.Checked)
+                {
+                    cheIscheckCompareTitleAndWriter.ForeColor = Color.Green;
+                }
+                else
+                {
+                    cheIscheckCompareTitleAndWriter.ForeColor = Color.Red;
+                }
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+        }
+        #endregion
     }
 }

@@ -32,7 +32,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
             txtNo.Enabled = false;           
 
             cboIP_NAMETYPE.SelectedIndex = 0;
-            cboWK_STATUS.SelectedIndex = 0;
+            //cboWK_STATUS.SelectedIndex = 0;
             cboIP_WK_ROLE.SelectedIndex = 0;
 
             if (_updataType == UpdataType.Add)
@@ -48,7 +48,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                     txtIP_NAME.ReadOnly = true;
                     txtIP_INT_NO.ReadOnly = true;
                     cboIP_NAMETYPE.Enabled = false;
-                    cboWK_STATUS.Enabled = false;
+                    //cboWK_STATUS.Enabled = false;
                     cboIP_WK_ROLE.Enabled = false;
 
                     numPER_OWN_SHR.ReadOnly = true;
@@ -65,7 +65,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
                 txtIP_INT_NO.Text = inPar.IP_INT_NO;
                 txtIP_NAME.Text = inPar.IP_NAME;
                 cboIP_NAMETYPE.Text = inPar.IP_NAMETYPE;
-                cboWK_STATUS.Text = inPar.WK_STATUS;
+                //cboWK_STATUS.Text = inPar.WK_STATUS;
                 cboIP_WK_ROLE.Text = inPar.IP_WK_ROLE;
 
                 numPER_OWN_SHR.Value = inPar.PER_OWN_SHR;
@@ -79,6 +79,8 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
 
                 numSYN_OWN_SHR.Value = inPar.SYN_OWN_SHR;
                 numSYN_COL_SHR.Value = inPar.SYN_COL_SHR;
+                txtSociety.Text = inPar.Society;
+                txtIP_NAME_LOCAL.Text = inPar.IP_NAME_LOCAL;
             }
         }
         private void btnCancel_Click(object sender, EventArgs e)
@@ -127,7 +129,7 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
 
             inPar.IP_NAMETYPE = cboIP_NAMETYPE.Text.Trim();
             inPar.IP_WK_ROLE = cboIP_WK_ROLE.Text.Trim();
-            inPar.WK_STATUS = cboWK_STATUS.Text.Trim();
+            //inPar.WK_STATUS = cboWK_STATUS.Text.Trim();
 
             inPar.PER_OWN_SHR = numPER_OWN_SHR.Value;
             inPar.PER_COL_SHR = numPER_COL_SHR.Value;
@@ -140,11 +142,11 @@ namespace Vcpmc.Mis.AppMatching.form.Warehouse.Mis.Work.Update
 
             inPar.SYN_OWN_SHR = numSYN_OWN_SHR.Value;
             inPar.SYN_COL_SHR = numSYN_COL_SHR.Value;
+            inPar.Society = txtSociety.Text.Trim().ToUpper();
+            inPar.IP_NAME_LOCAL = txtIP_NAME_LOCAL.Text.Trim().ToUpper();
             inPar.CountUpdate++;
             inPar.LastUpdateAt = DateTime.Now;
             this.Close();
-        }
-
-       
+        }       
     }
 }

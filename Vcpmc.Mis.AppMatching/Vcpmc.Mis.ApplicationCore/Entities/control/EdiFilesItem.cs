@@ -65,9 +65,13 @@ namespace Vcpmc.Mis.ApplicationCore.Entities.control
         /// </summary>
         public string WorkTitle { get; set; } = string.Empty;
         /// <summary>
-        /// tieu de chinh sua
+        /// tieu de chinh sua có dấu(ten chính xác)
         /// </summary>
         public string WorkTitle2 { get; set; } = string.Empty;
+        /// <summary>
+        /// Tiêu đề chỉnh sửa không dấu(ten chính xác)
+        /// </summary>
+        public string WorkTitle2Unsign { get; set; } = string.Empty;
         /// <summary>
         /// Danh sach ca si bieu dien
         /// </summary>
@@ -80,6 +84,22 @@ namespace Vcpmc.Mis.ApplicationCore.Entities.control
         /// Trang thai xac thuc
         /// </summary>
         public string WorkStatus { get; set; } = string.Empty;
+        /// <summary>
+        /// Danh sach tieu de xuat ra khac
+        /// </summary>
+        public List<string> ListOtherTitleOutUnSign { get; set; } = new List<string>();
+        /// <summary>
+        /// Danh sach tieu de xuat ra khac
+        /// </summary>
+        public string StrOtherTitleOutUnSign { get; set; } = string.Empty;
+        /// <summary>
+        /// Danh sach tieu de xuat ra khac, co dau
+        /// </summary>
+        public List<string> ListOtherTitleOut { get; set; } = new List<string>();
+        /// <summary>
+        /// Danh sach tieu de xuat ra khac, co dau
+        /// </summary>
+        public string StrOtherTitleOut { get; set; } = string.Empty;
         #endregion
 
         #region TAC GIA
@@ -122,12 +142,47 @@ namespace Vcpmc.Mis.ApplicationCore.Entities.control
         /// Tổ chức uỷ quyền(load)
         /// </summary>
         public string Society { get; set; } = string.Empty;
-        public string SpName { get; set; } = string.Empty;
-        #endregion
         /// <summary>
         /// danh sách tổ chức uỷ quyền, cộng gộp theo danh sách tác giả nếu có
         /// </summary>
         public string Society2 { get; set; } = string.Empty;
+        public string SpName { get; set; } = string.Empty;
+        #endregion
+        
+        /// <summary>
+        /// Danh sach tac gia nhom
+        /// </summary>
+        public string GroupWriter { get; set; } = string.Empty;
+        /// <summary>
+        /// Danh sach tac gia nhac nhom
+        /// </summary>
+        public string GroupComposer { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Danh sachs tacs giar loi nhom
+        /// </summary>
+        public string GroupLyrics { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Nhom nha xuat ban
+        /// </summary>
+        public string GroupPublisher { get; set; } = string.Empty;
+
+        public List<string> ListGroupWriterCode { get; set; } = new List<string>();
+        public List<string> ListGroupWriterName { get; set; } = new List<string>();
+        public List<string> ListGroupComposerCode { get; set; } = new List<string>();
+        public List<string> ListGroupLyricsCode { get; set; } = new List<string>();
+        public List<string> ListGroupPublisherCode { get; set; } = new List<string>();
+        /// <summary>
+        /// Danh sach tac gia(ten co dau) vo ma la key
+        /// </summary>
+        public Dictionary<string, string> DicMember { get; set; } = new Dictionary<string, string>();
+        public List<InterestedParty> ListInterestedParty { get; set; } = new List<InterestedParty>();
+        /// <summary>
+        /// Khong phai thanh vien
+        /// </summary>
+        public string NonMember { get; set; } = string.Empty;
+
 
         #region TY LE
         /// <summary>
@@ -183,40 +238,21 @@ namespace Vcpmc.Mis.ApplicationCore.Entities.control
         /// Ghi chú độc quyền tác phẩm
         /// </summary>
         public string MemberMonopolyNote { get; set; } = string.Empty;
-        /// <summary>
-        /// Khong phai thanh vien
-        /// </summary>
-        public string NonMember { get; set; } = string.Empty;
-        /// <summary>
-        /// Danh sach tac gia nhom
-        /// </summary>
-        public string GroupWriter { get; set; } = string.Empty;
-        /// <summary>
-        /// Danh sach tac gia nhac nhom
-        /// </summary>
-        public string GroupComposer { get; set; } = string.Empty;
+        #endregion
 
+        #region so sanh
         /// <summary>
-        /// Danh sachs tacs giar loi nhom
+        /// so sanh writer và tile
         /// </summary>
-        public string GroupLyrics { get; set; } = string.Empty;
-     
-        /// <summary>
-        /// Nhom nha xuat ban
-        /// </summary>
-        public string GroupPublisher { get; set; } = string.Empty;
-
-        public List<string> ListGroupWriterCode { get; set; } = new List<string>();
-        public List<string> ListGroupWriterName { get; set; } = new List<string>();
-        public List<string> ListGroupComposerCode { get; set; } = new List<string>();
-        public List<string> ListGroupLyricsCode { get; set; } = new List<string>();
-        public List<string> ListGroupPublisherCode { get; set; } = new List<string>();
-        /// <summary>
-        /// Danh sach tac gia(ten co dau) vo ma la key
-        /// </summary>
-        public Dictionary<string, string> DicMember { get; set; } = new Dictionary<string, string>();
-        public List<InterestedParty> ListInterestedParty { get; set; } = new List<InterestedParty>();
         public bool IscheckCompareTitleAndWriter { get; set; } = true;
+        /// <summary>
+        /// Só sanh title
+        /// </summary>
+        public bool IscheckCompareTitle { get; set; } = true;
+        /// <summary>
+        /// so sanh writer
+        /// </summary>
+        public bool IscheckCompareWriter { get; set; } = true;
         /// <summary>
         /// So sanh thông tin đâu vào và ra
         /// </summary>
@@ -233,26 +269,13 @@ namespace Vcpmc.Mis.ApplicationCore.Entities.control
         /// Vùng miền của thành viên VCPMC
         /// </summary>
         public string VcpmcRegion { get; set; } = string.Empty;
-        /// <summary>
-        /// Danh sach tieu de xuat ra khac
-        /// </summary>
-        public List<string> ListOtherTitleOutUnSign { get; set; } = new List<string>();
-        /// <summary>
-        /// Danh sach tieu de xuat ra khac
-        /// </summary>
-        public string StrOtherTitleOutUnSign { get; set; } = string.Empty;
-        /// <summary>
-        /// Danh sach tieu de xuat ra khac, co dau
-        /// </summary>
-        public List<string> ListOtherTitleOut { get; set; } = new List<string>();
-        /// <summary>
-        /// Danh sach tieu de xuat ra khac, co dau
-        /// </summary>
-        public string StrOtherTitleOut { get; set; } = string.Empty;
+        #endregion
+
+
 
         //public string RegionalNo { get; set; } = string.Empty;
 
-        #endregion
+
 
         // method for cloning 
         public object Clone()

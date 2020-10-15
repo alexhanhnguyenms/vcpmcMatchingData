@@ -17,6 +17,7 @@ namespace Vcpmc.Mis.Data.Entities.Mongo
         /// Work
         /// </summary>
         public string WorksCollectionName { get; set; }
+        public string WorkHistorysCollectionName { get; set; }
         public string WorkTrackingsCollectionName { get; set; }
         /// <summary>
         /// Độc quyền
@@ -44,6 +45,7 @@ namespace Vcpmc.Mis.Data.Entities.Mongo
     {
         public string PreclaimsCollectionName { get; set; }
         public string WorksCollectionName { get; set; }
+        public string WorkHistorysCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
         public string WorkTrackingsCollectionName { get; set; }

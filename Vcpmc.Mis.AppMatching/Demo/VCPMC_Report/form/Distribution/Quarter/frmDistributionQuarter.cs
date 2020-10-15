@@ -1007,7 +1007,8 @@ namespace Vcpmc.Mis.AppMatching.form.Distribution.Quarter
                                 IP_INT_NO = codeWriter,
                                 IP_NAME = nameWriter,
                                 IP_WK_ROLE = item.Role,
-                                WK_STATUS = "COMPLETE",
+                                //TODO 2020-10-02
+                                //WK_STATUS = "COMPLETE",
 
                                 PER_OWN_SHR = item.Share,
                                 PER_COL_SHR = item.Share,

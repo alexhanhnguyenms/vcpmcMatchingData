@@ -39,5 +39,7 @@ namespace Vcpmc.Mis.Utilities
         /// Gioi han request cua fix thong so
         /// </summary>
         public static int LimitRequestFixParameter = 5000;
+
+        public static int LimitRequestWorkHistory { get; set; } = 5000;
     }
 }

@@ -212,7 +212,7 @@
             this.lbOperation});
             this.statusMain.Location = new System.Drawing.Point(0, 265);
             this.statusMain.Name = "statusMain";
-            this.statusMain.Size = new System.Drawing.Size(990, 22);
+            this.statusMain.Size = new System.Drawing.Size(1097, 22);
             this.statusMain.TabIndex = 12;
             this.statusMain.Text = "statusStrip1";
             // 
@@ -308,7 +308,7 @@
             this.btnExport});
             this.toolMain.Location = new System.Drawing.Point(0, 0);
             this.toolMain.Name = "toolMain";
-            this.toolMain.Size = new System.Drawing.Size(990, 25);
+            this.toolMain.Size = new System.Drawing.Size(1097, 25);
             this.toolMain.TabIndex = 13;
             this.toolMain.Text = "toolStrip1";
             // 
@@ -353,7 +353,7 @@
             this.cboTypeFixParameter.Items.AddRange(new object[] {
             "All"});
             this.cboTypeFixParameter.Name = "cboTypeFixParameter";
-            this.cboTypeFixParameter.Size = new System.Drawing.Size(130, 25);
+            this.cboTypeFixParameter.Size = new System.Drawing.Size(200, 25);
             this.cboTypeFixParameter.SelectedIndexChanged += new System.EventHandler(this.cboTypeFixParameter_SelectedIndexChanged);
             // 
             // cboType
@@ -380,7 +380,6 @@
             // 
             // txtFind
             // 
-            this.txtFind.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(250, 25);
             this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFind_KeyDown);
@@ -454,7 +453,7 @@
             this.dgvMain.Location = new System.Drawing.Point(3, 4);
             this.dgvMain.Name = "dgvMain";
             this.dgvMain.ReadOnly = true;
-            this.dgvMain.Size = new System.Drawing.Size(767, 201);
+            this.dgvMain.Size = new System.Drawing.Size(874, 201);
             this.dgvMain.TabIndex = 44;
             this.dgvMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_CellClick);
             this.dgvMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvMain_MouseDoubleClick);
@@ -612,14 +611,14 @@
             this.pRight.Controls.Add(this.btnFirstPAge);
             this.pRight.Location = new System.Drawing.Point(206, 28);
             this.pRight.Name = "pRight";
-            this.pRight.Size = new System.Drawing.Size(780, 236);
+            this.pRight.Size = new System.Drawing.Size(887, 236);
             this.pRight.TabIndex = 15;
             // 
             // frmFixParameter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 287);
+            this.ClientSize = new System.Drawing.Size(1097, 287);
             this.Controls.Add(this.statusMain);
             this.Controls.Add(this.toolMain);
             this.Controls.Add(this.pLeft);

@@ -9,21 +9,21 @@ namespace Vcpmc.Mis.Shared.Mis.Members
         /// <summary>
         /// Gia tri: VCPMC,E
         /// </summary>
-        public string CheckValue;
+        public string CheckValue = string.Empty;
         /// <summary>
         /// sang
         /// </summary>
 
-        public string ToValue;
+        public string ToValue = string.Empty;
 
         /// <summary>
         /// ma tac gia
         /// </summary>
-        public string IpCode { get; set; }
+        public string IpCode { get; set; } = string.Empty;
         /// <summary>
         /// Mã tac pham
         /// </summary>
-        public string IpNameType { get; set; }
+        public string IpNameType { get; set; } = string.Empty;
     }
     public class ReplateText
     {

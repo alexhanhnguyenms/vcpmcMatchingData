@@ -641,18 +641,20 @@ namespace Vcpmc.Mis.AppMatching.form.Matching.Work
                             {
                                 workByWriterList = workByCodeList;
                             }
+                            //TODO 2020-10-02
+                            //
                             //xác định tác phẩm trên có compate không
-                            foreach (var item in workByWriterList)
-                            {
-                                if (item.InterestedParties.Where(p => p.WK_STATUS == "INCOMPLETE").Any())
-                                {
-                                    item.WK_STATUS = "INCOMPLETE";
-                                }
-                                else
-                                {
-                                    item.WK_STATUS = "COMPLETE";
-                                }
-                            }
+                            //foreach (var item in workByWriterList)
+                            //{
+                            //    if (item.InterestedParties.Where(p => p.WK_STATUS == "INCOMPLETE").Any())
+                            //    {
+                            //        item.WK_STATUS = "INCOMPLETE";
+                            //    }
+                            //    else
+                            //    {
+                            //        item.WK_STATUS = "COMPLETE";
+                            //    }
+                            //}
                             #endregion
 
                             #region Artist
